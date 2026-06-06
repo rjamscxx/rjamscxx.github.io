@@ -652,6 +652,16 @@ h1.lead .it{font-family:var(--serif);font-style:italic;font-weight:300;letter-sp
   cursor:pointer;padding:0;transition:color .2s;align-self:flex-start;
 }
 .card-cs:hover{color:var(--gold-2)}
+.cs-demo{padding:16px 20px;border:1px solid var(--border);border-radius:var(--r);background:rgba(255,255,255,.02)}
+.cs-demo-head{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-2);margin-bottom:10px}
+.cs-demo-sub{display:block;font-family:var(--body);font-size:12px;color:var(--c50);letter-spacing:0;text-transform:none;font-weight:400;margin-top:4px}
+.cs-creds{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.cs-cred-pill{font-family:var(--mono);font-size:11px;color:var(--c70);background:var(--bg);padding:5px 12px;border-radius:var(--r-sm);border:1px solid var(--border)}
+.cs-cred-pill strong{color:var(--ink)}
+.cs-recs{display:flex;flex-direction:column;gap:5px}
+.cs-rec{font-size:12px;color:var(--c60);padding:8px 12px;background:var(--bg);border-radius:var(--r-sm);border-left:2px solid var(--gold-bdr);line-height:1.5}
+.rjs-sys{display:grid;grid-template-columns:1fr 1fr;gap:4px;max-width:220px;margin-bottom:6px}
+.rjs-sys-item{font-family:var(--mono);font-size:9px;font-weight:600;color:rgba(232,184,75,.7);border:1px solid rgba(232,184,75,.12);padding:4px 8px;border-radius:var(--r-sm);background:rgba(232,184,75,.04);text-align:center}
 
 /* ═══════════════════════════════════════════════════════════
    FOOTER
@@ -1438,63 +1448,21 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
       </div>
     </article>
 
-    <!-- BEANSTACK -->
-    <article class="app-card reveal" data-full="screenshots/beanstack-pro/full.png" data-cat="café">
-      <div class="app-corner">↗</div>
-      <div class="app-shot-wrap">
-        <img class="main-shot" loading="lazy" src="screenshots/beanstack-pro/hero.png" alt="Beanstack Pro" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#0a0a0a)'" />
-        <div class="feat-strip">
-          <div class="feat-thumb active" data-src="screenshots/beanstack-pro/hero.png" title="Overview">
-            <img loading="lazy" src="screenshots/beanstack-pro/hero.png" alt="Overview">
-          </div>
-          <div class="feat-thumb" data-src="screenshots/beanstack-pro/section-2.png" title="Ops">
-            <img loading="lazy" src="screenshots/beanstack-pro/section-2.png" alt="Ops">
-          </div>
-          <div class="feat-thumb" data-src="screenshots/beanstack-pro/section-3.png" title="Reports">
-            <img loading="lazy" src="screenshots/beanstack-pro/section-3.png" alt="Reports">
-          </div>
-          <span class="feat-strip-label">3 views</span>
-        </div>
-      </div>
-      <div class="app-meta">
-        <div class="app-badge-row"><span class="tag tag-v1">v1.0</span><span class="ver">coffee</span></div>
-        <div><div class="app-name">BEANSTACK PRO</div><div class="app-vertical">Coffee shop ops</div></div>
-        <p class="app-desc">Coffee shop operations dashboard for order management, daily reporting, and menu tracking — the proof-of-concept that became Grayscale Coffee Club.</p>
-        <div class="app-stack"><span>HTML</span><span>Coffee</span></div>
-      </div>
-    </article>
-
-    <!-- GRAYSCALE V2 -->
-    <article class="app-card reveal reveal-d1" data-cat="café">
-      <div class="app-corner">↗</div>
-      <div class="app-shot-wrap wip-shot">
-        <div class="wip-inner">
-          <div class="wip-name">GRAYSCALE v2</div>
-          <div class="wip-badge">Next.js 16 · In Progress</div>
-          <div class="wip-pills">
-            <span class="wip-pill">Supabase</span><span class="wip-pill">Drizzle</span><span class="wip-pill">Zustand</span><span class="wip-pill">Zod</span>
-          </div>
-          <div class="wip-bar"><div class="wip-fill"></div></div>
-        </div>
-      </div>
-      <div class="app-meta">
-        <div class="app-badge-row"><span class="tag tag-wip">◆ In Progress</span><span class="ver">next.js</span></div>
-        <div><div class="app-name">GRAYSCALE v2</div><div class="app-vertical">Next.js production rebuild</div></div>
-        <p class="app-desc">Production rebuild of Grayscale Coffee Club — full authentication, real-time data sync, and enterprise-grade architecture on Next.js 16.</p>
-        <div class="app-stack"><span>Next.js 16</span><span>Supabase</span><span>Drizzle</span><span>Zustand</span></div>
-      </div>
-    </article>
-
     <!-- RJ STACK -->
     <article class="app-card reveal reveal-d2" data-cat="business">
       <div class="app-corner">↗</div>
       <div class="app-shot-wrap" style="background:radial-gradient(circle at 30% 30%,rgba(232,184,75,.15),transparent 50%),linear-gradient(135deg,#1a1a1a,#0a0a0a)">
         <div class="rjs-wrap">
           <div class="rjs-label">RJ.STACK</div>
+          <div class="rjs-sys">
+            <span class="rjs-sys-item">Courtside OS</span>
+            <span class="rjs-sys-item">OralTech Pro</span>
+            <span class="rjs-sys-item">AssetOS</span>
+            <span class="rjs-sys-item">Checkout Hub</span>
+          </div>
           <div class="rjs-pills">
-            <span class="rjs-pill">Next.js 16</span><span class="rjs-pill">React 19</span>
-            <span class="rjs-pill">TypeScript</span><span class="rjs-pill">Supabase</span>
-            <span class="rjs-pill">Drizzle</span><span class="rjs-pill">Tailwind v4</span>
+            <span class="rjs-pill">Next.js 16</span><span class="rjs-pill">Supabase</span>
+            <span class="rjs-pill">Drizzle ORM</span><span class="rjs-pill">TypeScript</span>
           </div>
         </div>
       </div>
@@ -1798,6 +1766,7 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
         <div class="cs-col"><h4>Solution</h4><p id="csSolution"></p></div>
         <div class="cs-col"><h4>Stack</h4><div class="cs-tags" id="csTags"></div></div>
       </div>
+      <div class="cs-demo" id="csDemo" style="display:none"></div>
       <div class="cs-actions">
         <a class="cs-cta" id="csCta" href="">→ Build something like this</a>
         <span class="cs-status" id="csStatus"></span>
@@ -2065,16 +2034,96 @@ if(menuBtn&&mobileNav){
 
 /* 11. Case study modal */
 const csData={
-  'COURTSIDE':{vertical:'Multi-sport court reservation',problem:'Court facilities in the Philippines manage bookings through paper logbooks and WhatsApp threads — no visibility, constant double-bookings.',solution:'Single-file PWA with real-time schedule grid, QR check-in, walk-in mode, WhatsApp share, and multi-sport color system.',stack:['HTML','Vanilla JS','LocalStorage','IndexedDB','PWA','QR Generator'],status:'v12 · Active',img:'screenshots/courtside/hero.png'},
-  'GRAYSCALE':{vertical:'Coffee subscription + loyalty',problem:'Independent coffee shops lose repeat customers without a digital loyalty layer or subscription product.',solution:'Premium monochrome PWA with subscription tiers, loyalty punch cards, and a member portal for direct-to-customer delivery.',stack:['HTML','Vanilla JS','LocalStorage','PWA','Monochrome design'],status:'v17 · Active',img:'screenshots/grayscale-coffee-club/hero.png'},
-  'ASSETOS':{vertical:'Maintenance management',problem:'Property managers track asset maintenance in spreadsheets — no audit trail, no vendor assignments, no SLA visibility.',solution:'Editorial-luxe asset OS with multi-tenant org support and Drizzle ORM + Supabase RLS in the Next.js rebuild.',stack:['HTML (v1)','Next.js 16','Supabase','Drizzle ORM','TypeScript'],status:'v1 + Next.js scaffold',img:'screenshots/assetos/hero.png'},
-  'DOC TEETHSKO':{vertical:'Dental clinic management',problem:'Philippine dental clinics use paper charts and manual scheduling — PHI exposed, no billing history, no digital records.',solution:'OralTech Pro: full dental chart, patient records, appointment grid, treatment history, billing, PHI-aware RLS.',stack:['HTML (v1)','Next.js 16','Supabase','Drizzle ORM','TypeScript'],status:'v1 + Next.js scaffold',img:'screenshots/doc-teethsko/hero.png'},
-  'CHECKOUT HUB':{vertical:'Business manager',problem:'Philippine SMBs rely on manual invoicing — no inventory link, no customer history, no recurring revenue tracking.',solution:'Multi-business dashboard with customers, products, invoices, transactions, and Resend email in the Next.js rebuild.',stack:['HTML (v6)','Next.js 16','Supabase','Resend','TypeScript'],status:'v6 + Next.js scaffold',img:'screenshots/checkout-hub/hero.png'},
-  'FLOWSTACK':{vertical:'Café operating system',problem:'Small independent cafés lack affordable, purpose-built POS with menu management and daily order flow.',solution:'Single-file café OS with warm brown aesthetic, order management, menu builder, and end-of-day reports.',stack:['HTML','Vanilla JS','LocalStorage','PWA'],status:'v1.0',img:'screenshots/flowstack/hero.png'},
-  'BUDTENDER':{vertical:'Shop POS + cash-out',problem:'Small retail shops run cash operations without inventory visibility or end-of-day reconciliation.',solution:'Lightweight POS with cash-out flow, inventory tracking, and daily reconciliation for single-operator retail.',stack:['HTML','Vanilla JS','LocalStorage','PWA'],status:'v1.0',img:'screenshots/budtenderph/hero.png'},
-  'JAZEL HUB':{vertical:'Personal business hub',problem:'Freelancers and service providers juggle bookings, schedules, and client contact across multiple apps.',solution:'Custom white-label hub for Jazel Bernardo: bookings, schedule, services, and contact — all in one view.',stack:['HTML','Vanilla JS','LocalStorage','Custom design'],status:'v1 · Client',img:'screenshots/jazel-hub/hero.png'},
-  'YOUNGMINDS':{vertical:'Education progress tracker',problem:'Tutors and learning centers have no lightweight tool for tracking student progress across subjects over time.',solution:'Student progress dashboard with subject tracking, milestones, and parent-facing report views.',stack:['HTML','Vanilla JS','LocalStorage','PWA'],status:'v7',img:'screenshots/youngminds/hero.png'},
-  'BEANSTACK':{vertical:'Coffee subscription',problem:'First attempt at a digital coffee subscription product before the Grayscale rebrand and v2 Next.js rebuild.',solution:'Proof-of-concept that validated the subscription + loyalty model, later evolved into Grayscale Coffee Club.',stack:['HTML','Vanilla JS','LocalStorage'],status:'v1 · Archived',img:'screenshots/beanstack-pro/hero.png'}
+  'COURTSIDE':{
+    vertical:'Multi-sport court reservation',
+    problem:'Court facilities in the Philippines manage bookings through paper logbooks and WhatsApp threads — no visibility, constant double-bookings.',
+    solution:'Single-file PWA with real-time schedule grid, QR check-in, walk-in mode, WhatsApp share, and multi-sport color system.',
+    stack:['HTML','Vanilla JS','LocalStorage','IndexedDB','PWA','QR Generator'],
+    status:'v12 · Active',img:'screenshots/courtside/hero.png',
+    demo:{access:'No login · Runs in browser',scenario:'Juan dela Cruz has 3 active court bookings this weekend at Taguig Sports Hub.',
+      records:['Court 2 · Badminton · Sat Jun 7 · 2:00–4:00 PM · Juan & 3 friends · ₱800 · Confirmed','Court 1 · Basketball · Sun Jun 8 · 9:00–11:00 AM · Marco\'s team (8 pax) · Walk-in · ₱1,200','Court 3 · Tennis · Sat Jun 14 · 10:00 AM · Juan dela Cruz · ₱600 · Reserved']}
+  },
+  'GRAYSCALE':{
+    vertical:'Coffee subscription + loyalty',
+    problem:'Independent coffee shops lose repeat customers without a digital loyalty layer or subscription product.',
+    solution:'Premium monochrome PWA with subscription tiers, loyalty punch cards, and a member portal for direct-to-customer delivery.',
+    stack:['HTML','Vanilla JS','LocalStorage','PWA','Monochrome design'],
+    status:'v17 · Active',img:'screenshots/grayscale-coffee-club/hero.png',
+    demo:{access:'No login · Runs in browser',scenario:'Juan dela Cruz is a Silver subscriber — 18 stamps collected, next delivery in 4 days.',
+      records:['Member: Juan dela Cruz · Silver tier · 18 of 20 stamps collected · Joined Mar 2026','Next delivery: Jun 10 · Ethiopia Yirgacheffe 250g · ₱480 · Scheduled','Reward: 2 more stamps unlock a free 100g Barako blend bag']}
+  },
+  'ASSETOS':{
+    vertical:'Maintenance management',
+    problem:'Property managers track asset maintenance in spreadsheets — no audit trail, no vendor assignments, no SLA visibility.',
+    solution:'Editorial-luxe asset OS with multi-tenant org support and Drizzle ORM + Supabase RLS in the Next.js rebuild.',
+    stack:['HTML (v1)','Next.js 16','Supabase','Drizzle ORM','TypeScript'],
+    status:'v1 + Next.js scaffold',img:'screenshots/assetos/hero.png',
+    demo:{email:'demo@assetos.ph',password:'Demo1234!',scenario:'Juan dela Cruz manages 3 BGC + Makati properties — 1 urgent ticket open.',
+      records:['Unit 12A BGC Tower · Aircon unit · Preventive service · Scheduled Jun 15 · ₱2,800','Kapé Flores Bldg · Plumbing leak · Vendor: Manuel Plumbing Co. · In Progress · Urgent','DelaMart Store · Generator · Last: May 20 · Next: Aug 20 · Status: OK']}
+  },
+  'DOC TEETHSKO':{
+    vertical:'Dental clinic management',
+    problem:'Philippine dental clinics use paper charts and manual scheduling — PHI exposed, no billing history, no digital records.',
+    solution:'OralTech Pro: full dental chart, patient records, appointment grid, treatment history, billing, PHI-aware RLS.',
+    stack:['HTML (v1)','Next.js 16','Supabase','Drizzle ORM','TypeScript'],
+    status:'v1 + Next.js scaffold',img:'screenshots/doc-teethsko/hero.png',
+    demo:{email:'demo@oraltechpro.ph',password:'Demo1234!',scenario:'Dr. Ana Santos\' clinic. Juan dela Cruz is an active patient with a crown procedure in progress.',
+      records:['Patient: Juan dela Cruz · Last visit: May 28 · Cleaning + Periapical X-Ray · ₱1,200 · Paid','Next appt: Jun 12 · 2:30 PM · Dr. Ana Santos · Crown prep molar #27 (lower right)','Treatment plan: Porcelain crown #27 · Est. ₱8,500 · 50% deposit (₱4,250) paid']}
+  },
+  'CHECKOUT HUB':{
+    vertical:'Business manager',
+    problem:'Philippine SMBs rely on manual invoicing — no inventory link, no customer history, no recurring revenue tracking.',
+    solution:'Multi-business dashboard with customers, products, invoices, transactions, and Resend email in the Next.js rebuild.',
+    stack:['HTML (v6)','Next.js 16','Supabase','Resend','TypeScript'],
+    status:'v6 + Next.js scaffold',img:'screenshots/checkout-hub/hero.png',
+    demo:{email:'demo@checkouthub.ph',password:'Demo1234!',scenario:'Juan dela Cruz manages 3 businesses: Baryo Roast, DelaMart, Kapé Flores — all tracked in one hub.',
+      records:['Invoice #INV-0084 · DelaMart Supplier · ₱12,400 · Paid · Jun 3','Invoice #INV-0085 · Kapé Flores Supply Run · ₱6,800 · Pending · Due Jun 8','Monthly: ₱148,500 revenue across 3 businesses · 94 transactions · Jun 2026']}
+  },
+  'FLOWSTACK':{
+    vertical:'Café operating system',
+    problem:'Small independent cafés lack affordable, purpose-built POS with menu management and daily order flow.',
+    solution:'Single-file café OS with warm brown aesthetic, order management, menu builder, and end-of-day reports.',
+    stack:['HTML','Vanilla JS','LocalStorage','PWA'],
+    status:'v1.0',img:'screenshots/flowstack/hero.png',
+    demo:{access:'No login · Runs in browser',scenario:'Kapé Flores — Juan\'s second café. 67 orders processed today, shift ongoing.',
+      records:['Order #089 · Table 3 · Iced Matcha Latte ×2, Butter Croissant · ₱390 · Paid','Daily total: 67 orders · ₱12,450 gross · 4 staff on shift · 8:00 AM – 5:00 PM','Low stock alert: Oat milk (2L) · Matcha powder (800g) · Reorder triggered']}
+  },
+  'BUDTENDER':{
+    vertical:'Shop POS + cash-out',
+    problem:'Small retail shops run cash operations without inventory visibility or end-of-day reconciliation.',
+    solution:'Lightweight POS with cash-out flow, inventory tracking, and daily reconciliation for single-operator retail.',
+    stack:['HTML','Vanilla JS','LocalStorage','PWA'],
+    status:'v1.0',img:'screenshots/budtenderph/hero.png',
+    demo:{access:'No login · Runs in browser',scenario:'DelaMart mini-mart — Juan\'s sari-sari store running Budtender for daily cash ops.',
+      records:['Sale: Chippy ×3, C2 Green ×2, Lucky Me Pancit Canton ×4 · ₱185 · Cash','End-of-day: Opening ₱3,000 · Sales ₱4,820 · Cash on hand ₱7,820 · Net ₱4,820','Low stock: San Miguel Beer (3 cans) · Biogesic Paracetamol (8 tabs) · Reorder']}
+  },
+  'JAZEL HUB':{
+    vertical:'Personal business hub',
+    problem:'Freelancers and service providers juggle bookings, schedules, and client contact across multiple apps.',
+    solution:'Custom white-label hub for Jazel Bernardo: bookings, schedule, services, and contact — all in one view.',
+    stack:['HTML','Vanilla JS','LocalStorage','Custom design'],
+    status:'v1 · Client',img:'screenshots/jazel-hub/hero.png',
+    demo:{access:'No login · Runs in browser',scenario:'Juan dela Cruz booked a home styling consultation. Jazel\'s schedule is live.',
+      records:['Booking: Home Styling Consultation · Jun 9, 3:00 PM · Juan dela Cruz','Service: Interior mood board + space layout plan · ₱2,500 session fee','Status: Confirmed · Deposit paid ₱1,000 · Balance ₱1,500 due on session day']}
+  },
+  'YOUNG MINDS':{
+    vertical:'Education progress tracker',
+    problem:'Tutors and learning centers have no lightweight tool for tracking student progress across subjects over time.',
+    solution:'Student progress dashboard with subject tracking, milestones, and parent-facing report views.',
+    stack:['HTML','Vanilla JS','LocalStorage','PWA'],
+    status:'v7',img:'screenshots/youngminds/hero.png',
+    demo:{access:'No login · Runs in browser',scenario:'Marco dela Cruz (Grade 4, Baguio Learning Center) — Juan\'s son, tracked by his tutor.',
+      records:['Student: Marco dela Cruz · Grade 4 · Baguio Learning Center · Jun 2026','Math: 88% → 94% (+6pts) · Science: 91% · Filipino: 87% · English: 93%','Milestone: ★ Perfect attendance May 2026 · Reading speed: 180 wpm (↑ from 142)']}
+  },
+  'RJ-STACK':{
+    vertical:'Universal Next.js production starter',
+    problem:'Starting each new SaaS from scratch wastes days on auth, database setup, and boilerplate — before writing a single line of product logic.',
+    solution:'A cloneable Next.js 16 foundation with Supabase SSR, Drizzle ORM, Zod + react-hook-form, and RLS policies baked in. Spin up in minutes, not days.',
+    stack:['Next.js 16','React 19','TypeScript','Tailwind v4','Supabase SSR','Drizzle ORM','Zod','Vitest 4','Playwright'],
+    status:'Production template',img:'',
+    demo:{access:'Clone & run · No login',scenario:'Powers 4 production scaffolds: Courtside OS · OralTech Pro · AssetOS · Checkout Hub.',
+      records:['Auth: Supabase SSR · is_member() RLS helpers · Auto profile trigger on signup','DB: Drizzle ORM + drizzle-kit · 0001_init.sql with per-app seed triggers','Stack: Next.js 16.2 · React 19.2 · TypeScript 5 · Tailwind v4 · Vitest 4 · Playwright 1.60']}
+  }
 };
 const csModal=document.getElementById('csModal');
 const csClose=document.getElementById('csClose');
@@ -2091,12 +2140,24 @@ function openCS(name){
   const d=csData[name]; if(!d) return;
   csNameEl.textContent=name;
   csVerticalEl.textContent=d.vertical;
-  csImgEl.src=d.img; csImgEl.alt=name;
+  if(d.img){csImgEl.src=d.img;csImgEl.alt=name;csImgEl.style.display='';}
+  else{csImgEl.style.display='none';}
   csProblemEl.textContent=d.problem;
   csSolutionEl.textContent=d.solution;
   csTagsEl.innerHTML=d.stack.map(s=>`<span class="cs-tag">${s}</span>`).join('');
   csStatusEl.textContent=d.status;
   csCtaEl.href=`mailto:rjamscxx@gmail.com?subject=Re%3A%20${encodeURIComponent(name)}`;
+  const demoEl=document.getElementById('csDemo');
+  if(d.demo){
+    const creds=d.demo.access
+      ?`<div class="cs-creds"><div class="cs-cred-pill"><strong>Mode</strong> — ${d.demo.access}</div></div>`
+      :`<div class="cs-creds"><div class="cs-cred-pill"><strong>Email</strong> ${d.demo.email}</div><div class="cs-cred-pill"><strong>Password</strong> ${d.demo.password}</div></div>`;
+    const recs=d.demo.records.map(r=>`<div class="cs-rec">${r}</div>`).join('');
+    demoEl.innerHTML=`<div class="cs-demo-head">◆ Demo Snapshot<span class="cs-demo-sub">${d.demo.scenario}</span></div>${creds}<div class="cs-recs">${recs}</div>`;
+    demoEl.style.display='block';
+  } else {
+    demoEl.style.display='none';demoEl.innerHTML='';
+  }
   csModal.classList.add('open');
   document.body.style.overflow='hidden';
 }
