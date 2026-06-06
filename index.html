@@ -765,6 +765,16 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
   .feat-strip{opacity:1;transform:none}
 }
 
+/* touch: hide hover-only hint */
+@media(hover:none){.app-shot-wrap::before{display:none}}
+
+/* keyboard focus outline */
+:focus-visible{outline:2px solid var(--gold-bdr);outline-offset:3px;border-radius:var(--r-xs)}
+
+/* ─── Contact form error ─── */
+.cf-error{padding:14px 18px;border:1px solid rgba(239,68,68,.28);border-radius:var(--r);background:rgba(239,68,68,.06);color:var(--rose);font-size:13px;line-height:1.6;display:none}
+.cf-error.show{display:block}
+
 /* reduce motion */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
@@ -816,9 +826,6 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
 }
 .mobile-nav .mnav-cta:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 14px 40px rgba(232,184,75,.4)}
 
-/* app corner clickable */
-.app-corner{cursor:pointer}
-
 /* ═══════════════════════════════════════════════════════════
    ABOUT + PROCESS
    ═══════════════════════════════════════════════════════════ */
@@ -832,7 +839,7 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
   border-left:2px solid var(--gold-bdr);
   background:var(--gold-dim);border-radius:0 var(--r-sm) var(--r-sm) 0;
 }
-.about-quote p{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--c80)!important;line-height:1.6!important}
+.about-quote p{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--c80);line-height:1.6}
 .process{display:grid;gap:12px}
 .process-item{
   display:flex;gap:18px;align-items:start;
@@ -882,14 +889,6 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
 
 /* ─── Nav scroll-spy ─── */
 .nav-link.active{color:var(--gold-2) !important;background:var(--gold-dim) !important}
-
-/* ─── App card inquire micro-CTA ─── */
-.card-inquire{
-  display:block;font-size:12px;font-weight:600;color:var(--gold-2);
-  padding:10px 0 2px;border-top:1px solid var(--c08);margin-top:auto;
-  letter-spacing:.03em;transition:color .2s,letter-spacing .2s;
-}
-.card-inquire:hover{color:var(--gold-3);letter-spacing:.06em}
 
 /* ─── Browser chrome ─── */
 .shot.browser{padding-top:32px}
@@ -949,14 +948,15 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
 </div>
 
 <!-- ═══════════════ NAV ═══════════════ -->
-<nav class="top">
+<nav class="top" role="navigation" aria-label="Main navigation">
   <a href="#top" class="brand"><span class="brand-dot"></span>RJ CABANSAY</a>
   <div class="nav-links">
     <a class="nav-link" href="#featured">Sizzle</a>
     <a class="nav-link" href="#apps">Apps</a>
     <a class="nav-link" href="#templates">Templates</a>
-    <a class="nav-link" href="#about">About</a>
     <a class="nav-link" href="#services">Services</a>
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#testimonials">Testimonials</a>
     <a class="nav-link" href="#contact">Contact</a>
   </div>
   <div class="nav-right">
@@ -972,8 +972,8 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
   <a class="mnav-link" href="#featured">Sizzle</a>
   <a class="mnav-link" href="#apps">Apps</a>
   <a class="mnav-link" href="#templates">Templates</a>
-  <a class="mnav-link" href="#about">About</a>
   <a class="mnav-link" href="#services">Services</a>
+  <a class="mnav-link" href="#about">About</a>
   <a class="mnav-link" href="#testimonials">Testimonials</a>
   <a class="mnav-link" href="#contact">Contact</a>
   <a class="mnav-cta" href="mailto:rjamscxx@gmail.com">Hire me →</a>
@@ -994,9 +994,9 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
 
   <!-- HERO PEEK -->
   <div class="hero-peek">
-    <a class="peek-card peek-c1" href="#apps"><img loading="lazy" src="screenshots/courtside/hero.png" alt="Courtside app" /><span class="peek-label">Courtside</span></a>
-    <a class="peek-card peek-c2" href="#featured"><img loading="lazy" src="sizzle/01-hero-section.png" alt="Sizzle app" /><span class="peek-label">Sizzle ◆ Flagship</span></a>
-    <a class="peek-card peek-c3" href="#apps"><img loading="lazy" src="screenshots/grayscale-coffee-club/hero.png" alt="Grayscale app" /><span class="peek-label">Grayscale</span></a>
+    <a class="peek-card peek-c1" href="#apps"><img loading="eager" src="screenshots/courtside/hero.png" alt="Courtside app" /><span class="peek-label">Courtside</span></a>
+    <a class="peek-card peek-c2" href="#featured"><img loading="eager" src="sizzle/01-hero-section.png" alt="Sizzle app" /><span class="peek-label">Sizzle ◆ Flagship</span></a>
+    <a class="peek-card peek-c3" href="#apps"><img loading="eager" src="screenshots/grayscale-coffee-club/hero.png" alt="Grayscale app" /><span class="peek-label">Grayscale</span></a>
   </div>
 
   <!-- STATS -->
@@ -1179,7 +1179,7 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
         </div>
       </div>
       <div class="app-meta">
-        <div class="app-badge-row"><span class="tag tag-new">◆ New</span><span class="tag tag-next">Next.js →</span></div>
+        <div class="app-badge-row"><span class="tag tag-new">◆ New</span><span class="tag tag-next">Next.js ↗</span></div>
         <div><div class="app-name">ASSETOS</div><div class="app-vertical">Maintenance management</div></div>
         <p class="app-desc">Editorial-luxe asset tracking for property managers, facilities teams, and asset-heavy SMBs. Cormorant + Outfit.</p>
         <div class="app-stack"><span>HTML</span><span>Cormorant</span><span>Outfit</span><span>Multi-tenant</span></div>
@@ -1205,7 +1205,7 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
         </div>
       </div>
       <div class="app-meta">
-        <div class="app-badge-row"><span class="tag tag-v1">v1.0</span><span class="tag tag-next">Next.js →</span></div>
+        <div class="app-badge-row"><span class="tag tag-v1">v1.0</span><span class="tag tag-next">Next.js ↗</span></div>
         <div><div class="app-name">DOC TEETHSKO</div><div class="app-vertical">Dental clinic management</div></div>
         <p class="app-desc">OralTech Pro. Patients, appointments, treatment records, dental chart, billing — for Philippine dental practices.</p>
         <div class="app-stack"><span>HTML</span><span>Clinical</span><span>PHI-aware</span></div>
@@ -1231,7 +1231,7 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
         </div>
       </div>
       <div class="app-meta">
-        <div class="app-badge-row"><span class="tag tag-v1">v1.0</span><span class="tag tag-next">Next.js →</span></div>
+        <div class="app-badge-row"><span class="tag tag-v1">v1.0</span><span class="tag tag-next">Next.js ↗</span></div>
         <div><div class="app-name">CHECKOUT HUB</div><div class="app-vertical">Business manager</div></div>
         <p class="app-desc">Invoicing, customers, products, transactions, sales reports. Multi-business support — built for PH SMBs.</p>
         <div class="app-stack"><span>HTML</span><span>Red accent</span><span>Multi-tenant</span></div>
@@ -1637,6 +1637,7 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
           <button type="submit" class="cf-submit" id="cfSubmit">Send message →</button>
         </form>
         <div class="cf-success" id="cfSuccess">✓ Message sent! I'll get back to you within 24 hours.</div>
+        <div class="cf-error" id="cfError">✕ Something went wrong. Email me directly at rjamscxx@gmail.com</div>
       </div>
     </div>
   </div>
@@ -1745,7 +1746,7 @@ if(statsStrip){
   },{threshold:.6}).observe(statsStrip);
 }
 
-/* 7. 3D card tilt */
+/* 6. 3D card tilt */
 document.querySelectorAll('.app-card').forEach(card=>{
   let raf;
   card.addEventListener('mousemove',e=>{
@@ -1760,7 +1761,7 @@ document.querySelectorAll('.app-card').forEach(card=>{
   card.addEventListener('mouseleave',()=>{cancelAnimationFrame(raf);card.style.transform='';});
 });
 
-/* 6. Magnetic CTAs */
+/* 7. Magnetic CTAs */
 document.querySelectorAll('.cta-mini,.email-pill,.btn-primary').forEach(btn=>{
   btn.addEventListener('mousemove',e=>{
     const r=btn.getBoundingClientRect();
@@ -1769,7 +1770,7 @@ document.querySelectorAll('.cta-mini,.email-pill,.btn-primary').forEach(btn=>{
   btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
 });
 
-/* 7. Carousel */
+/* 8. Carousel */
 const car=document.getElementById('carousel');
 const carImg=document.getElementById('carImg');
 const carClose=document.getElementById('carClose');
@@ -1881,7 +1882,20 @@ document.querySelectorAll('.app-card').forEach(card=>{
   }
 });
 
-/* 9. Scroll-spy */
+/* 9. Feat-thumb hover → preview main shot */
+document.querySelectorAll('.app-card').forEach(card=>{
+  const mainShot=card.querySelector('.main-shot');
+  if(!mainShot) return;
+  card.querySelectorAll('.feat-thumb[data-src]').forEach(thumb=>{
+    thumb.addEventListener('mouseenter',()=>{
+      mainShot.src=thumb.dataset.src;
+      card.querySelectorAll('.feat-thumb').forEach(t=>t.classList.remove('active'));
+      thumb.classList.add('active');
+    });
+  });
+});
+
+/* 9b. Scroll-spy */
 const spySections=[...document.querySelectorAll('section[id]')];
 const spyLinks=[...document.querySelectorAll('.nav-link[href^="#"]')];
 function updateSpy(){
@@ -1893,9 +1907,7 @@ function updateSpy(){
 addEventListener('scroll',updateSpy,{passive:true});
 updateSpy();
 
-/* 10. Card inquire removed — case study CTA handles this (see section 12) */
-
-/* 11. Mobile nav */
+/* 10. Mobile nav */
 const menuBtn=document.getElementById('menuBtn');
 const mobileNav=document.getElementById('mobileNav');
 if(menuBtn&&mobileNav){
@@ -1914,7 +1926,7 @@ if(menuBtn&&mobileNav){
   mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobileNav));
 }
 
-/* 12. Case study modal */
+/* 11. Case study modal */
 const csData={
   'COURTSIDE':{vertical:'Multi-sport court reservation',problem:'Court facilities in the Philippines manage bookings through paper logbooks and WhatsApp threads — no visibility, constant double-bookings.',solution:'Single-file PWA with real-time schedule grid, QR check-in, walk-in mode, WhatsApp share, and multi-sport color system.',stack:['HTML','Vanilla JS','LocalStorage','IndexedDB','PWA','QR Generator'],status:'v12 · Active',img:'screenshots/courtside/hero.png'},
   'GRAYSCALE':{vertical:'Coffee subscription + loyalty',problem:'Independent coffee shops lose repeat customers without a digital loyalty layer or subscription product.',solution:'Premium monochrome PWA with subscription tiers, loyalty punch cards, and a member portal for direct-to-customer delivery.',stack:['HTML','Vanilla JS','LocalStorage','PWA','Monochrome design'],status:'v17 · Active',img:'screenshots/grayscale-coffee-club/hero.png'},
@@ -1973,14 +1985,16 @@ document.querySelectorAll('.app-card').forEach(card=>{
   }
 });
 
-/* 13. Contact form (Formspree) */
+/* 12. Contact form */
 const contactForm=document.getElementById('contactForm');
 const cfSubmit=document.getElementById('cfSubmit');
 const cfSuccess=document.getElementById('cfSuccess');
+const cfError=document.getElementById('cfError');
 if(contactForm){
   contactForm.addEventListener('submit',async e=>{
     e.preventDefault();
     cfSubmit.disabled=true; cfSubmit.textContent='Sending…';
+    if(cfError) cfError.classList.remove('show');
     const data=new FormData(contactForm);
     try{
       const r=await fetch('https://formsubmit.co/ajax/rjamscxx@gmail.com',{method:'POST',body:data,headers:{Accept:'application/json'}});
@@ -1989,21 +2003,23 @@ if(contactForm){
         cfSuccess.classList.add('show');
       } else {
         cfSubmit.disabled=false; cfSubmit.textContent='Send message →';
+        if(cfError) cfError.classList.add('show');
       }
     } catch {
       cfSubmit.disabled=false; cfSubmit.textContent='Send message →';
+      if(cfError) cfError.classList.add('show');
     }
   });
 }
 
-/* 14. Scroll-to-top FAB */
+/* 13. Scroll-to-top FAB */
 const topBtn=document.getElementById('topBtn');
 if(topBtn){
   addEventListener('scroll',()=>{topBtn.classList.toggle('show',window.scrollY>440);},{passive:true});
   topBtn.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
 }
 
-/* 15. Image skeleton loading */
+/* 14. Image skeleton loading */
 document.querySelectorAll('.main-shot,.shot img').forEach(img=>{
   if(img.complete&&img.naturalWidth) return;
   img.classList.add('img-loading');
@@ -2011,11 +2027,11 @@ document.querySelectorAll('.main-shot,.shot img').forEach(img=>{
   img.addEventListener('error',()=>img.classList.remove('img-loading'),{once:true});
 });
 
-/* 16. Footer year */
+/* 15. Footer year */
 const fyEl=document.getElementById('footerYear');
 if(fyEl) fyEl.textContent=new Date().getFullYear();
 
-/* 17. Availability badge cycling */
+/* 16. Availability badge cycling */
 const availText=document.getElementById('availText');
 if(availText){
   const phrases=[
@@ -2030,9 +2046,9 @@ if(availText){
   },3800);
 }
 
-/* 18. Console signature */
+/* 17. Console signature */
 console.log('%cRJ Cabansay · App Builder · Philippines\n%crjamscxx@gmail.com',
-  'font:bold 22px Bebas Neue,sans-serif;color:#E8B84B;letter-spacing:2px',
+  'font:bold 22px Outfit,system-ui,sans-serif;color:#E8B84B;letter-spacing:2px',
   'font:12px monospace;color:#888');
 </script>
 
