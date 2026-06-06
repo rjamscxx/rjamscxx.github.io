@@ -238,7 +238,7 @@ h1.lead .it{font-family:var(--serif);font-style:italic;font-weight:300;letter-sp
    SECTION TITLES
    ═══════════════════════════════════════════════════════════ */
 .sec{padding:80px 0;position:relative}
-.sec-head{margin-bottom:48px;display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.sec-head{margin-bottom:48px;display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;position:relative;overflow:hidden}
 .sec-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-2);margin-bottom:14px}
 .sec-title{font-family:var(--display);font-size:clamp(32px,5vw,60px);line-height:.97;letter-spacing:-.02em;text-wrap:balance}
 .sec-title .it{font-family:var(--serif);font-style:italic;font-weight:300;color:var(--gold-2)}
@@ -964,6 +964,24 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
   display:flex;align-items:center;justify-content:center;
   font-family:var(--display);font-size:16px;font-weight:800;color:#0a0a0a;
 }
+
+/* ─── UI enhancements ─── */
+#apps,#services,#testimonials{background:var(--bg-2)}
+.sec-num{position:absolute;right:-8px;top:50%;transform:translateY(-60%);font-family:var(--display);font-size:clamp(72px,13vw,152px);font-weight:900;letter-spacing:-.04em;color:var(--ink);opacity:.025;line-height:1;pointer-events:none;user-select:none}
+.sec-divider{display:flex;align-items:center;gap:20px;max-width:var(--max);margin:0 auto;padding:0 var(--pad-x)}
+.sec-divider::before,.sec-divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--c08) 25%,var(--c08) 75%,transparent)}
+.sec-divider-dot{font-size:7px;color:var(--gold-2);opacity:.35;flex-shrink:0}
+.scroll-hint{margin-top:48px;text-align:center}
+.scroll-hint span{display:inline-block;font-size:20px;color:var(--gold-2);opacity:.35;animation:scrollBounce 2.2s ease-in-out infinite;transition:opacity .5s var(--ease-out)}
+.scroll-hint.hidden span{opacity:0}
+@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+.process{position:relative}
+.process::before{content:'';position:absolute;left:36px;top:16px;bottom:16px;width:1px;background:linear-gradient(to bottom,transparent,var(--c15) 15%,var(--c15) 85%,transparent);z-index:0}
+.process-item{position:relative;z-index:1}
+@media(min-width:1100px){.app-card-featured{grid-column:span 2}.app-card-featured .app-shot-wrap{aspect-ratio:16/7}.app-card-featured .app-name{font-size:36px}}
+.stat-icon{font-size:18px;color:var(--gold-2);opacity:.4;margin-bottom:4px;line-height:1}
+nav.top{transition:border-color .4s}
+nav.top.scrolled{border-bottom-color:var(--c15)}
 </style>
 </head>
 <body>
@@ -1042,11 +1060,12 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
 
   <!-- STATS -->
   <div class="stats reveal" id="statsStrip">
-    <div class="stat"><div class="stat-num" data-count="13">0</div><div class="stat-lbl">SaaS Products</div></div>
-    <div class="stat"><div class="stat-num" data-count="7">0</div><div class="stat-lbl">Verticals</div></div>
-    <div class="stat"><div class="stat-num" data-count="4">0</div><div class="stat-lbl">Next.js Stacks</div></div>
-    <div class="stat"><div class="stat-num" data-count="15">0</div><div class="stat-lbl">Starter templates</div></div>
+    <div class="stat"><div class="stat-icon">◈</div><div class="stat-num" data-count="13">0</div><div class="stat-lbl">SaaS Products</div></div>
+    <div class="stat"><div class="stat-icon">◆</div><div class="stat-num" data-count="7">0</div><div class="stat-lbl">Verticals</div></div>
+    <div class="stat"><div class="stat-icon">↗</div><div class="stat-num" data-count="4">0</div><div class="stat-lbl">Next.js Stacks</div></div>
+    <div class="stat"><div class="stat-icon">◇</div><div class="stat-num" data-count="15">0</div><div class="stat-lbl">Starter templates</div></div>
   </div>
+  <div class="scroll-hint" id="scrollHint"><span>↓</span></div>
 </section>
 
 <!-- ═══════════════ MARQUEE ═══════════════ -->
@@ -1080,6 +1099,8 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
   </div>
 </div>
 
+<div class="sec-divider"><span class="sec-divider-dot">◆</span></div>
+
 <!-- ═══════════════ FEATURED — SIZZLE ═══════════════ -->
 <section id="featured" class="shell sec feat">
   <div class="sec-head reveal">
@@ -1088,6 +1109,7 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
       <h2 class="sec-title">The <span class="it">restaurant</span> brain.</h2>
     </div>
     <p class="sec-sub">Sizzle is the production Next.js app powering café and restaurant operations across the Philippines. POS, sales, QR menus, reports, and an AI assistant.</p>
+    <span class="sec-num">01</span>
   </div>
 
   <div class="feat-grid">
@@ -1137,6 +1159,8 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
   </div>
 </section>
 
+<div class="sec-divider"><span class="sec-divider-dot">◆</span></div>
+
 <!-- ═══════════════ APPS GRID ═══════════════ -->
 <section id="apps" class="shell sec">
   <div class="sec-head reveal">
@@ -1145,12 +1169,13 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
       <h2 class="sec-title">Every <span class="it">vertical</span>, shipped.</h2>
     </div>
     <p class="sec-sub">Single-file HTML PWAs and Next.js production scaffolds. Hover any card to browse feature screens — click a thumbnail to switch views.</p>
+    <span class="sec-num">02</span>
   </div>
 
   <div class="apps-grid">
 
     <!-- COURTSIDE -->
-    <article class="app-card reveal" data-full="screenshots/courtside/full.png">
+    <article class="app-card app-card-featured reveal" data-full="screenshots/courtside/full.png">
       <div class="app-corner">↗</div>
       <div class="app-shot-wrap">
         <img class="main-shot" loading="lazy" src="screenshots/courtside/hero.png" alt="Courtside PH" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#0a0a0a)'" />
@@ -1454,6 +1479,8 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
   </div>
 </section>
 
+<div class="sec-divider"><span class="sec-divider-dot">◆</span></div>
+
 <!-- ═══════════════ TEMPLATES BAND ═══════════════ -->
 <section id="templates" class="shell sec">
   <div class="sec-head reveal">
@@ -1462,6 +1489,7 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
       <h2 class="sec-title"><span class="it">15</span> starters.<br>One pack.</h2>
     </div>
     <p class="sec-sub">A library of single-file SaaS dashboards — premium dark theme, Bebas Neue, gold accents. White-label, customize, ship.</p>
+    <span class="sec-num">03</span>
   </div>
 
   <div class="tpl-band reveal" id="tplBand">
@@ -1536,6 +1564,8 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
   </div>
 </section>
 
+<div class="sec-divider"><span class="sec-divider-dot">◆</span></div>
+
 <!-- ═══════════════ SERVICES ═══════════════ -->
 <section id="services" class="shell sec">
   <div class="sec-head reveal">
@@ -1544,6 +1574,7 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
       <h2 class="sec-title">Services <span class="it">that ship.</span></h2>
     </div>
     <p class="sec-sub">Hire me for clean, premium-feeling SaaS — single-file or full Next.js. ₱ Peso-ready, fast turnarounds, no agency overhead.</p>
+    <span class="sec-num">04</span>
   </div>
 
   <div class="svc-grid">
@@ -1578,6 +1609,8 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
   </div>
 </section>
 
+<div class="sec-divider"><span class="sec-divider-dot">◆</span></div>
+
 <!-- ═══════════════ ABOUT ═══════════════ -->
 <section id="about" class="shell sec">
   <div class="sec-head reveal">
@@ -1585,6 +1618,7 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
       <div class="sec-eyebrow">◆ About · The Builder</div>
       <h2 class="sec-title">The person <span class="it">behind</span><br>the products.</h2>
     </div>
+    <span class="sec-num">05</span>
   </div>
 
   <div class="about-grid">
@@ -1633,6 +1667,8 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
   </div>
 </section>
 
+<div class="sec-divider"><span class="sec-divider-dot">◆</span></div>
+
 <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
 <section id="testimonials" class="shell sec">
   <div class="sec-head reveal">
@@ -1641,6 +1677,7 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
       <h2 class="sec-title">What clients <span class="it">say.</span></h2>
     </div>
     <p class="sec-sub">Real results, real people — builders and business owners who needed a product and got one.</p>
+    <span class="sec-num">06</span>
   </div>
   <div class="testi-card reveal">
     <div class="testi-avatar" aria-hidden="true">JB</div>
@@ -1652,6 +1689,8 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
     </div>
   </div>
 </section>
+
+<div class="sec-divider"><span class="sec-divider-dot">◆</span></div>
 
 <!-- ═══════════════ CONTACT ═══════════════ -->
 <section id="contact" class="shell sec">
@@ -2115,6 +2154,18 @@ if(availText){
 console.log('%cRJ Cabansay · App Builder · Philippines\n%crjamscxx@gmail.com',
   'font:bold 22px Outfit,system-ui,sans-serif;color:#E8B84B;letter-spacing:2px',
   'font:12px monospace;color:#888');
+
+/* 18. Nav scroll border */
+const navTop=document.querySelector('nav.top');
+if(navTop){
+  addEventListener('scroll',()=>{navTop.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+}
+
+/* 19. Hero scroll hint */
+const scrollHint=document.getElementById('scrollHint');
+if(scrollHint){
+  addEventListener('scroll',()=>{scrollHint.classList.toggle('hidden',window.scrollY>200);},{passive:true});
+}
 </script>
 
 </body>
