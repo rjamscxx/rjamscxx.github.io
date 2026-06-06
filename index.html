@@ -745,7 +745,7 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
 }
 .testi-pull{
   font-size:clamp(17px,2.2vw,22px);color:var(--c80);line-height:1.7;
-  font-weight:300;font-style:italic;padding-top:52px;
+  font-weight:300;font-style:italic;
   border:0;margin:0;quotes:none;
 }
 .testi-by{margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:5px}
@@ -923,6 +923,47 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
 }
 .footer-links a:hover{color:var(--gold-2)}
 .footer-links .fsep{color:var(--c15)}
+
+/* ── WIP card placeholder ── */
+.wip-shot{display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(160deg,#111,#0c0c0c)}
+.wip-shot::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:24px 24px}
+.wip-inner{position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px}
+.wip-name{font-family:var(--display);font-size:24px;font-weight:800;letter-spacing:.04em;color:var(--c50)}
+.wip-badge{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--azure);background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.22);padding:4px 11px;border-radius:var(--r-pill)}
+.wip-pills{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}
+.wip-pill{font-family:var(--mono);font-size:9px;color:var(--c30);border:1px solid var(--c08);padding:3px 7px;border-radius:var(--r-pill)}
+.wip-bar{width:60px;height:2px;border-radius:2px;overflow:hidden;background:var(--c08);margin-top:4px}
+.wip-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--azure),rgba(59,130,246,.3));animation:wipFill 2s ease-in-out infinite alternate}
+@keyframes wipFill{from{width:20%;opacity:.5}to{width:60%;opacity:1}}
+
+/* ── RJ-Stack pill cluster ── */
+.rjs-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px}
+.rjs-label{font-family:var(--display);font-size:44px;font-weight:800;letter-spacing:.05em;color:var(--gold-2);line-height:1}
+.rjs-pills{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;max-width:200px}
+.rjs-pill{font-family:var(--mono);font-size:9px;font-weight:600;color:rgba(232,184,75,.6);border:1px solid rgba(232,184,75,.14);padding:3px 8px;border-radius:var(--r-pill);background:rgba(232,184,75,.04)}
+
+/* ── Service scope meta ── */
+.svc-meta{display:flex;align-items:center;gap:6px;margin-top:14px;padding-top:12px;border-top:1px solid var(--c08)}
+.svc-meta span{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--c30)}
+.svc-meta strong{color:var(--gold-2);font-weight:700}
+.svc-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:.5;flex-shrink:0}
+
+/* ── Testimonial card ── */
+.testi-card{
+  background:
+    radial-gradient(500px circle at 50% -20%,rgba(232,184,75,.07),transparent 60%),
+    var(--bg-2);
+  border:1px solid var(--border-2);border-radius:var(--r-xl);
+  padding:clamp(28px,4vw,52px);position:relative;overflow:hidden;text-align:center;
+  max-width:780px;margin:0 auto;
+}
+.testi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-bdr),transparent);z-index:2}
+.testi-avatar{
+  width:44px;height:44px;border-radius:50%;margin:0 auto 20px;
+  background:linear-gradient(135deg,var(--gold-2),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:16px;font-weight:800;color:#0a0a0a;
+}
 </style>
 </head>
 <body>
@@ -1371,7 +1412,16 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
     <!-- GRAYSCALE V2 -->
     <article class="app-card reveal reveal-d1">
       <div class="app-corner">↗</div>
-      <div class="app-shot-wrap" style="background:linear-gradient(135deg,#1a1a1a,#0a0a0a);display:flex;align-items:center;justify-content:center;color:var(--c30);font-family:var(--mono);font-size:11px;letter-spacing:.2em">NEXT.JS 16 · WIP</div>
+      <div class="app-shot-wrap wip-shot">
+        <div class="wip-inner">
+          <div class="wip-name">GRAYSCALE v2</div>
+          <div class="wip-badge">Next.js 16 · In Progress</div>
+          <div class="wip-pills">
+            <span class="wip-pill">Supabase</span><span class="wip-pill">Drizzle</span><span class="wip-pill">Zustand</span><span class="wip-pill">Zod</span>
+          </div>
+          <div class="wip-bar"><div class="wip-fill"></div></div>
+        </div>
+      </div>
       <div class="app-meta">
         <div class="app-badge-row"><span class="tag tag-wip">◆ In Progress</span><span class="ver">next.js</span></div>
         <div><div class="app-name">GRAYSCALE v2</div><div class="app-vertical">Next.js production rebuild</div></div>
@@ -1383,7 +1433,16 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
     <!-- RJ STACK -->
     <article class="app-card reveal reveal-d2">
       <div class="app-corner">↗</div>
-      <div class="app-shot-wrap" style="background:radial-gradient(circle at 30% 30%,rgba(232,184,75,.15),transparent 50%),linear-gradient(135deg,#1a1a1a,#0a0a0a);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:48px;letter-spacing:.05em;color:var(--gold-2)">RJ.STACK</div>
+      <div class="app-shot-wrap" style="background:radial-gradient(circle at 30% 30%,rgba(232,184,75,.15),transparent 50%),linear-gradient(135deg,#1a1a1a,#0a0a0a)">
+        <div class="rjs-wrap">
+          <div class="rjs-label">RJ.STACK</div>
+          <div class="rjs-pills">
+            <span class="rjs-pill">Next.js 16</span><span class="rjs-pill">React 19</span>
+            <span class="rjs-pill">TypeScript</span><span class="rjs-pill">Supabase</span>
+            <span class="rjs-pill">Drizzle</span><span class="rjs-pill">Tailwind v4</span>
+          </div>
+        </div>
+      </div>
       <div class="app-meta">
         <div class="app-badge-row"><span class="tag tag-prod">◆ Foundation</span><span class="ver">starter</span></div>
         <div><div class="app-name">RJ-STACK</div><div class="app-vertical">Universal Next.js starter</div></div>
@@ -1493,24 +1552,28 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
       <h4>SMB SaaS DASHBOARD</h4>
       <p>End-to-end design + build of a vertical SaaS — from schema to UI to deploy. 2-4 week scope.</p>
       <div class="svc-tags"><span class="svc-tag">Next.js 16</span><span class="svc-tag">Supabase</span><span class="svc-tag">Drizzle ORM</span><span class="svc-tag">Vercel</span></div>
+      <div class="svc-meta"><div class="svc-meta-dot"></div><span>~2–4 weeks · <strong>from ₱25,000</strong></span></div>
     </div>
     <div class="svc reveal reveal-d1">
       <div class="svc-num">02 ── CUSTOM</div>
       <h4>CLIENT BUSINESS HUB</h4>
       <p>Single-file HTML business hub for freelancers, coaches, agencies. White-label, fast handoff.</p>
       <div class="svc-tags"><span class="svc-tag">HTML PWA</span><span class="svc-tag">LocalStorage</span><span class="svc-tag">No dependencies</span></div>
+      <div class="svc-meta"><div class="svc-meta-dot"></div><span>~3–5 days · <strong>from ₱8,000</strong></span></div>
     </div>
     <div class="svc reveal reveal-d2">
       <div class="svc-num">03 ── AI</div>
       <h4>AI-POWERED TOOLS</h4>
       <p>Claude SDK integrations — AI assistants, content tools, automation. Plugged into your existing stack.</p>
       <div class="svc-tags"><span class="svc-tag">Claude SDK</span><span class="svc-tag">Anthropic API</span><span class="svc-tag">TypeScript</span></div>
+      <div class="svc-meta"><div class="svc-meta-dot"></div><span>~1–2 weeks · <strong>from ₱15,000</strong></span></div>
     </div>
     <div class="svc reveal reveal-d3">
       <div class="svc-num">04 ── RESELL</div>
       <h4>WHITE-LABEL TEMPLATES</h4>
       <p>License the 15-app pack for resale. Brand it as yours. Add my retainer for custom builds.</p>
       <div class="svc-tags"><span class="svc-tag">15 templates</span><span class="svc-tag">Single-file</span><span class="svc-tag">Rebrand-ready</span></div>
+      <div class="svc-meta"><div class="svc-meta-dot"></div><span>One-time · <strong>$79 / ₱4,500</strong></span></div>
     </div>
   </div>
 </section>
@@ -1579,8 +1642,8 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
     </div>
     <p class="sec-sub">Real results, real people — builders and business owners who needed a product and got one.</p>
   </div>
-  <div class="testi-featured reveal">
-    <div class="testi-mark" aria-hidden="true">"</div>
+  <div class="testi-card reveal">
+    <div class="testi-avatar" aria-hidden="true">JB</div>
     <blockquote class="testi-pull">RJ delivered a fully functional, beautifully designed app that fit my workflow exactly. The booking flow and scheduling views were polished beyond what I expected from a single developer.</blockquote>
     <div class="testi-by">
       <div class="testi-name">Jazel Bernardo</div>
@@ -1678,6 +1741,8 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
     <a href="mailto:rjamscxx@gmail.com">Email</a>
     <span class="fsep">◆</span>
     <a href="https://github.com/rjamscxx" target="_blank" rel="noopener">GitHub</a>
+    <span class="fsep">◆</span>
+    <a href="https://linkedin.com/in/rjcabansay" target="_blank" rel="noopener">LinkedIn</a><!-- update slug if needed -->
   </div>
   <div class="footer-meta">Single-file HTML PWA · Outfit variable font · Built in the Philippines</div>
 </footer>
