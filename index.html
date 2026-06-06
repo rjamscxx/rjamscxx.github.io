@@ -158,6 +158,7 @@ nav.top{
    HERO
    ═══════════════════════════════════════════════════════════ */
 .hero{padding:clamp(60px,9vw,140px) 0 80px;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 55% at 50% 28%,rgba(201,146,42,.07),transparent 65%)}
 .eyebrow{
   display:inline-flex;align-items:center;gap:8px;
   font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
@@ -269,6 +270,7 @@ h1.lead .it{font-family:var(--serif);font-style:italic;font-weight:300;letter-sp
 
 /* gallery — sticky right rail */
 .feat-shots{display:grid;gap:20px}
+.feat-shots .shot{box-shadow:0 0 60px rgba(201,146,42,.10),var(--shadow)}
 .shot{
   position:relative;border-radius:var(--r-lg);overflow:hidden;
   border:1px solid var(--border);background:var(--surface);
@@ -308,7 +310,7 @@ h1.lead .it{font-family:var(--serif);font-style:italic;font-weight:300;letter-sp
   display:flex;flex-direction:column;
   perspective:1200px;
 }
-.app-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--gold-bdr)}
+.app-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg),0 0 40px rgba(201,146,42,.13);border-color:var(--gold-bdr)}
 .app-shot-wrap{
   position:relative;aspect-ratio:16/10;overflow:hidden;
   background:var(--bg-2);border-bottom:1px solid var(--border);
@@ -835,7 +837,7 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
 .about-copy p strong{color:var(--ink);font-weight:600}
 .about-quote{
   margin-top:8px;padding:20px 24px;
-  border-left:2px solid var(--gold-bdr);
+  border-left:3px solid var(--gold);
   background:var(--gold-dim);border-radius:0 var(--r-sm) var(--r-sm) 0;
 }
 .about-quote p{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--c80);line-height:1.6}
