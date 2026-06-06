@@ -173,7 +173,6 @@ h1.lead{
   font-size:clamp(44px,8vw,108px);
   line-height:.92;letter-spacing:-.02em;
   text-wrap:balance;
-  animation:fadeUp .9s .1s var(--ease-out) both;
 }
 h1.lead .it{font-family:var(--serif);font-style:italic;font-weight:300;letter-spacing:-.02em;background:linear-gradient(180deg,var(--gold-3),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
 
@@ -888,7 +887,7 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
 }
 
 /* ─── Nav scroll-spy ─── */
-.nav-link.active{color:var(--gold-2) !important;background:var(--gold-dim) !important}
+.nav-link.active{color:var(--gold-2)!important;background:rgba(201,146,42,.14)!important;box-shadow:0 0 0 1px var(--gold-bdr)!important}
 
 /* ─── Browser chrome ─── */
 .shot.browser{padding-top:32px}
@@ -965,6 +964,24 @@ footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold-2);font-
   font-family:var(--display);font-size:16px;font-weight:800;color:#0a0a0a;
 }
 
+/* ─── Hero word reveal ─── */
+.wr{display:inline-block;animation:wordUp .7s calc(var(--d,0)*.11s + .05s) var(--ease-out) both}
+@keyframes wordUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+/* ─── Contact FABs (WhatsApp + Viber) ─── */
+.fab-contact{position:fixed;right:24px;z-index:80;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:.06em;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.4);opacity:0;transform:translateY(12px) scale(.85);pointer-events:none;transition:opacity .35s var(--ease-out),transform .35s var(--ease-spring),box-shadow .3s}
+.fab-wa{bottom:132px;background:#25D366}
+.fab-viber{bottom:80px;background:#7360F2}
+.fab-contact.show{opacity:1;transform:none;pointer-events:all}
+.fab-contact:hover{transform:translateY(-3px) scale(1.1)}
+/* ─── App vertical filter chips ─── */
+.filter-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.filter-chip{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:7px 16px;border-radius:var(--r-pill);border:1px solid var(--border);color:var(--c50);cursor:pointer;transition:color .25s,border-color .25s,background .25s;background:transparent}
+.filter-chip:hover{color:var(--ink);border-color:var(--border-strong)}
+.filter-chip.active{color:var(--gold-2);border-color:var(--gold-bdr);background:var(--gold-dim)}
+.app-card.hidden{display:none}
+/* ─── Resume CTA ─── */
+.btn-resume{border:1px solid var(--border);color:var(--c50);font-size:13px;padding:12px 22px}
+.btn-resume:hover{border-color:var(--border-strong);color:var(--c80)}
 /* ─── UI enhancements ─── */
 #apps,#services,#testimonials{background:var(--bg-2)}
 .sec-num{position:absolute;right:-8px;top:50%;transform:translateY(-60%);font-family:var(--display);font-size:clamp(72px,13vw,152px);font-weight:900;letter-spacing:-.04em;color:var(--ink);opacity:.025;line-height:1;pointer-events:none;user-select:none}
@@ -1042,13 +1059,15 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
 <section id="top" class="shell hero">
   <div class="avail-badge"><span class="avail-dot"></span><span id="availText" style="transition:opacity .28s">Open to projects · June 2026</span></div>
   <div class="eyebrow"><span class="eyebrow-dot"></span>App Builder · Philippines</div>
-  <h1 class="lead">I build <span class="it">premium</span><br>SaaS apps that ship.</h1>
+  <h1 class="lead"><span class="wr" style="--d:0">I</span> <span class="wr" style="--d:1">build</span> <span class="wr it" style="--d:2">premium</span><br><span class="wr" style="--d:3">SaaS</span> <span class="wr" style="--d:4">apps</span> <span class="wr" style="--d:5">that</span> <span class="wr" style="--d:6">ship.</span></h1>
   <p class="lede">
     Indie builder shipping <strong>13 SaaS products</strong> across 7 verticals — single-file HTML PWAs and a production Next.js 16 stack. Premium design, fast turnarounds, ₱-ready.
   </p>
   <div class="hero-ctas">
     <a class="btn btn-primary" href="#apps">View the work →</a>
     <a class="btn btn-ghost" href="mailto:rjamscxx@gmail.com">rjamscxx@gmail.com</a>
+    <!-- TODO: replace href with direct PDF/Google Drive resume link -->
+    <a class="btn btn-resume" href="mailto:rjamscxx@gmail.com?subject=Resume%20Request">↓ Resume</a>
   </div>
 
   <!-- HERO PEEK -->
@@ -1172,10 +1191,19 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
     <span class="sec-num">02</span>
   </div>
 
+  <div class="filter-wrap">
+    <button class="filter-chip active" data-filter="all">All</button>
+    <button class="filter-chip" data-filter="café">Café</button>
+    <button class="filter-chip" data-filter="sports">Sports</button>
+    <button class="filter-chip" data-filter="dental">Dental</button>
+    <button class="filter-chip" data-filter="business">Business</button>
+    <button class="filter-chip" data-filter="education">Education</button>
+  </div>
+
   <div class="apps-grid">
 
     <!-- COURTSIDE -->
-    <article class="app-card app-card-featured reveal" data-full="screenshots/courtside/full.png">
+    <article class="app-card app-card-featured reveal" data-full="screenshots/courtside/full.png" data-cat="sports">
       <div class="app-corner">↗</div>
       <div class="app-shot-wrap">
         <img class="main-shot" loading="lazy" src="screenshots/courtside/hero.png" alt="Courtside PH" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#0a0a0a)'" />
@@ -1201,7 +1229,7 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
     </article>
 
     <!-- GRAYSCALE -->
-    <article class="app-card reveal reveal-d1" data-full="screenshots/grayscale-coffee-club/full.png">
+    <article class="app-card reveal reveal-d1" data-full="screenshots/grayscale-coffee-club/full.png" data-cat="café">
       <div class="app-corner">↗</div>
       <div class="app-shot-wrap">
         <img class="main-shot" loading="lazy" src="screenshots/grayscale-coffee-club/hero.png" alt="Grayscale Coffee Club" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#0a0a0a)'" />
@@ -1227,7 +1255,7 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
     </article>
 
     <!-- ASSETOS -->
-    <article class="app-card reveal reveal-d2" data-full="screenshots/assetos/full.png">
+    <article class="app-card reveal reveal-d2" data-full="screenshots/assetos/full.png" data-cat="business">
       <div class="app-corner">↗</div>
       <div class="app-shot-wrap">
         <img class="main-shot" loading="lazy" src="screenshots/assetos/hero.png" alt="AssetOS" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#0a0a0a)'" />
@@ -1253,7 +1281,7 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
     </article>
 
     <!-- DOC TEETHSKO -->
-    <article class="app-card reveal" data-full="screenshots/doc-teethsko/full.png">
+    <article class="app-card reveal" data-full="screenshots/doc-teethsko/full.png" data-cat="dental">
       <div class="app-corner">↗</div>
       <div class="app-shot-wrap">
         <img class="main-shot" loading="lazy" src="screenshots/doc-teethsko/hero.png" alt="Doc Teethsko" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#0a0a0a)'" />
@@ -1279,7 +1307,7 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
     </article>
 
     <!-- CHECKOUT HUB -->
-    <article class="app-card reveal reveal-d1" data-full="screenshots/checkout-hub/full.png">
+    <article class="app-card reveal reveal-d1" data-full="screenshots/checkout-hub/full.png" data-cat="business">
       <div class="app-corner">↗</div>
       <div class="app-shot-wrap">
         <img class="main-shot" loading="lazy" src="screenshots/checkout-hub/hero.png" alt="Checkout Hub" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#0a0a0a)'" />
@@ -1305,7 +1333,7 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
     </article>
 
     <!-- FLOWSTACK -->
-    <article class="app-card reveal reveal-d2" data-full="screenshots/flowstack/full.png">
+    <article class="app-card reveal reveal-d2" data-full="screenshots/flowstack/full.png" data-cat="café">
       <div class="app-corner">↗</div>
       <div class="app-shot-wrap">
         <img class="main-shot" loading="lazy" src="screenshots/flowstack/hero.png" alt="FlowStack" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#0a0a0a)'" />
@@ -1331,7 +1359,7 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
     </article>
 
     <!-- BUDTENDER -->
-    <article class="app-card reveal" data-full="screenshots/budtenderph/full.png">
+    <article class="app-card reveal" data-full="screenshots/budtenderph/full.png" data-cat="business">
       <div class="app-corner">↗</div>
       <div class="app-shot-wrap">
         <img class="main-shot" loading="lazy" src="screenshots/budtenderph/hero.png" alt="BudtenderPH" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#0a0a0a)'" />
@@ -1357,7 +1385,7 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
     </article>
 
     <!-- JAZEL -->
-    <article class="app-card reveal reveal-d1" data-full="screenshots/jazel-hub/full.png">
+    <article class="app-card reveal reveal-d1" data-full="screenshots/jazel-hub/full.png" data-cat="business">
       <div class="app-corner">↗</div>
       <div class="app-shot-wrap">
         <img class="main-shot" loading="lazy" src="screenshots/jazel-hub/hero.png" alt="Jazel Hub" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#0a0a0a)'" />
@@ -1383,7 +1411,7 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
     </article>
 
     <!-- YOUNGMINDS -->
-    <article class="app-card reveal reveal-d2" data-full="screenshots/youngminds/full.png">
+    <article class="app-card reveal reveal-d2" data-full="screenshots/youngminds/full.png" data-cat="education">
       <div class="app-corner">↗</div>
       <div class="app-shot-wrap">
         <img class="main-shot" loading="lazy" src="screenshots/youngminds/hero.png" alt="Young Minds" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#0a0a0a)'" />
@@ -1409,7 +1437,7 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
     </article>
 
     <!-- BEANSTACK -->
-    <article class="app-card reveal" data-full="screenshots/beanstack-pro/full.png">
+    <article class="app-card reveal" data-full="screenshots/beanstack-pro/full.png" data-cat="café">
       <div class="app-corner">↗</div>
       <div class="app-shot-wrap">
         <img class="main-shot" loading="lazy" src="screenshots/beanstack-pro/hero.png" alt="Beanstack Pro" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#0a0a0a)'" />
@@ -1435,7 +1463,7 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
     </article>
 
     <!-- GRAYSCALE V2 -->
-    <article class="app-card reveal reveal-d1">
+    <article class="app-card reveal reveal-d1" data-cat="café">
       <div class="app-corner">↗</div>
       <div class="app-shot-wrap wip-shot">
         <div class="wip-inner">
@@ -1456,7 +1484,7 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
     </article>
 
     <!-- RJ STACK -->
-    <article class="app-card reveal reveal-d2">
+    <article class="app-card reveal reveal-d2" data-cat="business">
       <div class="app-corner">↗</div>
       <div class="app-shot-wrap" style="background:radial-gradient(circle at 30% 30%,rgba(232,184,75,.15),transparent 50%),linear-gradient(135deg,#1a1a1a,#0a0a0a)">
         <div class="rjs-wrap">
@@ -1746,6 +1774,9 @@ nav.top.scrolled{border-bottom-color:var(--c15)}
 </section>
 
 <button class="top-btn" id="topBtn" aria-label="Back to top">↑</button>
+<!-- TODO: replace 639000000000 with your PH mobile number -->
+<a class="fab-contact fab-wa" id="waBtn" href="https://wa.me/639000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">WA</a>
+<a class="fab-contact fab-viber" id="viberBtn" href="viber://chat?number=639000000000" aria-label="Chat on Viber">V</a>
 
 <!-- ═══════════════ CASE STUDY MODAL ═══════════════ -->
 <div class="cs-modal" id="csModal" role="dialog" aria-modal="true" aria-label="Case study">
@@ -2155,13 +2186,36 @@ console.log('%cRJ Cabansay · App Builder · Philippines\n%crjamscxx@gmail.com',
   'font:bold 22px Outfit,system-ui,sans-serif;color:#E8B84B;letter-spacing:2px',
   'font:12px monospace;color:#888');
 
-/* 18. Nav scroll border */
+/* 18. App card vertical filter */
+document.querySelectorAll('.filter-chip').forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+    chip.classList.add('active');
+    const cat=chip.dataset.filter;
+    document.querySelectorAll('.app-card').forEach(card=>{
+      card.classList.toggle('hidden',cat!=='all'&&card.dataset.cat!==cat);
+    });
+  });
+});
+
+/* 19. Contact FABs show/hide */
+const waBtn=document.getElementById('waBtn');
+const viberBtn=document.getElementById('viberBtn');
+if(waBtn&&viberBtn){
+  addEventListener('scroll',()=>{
+    const show=window.scrollY>440;
+    waBtn.classList.toggle('show',show);
+    viberBtn.classList.toggle('show',show);
+  },{passive:true});
+}
+
+/* 20. Nav scroll border */
 const navTop=document.querySelector('nav.top');
 if(navTop){
   addEventListener('scroll',()=>{navTop.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
 }
 
-/* 19. Hero scroll hint */
+/* 21. Hero scroll hint */
 const scrollHint=document.getElementById('scrollHint');
 if(scrollHint){
   addEventListener('scroll',()=>{scrollHint.classList.toggle('hidden',window.scrollY>200);},{passive:true});
