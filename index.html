@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover" />
+<meta name="theme-color" content="#0a0a0a" />
+<meta name="color-scheme" content="dark" />
+<meta name="description" content="Robert James Cabansay — App Builder · Philippines. Tenda Pro, Courtside PH, Gold Palace Streetwear and more. Premium SaaS across restaurant, sports, café, and retail." />
+<meta property="og:title" content="RJ Cabansay — App Builder · Portfolio" />
+<meta property="og:description" content="Indie builder making production-ready SaaS for Philippine SMBs. Next.js + Supabase, single-file HTML PWAs, premium design." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/tenda-pro/demo-1-dashboard.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="RJ Cabansay — App Builder" />
+<meta name="twitter:description" content="Premium SaaS for Philippine SMBs. Next.js + Supabase." />
+<title>RJ Cabansay — App Builder · Portfolio</title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='900' font-size='15' fill='url(%23g)'>RJ</text><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23E8B84B'/><stop offset='1' stop-color='%23C9922A'/></linearGradient></defs></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;--bg2:#0f0f0f;--bg3:#111;
+  --s1:#161616;--s2:#1a1a1a;--s3:#1f1f1f;
+  --b1:#222;--b2:#2c2c2c;--b3:#383838;
+  --gold:#C9922A;--gold2:#E8B84B;--gold3:#FFD584;
+  --glow:rgba(232,184,75,.22);--gdim:rgba(201,146,42,.10);--gbdr:rgba(232,184,75,.28);
+  --ink:#F5F1E8;--c90:rgba(245,241,232,.9);--c80:rgba(245,241,232,.8);
+  --c70:rgba(245,241,232,.7);--c50:rgba(245,241,232,.5);--c30:rgba(245,241,232,.3);
+  --c15:rgba(245,241,232,.15);--c08:rgba(245,241,232,.08);--c04:rgba(245,241,232,.04);
+  --green:#10b981;--blue:#3b82f6;--orange:#f97316;--teal:#14b8a6;
+  --D:'Outfit',system-ui,sans-serif;
+  --S:'Instrument Serif',Georgia,serif;
+  --B:'Outfit',system-ui,sans-serif;
+  --M:'JetBrains Mono',monospace;
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --max:1280px;--px:clamp(20px,4vw,56px);
+}
+html{scroll-behavior:smooth;scrollbar-color:var(--b3) transparent;scrollbar-width:thin}
+body{font-family:var(--B);background:var(--bg);color:var(--ink);overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;line-height:1.55}
+::selection{background:var(--gold2);color:#0a0a0a}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
+
+/* AMBIENT */
+.bg-mesh{position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(900px circle at 5% 10%,rgba(201,146,42,.06),transparent 55%),
+    radial-gradient(600px circle at 95% 30%,rgba(249,115,22,.04),transparent 55%),
+    radial-gradient(700px circle at 50% 92%,rgba(232,184,75,.04),transparent 60%);
+  animation:meshShift 24s ease-in-out infinite alternate}
+@keyframes meshShift{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-2%,1.5%,0) rotate(1deg)}}
+.bg-grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.03;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+.cursor-glow{position:fixed;width:500px;height:500px;border-radius:50%;pointer-events:none;z-index:-1;
+  background:radial-gradient(circle,rgba(232,184,75,.09) 0%,transparent 65%);
+  transform:translate3d(-50%,-50%,0);transition:opacity .5s;opacity:0}
+@media(hover:hover){.cursor-glow{opacity:1}}
+
+/* LAYOUT */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--px);position:relative}
+.sec{padding:clamp(64px,8vw,120px) 0}
+.sec+.sec{padding-top:0}
+.div{height:1px;background:linear-gradient(90deg,transparent,var(--b2),transparent);margin:0}
+
+/* LOAD BAR */
+.load-bar{position:fixed;top:0;left:0;height:2px;width:100%;z-index:100;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--gold2),transparent);
+  background-size:200%;animation:shimmer 1.2s ease 1 both}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.progress-rail{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));z-index:99;width:0;transition:width .08s linear}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:60;
+  padding:14px var(--px);
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  background:rgba(10,10,10,.7);backdrop-filter:blur(24px) saturate(160%);
+  -webkit-backdrop-filter:blur(24px) saturate(160%);
+  border-bottom:1px solid var(--c08)}
+.nav-brand{display:flex;align-items:center;gap:9px;font-family:var(--D);font-size:16px;font-weight:800;letter-spacing:.08em}
+.brand-pulse{width:7px;height:7px;border-radius:50%;background:var(--gold2);box-shadow:0 0 12px var(--glow);animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.nav-links{display:none;align-items:center;gap:2px}
+@media(min-width:768px){.nav-links{display:flex}}
+.nav-a{font-size:12.5px;font-weight:500;color:var(--c70);padding:7px 12px;border-radius:999px;transition:color .2s,background .2s}
+.nav-a:hover,.nav-a.active{color:var(--ink);background:var(--c08)}
+.nav-cta{font-size:12px;font-weight:700;padding:8px 20px;border-radius:999px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));color:#0a0a0a;
+  box-shadow:0 4px 20px rgba(232,184,75,.2);
+  transition:transform .3s var(--ease-spring),box-shadow .3s}
+.nav-cta:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 8px 28px rgba(232,184,75,.4)}
+.nav-mobile-btn{display:flex;flex-direction:column;gap:5px;padding:8px;border-radius:8px;transition:background .2s}
+.nav-mobile-btn:hover{background:var(--c08)}
+@media(min-width:768px){.nav-mobile-btn{display:none}}
+.nav-mobile-btn span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s}
+.nav-mobile-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-mobile-btn.open span:nth-child(2){opacity:0}
+.nav-mobile-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;top:57px;z-index:59;
+  background:rgba(10,10,10,.97);backdrop-filter:blur(24px);
+  padding:28px var(--px);flex-direction:column;gap:0}
+.mobile-menu.open{display:flex}
+.mobile-a{font-family:var(--D);font-size:28px;font-weight:800;padding:18px 0;border-bottom:1px solid var(--c08);
+  color:var(--c80);letter-spacing:.04em;transition:color .2s}
+.mobile-a:hover{color:var(--gold2)}
+.mobile-cta{margin-top:28px;display:inline-flex;align-items:center;gap:8px;
+  font-size:14px;font-weight:700;padding:14px 28px;border-radius:999px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));color:#0a0a0a}
+
+/* HERO */
+.hero{padding:clamp(80px,10vw,160px) 0 64px;text-align:center}
+.pill{display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--M);font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold2);background:var(--gdim);border:1px solid var(--gbdr);
+  padding:7px 16px;border-radius:999px;margin-bottom:28px;
+  animation:fadeUp .8s var(--ease-out) both;min-height:32px}
+.pill-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;animation:pulse 1.8s ease-in-out infinite;flex-shrink:0}
+.pill-text{transition:opacity .3s}
+h1.hero-h{font-family:var(--D);font-size:clamp(54px,10vw,148px);line-height:.9;letter-spacing:-.02em;font-weight:900;text-wrap:balance;animation:fadeUp .9s .1s var(--ease-out) both}
+h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spacing:-.02em;
+  background:linear-gradient(170deg,var(--gold3),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{max-width:600px;margin:28px auto 0;font-size:clamp(15px,1.6vw,17.5px);color:var(--c70);line-height:1.72;text-wrap:balance;animation:fadeUp 1s .22s var(--ease-out) both}
+.hero-sub strong{color:var(--ink);font-weight:600}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:40px;animation:fadeUp 1s .38s var(--ease-out) both}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;padding:13px 26px;border-radius:999px;transition:transform .35s var(--ease-spring),box-shadow .3s}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#0a0a0a;box-shadow:0 8px 30px rgba(232,184,75,.22)}
+.btn-gold:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 16px 44px rgba(232,184,75,.4)}
+.btn-outline{border:1px solid var(--b3);color:var(--c80)}
+.btn-outline:hover{border-color:var(--gbdr);color:var(--gold2);background:var(--gdim)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+
+/* PEEK STRIP */
+.peek-strip{display:flex;justify-content:center;gap:clamp(12px,2vw,24px);margin-top:64px;perspective:1200px;
+  animation:fadeUp 1s .5s var(--ease-out) both}
+.peek-card{width:clamp(140px,16vw,220px);border-radius:12px;overflow:hidden;
+  border:1px solid var(--b2);background:var(--s1);
+  transform:rotate(calc((var(--i,0) - 1) * 4deg)) translateY(calc(var(--i,0) * -6px));
+  transition:transform .5s var(--ease-spring),box-shadow .5s,border-color .3s;
+  cursor:pointer;position:relative}
+.peek-card:hover{transform:translateY(-14px) scale(1.05) rotate(0deg)!important;
+  box-shadow:0 28px 64px rgba(0,0,0,.7);border-color:var(--gbdr);z-index:10}
+.peek-card img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.peek-card img.skeleton-img{background:linear-gradient(90deg,var(--s2) 25%,var(--s3) 50%,var(--s2) 75%);background-size:200% 100%;animation:skelShimmer 1.5s ease-in-out infinite}
+.peek-lbl{position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(0,0,0,.85));
+  padding:20px 10px 8px;
+  font-family:var(--M);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold2);opacity:0;transition:opacity .3s;text-align:center}
+.peek-card:hover .peek-lbl{opacity:1}
+@keyframes skelShimmer{from{background-position:200% 0}to{background-position:-200% 0}}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:var(--c08);border:1px solid var(--c08);border-radius:16px;overflow:hidden;margin-top:72px}
+@media(min-width:640px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{background:var(--bg2);padding:24px 16px;text-align:center;transition:background .3s}
+.stat:hover{background:var(--s2)}
+.stat-n{font-family:var(--D);font-size:clamp(36px,5vw,56px);font-weight:900;color:var(--gold2);line-height:1;margin-bottom:6px}
+.stat-l{font-family:var(--M);font-size:9.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--c50)}
+
+/* MARQUEE */
+.marquee-wrap{margin:72px 0 80px;overflow:hidden;
+  -webkit-mask:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent);
+          mask:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent)}
+.mtrack{display:flex;width:max-content;gap:44px;animation:scroll-x 40s linear infinite}
+.mtrack:hover{animation-play-state:paused}
+.mtag{font-family:var(--M);font-size:10.5px;font-weight:600;letter-spacing:.22em;
+  color:var(--c50);text-transform:uppercase;white-space:nowrap;display:inline-flex;align-items:center;gap:12px}
+.mtag .dot{color:var(--gold2)}
+@keyframes scroll-x{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION HEAD */
+.sh{margin-bottom:clamp(36px,5vw,56px)}
+.sh-eye{font-family:var(--M);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);margin-bottom:12px}
+.sh-title{font-family:var(--D);font-size:clamp(36px,5.5vw,72px);font-weight:900;line-height:.95;letter-spacing:-.02em;text-wrap:balance}
+.sh-title .it{font-family:var(--S);font-style:italic;font-weight:400;color:var(--gold2)}
+.sh-sub{max-width:520px;margin-top:16px;font-size:15px;color:var(--c70);line-height:1.7}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:start}
+@media(min-width:900px){.about-grid{grid-template-columns:1fr 1fr;gap:64px}}
+.about-bio{font-size:16.5px;color:var(--c80);line-height:1.82;text-wrap:balance}
+.about-bio strong{color:var(--ink);font-weight:600}
+.about-bio p+p{margin-top:16px}
+.process-steps{display:grid;gap:14px}
+.process-step{display:flex;gap:18px;align-items:start;padding:20px 22px;
+  border:1px solid var(--b1);border-radius:12px;background:var(--bg2);
+  transition:border-color .35s,transform .35s var(--ease-out)}
+.process-step:hover{border-color:var(--gbdr);transform:translateX(4px)}
+.step-n{font-family:var(--D);font-size:38px;font-weight:900;color:var(--gold2);
+  opacity:.35;line-height:1;flex-shrink:0;width:44px}
+.step-body h4{font-weight:700;font-size:14.5px;margin-bottom:4px}
+.step-body p{font-size:12.5px;color:var(--c70);line-height:1.6}
+
+/* BROWSER FRAME */
+.browser{border-radius:10px 10px 8px 8px;overflow:hidden;
+  box-shadow:0 24px 80px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.04);background:var(--s1)}
+.browser-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;
+  background:#1c1c1e;border-bottom:1px solid rgba(255,255,255,.05)}
+.browser-dots{display:flex;gap:6px}
+.bdot{width:11px;height:11px;border-radius:50%}
+.bdot.r{background:#ff5f57}.bdot.y{background:#febc2e}.bdot.g{background:#28c840}
+.browser-addr{flex:1;margin:0 10px;background:rgba(255,255,255,.06);border-radius:5px;
+  padding:4px 12px;font-family:var(--M);font-size:10px;color:var(--c50);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.browser-img{display:block;width:100%;height:auto}
+
+/* CAROUSEL */
+.carousel{position:relative;overflow:hidden;border-radius:10px 10px 8px 8px;
+  box-shadow:0 24px 80px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.04)}
+.carousel-track{display:flex;transition:transform .55s cubic-bezier(.22,1,.36,1);will-change:transform}
+.carousel-slide{flex:0 0 100%;min-width:0;position:relative}
+.carousel-slide .browser{border-radius:0;box-shadow:none}
+.carousel-slide .browser-bar{border-radius:0}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:10;
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(10,10,10,.75);backdrop-filter:blur(12px);
+  border:1px solid var(--b2);color:var(--gold2);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,opacity .2s;opacity:.7;font-size:16px}
+.carousel-btn:hover{background:rgba(10,10,10,.95);opacity:1}
+.carousel-btn.prev{left:12px}.carousel-btn.next{right:12px}
+.carousel-dots{display:flex;justify-content:center;gap:6px;margin-top:14px}
+.cdot{width:6px;height:6px;border-radius:50%;background:var(--b3);border:0;cursor:pointer;transition:background .25s,transform .25s}
+.cdot.active{background:var(--gold2);transform:scale(1.4)}
+.carousel-label{position:absolute;left:14px;bottom:14px;z-index:5;
+  font-family:var(--M);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink);background:rgba(10,10,10,.65);backdrop-filter:blur(8px);
+  padding:4px 10px;border-radius:999px;border:1px solid var(--b2);
+  opacity:0;transition:opacity .35s,transform .35s;transform:translateY(6px);pointer-events:none}
+.carousel:hover .carousel-label{opacity:1;transform:translateY(0)}
+.carousel-count{position:absolute;right:14px;bottom:14px;z-index:5;
+  font-family:var(--M);font-size:10px;color:var(--c50);
+  background:rgba(10,10,10,.65);backdrop-filter:blur(8px);
+  padding:3px 9px;border-radius:999px;border:1px solid var(--b2)}
+
+/* TENDA PRO */
+.tenda-section{padding:clamp(56px,7vw,100px) 0}
+.tenda-grid{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:1024px){.tenda-grid{grid-template-columns:360px 1fr;gap:56px;align-items:start}}
+.tenda-sticky{position:sticky;top:100px;align-self:start}
+@media(max-width:1023px){.tenda-sticky{position:static}}
+.tenda-live{display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--M);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  background:rgba(16,185,129,.10);color:var(--green);border:1px solid rgba(16,185,129,.28);
+  padding:5px 11px;border-radius:999px;margin-bottom:20px}
+.tenda-live .ldot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 1.6s ease-in-out infinite}
+.tenda-name{font-family:var(--D);font-size:clamp(60px,8vw,96px);font-weight:900;line-height:.9;margin-bottom:10px;letter-spacing:-.02em}
+.tenda-name .it{font-family:var(--S);font-style:italic;font-weight:400;color:var(--gold2)}
+.tenda-tag{font-size:15.5px;color:var(--c70);line-height:1.65;margin-bottom:24px;text-wrap:balance}
+.feat-stack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:24px}
+.feat-stack span{font-family:var(--M);font-size:10px;font-weight:500;padding:4px 10px;border:1px solid var(--c15);color:var(--c70);border-radius:999px;background:var(--c04)}
+.feat-list{list-style:none;display:grid;gap:11px;margin-bottom:28px}
+.feat-list li{display:flex;align-items:start;gap:10px;font-size:13.5px;color:var(--c80);line-height:1.5}
+.feat-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold2);margin-top:8px;flex-shrink:0;box-shadow:0 0 8px var(--glow)}
+.tenda-carousel-wrap{position:relative}
+
+/* LIVE APPS GRID */
+.live-grid{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:640px){.live-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.live-grid{grid-template-columns:repeat(3,1fr)}}
+.live-card{border:1px solid var(--b1);border-radius:14px;overflow:hidden;background:var(--s1);
+  transition:transform .55s var(--ease-out),box-shadow .55s,border-color .4s}
+.live-card:hover{transform:translateY(-5px);box-shadow:0 28px 80px rgba(0,0,0,.6);border-color:var(--gbdr)}
+.live-card-top{position:relative;overflow:hidden}
+.live-carousel{display:flex;transition:transform .5s var(--ease-out)}
+.live-slide{flex:0 0 100%;min-width:0}
+.live-slide img{width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.live-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(10,10,10,.7);backdrop-filter:blur(8px);border:1px solid var(--b2);
+  color:var(--gold2);display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;font-size:12px}
+.live-card:hover .live-btn{opacity:1}
+.live-btn.lp{left:8px}.live-btn.ln{right:8px}
+.live-dots{display:flex;justify-content:center;gap:4px;position:absolute;bottom:8px;left:0;right:0}
+.ldot2{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);border:0;cursor:pointer;transition:background .2s}
+.ldot2.active{background:var(--gold2)}
+.live-body{padding:20px 22px;display:grid;gap:10px}
+.live-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.live-tag-blue{display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--M);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  background:rgba(59,130,246,.10);color:var(--blue);border:1px solid rgba(59,130,246,.25);
+  padding:4px 10px;border-radius:999px}
+.live-tag-mono{display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--M);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--c04);color:var(--c70);border:1px solid var(--c15);
+  padding:4px 10px;border-radius:999px}
+.live-tag-gold{display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--M);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--gdim);color:var(--gold2);border:1px solid var(--gbdr);
+  padding:4px 10px;border-radius:999px}
+.live-tag-dot{width:5px;height:5px;border-radius:50%;animation:pulse 1.8s ease-in-out infinite}
+.live-name{font-family:var(--D);font-size:clamp(28px,3.5vw,42px);font-weight:900;line-height:.95;letter-spacing:-.01em}
+.live-name .it{font-family:var(--S);font-style:italic;font-weight:400;color:var(--gold2)}
+.live-desc{font-size:13px;color:var(--c70);line-height:1.65}
+.live-stack{display:flex;flex-wrap:wrap;gap:4px}
+.live-stack span{font-family:var(--M);font-size:9px;padding:3px 8px;border:1px solid var(--c08);color:var(--c50);border-radius:999px}
+
+/* APP CARDS (More Work) */
+.app-showcase{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:640px){.app-showcase{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.app-showcase{grid-template-columns:repeat(3,1fr)}}
+.app-card2{border:1px solid var(--b1);border-radius:14px;overflow:hidden;background:var(--s1);
+  display:flex;flex-direction:column;
+  transition:transform .55s var(--ease-out),box-shadow .55s,border-color .4s}
+.app-card2:hover{transform:translateY(-5px);box-shadow:0 28px 80px rgba(0,0,0,.6);border-color:var(--gbdr)}
+.app-card2-carousel{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--bg2)}
+.app-card2-track{display:flex;transition:transform .5s var(--ease-out)}
+.app-card2-slide{flex:0 0 100%;min-width:0}
+.app-card2-slide img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.app-card2-prev,.app-card2-next{position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(10,10,10,.7);backdrop-filter:blur(8px);border:1px solid var(--b2);
+  color:var(--gold2);display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;font-size:12px}
+.app-card2:hover .app-card2-prev,.app-card2:hover .app-card2-next{opacity:1}
+.app-card2-prev{left:8px}.app-card2-next{right:8px}
+.app-card2-dots2{display:flex;justify-content:center;gap:4px;position:absolute;bottom:8px;left:0;right:0}
+.cdot2{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);border:0;cursor:pointer;transition:background .2s}
+.cdot2.active{background:var(--gold2)}
+.app-body{padding:18px 20px;flex:1;display:flex;flex-direction:column;gap:8px}
+.app-badge{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tag{font-family:var(--M);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;padding:4px 9px;border-radius:999px;font-weight:600}
+.tag-live{background:rgba(16,185,129,.10);color:var(--green);border:1px solid rgba(16,185,129,.22)}
+.tag-v1{background:var(--c04);color:var(--c50);border:1px solid var(--c15)}
+.tag-client{background:var(--gdim);color:var(--gold2);border:1px solid var(--gbdr)}
+.tag-nextjs{background:rgba(20,184,166,.10);color:var(--teal);border:1px solid rgba(20,184,166,.25)}
+.app-ver{font-family:var(--M);font-size:10px;color:var(--c30)}
+.app-name2{font-family:var(--D);font-size:26px;font-weight:900;line-height:1;color:var(--ink);letter-spacing:-.01em}
+.app-vert{font-family:var(--M);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-top:-4px}
+.app-desc2{font-size:13px;color:var(--c70);line-height:1.6}
+.app-pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;padding-top:4px}
+.app-pills span{font-family:var(--M);font-size:9px;padding:3px 8px;border:1px solid var(--c08);color:var(--c50);border-radius:999px}
+.case-study-btn{display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--M);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold2);background:var(--gdim);border:1px solid var(--gbdr);
+  padding:5px 10px;border-radius:999px;margin-top:8px;transition:background .2s}
+.case-study-btn:hover{background:rgba(232,184,75,.18)}
+
+/* TEMPLATES */
+.tpl-band{border:1px solid var(--gbdr);border-radius:20px;overflow:hidden;position:relative;
+  background:radial-gradient(800px circle at 0 0,rgba(232,184,75,.08),transparent 50%),
+             radial-gradient(600px circle at 100% 100%,rgba(249,115,22,.04),transparent 50%),var(--bg2);
+  padding:clamp(36px,5vw,60px)}
+.tpl-band::before{content:'';position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(500px circle at var(--mx,50%) var(--my,50%),rgba(232,184,75,.06),transparent 50%)}
+.tpl-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
+@media(min-width:900px){.tpl-grid{grid-template-columns:1.1fr 1fr;gap:56px}}
+.tpl-h{font-family:var(--D);font-size:clamp(32px,4.5vw,60px);font-weight:900;line-height:.95;margin-bottom:14px;letter-spacing:-.02em}
+.tpl-h .it{font-family:var(--S);font-style:italic;font-weight:400;color:var(--gold2)}
+.tpl-p{font-size:14.5px;color:var(--c70);line-height:1.7;margin-bottom:22px}
+.tpl-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:24px}
+.tpl-pills span{font-family:var(--M);font-size:10px;font-weight:500;padding:4px 10px;
+  border:1px solid var(--gbdr);color:var(--gold2);border-radius:999px;background:var(--gdim)}
+.tpl-price{display:flex;align-items:baseline;gap:8px;margin-bottom:24px}
+.tpl-big{font-family:var(--D);font-size:60px;font-weight:900;color:var(--gold2);line-height:1}
+.tpl-sm{font-family:var(--M);font-size:11px;color:var(--c50)}
+.tpl-mosaic{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tpl-thumb{aspect-ratio:1/1.25;border-radius:8px;background:linear-gradient(135deg,#1a1a1a,#0e0e0e);
+  border:1px solid var(--b1);display:flex;align-items:flex-end;padding:8px;
+  font-family:var(--D);font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--gold2);
+  position:relative;overflow:hidden;transition:transform .45s var(--ease-out),border-color .3s}
+.tpl-thumb::before{content:'';position:absolute;top:10px;right:10px;width:7px;height:7px;border-radius:50%;background:var(--gold2);box-shadow:0 0 8px var(--glow)}
+.tpl-thumb:hover{border-color:var(--gbdr)}
+.tpl-thumb:nth-child(2){transform:translateY(-8px)}
+.tpl-thumb:nth-child(5){transform:translateY(-4px)}
+
+/* SERVICES */
+.svc-grid{display:grid;gap:16px}
+@media(min-width:640px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.svc-grid{grid-template-columns:repeat(4,1fr)}}
+.svc{padding:28px 22px;border:1px solid var(--b1);border-radius:12px;background:var(--bg2);position:relative;overflow:hidden;
+  transition:transform .5s var(--ease-out),border-color .4s,background .4s}
+.svc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold2),transparent);transform:scaleX(0);transition:transform .5s var(--ease-out)}
+.svc:hover{transform:translateY(-4px);border-color:var(--gbdr);background:var(--s2)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-n{font-family:var(--M);font-size:10px;color:var(--gold2);letter-spacing:.2em;margin-bottom:14px}
+.svc h4{font-family:var(--D);font-size:20px;font-weight:800;line-height:1;margin-bottom:8px;letter-spacing:.01em}
+.svc p{font-size:13px;color:var(--c70);line-height:1.6;margin-bottom:14px}
+.svc-pills{display:flex;flex-wrap:wrap;gap:4px}
+.svc-pills span{font-family:var(--M);font-size:9px;padding:3px 8px;border:1px solid var(--c08);color:var(--c50);border-radius:999px}
+
+/* TESTIMONIALS */
+.testi-card{border:1px solid var(--gbdr);border-radius:20px;padding:clamp(32px,5vw,56px);
+  background:radial-gradient(600px at 0% 0%,rgba(232,184,75,.07),transparent),var(--bg2);
+  position:relative;overflow:hidden;max-width:760px;margin:0 auto}
+.testi-big-quote{font-family:var(--S);font-size:100px;line-height:0;color:var(--gold2);opacity:.2;
+  position:absolute;top:36px;left:36px;pointer-events:none}
+.testi-quote{font-family:var(--S);font-style:italic;
+  font-size:clamp(18px,2.2vw,24px);color:var(--c90);line-height:1.65;
+  margin-bottom:28px;position:relative}
+.testi-attr{display:flex;align-items:center;gap:14px}
+.testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--gdim);
+  border:2px solid var(--gbdr);display:flex;align-items:center;justify-content:center;
+  font-family:var(--D);font-size:18px;font-weight:800;color:var(--gold2);flex-shrink:0}
+.testi-name{font-weight:700;font-size:15px}
+.testi-role{font-family:var(--M);font-size:9.5px;color:var(--c50);letter-spacing:.1em;margin-top:3px;text-transform:uppercase}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:start}
+@media(min-width:900px){.contact-grid{grid-template-columns:1fr 1fr;gap:64px}}
+.contact-h{font-family:var(--D);font-size:clamp(38px,5vw,72px);font-weight:900;line-height:.92;letter-spacing:-.02em;margin-bottom:18px}
+.contact-h .it{font-family:var(--S);font-style:italic;font-weight:400;color:var(--gold2)}
+.contact-p{font-size:15px;color:var(--c70);line-height:1.72;margin-bottom:22px;text-wrap:balance}
+.email-pill{display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--M);font-size:11px;color:var(--gold2);
+  background:var(--gdim);border:1px solid var(--gbdr);
+  padding:9px 18px;border-radius:999px;letter-spacing:.1em;
+  transition:background .2s,box-shadow .2s}
+.email-pill:hover{background:rgba(232,184,75,.16);box-shadow:0 0 20px rgba(232,184,75,.12)}
+.contact-form{background:var(--s1);border:1px solid var(--b1);border-radius:16px;padding:28px;display:grid;gap:16px}
+.form-group{display:grid;gap:7px}
+.form-label{font-family:var(--M);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--c50)}
+.form-input,.form-select,.form-textarea{
+  background:var(--bg2);border:1px solid var(--b2);border-radius:10px;
+  color:var(--ink);font-family:var(--B);font-size:14px;padding:12px 16px;
+  transition:border-color .2s,box-shadow .2s;width:100%}
+.form-input:focus,.form-select:focus,.form-textarea:focus{
+  outline:none;border-color:var(--gbdr);box-shadow:0 0 0 3px rgba(232,184,75,.08)}
+.form-textarea{resize:vertical;min-height:100px}
+.form-select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.form-submit{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#0a0a0a;
+  font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;
+  transition:transform .35s var(--ease-spring),box-shadow .3s;
+  box-shadow:0 8px 28px rgba(232,184,75,.22);width:100%;font-family:var(--B)}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(232,184,75,.4)}
+.form-success{font-family:var(--M);font-size:11.5px;color:var(--green);text-align:center;
+  padding:10px;border:1px solid rgba(16,185,129,.3);border-radius:8px;
+  background:rgba(16,185,129,.08);display:none}
+.form-success.show{display:block}
+
+/* FAB */
+.fab{position:fixed;bottom:28px;right:28px;z-index:50;
+  width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));color:#0a0a0a;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  box-shadow:0 8px 28px rgba(232,184,75,.35);
+  transition:transform .4s var(--ease-spring),opacity .3s,box-shadow .3s;
+  opacity:0;transform:translateY(20px) scale(.8);pointer-events:none}
+.fab.show{opacity:1;transform:none;pointer-events:auto}
+.fab:hover{transform:translateY(-3px) scale(1.08)!important;box-shadow:0 16px 40px rgba(232,184,75,.5)}
+
+/* CASE STUDY MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.88);
+  backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s;padding:20px}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal{background:var(--bg2);border:1px solid var(--b2);border-radius:20px;
+  padding:clamp(28px,4vw,48px);max-width:600px;width:100%;max-height:88vh;overflow-y:auto;
+  transform:translateY(30px) scale(.96);transition:transform .45s var(--ease-spring);position:relative}
+.modal-overlay.open .modal{transform:none}
+.modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;
+  background:var(--c08);display:flex;align-items:center;justify-content:center;
+  font-size:20px;color:var(--c70);transition:background .2s;line-height:1}
+.modal-close:hover{background:var(--c15);color:var(--ink)}
+.modal-tag{font-family:var(--M);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:10px}
+.modal-title{font-family:var(--D);font-size:clamp(28px,4vw,46px);font-weight:900;line-height:.95;margin-bottom:22px;letter-spacing:-.01em}
+.modal-section-label{font-family:var(--M);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--c50);margin-bottom:8px;margin-top:20px}
+.modal-text{font-size:14px;color:var(--c80);line-height:1.72}
+.modal-stack{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px}
+.modal-stack span{font-family:var(--M);font-size:9.5px;padding:4px 10px;border:1px solid var(--gbdr);color:var(--gold2);border-radius:999px;background:var(--gdim)}
+
+/* FOOTER */
+footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
+  border-top:1px solid var(--c08);font-size:11.5px;color:var(--c30);font-family:var(--M);letter-spacing:.08em}
+.footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:16px}
+.footer-links a{color:var(--c50);transition:color .2s;font-size:12px}
+.footer-links a:hover{color:var(--gold2)}
+
+/* REVEAL */
+.r{opacity:0;transform:translateY(36px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+.r.on{opacity:1;transform:none}
+.r1{transition-delay:.07s}.r2{transition-delay:.14s}.r3{transition-delay:.21s}.r4{transition-delay:.28s}
+
+/* RESPONSIVE */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .mtrack{animation:none}}
+</style>
+</head>
+<body>
+<div class="load-bar"></div>
+<div class="progress-rail" id="progress"></div>
+<div class="bg-mesh"></div>
+<div class="bg-grain"></div>
+<div class="cursor-glow" id="glow"></div>
+<button class="fab" id="fab" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- CASE STUDY MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <div class="modal-tag" id="modalTag"></div>
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-section-label">Problem</div>
+    <div class="modal-text" id="modalProblem"></div>
+    <div class="modal-section-label">Solution</div>
+    <div class="modal-text" id="modalSolution"></div>
+    <div class="modal-section-label">Stack</div>
+    <div class="modal-stack" id="modalStack"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#top" class="nav-brand"><span class="brand-pulse"></span>RJ CABANSAY</a>
+  <div class="nav-links">
+    <a class="nav-a" href="#tenda">Tenda Pro</a>
+    <a class="nav-a" href="#live">Live Apps</a>
+    <a class="nav-a" href="#more">More</a>
+    <a class="nav-a" href="#templates">Templates</a>
+    <a class="nav-a" href="#about">About</a>
+    <a class="nav-a" href="#contact">Contact</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <a class="nav-cta" href="#contact">Hire me</a>
+    <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a class="mobile-a" href="#tenda" data-mobile-close>Tenda Pro</a>
+  <a class="mobile-a" href="#live" data-mobile-close>Live Apps</a>
+  <a class="mobile-a" href="#more" data-mobile-close>More Work</a>
+  <a class="mobile-a" href="#templates" data-mobile-close>Templates</a>
+  <a class="mobile-a" href="#about" data-mobile-close>About</a>
+  <a class="mobile-a" href="#contact" data-mobile-close>Contact</a>
+  <a class="mobile-cta" href="mailto:rjamscxx@gmail.com">rjamscxx@gmail.com ↗</a>
+</div>
+
+<!-- HERO -->
+<section id="top" class="wrap hero">
+  <div class="pill"><span class="pill-dot"></span><span class="pill-text" id="pillText">Available for Projects · Philippines</span></div>
+  <h1 class="hero-h">I build <span class="it">premium</span><br>SaaS that ships.</h1>
+  <p class="hero-sub">Robert James Cabansay. Indie builder making <strong>production-ready SaaS</strong> across restaurants, sports, cafés, retail, and education — single-file HTML PWAs and Next.js. Premium design, fast turnarounds, ₱ Peso-ready.</p>
+  <div class="hero-btns">
+    <a class="btn btn-gold" href="#tenda">See Tenda Pro →</a>
+    <a class="btn btn-outline" href="#contact">Let's talk</a>
+  </div>
+
+  <!-- PEEK STRIP -->
+  <div class="peek-strip">
+    <a href="#tenda" class="peek-card" style="--i:0">
+      <img src="assets/tenda-pro/demo-1-dashboard.png" alt="Tenda Pro" loading="lazy" />
+      <div class="peek-lbl">Tenda Pro</div>
+    </a>
+    <a href="#live" class="peek-card" style="--i:1">
+      <img src="assets/courtside/hero.png" alt="Courtside" loading="lazy" />
+      <div class="peek-lbl">Courtside PH</div>
+    </a>
+    <a href="#live" class="peek-card" style="--i:2">
+      <img src="assets/grayscale-coffee-club/hero.png" alt="Grayscale" loading="lazy" />
+      <div class="peek-lbl">Grayscale</div>
+    </a>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats r">
+    <div class="stat"><div class="stat-n" data-count="13">0</div><div class="stat-l">Apps Built</div></div>
+    <div class="stat"><div class="stat-n" data-count="7">0</div><div class="stat-l">Verticals</div></div>
+    <div class="stat"><div class="stat-n" data-count="4">0</div><div class="stat-l">Next.js Apps</div></div>
+    <div class="stat"><div class="stat-n" data-count="15">0</div><div class="stat-l">Starter Templates</div></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="mtrack">
+    <span class="mtag">Next.js 15 <span class="dot">◆</span></span>
+    <span class="mtag">React 19 <span class="dot">◆</span></span>
+    <span class="mtag">TypeScript <span class="dot">◆</span></span>
+    <span class="mtag">Tailwind v4 <span class="dot">◆</span></span>
+    <span class="mtag">Supabase <span class="dot">◆</span></span>
+    <span class="mtag">Drizzle ORM <span class="dot">◆</span></span>
+    <span class="mtag">Playwright <span class="dot">◆</span></span>
+    <span class="mtag">AI SDK <span class="dot">◆</span></span>
+    <span class="mtag">Vercel <span class="dot">◆</span></span>
+    <span class="mtag">HTML PWA <span class="dot">◆</span></span>
+    <span class="mtag">Philippines SMB <span class="dot">◆</span></span>
+    <span class="mtag">Resend <span class="dot">◆</span></span>
+    <span class="mtag">Next.js 15 <span class="dot">◆</span></span>
+    <span class="mtag">React 19 <span class="dot">◆</span></span>
+    <span class="mtag">TypeScript <span class="dot">◆</span></span>
+    <span class="mtag">Tailwind v4 <span class="dot">◆</span></span>
+    <span class="mtag">Supabase <span class="dot">◆</span></span>
+    <span class="mtag">Drizzle ORM <span class="dot">◆</span></span>
+    <span class="mtag">Playwright <span class="dot">◆</span></span>
+    <span class="mtag">AI SDK <span class="dot">◆</span></span>
+    <span class="mtag">Vercel <span class="dot">◆</span></span>
+    <span class="mtag">HTML PWA <span class="dot">◆</span></span>
+    <span class="mtag">Philippines SMB <span class="dot">◆</span></span>
+    <span class="mtag">Resend <span class="dot">◆</span></span>
+  </div>
+</div>
+
+<!-- ═══ TENDA PRO ═══ -->
+<section id="tenda" class="wrap tenda-section">
+  <div class="sh r">
+    <div class="sh-eye">◆ Flagship · Production Next.js · Restaurant SaaS</div>
+    <h2 class="sh-title">The <span class="it">restaurant</span> brain.</h2>
+    <p class="sh-sub">Tenda Pro powers café and restaurant operations across the Philippines — POS, sales, QR menus, inventory, reports, and an AI assistant, all in one dashboard.</p>
+  </div>
+  <div class="tenda-grid">
+    <div class="tenda-sticky r">
+      <div class="tenda-live"><span class="ldot"></span>Live · tenda.ph</div>
+      <div class="tenda-name">TENDA<br><span class="it">PRO</span></div>
+      <p class="tenda-tag">All-in-one restaurant & café OS. Next.js + Supabase — built for Philippine SMBs.</p>
+      <div class="feat-stack">
+        <span>Next.js 15</span><span>React 19</span><span>TypeScript</span>
+        <span>Tailwind v4</span><span>Supabase SSR</span><span>Drizzle ORM</span>
+        <span>AI SDK</span><span>Resend</span><span>Playwright</span><span>Vercel</span>
+      </div>
+      <ul class="feat-list">
+        <li>Real-time POS — Ember, Ocean, Rose, Sage themes</li>
+        <li>Sales analytics — today, unpaid, revenue breakdown</li>
+        <li>QR menus auto-generated from product catalog</li>
+        <li>COGS + ingredient mapping per dish</li>
+        <li>Multi-page reports — daily, weekly, monthly</li>
+        <li>AI assistant — natural language for owners</li>
+        <li>Payroll, shifts, employees, expenses, waste logs</li>
+        <li>Smoke-tested with full Café Lina demo dataset</li>
+      </ul>
+      <a class="btn btn-gold" href="#contact">Talk to RJ about Tenda Pro →</a>
+    </div>
+    <div class="tenda-carousel-wrap r r1">
+      <div class="carousel" id="tendaCarousel" data-labels='["Dashboard · Overview","Dashboard · COGS","Sales · Today","Sales · Unpaid","POS · All Items","POS · Drinks","QR Menu","Reports","Menu · Ingredients","POS · Bold Theme","Dashboard · SF Pro","Landing Page"]'>
+        <div class="carousel-track" id="tendaTrack">
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">tenda.ph/dashboard</div></div><img class="browser-img" loading="lazy" src="assets/tenda-pro/demo-1-dashboard.png" alt="Dashboard Overview" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">tenda.ph/dashboard — COGS view</div></div><img class="browser-img" loading="lazy" src="assets/tenda-pro/demo-1-dashboard-cogs.png" alt="Dashboard COGS" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">tenda.ph/sales — today</div></div><img class="browser-img" loading="lazy" src="assets/tenda-pro/demo-2-sales-today.png" alt="Sales Today" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">tenda.ph/sales — unpaid</div></div><img class="browser-img" loading="lazy" src="assets/tenda-pro/demo-3-sales-unpaid.png" alt="Sales Unpaid" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">tenda.ph/pos — all items</div></div><img class="browser-img" loading="lazy" src="assets/tenda-pro/demo-6-pos-all.png" alt="POS All Items" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">tenda.ph/pos — drinks</div></div><img class="browser-img" loading="lazy" src="assets/tenda-pro/demo-7-pos-drinks.png" alt="POS Drinks" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">tenda.ph/m/venue-id — QR menu</div></div><img class="browser-img" loading="lazy" src="assets/tenda-pro/demo-4-qr-menu.png" alt="QR Menu" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">tenda.ph/reports</div></div><img class="browser-img" loading="lazy" src="assets/tenda-pro/demo-5-reports.png" alt="Reports" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">tenda.ph/menu — ingredients</div></div><img class="browser-img" loading="lazy" src="assets/tenda-pro/demo-8-menu-ingredients.png" alt="Menu Ingredients" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">tenda.ph/pos — bold theme</div></div><img class="browser-img" loading="lazy" src="assets/tenda-pro/demo-pos-all-bold.png" alt="POS Bold Theme" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">tenda.ph/dashboard — SF Pro</div></div><img class="browser-img" loading="lazy" src="assets/tenda-pro/demo-10-dashboard-sfpro.png" alt="Dashboard SF Pro" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">tenda.ph — landing page</div></div><img class="browser-img" loading="lazy" src="assets/tenda-pro/demo-9-landing-sfpro.png" alt="Landing Page" /></div></div>
+        </div>
+        <button class="carousel-btn prev" data-carousel-prev="tendaCarousel">&#8592;</button>
+        <button class="carousel-btn next" data-carousel-next="tendaCarousel">&#8594;</button>
+        <div class="carousel-label" id="tendaLabel">Dashboard · Overview</div>
+        <div class="carousel-count" id="tendaCount">1 / 12</div>
+      </div>
+      <div class="carousel-dots" id="tendaDots"></div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ LIVE APPS ═══ -->
+<section id="live" class="wrap sec">
+  <div class="sh r">
+    <div class="sh-eye">◆ Live PWAs · Active</div>
+    <h2 class="sh-title">Sports, <span class="it">coffee</span>, streetwear.</h2>
+    <p class="sh-sub">Three live HTML PWAs serving real users — court booking, coffee loyalty, and a Manila streetwear store.</p>
+  </div>
+  <div class="live-grid">
+
+    <!-- COURTSIDE -->
+    <div class="live-card r" data-case="courtside">
+      <div class="live-card-top">
+        <div class="live-carousel" id="courtsideTrack">
+          <div class="live-slide"><img loading="lazy" src="assets/courtside/hero.png" alt="Courtside hero" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/courtside/section-2.png" alt="Courtside booking" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/courtside/section-3.png" alt="Courtside features" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/courtside/full.png" alt="Courtside full" /></div>
+        </div>
+        <button class="live-btn lp" data-live-prev="courtsideTrack">&#8592;</button>
+        <button class="live-btn ln" data-live-next="courtsideTrack">&#8594;</button>
+        <div class="live-dots" id="courtsideDots"></div>
+      </div>
+      <div class="live-body">
+        <div class="live-meta">
+          <span class="live-tag-blue"><span class="live-tag-dot" style="background:var(--blue);box-shadow:0 0 7px var(--blue)"></span>Live · courtside-ph.vercel.app</span>
+          <span style="font-family:var(--M);font-size:10px;color:var(--c30)">v16</span>
+        </div>
+        <div class="live-name">COURT<span class="it">SIDE</span></div>
+        <p class="live-desc">Premium multi-sport court reservation PWA. Basketball, tennis, badminton, volleyball, futsal, pickleball — QR check-in, team management, Supabase cloud sync.</p>
+        <div class="live-stack"><span>HTML PWA</span><span>Supabase</span><span>QR check-in</span><span>6 sports</span></div>
+        <button class="case-study-btn" data-case="courtside">Case Study ↗</button>
+      </div>
+    </div>
+
+    <!-- GRAYSCALE -->
+    <div class="live-card r r1" data-case="grayscale">
+      <div class="live-card-top">
+        <div class="live-carousel" id="grayscaleTrack">
+          <div class="live-slide"><img loading="lazy" src="assets/grayscale-coffee-club/hero.png" alt="Grayscale hero" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/grayscale-coffee-club/section-2.png" alt="Grayscale membership" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/grayscale-coffee-club/section-3.png" alt="Grayscale loyalty" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/grayscale-coffee-club/full.png" alt="Grayscale full" /></div>
+        </div>
+        <button class="live-btn lp" data-live-prev="grayscaleTrack">&#8592;</button>
+        <button class="live-btn ln" data-live-next="grayscaleTrack">&#8594;</button>
+        <div class="live-dots" id="grayscaleDots"></div>
+      </div>
+      <div class="live-body">
+        <div class="live-meta">
+          <span class="live-tag-mono"><span class="live-tag-dot" style="background:var(--c70);box-shadow:0 0 7px rgba(245,241,232,.4)"></span>Active · v17</span>
+          <span style="font-family:var(--M);font-size:10px;color:var(--c30)">coffee</span>
+        </div>
+        <div class="live-name">GRAY<span class="it">SCALE</span></div>
+        <p class="live-desc">Premium coffee subscription + loyalty PWA. Monochrome aesthetic, member portal, QR loyalty card, subscription tiers, and daily café operations dashboard.</p>
+        <div class="live-stack"><span>HTML PWA</span><span>Monochrome</span><span>localStorage</span><span>QR loyalty</span></div>
+        <button class="case-study-btn" data-case="grayscale">Case Study ↗</button>
+      </div>
+    </div>
+
+    <!-- GOLD PALACE -->
+    <div class="live-card r r2" data-case="goldpalace">
+      <div class="live-card-top">
+        <div class="live-carousel" id="goldpalaceTrack">
+          <div class="live-slide"><img loading="lazy" src="assets/gold-palace-streetwear/hero.png" alt="Gold Palace hero" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/gold-palace-streetwear/section-2.png" alt="Gold Palace store" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/gold-palace-streetwear/section-3.png" alt="Gold Palace dashboard" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/gold-palace-streetwear/full.png" alt="Gold Palace full" /></div>
+        </div>
+        <button class="live-btn lp" data-live-prev="goldpalaceTrack">&#8592;</button>
+        <button class="live-btn ln" data-live-next="goldpalaceTrack">&#8594;</button>
+        <div class="live-dots" id="goldpalaceDots"></div>
+      </div>
+      <div class="live-body">
+        <div class="live-meta">
+          <span class="live-tag-gold"><span class="live-tag-dot" style="background:var(--gold2);box-shadow:0 0 7px var(--glow)"></span>Live · gold-palace-streetwear.vercel.app</span>
+        </div>
+        <div class="live-name">GOLD <span class="it">PALACE</span></div>
+        <p class="live-desc">Manila streetwear brand — storefront PWA with cart, quick view, and owner dashboard with POS, orders, inventory, sales, expenses, and reports.</p>
+        <div class="live-stack"><span>HTML PWA</span><span>Next.js</span><span>Supabase</span><span>Streetwear</span></div>
+        <button class="case-study-btn" data-case="goldpalace">Case Study ↗</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ MORE WORK ═══ -->
+<section id="more" class="wrap sec">
+  <div class="sh r">
+    <div class="sh-eye">◆ More Work · HTML PWAs</div>
+    <h2 class="sh-title">Every <span class="it">vertical</span>, built.</h2>
+    <p class="sh-sub">Single-file HTML PWAs for Philippine SMBs — retail POS, client hubs, and education trackers.</p>
+  </div>
+  <div class="app-showcase">
+
+    <!-- BUDTENDER -->
+    <div class="app-card2 r">
+      <div class="app-card2-carousel" id="budtCard">
+        <div class="app-card2-track" id="budtTrack">
+          <div class="app-card2-slide"><img loading="lazy" src="assets/budtenderph/hero.png" alt="BudtenderPH hero" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/budtenderph/section-2.png" alt="BudtenderPH" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/budtenderph/section-3.png" alt="BudtenderPH POS" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/budtenderph/section-4.png" alt="BudtenderPH inv" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/budtenderph/full.png" alt="BudtenderPH full" /></div>
+        </div>
+        <button class="app-card2-prev" data-c2prev="budtTrack">&#8592;</button>
+        <button class="app-card2-next" data-c2next="budtTrack">&#8594;</button>
+        <div class="app-card2-dots2" id="budtDots"></div>
+      </div>
+      <div class="app-body">
+        <div class="app-badge"><span class="tag tag-v1">v1.0</span><span class="app-ver">retail POS</span></div>
+        <div><div class="app-name2">BUDTENDER</div><div class="app-vert">Shop POS + cash-out</div></div>
+        <p class="app-desc2">Shop POS system with cash-out flow. Inventory management and end-of-day reconciliation — built for small Philippine retail.</p>
+        <div class="app-pills"><span>HTML</span><span>POS</span><span>Retail</span><span>Cash-out</span></div>
+        <button class="case-study-btn" data-case="budtender">Case Study ↗</button>
+      </div>
+    </div>
+
+    <!-- JAZEL HUB -->
+    <div class="app-card2 r r1">
+      <div class="app-card2-carousel" id="jazelCard">
+        <div class="app-card2-track" id="jazelTrack">
+          <div class="app-card2-slide"><img loading="lazy" src="assets/jazel-hub/hero.png" alt="Jazel Hub hero" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/jazel-hub/section-2.png" alt="Jazel Hub services" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/jazel-hub/section-3.png" alt="Jazel Hub bookings" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/jazel-hub/section-4.png" alt="Jazel Hub schedule" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/jazel-hub/full.png" alt="Jazel Hub full" /></div>
+        </div>
+        <button class="app-card2-prev" data-c2prev="jazelTrack">&#8592;</button>
+        <button class="app-card2-next" data-c2next="jazelTrack">&#8594;</button>
+        <div class="app-card2-dots2" id="jazelDots"></div>
+      </div>
+      <div class="app-body">
+        <div class="app-badge"><span class="tag tag-client">Client work</span><span class="app-ver">2026</span></div>
+        <div><div class="app-name2">JAZEL HUB</div><div class="app-vert">Personal business hub</div></div>
+        <p class="app-desc2">Custom client project — personal business hub for Jazel Bernardo. Bookings, schedule, services listing, and contact management.</p>
+        <div class="app-pills"><span>HTML</span><span>Client</span><span>Bookings</span><span>Custom</span></div>
+        <button class="case-study-btn" data-case="jazelhub">Case Study ↗</button>
+      </div>
+    </div>
+
+    <!-- YOUNG MINDS -->
+    <div class="app-card2 r r2">
+      <div class="app-card2-carousel" id="ymCard">
+        <div class="app-card2-track" id="ymTrack">
+          <div class="app-card2-slide"><img loading="lazy" src="assets/youngminds/hero.png" alt="Young Minds hero" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/youngminds/section-2.png" alt="Young Minds dashboard" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/youngminds/section-3.png" alt="Young Minds tracker" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/youngminds/section-4.png" alt="Young Minds reports" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/youngminds/full.png" alt="Young Minds full" /></div>
+        </div>
+        <button class="app-card2-prev" data-c2prev="ymTrack">&#8592;</button>
+        <button class="app-card2-next" data-c2next="ymTrack">&#8594;</button>
+        <div class="app-card2-dots2" id="ymDots"></div>
+      </div>
+      <div class="app-body">
+        <div class="app-badge"><span class="tag tag-v1">v7</span><span class="app-ver">education</span></div>
+        <div><div class="app-name2">YOUNG MINDS</div><div class="app-vert">Education / youth tracker</div></div>
+        <p class="app-desc2">Education and youth development tracker. Progress monitoring, engagement metrics, orange accent — built for Philippine learning orgs.</p>
+        <div class="app-pills"><span>HTML</span><span>Education</span><span>Orange</span><span>Tracker</span></div>
+        <button class="case-study-btn" data-case="youngminds">Case Study ↗</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ TEMPLATES ═══ -->
+<section id="templates" class="wrap sec">
+  <div class="sh r">
+    <div class="sh-eye">◆ Sellable · Gumroad-ready</div>
+    <h2 class="sh-title"><span class="it">15</span> starters.<br>One pack.</h2>
+    <p class="sh-sub">Single-file SaaS dashboards — dark theme, gold accents. White-label, customize, ship.</p>
+  </div>
+  <div class="tpl-band r" id="tplBand">
+    <div class="tpl-grid">
+      <div>
+        <h3 class="tpl-h">RJ's <span class="it">SaaS Starter</span><br>Pack — 15 apps.</h3>
+        <p class="tpl-p">Appointment schedulers, CRMs, trackers, billing dashboards, inventory, loyalty programs, tutoring platforms — already styled to match your premium brand. Open the .html file, customize, deliver.</p>
+        <div class="tpl-pills">
+          <span>CALENDR</span><span>CLIENTLY</span><span>DELIVR</span><span>TEAMPULSE</span>
+          <span>TICKETIQ</span><span>EXPENSO</span><span>VOICEBOX</span><span>FITGRID</span>
+          <span>STOCKWISE</span><span>BILLFLOW</span><span>LOYALPH</span><span>TUTORHQ</span>
+          <span>ESTATEHQ</span><span>SUBSTACK</span><span>TASKFORGE</span>
+        </div>
+        <div class="tpl-price"><span class="tpl-big">$79</span><span class="tpl-sm">/ ₱4,500 — one-time, lifetime updates</span></div>
+        <a class="btn btn-gold" href="mailto:rjamscxx@gmail.com?subject=SaaS%20Starter%20Pack">Buy the pack →</a>
+      </div>
+      <div class="tpl-mosaic">
+        <div class="tpl-thumb">CALENDR</div><div class="tpl-thumb">DELIVR</div><div class="tpl-thumb">EXPENSO</div>
+        <div class="tpl-thumb">STOCKWISE</div><div class="tpl-thumb">BILLFLOW</div><div class="tpl-thumb">LOYALPH</div>
+        <div class="tpl-thumb">TUTORHQ</div><div class="tpl-thumb">ESTATEHQ</div><div class="tpl-thumb">TASKFORGE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about" class="wrap sec">
+  <div class="sh r">
+    <div class="sh-eye">◆ Builder · Philippines</div>
+    <h2 class="sh-title">Who's <span class="it">behind</span> the work.</h2>
+  </div>
+  <div class="about-grid">
+    <div class="r">
+      <div class="about-bio">
+        <p>I'm <strong>Robert James Cabansay (RJ)</strong> — an indie SaaS builder based in the Philippines. I design, build, and ship full-stack web apps for small and medium businesses that need premium software without the enterprise price tag.</p>
+        <p>My stack is <strong>Next.js + Supabase</strong> for production apps and <strong>single-file HTML PWAs</strong> for fast, affordable client work. Every project is designed to look and feel world-class — because Philippine SMBs deserve the same software quality as Silicon Valley.</p>
+        <p>Flux Labs is my software brand. I take on a few projects per month — custom dashboards, client hubs, white-label deals.</p>
+      </div>
+    </div>
+    <div class="r r1">
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-n">01</div>
+          <div class="step-body">
+            <h4>Discover</h4>
+            <p>We talk through your business, your users, and what's broken. No templates — every build starts with understanding the real problem.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-n">02</div>
+          <div class="step-body">
+            <h4>Design</h4>
+            <p>Dark, premium UI — gold accents, tight typography, mobile-first. You see mockups and flows before a single line of code is written.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-n">03</div>
+          <div class="step-body">
+            <h4>Build</h4>
+            <p>Next.js + Supabase for complex apps, single-file HTML for fast turnarounds. Clean code, zero bloat, production-ready from day one.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-n">04</div>
+          <div class="step-body">
+            <h4>Ship</h4>
+            <p>Deployed to Vercel or your hosting of choice. Handoff includes source files, brief walkthrough, and optional retainer for updates.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="wrap sec">
+  <div class="sh r">
+    <div class="sh-eye">◆ What I build</div>
+    <h2 class="sh-title">Services <span class="it">that ship.</span></h2>
+    <p class="sh-sub">Hire me for clean, premium-feeling SaaS — single-file or full Next.js. ₱ Peso-ready, fast turnarounds.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc r">
+      <div class="svc-n">01 ── PRODUCT</div>
+      <h4>SMB SaaS DASHBOARD</h4>
+      <p>End-to-end design + build — schema to UI to deploy. 2–4 week scope.</p>
+      <div class="svc-pills"><span>Next.js</span><span>Supabase</span><span>Tailwind</span><span>TypeScript</span></div>
+    </div>
+    <div class="svc r r1">
+      <div class="svc-n">02 ── CUSTOM</div>
+      <h4>CLIENT BUSINESS HUB</h4>
+      <p>Single-file HTML hub for freelancers, coaches, agencies. White-label, fast handoff.</p>
+      <div class="svc-pills"><span>HTML PWA</span><span>localStorage</span><span>Custom design</span></div>
+    </div>
+    <div class="svc r r2">
+      <div class="svc-n">03 ── AI</div>
+      <h4>AI-POWERED TOOLS</h4>
+      <p>AI-powered features — assistants, content tools, automation. Any stack.</p>
+      <div class="svc-pills"><span>AI SDK</span><span>Vercel AI</span><span>Resend</span></div>
+    </div>
+    <div class="svc r r3">
+      <div class="svc-n">04 ── RESELL</div>
+      <h4>WHITE-LABEL TEMPLATES</h4>
+      <p>License the 15-app pack. Brand as yours. Add retainer for custom builds.</p>
+      <div class="svc-pills"><span>15 templates</span><span>$79 one-time</span><span>Lifetime updates</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="wrap sec">
+  <div class="sh r" style="text-align:center">
+    <div class="sh-eye">◆ From Clients</div>
+    <h2 class="sh-title">They <span class="it">shipped.</span></h2>
+  </div>
+  <div class="testi-card r">
+    <div class="testi-big-quote">"</div>
+    <p class="testi-quote">"RJ built my business hub faster than I expected and it looked way more premium than anything I'd seen. The booking system, schedule, and contact page — all exactly what I needed. I've been using it every day since."</p>
+    <div class="testi-attr">
+      <div class="testi-avatar">J</div>
+      <div>
+        <div class="testi-name">Jazel Bernardo</div>
+        <div class="testi-role">Founder · Jazel Hub · Client project 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" class="wrap sec">
+  <div class="contact-grid">
+    <div class="r">
+      <div class="sh-eye">◆ Let's ship something.</div>
+      <h2 class="contact-h">Got a SaaS<br>idea? Let's <span class="it">build it.</span></h2>
+      <p class="contact-p">I take on a few projects per month — SMB dashboards, client hubs, white-label deals. Email me what you need and a budget range.</p>
+      <a class="email-pill" href="mailto:rjamscxx@gmail.com">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        rjamscxx@gmail.com
+      </a>
+    </div>
+    <div class="r r1">
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <label class="form-label" for="fname">Name</label>
+          <input class="form-input" id="fname" name="name" type="text" placeholder="Your name" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="femail">Email</label>
+          <input class="form-input" id="femail" name="email" type="email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="ftype">Project type</label>
+          <select class="form-select" id="ftype" name="project_type">
+            <option value="">Select a type...</option>
+            <option>SMB SaaS Dashboard</option>
+            <option>Client Business Hub</option>
+            <option>AI-Powered Tool</option>
+            <option>Template Pack License</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="fmsg">Message</label>
+          <textarea class="form-textarea" id="fmsg" name="message" placeholder="Tell me about your project and budget range..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message →</button>
+        <div class="form-success" id="formSuccess">Message sent! I'll reply within 24 hours.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="mailto:rjamscxx@gmail.com">Email</a>
+    <a href="https://github.com/rjamscxx" target="_blank" rel="noopener">GitHub</a>
+    <a href="#top">Back to top ↑</a>
+  </div>
+  <div>ROBERT JAMES CABANSAY · APP BUILDER · PHILIPPINES · <span id="footerYear"></span></div>
+</footer>
+
+<script>
+/* ─── CASE STUDY DATA ─── */
+const CASES = {
+  tenda: {
+    tag:'Restaurant SaaS · Next.js',
+    title:'Tenda Pro',
+    problem:'Philippine café and restaurant owners were juggling separate tools for POS, sales tracking, QR menus, and reporting. No single Filipino-built solution existed for the full stack.',
+    solution:'Built an all-in-one restaurant OS with Next.js 15 + Supabase SSR. Real-time POS with 4 themes, auto-generated QR menus, COGS tracking per ingredient, multi-period reports, payroll, AI assistant for natural language queries, and full Playwright smoke-test suite on a demo "Café Lina" dataset.',
+    stack:['Next.js 15','React 19','TypeScript','Tailwind v4','Supabase SSR','Drizzle ORM','AI SDK','Resend','Playwright','Vercel']
+  },
+  courtside: {
+    tag:'Sports PWA · Live',
+    title:'Courtside PH',
+    problem:'Multi-sport court facilities in the Philippines had no unified booking system — operators relied on Messenger DMs and manual logs, and players couldn\'t check availability or manage teams online.',
+    solution:'Single-file HTML PWA handling 6 sports (basketball, tennis, badminton, volleyball, futsal, pickleball). QR check-in, team management, Supabase cloud sync for real-time availability, and unified auth (one signup triggers trial + cloud sync).',
+    stack:['HTML PWA','Supabase','QR check-in','6 sports','LocalStorage fallback','Vercel']
+  },
+  grayscale: {
+    tag:'Coffee Loyalty · PWA',
+    title:'Grayscale Coffee Club',
+    problem:'Independent coffee shops wanted a premium loyalty and subscription system but couldn\'t afford enterprise platforms — and nothing matched the aesthetic their brand demanded.',
+    solution:'Premium monochrome PWA with membership tiers, QR loyalty card, subscription management, and a daily café operations dashboard. Offline-first with localStorage, zero dependencies beyond native browser APIs.',
+    stack:['HTML PWA','Monochrome design','localStorage','QR loyalty card','Subscription tiers']
+  },
+  goldpalace: {
+    tag:'Streetwear · PWA + Next.js',
+    title:'Gold Palace Streetwear',
+    problem:'Manila streetwear brands had to choose between a basic Shopify store (expensive, no personality) or building from scratch — neither option gave them full creative control with owner-side operations.',
+    solution:'Two-layer system: public storefront PWA (gold-palace-streetwear.vercel.app) with cart and quick-view, plus a full Next.js + Supabase dashboard with POS, orders, inventory, sales analytics, expenses, and reports.',
+    stack:['HTML PWA','Next.js','Supabase','POS','Inventory','Vercel']
+  },
+  budtender: {
+    tag:'Retail POS · HTML',
+    title:'Budtender PH',
+    problem:'Small Philippine retail shops needed a simple, no-subscription POS with cash-out tracking and end-of-day reconciliation — without paying monthly fees.',
+    solution:'Single-file HTML POS with product catalog, invoice modal, cash-out flow, inventory tracking, backup/restore, and an expense module. Runs entirely in the browser, no server needed.',
+    stack:['HTML','localStorage','POS','Cash-out','Inventory','Receipt printing']
+  },
+  jazelhub: {
+    tag:'Client Project · 2026',
+    title:'Jazel Hub',
+    problem:'A freelance professional needed a personal business hub to manage bookings, showcase services, and handle client inquiries — all in one branded app delivered fast.',
+    solution:'Custom single-file HTML business hub with a public services page, booking calendar, schedule management, and contact system. White-labeled and delivered within one week.',
+    stack:['HTML','Custom design','Booking system','Schedule','Contact management']
+  },
+  youngminds: {
+    tag:'Education · Tracker',
+    title:'Young Minds',
+    problem:'Youth development organizations in the Philippines needed a way to track student progress, attendance, and engagement metrics without expensive LMS software.',
+    solution:'Education tracker PWA with progress dashboards, engagement metrics, attendance logging, and report exports. Orange accent brand, mobile-optimized, localStorage-first.',
+    stack:['HTML PWA','localStorage','Progress tracking','Engagement metrics','Report export']
+  }
+}
+
+/* ─── MODAL ─── */
+const overlay = document.getElementById('modalOverlay')
+const modalClose = document.getElementById('modalClose')
+
+function openCase(key) {
+  const d = CASES[key]
+  if (!d) return
+  document.getElementById('modalTag').textContent = d.tag
+  document.getElementById('modalTitle').textContent = d.title
+  document.getElementById('modalProblem').textContent = d.problem
+  document.getElementById('modalSolution').textContent = d.solution
+  const stackEl = document.getElementById('modalStack')
+  stackEl.innerHTML = d.stack.map(s=>`<span>${s}</span>`).join('')
+  overlay.classList.add('open')
+  document.body.style.overflow = 'hidden'
+}
+
+document.querySelectorAll('[data-case]').forEach(btn => {
+  btn.addEventListener('click', e => { e.stopPropagation(); openCase(btn.dataset.case) })
+})
+modalClose.addEventListener('click', closeModal)
+overlay.addEventListener('click', e => { if(e.target===overlay) closeModal() })
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal() })
+function closeModal(){ overlay.classList.remove('open'); document.body.style.overflow='' }
+
+/* ─── CURSOR GLOW ─── */
+const glow = document.getElementById('glow')
+let gx=0,gy=0,tx=0,ty=0
+function glowLoop(){ tx+=(gx-tx)*.09; ty+=(gy-ty)*.09; if(glow)glow.style.transform=`translate3d(${tx}px,${ty}px,0) translate(-50%,-50%)`; requestAnimationFrame(glowLoop) }
+if(matchMedia('(hover:hover)').matches){ addEventListener('mousemove',e=>{gx=e.clientX;gy=e.clientY},{passive:true}); glowLoop() }
+
+/* ─── SCROLL PROGRESS ─── */
+const bar = document.getElementById('progress')
+addEventListener('scroll',()=>{ const h=document.documentElement; if(bar)bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%' },{passive:true})
+
+/* ─── FAB ─── */
+const fab = document.getElementById('fab')
+addEventListener('scroll',()=>{ fab.classList.toggle('show', scrollY>440) },{passive:true})
+
+/* ─── PILL CYCLING ─── */
+const pillPhrases = ['Available for Projects · Philippines','Open to New Clients · 2026','Building Premium SaaS · PH']
+let pillIdx = 0
+const pillText = document.getElementById('pillText')
+if(pillText) setInterval(()=>{ pillIdx=(pillIdx+1)%pillPhrases.length; pillText.style.opacity='0'; setTimeout(()=>{ pillText.textContent=pillPhrases[pillIdx]; pillText.style.opacity='1' },300) }, 3800)
+
+/* ─── TEMPLATES BAND MOUSE ─── */
+const tb = document.getElementById('tplBand')
+if(tb) tb.addEventListener('mousemove',e=>{ const r=tb.getBoundingClientRect(); tb.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%'); tb.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%') })
+
+/* ─── REVEAL ─── */
+const io = new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target) } }) },{rootMargin:'0px 0px -8% 0px',threshold:.04})
+document.querySelectorAll('.r').forEach(el=>io.observe(el))
+
+/* ─── COUNT-UP ─── */
+const counted = new Set()
+const countIO = new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting && !counted.has(e.target)){ counted.add(e.target); countUp(e.target) } }) },{threshold:.5})
+document.querySelectorAll('[data-count]').forEach(el=>countIO.observe(el))
+function countUp(el){ const target=+el.dataset.count; const dur=1200; const step=dur/target; let n=0; const t=setInterval(()=>{ n++; el.textContent=n; if(n>=target)clearInterval(t) },step) }
+
+/* ─── SCROLL-SPY NAV ─── */
+const sections = document.querySelectorAll('section[id]')
+const navLinks = document.querySelectorAll('.nav-a[href^="#"]')
+const spyIO = new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ navLinks.forEach(a=>{ a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id) }) } }) },{rootMargin:'-30% 0px -65% 0px'})
+sections.forEach(s=>spyIO.observe(s))
+
+/* ─── MOBILE NAV ─── */
+const mobileBtn = document.getElementById('mobileBtn')
+const mobileMenu = document.getElementById('mobileMenu')
+mobileBtn?.addEventListener('click',()=>{ mobileBtn.classList.toggle('open'); mobileMenu.classList.toggle('open') })
+document.querySelectorAll('[data-mobile-close]').forEach(a=>{ a.addEventListener('click',()=>{ mobileBtn.classList.remove('open'); mobileMenu.classList.remove('open') }) })
+
+/* ─── FOOTER YEAR ─── */
+const fy = document.getElementById('footerYear')
+if(fy) fy.textContent = new Date().getFullYear()
+
+/* ─── CONTACT FORM (FormSubmit) ─── */
+const contactForm = document.getElementById('contactForm')
+const formSuccess = document.getElementById('formSuccess')
+if(contactForm){
+  contactForm.addEventListener('submit', async e=>{
+    e.preventDefault()
+    const btn = contactForm.querySelector('.form-submit')
+    btn.textContent = 'Sending...'
+    btn.disabled = true
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/rjamscxx@gmail.com',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(Object.fromEntries(new FormData(contactForm)))
+      })
+      if(res.ok){ contactForm.reset(); formSuccess.classList.add('show'); btn.textContent='Sent!' }
+      else throw new Error()
+    } catch { btn.textContent='Send Message →'; btn.disabled=false; alert('Something went wrong — email rjamscxx@gmail.com directly.') }
+  })
+}
+
+/* ─── MAIN CAROUSEL (Tenda Pro) ─── */
+;(function(){
+  const track=document.getElementById('tendaTrack')
+  const carousel=document.getElementById('tendaCarousel')
+  const dotsWrap=document.getElementById('tendaDots')
+  const label=document.getElementById('tendaLabel')
+  const count=document.getElementById('tendaCount')
+  if(!track)return
+  const slides=track.children, total=slides.length
+  const labelData=JSON.parse(carousel.dataset.labels||'[]')
+  let cur=0,timer
+
+  for(let i=0;i<total;i++){ const d=document.createElement('button'); d.className='cdot'+(i===0?' active':''); d.addEventListener('click',()=>goTo(i)); dotsWrap.appendChild(d) }
+  const dots=[...dotsWrap.children]
+
+  function goTo(n){ cur=(n+total)%total; track.style.transform=`translateX(-${cur*100}%)`; dots.forEach((d,i)=>d.classList.toggle('active',i===cur)); if(label&&labelData[cur])label.textContent=labelData[cur]; if(count)count.textContent=`${cur+1} / ${total}`; resetTimer() }
+  function resetTimer(){ clearInterval(timer); timer=setInterval(()=>goTo(cur+1),4200) }
+
+  document.querySelector('[data-carousel-prev="tendaCarousel"]')?.addEventListener('click',()=>goTo(cur-1))
+  document.querySelector('[data-carousel-next="tendaCarousel"]')?.addEventListener('click',()=>goTo(cur+1))
+  carousel.addEventListener('mouseenter',()=>clearInterval(timer))
+  carousel.addEventListener('mouseleave',resetTimer)
+  document.addEventListener('keydown',e=>{ const r=carousel.getBoundingClientRect(); if(r.top<innerHeight&&r.bottom>0){ if(e.key==='ArrowLeft')goTo(cur-1); if(e.key==='ArrowRight')goTo(cur+1) } })
+  let t0=0; carousel.addEventListener('touchstart',e=>{t0=e.touches[0].clientX},{passive:true})
+  carousel.addEventListener('touchend',e=>{ const d=e.changedTouches[0].clientX-t0; if(Math.abs(d)>40)goTo(d<0?cur+1:cur-1) })
+  goTo(0)
+})()
+
+/* ─── LIVE CARD CAROUSELS ─── */
+function initLiveCarousel(trackId,dotsId){
+  const track=document.getElementById(trackId), dotsWrap=document.getElementById(dotsId)
+  if(!track||!dotsWrap)return
+  const total=track.children.length; let cur=0
+  for(let i=0;i<total;i++){ const d=document.createElement('button'); d.className='ldot2'+(i===0?' active':''); d.addEventListener('click',()=>goTo(i)); dotsWrap.appendChild(d) }
+  const dots=[...dotsWrap.children]
+  function goTo(n){ cur=(n+total)%total; track.style.transform=`translateX(-${cur*100}%)`; dots.forEach((d,i)=>d.classList.toggle('active',i===cur)) }
+  const card=track.closest('.live-card')
+  card?.querySelector('[data-live-prev="'+trackId+'"]')?.addEventListener('click',()=>goTo(cur-1))
+  card?.querySelector('[data-live-next="'+trackId+'"]')?.addEventListener('click',()=>goTo(cur+1))
+  let t=setInterval(()=>goTo(cur+1),4800)
+  card?.addEventListener('mouseenter',()=>clearInterval(t))
+  card?.addEventListener('mouseleave',()=>{ t=setInterval(()=>goTo(cur+1),4800) })
+  let t0=0; track.addEventListener('touchstart',e=>{t0=e.touches[0].clientX},{passive:true})
+  track.addEventListener('touchend',e=>{ const d=e.changedTouches[0].clientX-t0; if(Math.abs(d)>40)goTo(d<0?cur+1:cur-1) })
+}
+initLiveCarousel('courtsideTrack','courtsideDots')
+initLiveCarousel('grayscaleTrack','grayscaleDots')
+initLiveCarousel('goldpalaceTrack','goldpalaceDots')
+
+/* ─── SMALL CAROUSELS ─── */
+function initSmallCarousel(trackId,dotsId){
+  const track=document.getElementById(trackId), dotsWrap=document.getElementById(dotsId)
+  if(!track||!dotsWrap)return
+  const total=track.children.length; let cur=0
+  for(let i=0;i<total;i++){ const d=document.createElement('button'); d.className='cdot2'+(i===0?' active':''); d.addEventListener('click',()=>goTo(i)); dotsWrap.appendChild(d) }
+  const dots=[...dotsWrap.children]
+  function goTo(n){ cur=(n+total)%total; track.style.transform=`translateX(-${cur*100}%)`; dots.forEach((d,i)=>d.classList.toggle('active',i===cur)) }
+  const card=track.closest('.app-card2')
+  card?.querySelector('[data-c2prev="'+trackId+'"]')?.addEventListener('click',()=>goTo(cur-1))
+  card?.querySelector('[data-c2next="'+trackId+'"]')?.addEventListener('click',()=>goTo(cur+1))
+  let t=setInterval(()=>goTo(cur+1),5200)
+  card?.addEventListener('mouseenter',()=>clearInterval(t))
+  card?.addEventListener('mouseleave',()=>{ t=setInterval(()=>goTo(cur+1),5200) })
+  let t0=0; track.addEventListener('touchstart',e=>{t0=e.touches[0].clientX},{passive:true})
+  track.addEventListener('touchend',e=>{ const d=e.changedTouches[0].clientX-t0; if(Math.abs(d)>40)goTo(d<0?cur+1:cur-1) })
+}
+initSmallCarousel('budtTrack','budtDots')
+initSmallCarousel('jazelTrack','jazelDots')
+initSmallCarousel('ymTrack','ymDots')
+
+console.log('%cRJ Cabansay · App Builder · Philippines\n%crjamscxx@gmail.com','font:700 20px sans-serif;color:#E8B84B;letter-spacing:2px','font:12px monospace;color:#888')
+</script>
+</body>
+</html>
