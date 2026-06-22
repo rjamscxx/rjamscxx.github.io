@@ -565,9 +565,9 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 
   <!-- STATS -->
   <div class="stats r">
-    <div class="stat"><div class="stat-n" data-count="14">0</div><div class="stat-l">Apps Built</div></div>
-    <div class="stat"><div class="stat-n" data-count="2">0</div><div class="stat-l">Yrs Building</div></div>
-    <div class="stat"><div class="stat-n" data-count="5">0</div><div class="stat-l">Next.js Apps</div></div>
+    <div class="stat"><div class="stat-n" data-count="14" data-suffix="+">0</div><div class="stat-l">Apps Built</div></div>
+    <div class="stat"><div class="stat-n" data-count="3" data-suffix="+">0</div><div class="stat-l">Yrs Building</div></div>
+    <div class="stat"><div class="stat-n" data-count="5" data-suffix="+">0</div><div class="stat-l">Next.js Apps</div></div>
     <div class="stat"><div class="stat-n" data-count="15">0</div><div class="stat-l">Starter Templates</div></div>
   </div>
 </section>
@@ -754,7 +754,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
   <div class="sh r">
     <div class="sh-eye">◆ More Work · HTML PWAs &amp; Next.js</div>
     <h2 class="sh-title">Every <span class="it">vertical</span>, built.</h2>
-    <p class="sh-sub">Philippine SMB apps across retail POS, client hubs, education trackers, and barbershop booking — HTML PWAs and Next.js.</p>
+    <p class="sh-sub">Philippine SMB apps — POS, booking, dashboards, client hubs — built in Next.js + Supabase or single-file HTML PWAs.</p>
   </div>
   <div class="app-showcase">
 
@@ -884,9 +884,9 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
   <div class="about-grid">
     <div class="r">
       <div class="about-bio">
-        <p>I'm <strong>Robert James Cabansay (RJ)</strong> — an indie SaaS builder based in the Philippines. I design, build, and ship full-stack web apps for small and medium businesses that need premium software without the enterprise price tag.</p>
+        <p>I'm <strong>Robert James Cabansay (RJ)</strong> — a full-stack developer based in the Philippines. I design, build, and ship production web apps end-to-end: from UI and database to auth, deploy, and beyond.</p>
         <p>My stack is <strong>Next.js + Supabase</strong> for production apps and <strong>single-file HTML PWAs</strong> for fast, affordable client work. Every project is designed to look and feel world-class — because Philippine SMBs deserve the same software quality as Silicon Valley.</p>
-        <p>Flux Labs is my software brand. I take on a few projects per month — custom dashboards, client hubs, white-label deals.</p>
+        <p>Flux Labs is my software brand. I'm available for freelance projects — dashboards, client hubs, custom SaaS — and open to full-time or contract developer roles.</p>
       </div>
     </div>
     <div class="r r1">
@@ -931,7 +931,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
   <div class="sh r">
     <div class="sh-eye">◆ What I Build · Next.js · Supabase</div>
     <h2 class="sh-title">Services <span class="it">that ship.</span></h2>
-    <p class="sh-sub">Hire me for clean, premium-feeling SaaS — single-file or full Next.js. ₱ Peso-ready, fast turnarounds.</p>
+    <p class="sh-sub">Hire me for clean, production-ready SaaS — single-file HTML PWA or full Next.js + Supabase. Fast turnarounds, real deliverables.</p>
   </div>
   <div class="svc-grid">
     <div class="svc r">
@@ -1034,7 +1034,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
     <a href="https://github.com/rjamscxx" target="_blank" rel="noopener">GitHub</a>
     <a href="#top">Back to top ↑</a>
   </div>
-  <div>ROBERT JAMES CABANSAY · APP BUILDER · PHILIPPINES · <span id="footerYear"></span></div>
+  <div>ROBERT JAMES CABANSAY · FULL-STACK DEVELOPER · PHILIPPINES · <span id="footerYear"></span></div>
 </footer>
 
 <script>
@@ -1155,7 +1155,7 @@ document.querySelectorAll('.r').forEach(el=>io.observe(el))
 const counted = new Set()
 const countIO = new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting && !counted.has(e.target)){ counted.add(e.target); countUp(e.target) } }) },{threshold:.5})
 document.querySelectorAll('[data-count]').forEach(el=>countIO.observe(el))
-function countUp(el){ const target=+el.dataset.count; const dur=1200; const step=dur/target; let n=0; const t=setInterval(()=>{ n++; el.textContent=n; if(n>=target)clearInterval(t) },step) }
+function countUp(el){ const target=+el.dataset.count; const suffix=el.dataset.suffix||''; const dur=1200; const step=dur/target; let n=0; const t=setInterval(()=>{ n++; el.textContent=n+suffix; if(n>=target)clearInterval(t) },step) }
 
 /* ─── SCROLL-SPY NAV ─── */
 const sections = document.querySelectorAll('section[id]')
