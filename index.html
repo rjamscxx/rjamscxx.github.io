@@ -1227,12 +1227,12 @@ function initLiveCarousel(trackId,dotsId){
   const track=document.getElementById(trackId), dotsWrap=document.getElementById(dotsId)
   if(!track||!dotsWrap)return
   const total=track.children.length; let cur=0
-  for(let i=0;i<total;i++){ const d=document.createElement('button'); d.className='ldot2'+(i===0?' active':''); d.addEventListener('click',()=>goTo(i)); dotsWrap.appendChild(d) }
+  for(let i=0;i<total;i++){ const d=document.createElement('button'); d.className='ldot2'+(i===0?' active':''); d.addEventListener('click',e=>{e.stopPropagation();goTo(i)}); dotsWrap.appendChild(d) }
   const dots=[...dotsWrap.children]
   function goTo(n){ cur=(n+total)%total; track.style.transform=`translateX(-${cur*100}%)`; dots.forEach((d,i)=>d.classList.toggle('active',i===cur)) }
   const card=track.closest('.live-card')
-  card?.querySelector('[data-live-prev="'+trackId+'"]')?.addEventListener('click',()=>goTo(cur-1))
-  card?.querySelector('[data-live-next="'+trackId+'"]')?.addEventListener('click',()=>goTo(cur+1))
+  card?.querySelector('[data-live-prev="'+trackId+'"]')?.addEventListener('click',e=>{e.stopPropagation();goTo(cur-1)})
+  card?.querySelector('[data-live-next="'+trackId+'"]')?.addEventListener('click',e=>{e.stopPropagation();goTo(cur+1)})
   let t=setInterval(()=>goTo(cur+1),4800)
   card?.addEventListener('mouseenter',()=>clearInterval(t))
   card?.addEventListener('mouseleave',()=>{ t=setInterval(()=>goTo(cur+1),4800) })
