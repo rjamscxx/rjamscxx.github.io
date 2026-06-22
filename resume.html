@@ -477,6 +477,60 @@ footer span{color:var(--gold);}
 .sc-prev{left:10px;}
 .sc-next{right:10px;}
 
+
+/* ══ PRINT / PDF ══ */
+@media print {
+  /* Force background colors */
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+  /* Hide non-content chrome */
+  .glow, .particles, .load-bar, .top-btn,
+  .marquee-wrap, nav .pill,
+  .cbtns, .gbox, .form-wrap,
+  footer { display: none !important; }
+
+  /* Remove fixed positioning */
+  .glow, .particles, .load-bar, .top-btn { position: static !important; }
+
+  /* Make page full-width */
+  body { background: #0C0C0A !important; }
+  .page { max-width: 100% !important; padding: 32px 40px 60px !important; }
+
+  /* Reveal all scroll-animated elements */
+  .rv, .rvL, .rvS {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Freeze hero animations */
+  .a1, .a2, .a3, .a4, .a5 {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* Stop marquee */
+  .marquee-track { animation: none !important; }
+
+  /* Page breaks */
+  .sec { page-break-inside: avoid; }
+  .stats { page-break-inside: avoid; }
+  .purpose { page-break-inside: avoid; }
+
+  /* Keep accordion open bodies visible for PDF */
+  .pbody { display: block !important; }
+  .proj { border-color: rgba(245,241,232,0.15) !important; }
+  .pstory { display: block !important; }
+
+  /* FAQ: hide (too long for PDF) */
+  section:has(.faq) { display: none !important; }
+
+  /* Contact: just show the title + email */
+  .cbtns a:not(.cbtn-email) { display: none !important; }
+  .cbtns { grid-template-columns: auto !important; justify-content: start !important; }
+}
+
 </style>
 </head>
 <body>
