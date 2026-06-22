@@ -541,7 +541,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <section id="top" class="wrap hero">
   <div class="pill"><span class="pill-dot"></span><span class="pill-text" id="pillText">Available for Projects · Philippines</span></div>
   <h1 class="hero-h">I build <span class="it">premium</span><br>SaaS that ships.</h1>
-  <p class="hero-sub">Robert James Cabansay. Indie builder making <strong>production-ready SaaS</strong> across restaurants, sports, cafés, retail, and education — single-file HTML PWAs and Next.js. Premium design, fast turnarounds, ₱ Peso-ready.</p>
+  <p class="hero-sub">Robert James Cabansay. Indie builder making <strong>production-ready SaaS</strong> across restaurants, sports, cafés, retail, barbershops, and education — single-file HTML PWAs and Next.js. Premium design, fast turnarounds, ₱ Peso-ready.</p>
   <div class="hero-btns">
     <a class="btn btn-gold" href="#tenda">See Tenda Pro →</a>
     <a class="btn btn-outline" href="#contact">Let's talk</a>
@@ -565,9 +565,9 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 
   <!-- STATS -->
   <div class="stats r">
-    <div class="stat"><div class="stat-n" data-count="13">0</div><div class="stat-l">Apps Built</div></div>
+    <div class="stat"><div class="stat-n" data-count="14">0</div><div class="stat-l">Apps Built</div></div>
     <div class="stat"><div class="stat-n" data-count="7">0</div><div class="stat-l">Verticals</div></div>
-    <div class="stat"><div class="stat-n" data-count="4">0</div><div class="stat-l">Next.js Apps</div></div>
+    <div class="stat"><div class="stat-n" data-count="5">0</div><div class="stat-l">Next.js Apps</div></div>
     <div class="stat"><div class="stat-n" data-count="15">0</div><div class="stat-l">Starter Templates</div></div>
   </div>
 </section>
@@ -586,6 +586,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
     <span class="mtag">Vercel <span class="dot">◆</span></span>
     <span class="mtag">HTML PWA <span class="dot">◆</span></span>
     <span class="mtag">Philippines SMB <span class="dot">◆</span></span>
+    <span class="mtag">Prisma <span class="dot">◆</span></span>
     <span class="mtag">Resend <span class="dot">◆</span></span>
     <span class="mtag">Next.js 15 <span class="dot">◆</span></span>
     <span class="mtag">React 19 <span class="dot">◆</span></span>
@@ -598,6 +599,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
     <span class="mtag">Vercel <span class="dot">◆</span></span>
     <span class="mtag">HTML PWA <span class="dot">◆</span></span>
     <span class="mtag">Philippines SMB <span class="dot">◆</span></span>
+    <span class="mtag">Prisma <span class="dot">◆</span></span>
     <span class="mtag">Resend <span class="dot">◆</span></span>
   </div>
 </div>
@@ -750,9 +752,9 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <!-- ═══ MORE WORK ═══ -->
 <section id="more" class="wrap sec">
   <div class="sh r">
-    <div class="sh-eye">◆ More Work · HTML PWAs</div>
+    <div class="sh-eye">◆ More Work · HTML PWAs &amp; Next.js</div>
     <h2 class="sh-title">Every <span class="it">vertical</span>, built.</h2>
-    <p class="sh-sub">Single-file HTML PWAs for Philippine SMBs — retail POS, client hubs, and education trackers.</p>
+    <p class="sh-sub">Philippine SMB apps across retail POS, client hubs, education trackers, and barbershop booking — HTML PWAs and Next.js.</p>
   </div>
   <div class="app-showcase">
 
@@ -822,6 +824,17 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
         <p class="app-desc2">Education and youth development tracker. Progress monitoring, engagement metrics, orange accent — built for Philippine learning orgs.</p>
         <div class="app-pills"><span>HTML</span><span>Education</span><span>Orange</span><span>Tracker</span></div>
         <button class="case-study-btn" data-case="youngminds">Case Study ↗</button>
+      </div>
+    </div>
+
+    <!-- BANOT'S BARBERSHOP -->
+    <div class="app-card2 r r3">
+      <div class="app-body" style="padding-top:28px;">
+        <div class="app-badge"><span class="tag tag-client">Latest Build</span><span class="app-ver">2026</span></div>
+        <div><div class="app-name2">BANOT'S BARBERSHOP</div><div class="app-vert">Solo-barber booking SaaS</div></div>
+        <p class="app-desc2">Full-stack booking app for a solo barber-owner. Public page: pick service + time slot, pay via GCash/Maya/BDO/BPI QR, upload payment proof. Dashboard: calendar view, approve/reject bookings, client visit history, walk-in support, and "due for a cut" reminders.</p>
+        <div class="app-pills"><span>Next.js</span><span>Prisma</span><span>SQLite</span><span>Tailwind</span><span>Booking</span><span>QR Pay</span></div>
+        <button class="case-study-btn" data-case="banots">Case Study ↗</button>
       </div>
     </div>
 
@@ -1075,6 +1088,13 @@ const CASES = {
     problem:'Youth development organizations in the Philippines needed a way to track student progress, attendance, and engagement metrics without expensive LMS software.',
     solution:'Education tracker PWA with progress dashboards, engagement metrics, attendance logging, and report exports. Orange accent brand, mobile-optimized, localStorage-first.',
     stack:['HTML PWA','localStorage','Progress tracking','Engagement metrics','Report export']
+  },
+  banots: {
+    tag:'Barbershop SaaS · 2026',
+    title:"Banot's Barbershop",
+    problem:"A solo barber-owner needed a booking system that fits how a one-person shop actually works — no staff complexity, no payment processor custody, just a clean public page and a simple dashboard.",
+    solution:'Built with Next.js + Prisma + SQLite. Clients book via a public page: pick service, pick time slot, pay via QR (GCash/Maya/BDO/BPI), upload proof. Barber reviews proof in a calendar-style dashboard, confirms or rejects, marks completed/no-show. Walk-in support and visit-history-based rebooking reminders included.',
+    stack:['Next.js','Prisma','SQLite','Tailwind CSS','QR Payment','Booking system','PH Market']
   }
 }
 
