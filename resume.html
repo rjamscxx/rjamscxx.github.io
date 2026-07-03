@@ -72,6 +72,13 @@ nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:
   text-transform:uppercase;color:var(--gold);border:1px solid var(--gbdr);background:var(--gdim);
   padding:7px 15px;border-radius:100px;white-space:nowrap;line-height:1;}
 .pdot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulse 2s infinite;}
+.pf-btn{display:inline-flex;align-items:center;gap:9px;margin-top:24px;
+  padding:14px 28px;border-radius:100px;background:var(--gold);color:var(--bg);
+  font-size:13px;font-weight:700;letter-spacing:.4px;line-height:1;
+  transition:background .25s,transform .25s,box-shadow .25s;}
+.pf-btn:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,146,42,.28);}
+.pf-btn .arr{display:inline-block;transition:transform .25s;}
+.pf-btn:hover .arr{transform:translateX(4px);}
 
 /* ── MARQUEE ── */
 .marquee-wrap{overflow:hidden;margin-bottom:64px;
@@ -485,7 +492,7 @@ footer span{color:var(--gold);}
 
   /* Hide non-content chrome */
   .glow, .particles, .load-bar, .top-btn,
-  .marquee-wrap, nav .pill,
+  .marquee-wrap, nav .pill, .pf-btn,
   .cbtns, .gbox, .form-wrap,
   footer { display: none !important; }
 
@@ -563,6 +570,7 @@ footer span{color:var(--gold);}
       <span class="htag">TypeScript</span>
       <span class="htag">Full-Stack SaaS</span>
     </div>
+    <a class="pf-btn a4" href="index.html">View Full Portfolio <span class="arr">&#8594;</span></a>
   </div>
   <div class="photo-col a5">
     <div class="frame">
