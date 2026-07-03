@@ -5,15 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover" />
 <meta name="theme-color" content="#0a0a0a" />
 <meta name="color-scheme" content="dark" />
-<meta name="description" content="Robert James Cabansay — App Builder · Philippines. Tenda Pro, Courtside PH, Gold Palace Streetwear and more. Premium SaaS across restaurant, sports, café, and retail." />
-<meta property="og:title" content="RJ Cabansay — App Builder · Portfolio" />
-<meta property="og:description" content="Indie builder making production-ready SaaS for Philippine SMBs. Next.js + Supabase, single-file HTML PWAs, premium design." />
+<meta name="description" content="Robert James Cabansay — Full-Stack Developer · Philippines. Next.js, React, TypeScript, Supabase. Tenda Pro, Courtside PH, Banot's Barbershop and more production SaaS across restaurant, sports, retail, and services." />
+<meta property="og:title" content="RJ Cabansay — Full-Stack Developer · Portfolio" />
+<meta property="og:description" content="Full-stack developer shipping production SaaS for Philippine SMBs. Next.js + Supabase, single-file HTML PWAs, premium design." />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="assets/tenda-pro/demo-1-dashboard.png" />
+<meta property="og:url" content="https://rjamscxx.github.io/" />
+<meta property="og:image" content="https://rjamscxx.github.io/assets/tenda-pro/demo-1-dashboard.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="RJ Cabansay — App Builder" />
-<meta name="twitter:description" content="Premium SaaS for Philippine SMBs. Next.js + Supabase." />
-<title>RJ Cabansay — App Builder · Portfolio</title>
+<meta name="twitter:title" content="RJ Cabansay — Full-Stack Developer" />
+<meta name="twitter:description" content="Production SaaS for Philippine SMBs. Next.js + Supabase." />
+<title>RJ Cabansay — Full-Stack Developer · Portfolio</title>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='900' font-size='15' fill='url(%23g)'>RJ</text><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23E8B84B'/><stop offset='1' stop-color='%23C9922A'/></linearGradient></defs></svg>" />
@@ -478,6 +479,37 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 .r.on{opacity:1;transform:none}
 .r1{transition-delay:.07s}.r2{transition-delay:.14s}.r3{transition-delay:.21s}.r4{transition-delay:.28s}
 
+/* TECH STACK */
+.stack-grid{display:grid;gap:16px}
+@media(min-width:640px){.stack-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.stack-grid{grid-template-columns:repeat(4,1fr)}}
+.stack-col{border:1px solid var(--b1);border-radius:14px;background:var(--bg2);padding:26px 22px;
+  transition:border-color .4s,transform .5s var(--ease-out),background .4s}
+.stack-col:hover{border-color:var(--gbdr);transform:translateY(-4px);background:var(--s2)}
+.stack-col-label{font-family:var(--M);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold2);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.stack-col-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--gbdr),transparent)}
+.stack-items{display:grid;gap:15px}
+.stack-item{display:grid;gap:3px}
+.stack-item-name{font-family:var(--D);font-size:14.5px;font-weight:700;letter-spacing:.01em}
+.stack-item-note{font-family:var(--M);font-size:9.5px;color:var(--c50);letter-spacing:.04em;line-height:1.55}
+.stack-default{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;
+  border:1px solid var(--gbdr);border-radius:14px;padding:18px 22px;
+  background:radial-gradient(500px circle at 0 50%,rgba(232,184,75,.07),transparent 60%),var(--bg2)}
+.stack-default-label{font-family:var(--M);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2)}
+.stack-default-items{display:flex;flex-wrap:wrap;gap:5px}
+.stack-default-items span{font-family:var(--M);font-size:10px;padding:4px 10px;border:1px solid var(--gbdr);color:var(--gold2);border-radius:999px;background:var(--gdim)}
+
+/* FORM ERROR */
+.form-error{font-family:var(--M);font-size:11.5px;color:#f87171;text-align:center;
+  padding:10px;border:1px solid rgba(248,113,113,.3);border-radius:8px;
+  background:rgba(248,113,113,.08);display:none}
+.form-error.show{display:block}
+
+/* A11Y + NUMBERS */
+:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+.stat-n,.app-ver,.carousel-count,.tpl-big{font-variant-numeric:tabular-nums}
+
 /* RESPONSIVE */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
@@ -516,6 +548,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
     <a class="nav-a" href="#more">More</a>
     <a class="nav-a" href="#templates">Templates</a>
     <a class="nav-a" href="#about">About</a>
+    <a class="nav-a" href="#stack">Stack</a>
     <a class="nav-a" href="#contact">Contact</a>
   </div>
   <div style="display:flex;align-items:center;gap:12px">
@@ -533,6 +566,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
   <a class="mobile-a" href="#more" data-mobile-close>More Work</a>
   <a class="mobile-a" href="#templates" data-mobile-close>Templates</a>
   <a class="mobile-a" href="#about" data-mobile-close>About</a>
+  <a class="mobile-a" href="#stack" data-mobile-close>Stack</a>
   <a class="mobile-a" href="#contact" data-mobile-close>Contact</a>
   <a class="mobile-cta" href="mailto:rjamscxx@gmail.com">rjamscxx@gmail.com ↗</a>
 </div>
@@ -565,9 +599,9 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 
   <!-- STATS -->
   <div class="stats r">
-    <div class="stat"><div class="stat-n" data-count="14" data-suffix="+">0</div><div class="stat-l">Apps Built</div></div>
+    <div class="stat"><div class="stat-n" data-count="16" data-suffix="+">0</div><div class="stat-l">Apps Built</div></div>
     <div class="stat"><div class="stat-n" data-count="3" data-suffix="+">0</div><div class="stat-l">Yrs Building</div></div>
-    <div class="stat"><div class="stat-n" data-count="5" data-suffix="+">0</div><div class="stat-l">Next.js Apps</div></div>
+    <div class="stat"><div class="stat-n" data-count="6" data-suffix="+">0</div><div class="stat-l">Next.js Apps</div></div>
     <div class="stat"><div class="stat-n" data-count="15">0</div><div class="stat-l">Starter Templates</div></div>
   </div>
 </section>
@@ -579,8 +613,10 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
     <span class="mtag">React 19 <span class="dot">◆</span></span>
     <span class="mtag">TypeScript <span class="dot">◆</span></span>
     <span class="mtag">Tailwind v4 <span class="dot">◆</span></span>
+    <span class="mtag">shadcn/ui <span class="dot">◆</span></span>
     <span class="mtag">Supabase <span class="dot">◆</span></span>
     <span class="mtag">Drizzle ORM <span class="dot">◆</span></span>
+    <span class="mtag">Neon Postgres <span class="dot">◆</span></span>
     <span class="mtag">Playwright <span class="dot">◆</span></span>
     <span class="mtag">AI SDK <span class="dot">◆</span></span>
     <span class="mtag">Vercel <span class="dot">◆</span></span>
@@ -592,8 +628,10 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
     <span class="mtag">React 19 <span class="dot">◆</span></span>
     <span class="mtag">TypeScript <span class="dot">◆</span></span>
     <span class="mtag">Tailwind v4 <span class="dot">◆</span></span>
+    <span class="mtag">shadcn/ui <span class="dot">◆</span></span>
     <span class="mtag">Supabase <span class="dot">◆</span></span>
     <span class="mtag">Drizzle ORM <span class="dot">◆</span></span>
+    <span class="mtag">Neon Postgres <span class="dot">◆</span></span>
     <span class="mtag">Playwright <span class="dot">◆</span></span>
     <span class="mtag">AI SDK <span class="dot">◆</span></span>
     <span class="mtag">Vercel <span class="dot">◆</span></span>
@@ -686,7 +724,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
       <div class="live-body">
         <div class="live-meta">
           <span class="live-tag-blue"><span class="live-tag-dot" style="background:var(--blue);box-shadow:0 0 7px var(--blue)"></span>Live · courtside-ph.vercel.app</span>
-          <span style="font-family:var(--M);font-size:10px;color:var(--c30)">v16</span>
+          <span style="font-family:var(--M);font-size:10px;color:var(--c30)">v19</span>
         </div>
         <div class="live-name">COURT<span class="it">SIDE</span></div>
         <p class="live-desc">Premium multi-sport court reservation PWA. Basketball, tennis, badminton, volleyball, futsal, pickleball — QR check-in, team management, Supabase cloud sync.</p>
@@ -829,12 +867,46 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 
     <!-- BANOT'S BARBERSHOP -->
     <div class="app-card2 r r3">
-      <div class="app-body" style="padding-top:28px;">
-        <div class="app-badge"><span class="tag tag-client">Latest Build</span><span class="app-ver">2026</span></div>
+      <div class="app-card2-carousel" id="banotsCard">
+        <div class="app-card2-track" id="banotsTrack">
+          <div class="app-card2-slide"><img loading="lazy" src="assets/banots/hero.png" alt="Banot's Barbershop landing" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/banots/section-2.png" alt="Banot's booking wizard — pick a service" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/banots/section-3.png" alt="Banot's booking wizard — services" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/banots/section-4.png" alt="Banot's scroll landing site" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/banots/full.png" alt="Banot's scroll landing — services" /></div>
+        </div>
+        <button class="app-card2-prev" data-c2prev="banotsTrack">&#8592;</button>
+        <button class="app-card2-next" data-c2next="banotsTrack">&#8594;</button>
+        <div class="app-card2-dots2" id="banotsDots"></div>
+      </div>
+      <div class="app-body">
+        <div class="app-badge"><span class="tag tag-live">Live · Latest Build</span><span class="app-ver">2026</span></div>
         <div><div class="app-name2">BANOT'S BARBERSHOP</div><div class="app-vert">Solo-barber booking SaaS</div></div>
-        <p class="app-desc2">Full-stack booking app for a solo barber-owner. Public page: pick service + time slot, pay via GCash/Maya/BDO/BPI QR, upload payment proof. Dashboard: calendar view, approve/reject bookings, client visit history, walk-in support, and "due for a cut" reminders.</p>
-        <div class="app-pills"><span>Next.js</span><span>Prisma</span><span>SQLite</span><span>Tailwind</span><span>Booking</span><span>QR Pay</span></div>
+        <p class="app-desc2">Full-stack booking app for a solo barber-owner, live in production. 5-step public wizard: pick service + time slot, pay via GCash/Maya/BDO/BPI QR, upload proof. Dashboard: calendar, approve/reject, client visit history, walk-ins — plus a separate scroll-animated landing site.</p>
+        <div class="app-pills"><span>Next.js 16</span><span>Prisma 7</span><span>Neon Postgres</span><span>Tailwind</span><span>QR Pay</span></div>
         <button class="case-study-btn" data-case="banots">Case Study ↗</button>
+      </div>
+    </div>
+
+    <!-- CHECKOUT HUB -->
+    <div class="app-card2 r r4">
+      <div class="app-card2-carousel" id="chubCard">
+        <div class="app-card2-track" id="chubTrack">
+          <div class="app-card2-slide"><img loading="lazy" src="assets/checkout-hub/hero.png" alt="Checkout Hub inventory dashboard" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/checkout-hub/section-2.png" alt="Checkout Hub product list" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/checkout-hub/section-3.png" alt="Checkout Hub modules" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/checkout-hub/full.png" alt="Checkout Hub full view" /></div>
+        </div>
+        <button class="app-card2-prev" data-c2prev="chubTrack">&#8592;</button>
+        <button class="app-card2-next" data-c2next="chubTrack">&#8594;</button>
+        <div class="app-card2-dots2" id="chubDots"></div>
+      </div>
+      <div class="app-body">
+        <div class="app-badge"><span class="tag tag-live">Live · PWA</span><span class="app-ver">business os</span></div>
+        <div><div class="app-name2">CHECKOUT HUB</div><div class="app-vert">Reseller business manager</div></div>
+        <p class="app-desc2">All-in-one business manager PWA for a frozen-goods reseller — shop, orders, invoicing, profits, products, and inventory with low-stock and expiry alerts that auto-deduct on invoice save. Installable, with print/PDF reports.</p>
+        <div class="app-pills"><span>HTML PWA</span><span>8 modules</span><span>Inventory</span><span>Print/PDF</span></div>
+        <button class="case-study-btn" data-case="checkouthub">Case Study ↗</button>
       </div>
     </div>
 
@@ -920,6 +992,65 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ TECH STACK ═══ -->
+<section id="stack" class="wrap sec">
+  <div class="sh r">
+    <div class="sh-eye">◆ Toolbox · In Production</div>
+    <h2 class="sh-title">The <span class="it">stack</span> behind it.</h2>
+    <p class="sh-sub">Not a logo wall — every tool here is running in at least one shipped app above.</p>
+  </div>
+  <div class="stack-grid">
+    <div class="stack-col r">
+      <div class="stack-col-label">Frontend</div>
+      <div class="stack-items">
+        <div class="stack-item"><div class="stack-item-name">Next.js 15 / 16</div><div class="stack-item-note">App Router, server actions — Tenda Pro · Banot's · Gold Palace</div></div>
+        <div class="stack-item"><div class="stack-item-name">React 19</div><div class="stack-item-note">Production UI across every Next.js build</div></div>
+        <div class="stack-item"><div class="stack-item-name">TypeScript</div><div class="stack-item-note">End-to-end types on all production apps</div></div>
+        <div class="stack-item"><div class="stack-item-name">Tailwind CSS v4</div><div class="stack-item-note">Token-driven styling, dark-first themes</div></div>
+        <div class="stack-item"><div class="stack-item-name">shadcn/ui</div><div class="stack-item-note">Accessible component base for dashboards</div></div>
+        <div class="stack-item"><div class="stack-item-name">Vite</div><div class="stack-item-note">Fast SPA landings — Banot's scroll site</div></div>
+      </div>
+    </div>
+    <div class="stack-col r r1">
+      <div class="stack-col-label">Backend &amp; Data</div>
+      <div class="stack-items">
+        <div class="stack-item"><div class="stack-item-name">Supabase</div><div class="stack-item-note">Postgres, Auth, RLS, SSR — Tenda Pro · Courtside · Gold Palace</div></div>
+        <div class="stack-item"><div class="stack-item-name">Prisma 7</div><div class="stack-item-note">Typed ORM — Banot's Barbershop</div></div>
+        <div class="stack-item"><div class="stack-item-name">Neon Postgres</div><div class="stack-item-note">Serverless Postgres — Banot's Barbershop</div></div>
+        <div class="stack-item"><div class="stack-item-name">Drizzle ORM</div><div class="stack-item-note">SQL-first data layer — Tenda Pro</div></div>
+        <div class="stack-item"><div class="stack-item-name">Row-Level Security</div><div class="stack-item-note">Policy-locked multi-tenant data</div></div>
+      </div>
+    </div>
+    <div class="stack-col r r2">
+      <div class="stack-col-label">Testing &amp; Tooling</div>
+      <div class="stack-items">
+        <div class="stack-item"><div class="stack-item-name">Playwright</div><div class="stack-item-note">E2E smoke suites, screenshot + scraping automation</div></div>
+        <div class="stack-item"><div class="stack-item-name">Git &amp; GitHub</div><div class="stack-item-note">Every project versioned, clean history</div></div>
+        <div class="stack-item"><div class="stack-item-name">Node.js scripting</div><div class="stack-item-note">Build pipelines, PDF export, capture bots</div></div>
+        <div class="stack-item"><div class="stack-item-name">Vercel CLI</div><div class="stack-item-note">Direct-to-prod and preview deploys</div></div>
+      </div>
+    </div>
+    <div class="stack-col r r3">
+      <div class="stack-col-label">Platform &amp; Delivery</div>
+      <div class="stack-items">
+        <div class="stack-item"><div class="stack-item-name">Vercel</div><div class="stack-item-note">Every production deploy runs here</div></div>
+        <div class="stack-item"><div class="stack-item-name">PWA</div><div class="stack-item-note">Service workers, offline-first, web push — Courtside</div></div>
+        <div class="stack-item"><div class="stack-item-name">Resend</div><div class="stack-item-note">Transactional email — Tenda Pro</div></div>
+        <div class="stack-item"><div class="stack-item-name">AI SDK</div><div class="stack-item-note">Natural-language assistant — Tenda Pro</div></div>
+        <div class="stack-item"><div class="stack-item-name">QR Payments</div><div class="stack-item-note">GCash · Maya · BDO · BPI flows — Banot's</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stack-default r">
+    <span class="stack-default-label">Default build</span>
+    <div class="stack-default-items">
+      <span>Next.js 15</span><span>TypeScript</span><span>Tailwind v4</span><span>shadcn/ui</span><span>Supabase</span><span>Drizzle</span><span>Vercel</span>
     </div>
   </div>
 </section>
@@ -1022,7 +1153,8 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
           <textarea class="form-textarea" id="fmsg" name="message" placeholder="Tell me about your project and budget range..." required></textarea>
         </div>
         <button type="submit" class="form-submit">Send Message →</button>
-        <div class="form-success" id="formSuccess">Message sent! I'll reply within 24 hours.</div>
+        <div class="form-success" id="formSuccess">Message sent. I'll reply within 24 hours.</div>
+        <div class="form-error" id="formError">Message didn't send — email <a href="mailto:rjamscxx@gmail.com" style="text-decoration:underline">rjamscxx@gmail.com</a> directly.</div>
       </form>
     </div>
   </div>
@@ -1090,11 +1222,18 @@ const CASES = {
     stack:['HTML PWA','localStorage','Progress tracking','Engagement metrics','Report export']
   },
   banots: {
-    tag:'Barbershop SaaS · 2026',
+    tag:'Barbershop SaaS · Live · 2026',
     title:"Banot's Barbershop",
     problem:"A solo barber-owner needed a booking system that fits how a one-person shop actually works — no staff complexity, no payment processor custody, just a clean public page and a simple dashboard.",
-    solution:'Built with Next.js + Prisma + SQLite. Clients book via a public page: pick service, pick time slot, pay via QR (GCash/Maya/BDO/BPI), upload proof. Barber reviews proof in a calendar-style dashboard, confirms or rejects, marks completed/no-show. Walk-in support and visit-history-based rebooking reminders included.',
-    stack:['Next.js','Prisma','SQLite','Tailwind CSS','QR Payment','Booking system','PH Market']
+    solution:'Built with Next.js 16 + Prisma 7 on Neon serverless Postgres, live in production. Clients book via a 5-step public wizard: pick service, pick time slot, pay via QR (GCash/Maya/BDO/BPI), upload proof. Barber reviews proof in a calendar-style dashboard, confirms or rejects, marks completed/no-show. Walk-in support, visit-history-based rebooking reminders, and a separate scroll-animated marketing site round it out.',
+    stack:['Next.js 16','Prisma 7','Neon Postgres','Tailwind CSS','QR Payment','Booking system','Vercel']
+  },
+  checkouthub: {
+    tag:'Business Manager · Live PWA',
+    title:'Checkout Hub PH',
+    problem:'A frozen-goods reseller ran the whole business from notebooks and chat threads — no visibility on stock levels, expiry dates, profit per product, or which orders were already invoiced.',
+    solution:'Single-file business manager PWA with eight modules — shop, orders, invoicing, profits, products, inventory, and more. Inventory auto-deducts on invoice save, with low-stock and expiry alerts per product. Installable, works offline, and ships print/PDF reports for end-of-day paperwork.',
+    stack:['HTML PWA','localStorage','Inventory','Invoicing','Profit tracking','Print/PDF','Vercel']
   }
 }
 
@@ -1176,21 +1315,23 @@ if(fy) fy.textContent = new Date().getFullYear()
 /* ─── CONTACT FORM (FormSubmit) ─── */
 const contactForm = document.getElementById('contactForm')
 const formSuccess = document.getElementById('formSuccess')
+const formError = document.getElementById('formError')
 if(contactForm){
   contactForm.addEventListener('submit', async e=>{
     e.preventDefault()
     const btn = contactForm.querySelector('.form-submit')
     btn.textContent = 'Sending...'
     btn.disabled = true
+    formError.classList.remove('show')
     try {
       const res = await fetch('https://formsubmit.co/ajax/rjamscxx@gmail.com',{
         method:'POST',
         headers:{'Content-Type':'application/json','Accept':'application/json'},
         body: JSON.stringify(Object.fromEntries(new FormData(contactForm)))
       })
-      if(res.ok){ contactForm.reset(); formSuccess.classList.add('show'); btn.textContent='Sent!' }
+      if(res.ok){ contactForm.reset(); formSuccess.classList.add('show'); btn.textContent='Sent' }
       else throw new Error()
-    } catch { btn.textContent='Send Message →'; btn.disabled=false; alert('Something went wrong — email rjamscxx@gmail.com directly.') }
+    } catch { btn.textContent='Send Message →'; btn.disabled=false; formError.classList.add('show') }
   })
 }
 
@@ -1263,8 +1404,10 @@ function initSmallCarousel(trackId,dotsId){
 initSmallCarousel('budtTrack','budtDots')
 initSmallCarousel('jazelTrack','jazelDots')
 initSmallCarousel('ymTrack','ymDots')
+initSmallCarousel('banotsTrack','banotsDots')
+initSmallCarousel('chubTrack','chubDots')
 
-console.log('%cRJ Cabansay · App Builder · Philippines\n%crjamscxx@gmail.com','font:700 20px sans-serif;color:#E8B84B;letter-spacing:2px','font:12px monospace;color:#888')
+console.log('%cRJ Cabansay · Full-Stack Developer · Philippines\n%crjamscxx@gmail.com','font:700 20px sans-serif;color:#E8B84B;letter-spacing:2px','font:12px monospace;color:#888')
 </script>
 </body>
 </html>
