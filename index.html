@@ -342,6 +342,9 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
   color:var(--gold2);background:var(--gdim);border:1px solid var(--gbdr);
   padding:5px 10px;border-radius:999px;margin-top:8px;transition:background .2s}
 .case-study-btn:hover{background:rgba(232,184,75,.18)}
+.modal-links{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.modal-links a{display:inline-flex;align-items:center;gap:5px;font-family:var(--M);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold2);background:var(--gdim);border:1px solid var(--gbdr);padding:8px 15px;border-radius:999px;text-decoration:none;transition:background .2s}
+.modal-links a:hover{background:rgba(232,184,75,.18)}
 
 /* TEMPLATES */
 .tpl-band{border:1px solid var(--gbdr);border-radius:20px;overflow:hidden;position:relative;
@@ -536,6 +539,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
     <div class="modal-text" id="modalSolution"></div>
     <div class="modal-section-label">Stack</div>
     <div class="modal-stack" id="modalStack"></div>
+    <div class="modal-links" id="modalLinks"></div>
   </div>
 </div>
 
@@ -1009,7 +1013,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
     <div class="stack-col r">
       <div class="stack-col-label">Frontend</div>
       <div class="stack-items">
-        <div class="stack-item"><div class="stack-item-name">Next.js 15 / 16</div><div class="stack-item-note">App Router, server actions — Tenda Pro · Banot's · Gold Palace</div></div>
+        <div class="stack-item"><div class="stack-item-name">Next.js 15 / 16</div><div class="stack-item-note">App Router, server actions — Tenda Pro · Banot's</div></div>
         <div class="stack-item"><div class="stack-item-name">React 19</div><div class="stack-item-note">Production UI across every Next.js build</div></div>
         <div class="stack-item"><div class="stack-item-name">TypeScript</div><div class="stack-item-note">End-to-end types on all production apps</div></div>
         <div class="stack-item"><div class="stack-item-name">Tailwind CSS v4</div><div class="stack-item-note">Token-driven styling, dark-first themes</div></div>
@@ -1194,11 +1198,11 @@ const CASES = {
     stack:['HTML PWA','Monochrome design','localStorage','QR loyalty card','Subscription tiers']
   },
   goldpalace: {
-    tag:'Streetwear · PWA + Next.js',
+    tag:'Streetwear · PWA + Supabase',
     title:'Gold Palace Streetwear',
     problem:'Manila streetwear brands had to choose between a basic Shopify store (expensive, no personality) or building from scratch — neither option gave them full creative control with owner-side operations.',
-    solution:'Two-layer system: public storefront PWA (gold-palace-streetwear.vercel.app) with cart and quick-view, plus a full Next.js + Supabase dashboard with POS, orders, inventory, sales analytics, expenses, and reports.',
-    stack:['HTML PWA','Next.js','Supabase','POS','Inventory','Vercel']
+    solution:'Two-layer system: public storefront PWA (gold-palace-streetwear.vercel.app) with cart and quick-view, plus an owner dashboard with POS, orders, inventory, sales analytics, expenses, and reports on Supabase. Hardened after a full security audit: XSS escaping, strict CSP with SRI on every CDN asset, PIN throttling, checkout spam guards, and a Supabase RLS lockdown verified against live exploit attempts.',
+    stack:['HTML PWA','Supabase','RLS','CSP','POS','Inventory','Vercel']
   },
   budtender: {
     tag:'Retail POS · HTML',
@@ -1241,6 +1245,13 @@ const CASES = {
 const overlay = document.getElementById('modalOverlay')
 const modalClose = document.getElementById('modalClose')
 
+const CASE_LINKS = {
+  tenda:       { live:'https://tenda.ph',                          repo:'https://github.com/rjamscxx/tenda-pro' },
+  courtside:   { live:'https://courtside-ph.vercel.app',           repo:'https://github.com/rjamscxx/courtside-ph' },
+  goldpalace:  { live:'https://gold-palace-streetwear.vercel.app' },
+  banots:      { live:'https://banots-barbershop.vercel.app',      repo:'https://github.com/rjamscxx/banots-barbershop' },
+  checkouthub: { live:'https://checkout-hub-ph.vercel.app',        repo:'https://github.com/rjamscxx/checkout-hub-ph' }
+}
 function openCase(key) {
   const d = CASES[key]
   if (!d) return
@@ -1250,6 +1261,13 @@ function openCase(key) {
   document.getElementById('modalSolution').textContent = d.solution
   const stackEl = document.getElementById('modalStack')
   stackEl.innerHTML = d.stack.map(s=>`<span>${s}</span>`).join('')
+  const linksEl = document.getElementById('modalLinks')
+  const L = CASE_LINKS[key] || {}
+  const parts = []
+  if (L.live) parts.push(`<a href="${L.live}" target="_blank" rel="noopener">Live site ↗</a>`)
+  if (L.repo) parts.push(`<a href="${L.repo}" target="_blank" rel="noopener">GitHub ↗</a>`)
+  linksEl.innerHTML = parts.join('')
+  linksEl.style.display = parts.length ? 'flex' : 'none'
   overlay.classList.add('open')
   document.body.style.overflow = 'hidden'
 }
