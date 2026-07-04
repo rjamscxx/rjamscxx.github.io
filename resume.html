@@ -22,12 +22,32 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --bg:#0C0C0A;--bg2:#111110;--bg3:#1A1A17;--bg4:#222220;
-  --gold:#C9922A;--gold2:#E8B84B;--gdim:rgba(201,146,42,0.12);--gbdr:rgba(201,146,42,0.26);
+  --gold:#C9922A;--gold2:#E8B84B;--gold3:#FFD584;--gdim:rgba(201,146,42,0.12);--gbdr:rgba(201,146,42,0.26);
   --cr:#F5F1E8;--c70:rgba(245,241,232,0.7);--c50:rgba(245,241,232,0.5);
   --c20:rgba(245,241,232,0.34);--c08:rgba(245,241,232,0.08);--c04:rgba(245,241,232,0.04);
   --serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',sans-serif;
   --radius:14px;--gap:12px;
 }
+
+/* ══ PREMIUM SIGNATURE KIT (shared vocabulary with portfolio index.html) ══ */
+@property --beam-a{syntax:'<angle>';initial-value:0deg;inherits:false}
+.aurora{position:absolute;inset:-10% -5% auto -5%;height:130%;z-index:-1;overflow:hidden;pointer-events:none}
+.aurora::before,.aurora::after{content:"";position:absolute;border-radius:50%;filter:blur(80px);mix-blend-mode:screen}
+.aurora::before{width:55vw;height:55vw;left:-8%;top:-25%;background:radial-gradient(circle,rgba(232,184,75,.28),transparent 62%);animation:auroraA 36s ease-in-out infinite alternate}
+.aurora::after{width:46vw;height:46vw;right:-6%;top:-8%;background:radial-gradient(circle,rgba(249,115,22,.15),transparent 62%);animation:auroraB 44s ease-in-out infinite alternate}
+@keyframes auroraA{to{transform:translate3d(7%,9%,0) scale(1.18)}}
+@keyframes auroraB{to{transform:translate3d(-7%,5%,0) scale(1.08)}}
+.shimmer{background:linear-gradient(100deg,var(--gold2,#E8B84B) 18%,#fff4d6 42%,var(--gold3,#FFD584) 58%,var(--gold2,#E8B84B) 82%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shine 6.5s linear infinite}
+@keyframes shine{to{background-position:-220% center}}
+.beam{position:relative;isolation:isolate}
+.beam::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;pointer-events:none;z-index:1;background:conic-gradient(from var(--beam-a),transparent 0 72%,var(--gold3,#FFD584) 84%,#fff4d6 90%,var(--gold2,#E8B84B) 96%,transparent 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;animation:beamspin 5s linear infinite}
+@keyframes beamspin{to{--beam-a:360deg}}
+.spot{position:relative}
+.spot::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;transition:opacity .45s cubic-bezier(.16,1,.3,1);background:radial-gradient(440px circle at var(--mx,50%) var(--my,50%),rgba(232,184,75,.12),transparent 44%)}
+.spot:hover::after{opacity:1}
+@media(prefers-reduced-motion:reduce){.aurora::before,.aurora::after{animation:none}.shimmer{animation:none;background-position:0 center}.beam::after{animation:none;background:linear-gradient(135deg,rgba(232,184,75,.28),transparent)}}
+@media print{.aurora,.beam::after{display:none!important}.shimmer{-webkit-text-fill-color:currentColor!important;color:var(--gold,#C9922A)!important;background:none!important;animation:none!important}.spot::after{display:none!important}}
+
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{font-family:var(--sans);background:var(--bg);color:var(--cr);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 img{display:block;max-width:100%;}
@@ -111,7 +131,7 @@ nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:
 .mi{color:var(--gold);margin-right:7px;}
 
 /* ── HERO ── */
-.hero{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;margin-bottom:56px;}
+.hero{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;margin-bottom:56px;position:relative;}
 .eyebrow{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;line-height:1;}
 h1{font-family:var(--serif);font-size:clamp(36px,5.2vw,54px);font-weight:700;line-height:1.04;letter-spacing:-.3px;margin-bottom:8px;}
 .meta{font-size:12px;color:var(--c20);letter-spacing:.5px;margin-bottom:22px;line-height:1;}
@@ -589,9 +609,10 @@ footer span{color:var(--gold);}
 
 <!-- HERO -->
 <section class="hero">
+  <div class="aurora" aria-hidden="true"></div>
   <div>
     <p class="eyebrow a1">Full-Stack Developer &middot; Philippines</p>
-    <h1 class="a2">Robert James<br>Cabansay<span class="logo-dot">.</span></h1>
+    <h1 class="a2">Robert James<br><span class="shimmer">Cabansay</span><span class="logo-dot">.</span></h1>
     <p class="meta a2">RJ &nbsp;&middot;&nbsp; Full-Stack Developer &nbsp;&middot;&nbsp; Philippines &nbsp;&middot;&nbsp; Open to Work</p>
     <p class="bio a3">I'm a self-taught full-stack developer building production web apps with <strong>Next.js, React, Supabase, and Tailwind CSS.</strong> I specialize in SaaS dashboards, POS systems, booking apps, and custom business tools &mdash; shipped as polished PWAs or full Next.js + Supabase products deployed on Vercel.</p>
     <p class="bio a3">I started with <span class="hl">Checkout Hub</span> &mdash; a tool I built for my own business &mdash; and have since shipped <strong>16+ production apps</strong> across restaurants, sports courts, retail, and hospitality. Every project is end-to-end: design, frontend, backend, auth, database, deploy. I help clients and employers get <strong>reliable, scalable software that actually ships.</strong></p>
@@ -603,7 +624,7 @@ footer span{color:var(--gold);}
       <span class="htag">TypeScript</span>
       <span class="htag">Full-Stack SaaS</span>
     </div>
-    <a class="pf-btn a4" href="index.html">View Full Portfolio <span class="arr">&#8594;</span></a>
+    <a class="pf-btn a4 beam" href="index.html">View Full Portfolio <span class="arr">&#8594;</span></a>
   </div>
   <div class="photo-col a5">
     <div class="frame">
@@ -731,12 +752,12 @@ footer span{color:var(--gold);}
 <section class="sec">
   <div class="rv sh"><span class="sl">What I Bring to Every Project</span><div class="sln"></div></div>
   <div class="traits">
-    <div class="rv d1 trait"><span class="ticon">&#129513;</span><div class="ttitle">Resourceful</div><div class="tdesc">Built 16+ production apps across restaurants, sports, retail, and hospitality — Next.js to single-file HTML. When there's no path, I find one.</div></div>
-    <div class="rv d2 trait"><span class="ticon">&#127897;</span><div class="ttitle">Communicator</div><div class="tdesc">HR, real estate, finance &mdash; I've always led with clear, honest communication that builds trust fast.</div></div>
-    <div class="rv d3 trait"><span class="ticon">&#128066;</span><div class="ttitle">Good Listener</div><div class="tdesc">I ask the right questions and truly hear the answers. The best apps start with deeply understanding the problem.</div></div>
-    <div class="rv d1 trait"><span class="ticon">&#127919;</span><div class="ttitle">Purpose-Driven</div><div class="tdesc">I don't just build apps &mdash; I build tools that make a real daily difference in how businesses operate.</div></div>
-    <div class="rv d2 trait"><span class="ticon">&#129309;</span><div class="ttitle">Client-First</div><div class="tdesc">Every role I've had was about serving people well. That mentality carries into every single project.</div></div>
-    <div class="rv d3 trait"><span class="ticon">&#128260;</span><div class="ttitle">Adaptable</div><div class="tdesc">Thrived in customer service, HR, finance, and sales. I adapt fast and deliver regardless of the challenge.</div></div>
+    <div class="rv d1 trait spot"><span class="ticon">&#129513;</span><div class="ttitle">Resourceful</div><div class="tdesc">Built 16+ production apps across restaurants, sports, retail, and hospitality — Next.js to single-file HTML. When there's no path, I find one.</div></div>
+    <div class="rv d2 trait spot"><span class="ticon">&#127897;</span><div class="ttitle">Communicator</div><div class="tdesc">HR, real estate, finance &mdash; I've always led with clear, honest communication that builds trust fast.</div></div>
+    <div class="rv d3 trait spot"><span class="ticon">&#128066;</span><div class="ttitle">Good Listener</div><div class="tdesc">I ask the right questions and truly hear the answers. The best apps start with deeply understanding the problem.</div></div>
+    <div class="rv d1 trait spot"><span class="ticon">&#127919;</span><div class="ttitle">Purpose-Driven</div><div class="tdesc">I don't just build apps &mdash; I build tools that make a real daily difference in how businesses operate.</div></div>
+    <div class="rv d2 trait spot"><span class="ticon">&#129309;</span><div class="ttitle">Client-First</div><div class="tdesc">Every role I've had was about serving people well. That mentality carries into every single project.</div></div>
+    <div class="rv d3 trait spot"><span class="ticon">&#128260;</span><div class="ttitle">Adaptable</div><div class="tdesc">Thrived in customer service, HR, finance, and sales. I adapt fast and deliver regardless of the challenge.</div></div>
   </div>
 </section>
 
@@ -744,12 +765,12 @@ footer span{color:var(--gold);}
 <section class="sec">
   <div class="rv sh"><span class="sl">Tech Stack</span><div class="sln"></div></div>
   <div class="traits">
-    <div class="rv d1 trait"><span class="ticon">&#9889;</span><div class="ttitle">Frontend</div><div class="tdesc">React 19, Next.js 15/16, TypeScript, Tailwind CSS v4, shadcn/ui, HTML/CSS/JS &mdash; responsive, mobile-first design and component-driven UI.</div></div>
-    <div class="rv d2 trait"><span class="ticon">&#128268;</span><div class="ttitle">Backend</div><div class="tdesc">Next.js API Routes, Supabase (Auth + PostgreSQL + Realtime), Prisma 7, Drizzle ORM, Neon serverless Postgres &mdash; full server-side logic and REST APIs.</div></div>
-    <div class="rv d3 trait"><span class="ticon">&#128196;</span><div class="ttitle">Data &amp; Storage</div><div class="tdesc">Supabase Postgres, Neon Postgres, Prisma schema migrations, Row-Level Security, localStorage, CSV import/export, real-time sync.</div></div>
-    <div class="rv d1 trait"><span class="ticon">&#128736;</span><div class="ttitle">Tools &amp; DevOps</div><div class="tdesc">Git, GitHub, Vercel (CI/CD + preview deploys), GitHub Pages, Node.js, Playwright (E2E), pnpm, VS Code.</div></div>
-    <div class="rv d2 trait"><span class="ticon">&#127758;</span><div class="ttitle">Specialties</div><div class="tdesc">SaaS dashboards, POS &amp; inventory systems, booking &amp; scheduling platforms, multi-role auth, QR-based workflows.</div></div>
-    <div class="rv d3 trait"><span class="ticon">&#128104;&#8205;&#128187;</span><div class="ttitle">Work Style</div><div class="tdesc">Solo end-to-end builder. I own projects from concept to deploy &mdash; fast iteration, clean code, real deliverables.</div></div>
+    <div class="rv d1 trait spot"><span class="ticon">&#9889;</span><div class="ttitle">Frontend</div><div class="tdesc">React 19, Next.js 15/16, TypeScript, Tailwind CSS v4, shadcn/ui, HTML/CSS/JS &mdash; responsive, mobile-first design and component-driven UI.</div></div>
+    <div class="rv d2 trait spot"><span class="ticon">&#128268;</span><div class="ttitle">Backend</div><div class="tdesc">Next.js API Routes, Supabase (Auth + PostgreSQL + Realtime), Prisma 7, Drizzle ORM, Neon serverless Postgres &mdash; full server-side logic and REST APIs.</div></div>
+    <div class="rv d3 trait spot"><span class="ticon">&#128196;</span><div class="ttitle">Data &amp; Storage</div><div class="tdesc">Supabase Postgres, Neon Postgres, Prisma schema migrations, Row-Level Security, localStorage, CSV import/export, real-time sync.</div></div>
+    <div class="rv d1 trait spot"><span class="ticon">&#128736;</span><div class="ttitle">Tools &amp; DevOps</div><div class="tdesc">Git, GitHub, Vercel (CI/CD + preview deploys), GitHub Pages, Node.js, Playwright (E2E), pnpm, VS Code.</div></div>
+    <div class="rv d2 trait spot"><span class="ticon">&#127758;</span><div class="ttitle">Specialties</div><div class="tdesc">SaaS dashboards, POS &amp; inventory systems, booking &amp; scheduling platforms, multi-role auth, QR-based workflows.</div></div>
+    <div class="rv d3 trait spot"><span class="ticon">&#128104;&#8205;&#128187;</span><div class="ttitle">Work Style</div><div class="tdesc">Solo end-to-end builder. I own projects from concept to deploy &mdash; fast iteration, clean code, real deliverables.</div></div>
   </div>
 </section>
 
@@ -770,12 +791,12 @@ footer span{color:var(--gold);}
 <section class="sec">
   <div class="rv sh"><span class="sl">I Can Build This For You</span><div class="sln"></div></div>
   <div class="ucases">
-    <div class="rv d1 uc uc-food"><div class="uc-icon-wrap"><span>&#127869;</span></div><div class="uc-type">Food &amp; Beverage</div><div class="uc-title">Cafes &amp; Restaurants</div><ul class="uc-list"><li>Daily sales tracker</li><li>Ingredient inventory</li><li>Order management</li><li>Expense log</li><li>Profit dashboard</li></ul></div>
-    <div class="rv d2 uc uc-retail"><div class="uc-icon-wrap"><span>&#128717;</span></div><div class="uc-type">Retail</div><div class="uc-title">Shops &amp; Boutiques</div><ul class="uc-list"><li>POS &amp; checkout</li><li>Product catalog</li><li>Stock alerts</li><li>Customer receipts</li><li>Sales reports</li></ul></div>
-    <div class="rv d3 uc uc-services"><div class="uc-icon-wrap"><span>&#9986;</span></div><div class="uc-type">Services</div><div class="uc-title">Salons, Clinics &amp; Repair</div><ul class="uc-list"><li>Appointment tracker</li><li>Service price list</li><li>Client records</li><li>Income summary</li><li>Expense tracker</li></ul></div>
-    <div class="rv d1 uc uc-trade"><div class="uc-icon-wrap"><span>&#128666;</span></div><div class="uc-type">Trading &amp; Wholesale</div><div class="uc-title">Suppliers &amp; Distributors</div><ul class="uc-list"><li>Purchase order log</li><li>Supplier tracker</li><li>Delivery monitoring</li><li>Payables tracker</li><li>Stock in / out</li></ul></div>
-    <div class="rv d2 uc uc-free"><div class="uc-icon-wrap"><span>&#127979;</span></div><div class="uc-type">Freelancers</div><div class="uc-title">Coaches &amp; Creatives</div><ul class="uc-list"><li>Client tracker</li><li>Invoice generator</li><li>Session logger</li><li>Income vs expenses</li><li>Portfolio tracker</li></ul></div>
-    <div class="rv d3 uc uc-any"><div class="uc-icon-wrap"><span>&#128188;</span></div><div class="uc-type">Any Business</div><div class="uc-title">Custom to Your Workflow</div><ul class="uc-list"><li>Tell me your problem</li><li>I'll design it</li><li>Built around your flow</li><li>No template ever</li><li>Yours forever</li></ul></div>
+    <div class="rv d1 uc spot uc-food"><div class="uc-icon-wrap"><span>&#127869;</span></div><div class="uc-type">Food &amp; Beverage</div><div class="uc-title">Cafes &amp; Restaurants</div><ul class="uc-list"><li>Daily sales tracker</li><li>Ingredient inventory</li><li>Order management</li><li>Expense log</li><li>Profit dashboard</li></ul></div>
+    <div class="rv d2 uc spot uc-retail"><div class="uc-icon-wrap"><span>&#128717;</span></div><div class="uc-type">Retail</div><div class="uc-title">Shops &amp; Boutiques</div><ul class="uc-list"><li>POS &amp; checkout</li><li>Product catalog</li><li>Stock alerts</li><li>Customer receipts</li><li>Sales reports</li></ul></div>
+    <div class="rv d3 uc spot uc-services"><div class="uc-icon-wrap"><span>&#9986;</span></div><div class="uc-type">Services</div><div class="uc-title">Salons, Clinics &amp; Repair</div><ul class="uc-list"><li>Appointment tracker</li><li>Service price list</li><li>Client records</li><li>Income summary</li><li>Expense tracker</li></ul></div>
+    <div class="rv d1 uc spot uc-trade"><div class="uc-icon-wrap"><span>&#128666;</span></div><div class="uc-type">Trading &amp; Wholesale</div><div class="uc-title">Suppliers &amp; Distributors</div><ul class="uc-list"><li>Purchase order log</li><li>Supplier tracker</li><li>Delivery monitoring</li><li>Payables tracker</li><li>Stock in / out</li></ul></div>
+    <div class="rv d2 uc spot uc-free"><div class="uc-icon-wrap"><span>&#127979;</span></div><div class="uc-type">Freelancers</div><div class="uc-title">Coaches &amp; Creatives</div><ul class="uc-list"><li>Client tracker</li><li>Invoice generator</li><li>Session logger</li><li>Income vs expenses</li><li>Portfolio tracker</li></ul></div>
+    <div class="rv d3 uc spot uc-any"><div class="uc-icon-wrap"><span>&#128188;</span></div><div class="uc-type">Any Business</div><div class="uc-title">Custom to Your Workflow</div><ul class="uc-list"><li>Tell me your problem</li><li>I'll design it</li><li>Built around your flow</li><li>No template ever</li><li>Yours forever</li></ul></div>
   </div>
 </section>
 
@@ -808,22 +829,22 @@ footer span{color:var(--gold);}
 <section class="sec">
   <div class="rv sh"><span class="sl">Why Work With Me</span><div class="sln"></div></div>
   <div class="why-grid">
-    <div class="rv d1 wcard wcard-fast">
+    <div class="rv d1 wcard spot wcard-fast">
       <div class="wi-wrap"><span>&#9889;</span></div>
       <div class="wt">Fast Turnaround</div>
       <div class="wd">Most projects delivered in 1&ndash;2 weeks. No vague timelines &mdash; you get a working app fast.</div>
     </div>
-    <div class="rv d2 wcard wcard-built">
+    <div class="rv d2 wcard spot wcard-built">
       <div class="wi-wrap" style="overflow:visible;"><span class="target-icon">&#127919;</span><span class="radar-ring"></span></div>
       <div class="wt">Built Around You</div>
       <div class="wd">I don't use templates. Every app is designed around how your specific business works.</div>
     </div>
-    <div class="rv d3 wcard wcard-pay">
+    <div class="rv d3 wcard spot wcard-pay">
       <div class="wi-wrap"><span>&#128176;</span></div>
       <div class="wt">One-Time Payment</div>
       <div class="wd">No subscriptions. Pay once, own it forever. No strings attached, ever.</div>
     </div>
-    <div class="rv d4 wcard wcard-market">
+    <div class="rv d4 wcard spot wcard-market">
       <div class="wi-wrap"><span>&#127757;</span></div>
       <div class="wt">Understands Your Market</div>
       <div class="wd">With backgrounds in finance, sales, and HR &mdash; I understand how businesses actually operate and what they really need.</div>
@@ -917,10 +938,10 @@ footer span{color:var(--gold);}
 <section class="sec">
   <div class="rv sh"><span class="sl">Services &amp; Availability</span><div class="sln"></div></div>
   <div class="svcs">
-    <div class="rvS d1 svc"><div class="sv-tier">Starter</div><div class="sv-nm">Single Tool</div><div class="sv-pr">&#8369;3,000 &ndash; &#8369;6,000</div><div class="sv-dt">Single-purpose PWA: sales tracker, inventory log, or booking form. Delivered in 3&ndash;5 days.</div></div>
-    <div class="rvS d2 svc"><div class="sv-tier">Standard</div><div class="sv-nm">Full Dashboard</div><div class="sv-pr">&#8369;8,000 &ndash; &#8369;15,000</div><div class="sv-dt">Multi-tab HTML PWA with auth, local data, and CSV export &mdash; full business dashboard in one file.</div></div>
-    <div class="rvS d3 svc"><div class="sv-tier">Production</div><div class="sv-nm">Full-Stack Product</div><div class="sv-pr">&#8369;25,000+</div><div class="sv-dt">Full-stack Next.js + Supabase: auth, database, roles, real-time data, and Vercel deploy.</div></div>
-    <div class="rvS d4 svc" style="border-color:var(--gbdr);background:linear-gradient(135deg,rgba(201,146,42,0.07) 0%,transparent 60%);"><div class="sv-tier" style="color:var(--gold2);">Employment</div><div class="sv-nm">Join Your Team</div><div class="sv-pr">Open to Discuss</div><div class="sv-dt">Full-time or contract role. Next.js, React, Supabase stack. Remote-friendly &mdash; open to Manila-based or fully remote positions.</div></div>
+    <div class="rvS d1 svc spot"><div class="sv-tier">Starter</div><div class="sv-nm">Single Tool</div><div class="sv-pr">&#8369;3,000 &ndash; &#8369;6,000</div><div class="sv-dt">Single-purpose PWA: sales tracker, inventory log, or booking form. Delivered in 3&ndash;5 days.</div></div>
+    <div class="rvS d2 svc spot"><div class="sv-tier">Standard</div><div class="sv-nm">Full Dashboard</div><div class="sv-pr">&#8369;8,000 &ndash; &#8369;15,000</div><div class="sv-dt">Multi-tab HTML PWA with auth, local data, and CSV export &mdash; full business dashboard in one file.</div></div>
+    <div class="rvS d3 svc spot"><div class="sv-tier">Production</div><div class="sv-nm">Full-Stack Product</div><div class="sv-pr">&#8369;25,000+</div><div class="sv-dt">Full-stack Next.js + Supabase: auth, database, roles, real-time data, and Vercel deploy.</div></div>
+    <div class="rvS d4 svc spot" style="border-color:var(--gbdr);background:linear-gradient(135deg,rgba(201,146,42,0.07) 0%,transparent 60%);"><div class="sv-tier" style="color:var(--gold2);">Employment</div><div class="sv-nm">Join Your Team</div><div class="sv-pr">Open to Discuss</div><div class="sv-dt">Full-time or contract role. Next.js, React, Supabase stack. Remote-friendly &mdash; open to Manila-based or fully remote positions.</div></div>
   </div>
 </section>
 
@@ -1143,6 +1164,9 @@ function scThumb(app, src, thumb) {
   thumb.closest('.sc-thumbs').querySelectorAll('.sc-thumb').forEach(function(t){t.classList.remove('active');});
   thumb.classList.add('active');
 }
+
+// Spotlight — track pointer for the radial glow on .spot cards
+document.querySelectorAll('.spot').forEach(el=>{el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px');});});
 
 </script>
 </body>
