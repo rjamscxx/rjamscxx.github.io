@@ -195,7 +195,7 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
 .process-step:hover{border-color:var(--gbdr);transform:translateX(4px)}
 .step-n{font-family:var(--D);font-size:38px;font-weight:900;color:var(--gold2);
   opacity:.35;line-height:1;flex-shrink:0;width:44px}
-.step-body h4{font-weight:700;font-size:14.5px;margin-bottom:4px}
+.step-body h3{font-weight:700;font-size:14.5px;margin-bottom:4px}
 .step-body p{font-size:12.5px;color:var(--c70);line-height:1.6}
 
 /* BROWSER FRAME */
@@ -207,7 +207,7 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
 .bdot{width:11px;height:11px;border-radius:50%}
 .bdot.r{background:#ff5f57}.bdot.y{background:#febc2e}.bdot.g{background:#28c840}
 .browser-addr{flex:1;margin:0 10px;background:rgba(255,255,255,.06);border-radius:5px;
-  padding:4px 12px;font-family:var(--M);font-size:10px;color:var(--c50);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  padding:4px 12px;font-family:var(--M);font-size:10px;color:var(--c70);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .browser-img{display:block;width:100%;height:auto}
 
 /* CAROUSEL */
@@ -225,9 +225,10 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
   transition:background .2s,opacity .2s;opacity:.7;font-size:16px}
 .carousel-btn:hover{background:rgba(10,10,10,.95);opacity:1}
 .carousel-btn.prev{left:12px}.carousel-btn.next{right:12px}
-.carousel-dots{display:flex;justify-content:center;gap:6px;margin-top:14px}
-.cdot{width:6px;height:6px;border-radius:50%;background:var(--b3);border:0;cursor:pointer;transition:background .25s,transform .25s}
-.cdot.active{background:var(--gold2);transform:scale(1.4)}
+.carousel-dots{display:flex;justify-content:center;gap:0;margin-top:5px}
+.cdot{width:24px;height:24px;background:transparent;border:0;cursor:pointer;position:relative;padding:0}
+.cdot::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:6px;height:6px;border-radius:50%;background:var(--b3);transition:background .25s,transform .25s}
+.cdot.active::before{background:var(--gold2);transform:translate(-50%,-50%) scale(1.4)}
 .carousel-label{position:absolute;left:14px;bottom:14px;z-index:5;
   font-family:var(--M);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--ink);background:rgba(10,10,10,.65);backdrop-filter:blur(8px);
@@ -258,7 +259,7 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
 .feat-list{list-style:none;display:grid;gap:11px;margin-bottom:28px}
 .feat-list li{display:flex;align-items:start;gap:10px;font-size:13.5px;color:var(--c80);line-height:1.5}
 .feat-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold2);margin-top:8px;flex-shrink:0;box-shadow:0 0 8px var(--glow)}
-.tenda-carousel-wrap{position:relative}
+.tenda-carousel-wrap{position:relative;min-width:0}
 
 /* LIVE APPS GRID */
 .live-grid{display:grid;grid-template-columns:1fr;gap:24px}
@@ -278,14 +279,15 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
   opacity:0;transition:opacity .25s;font-size:12px}
 .live-card:hover .live-btn{opacity:1}
 .live-btn.lp{left:8px}.live-btn.ln{right:8px}
-.live-dots{display:flex;justify-content:center;gap:4px;position:absolute;bottom:8px;left:0;right:0}
-.ldot2{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);border:0;cursor:pointer;transition:background .2s}
-.ldot2.active{background:var(--gold2)}
+.live-dots{display:flex;justify-content:center;gap:0;position:absolute;bottom:0;left:0;right:0}
+.ldot2{width:24px;height:24px;background:transparent;border:0;cursor:pointer;position:relative;padding:0}
+.ldot2::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .2s}
+.ldot2.active::before{background:var(--gold2)}
 .live-body{padding:20px 22px;display:grid;gap:10px}
 .live-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .live-tag-blue{display:inline-flex;align-items:center;gap:6px;
   font-family:var(--M);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
-  background:rgba(59,130,246,.10);color:var(--blue);border:1px solid rgba(59,130,246,.25);
+  background:rgba(59,130,246,.10);color:#60a5fa;border:1px solid rgba(59,130,246,.25);
   padding:4px 10px;border-radius:999px}
 .live-tag-mono{display:inline-flex;align-items:center;gap:6px;
   font-family:var(--M);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
@@ -321,9 +323,10 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
   opacity:0;transition:opacity .25s;font-size:12px}
 .app-card2:hover .app-card2-prev,.app-card2:hover .app-card2-next{opacity:1}
 .app-card2-prev{left:8px}.app-card2-next{right:8px}
-.app-card2-dots2{display:flex;justify-content:center;gap:4px;position:absolute;bottom:8px;left:0;right:0}
-.cdot2{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);border:0;cursor:pointer;transition:background .2s}
-.cdot2.active{background:var(--gold2)}
+.app-card2-dots2{display:flex;justify-content:center;gap:0;position:absolute;bottom:0;left:0;right:0}
+.cdot2{width:24px;height:24px;background:transparent;border:0;cursor:pointer;position:relative;padding:0}
+.cdot2::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .2s}
+.cdot2.active::before{background:var(--gold2)}
 .app-body{padding:18px 20px;flex:1;display:flex;flex-direction:column;gap:8px}
 .app-badge{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .tag{font-family:var(--M);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;padding:4px 9px;border-radius:999px;font-weight:600}
@@ -385,7 +388,7 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
 .svc:hover{transform:translateY(-4px);border-color:var(--gbdr);background:var(--s2)}
 .svc:hover::before{transform:scaleX(1)}
 .svc-n{font-family:var(--M);font-size:10px;color:var(--gold2);letter-spacing:.2em;margin-bottom:14px}
-.svc h4{font-family:var(--D);font-size:20px;font-weight:800;line-height:1;margin-bottom:8px;letter-spacing:.01em}
+.svc h3{font-family:var(--D);font-size:20px;font-weight:800;line-height:1;margin-bottom:8px;letter-spacing:.01em}
 .svc p{font-size:13px;color:var(--c70);line-height:1.6;margin-bottom:14px}
 .svc-pills{display:flex;flex-wrap:wrap;gap:4px}
 .svc-pills span{font-family:var(--M);font-size:9px;padding:3px 8px;border:1px solid var(--c08);color:var(--c50);border-radius:999px}
@@ -575,6 +578,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
   <a class="mobile-cta" href="mailto:rjamscxx@gmail.com">rjamscxx@gmail.com ↗</a>
 </div>
 
+<main>
 <!-- HERO -->
 <section id="top" class="wrap hero">
   <div class="pill"><span class="pill-dot"></span><span class="pill-text" id="pillText">Open to Work · Freelance &amp; Full-Time</span></div>
@@ -970,28 +974,28 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
         <div class="process-step">
           <div class="step-n">01</div>
           <div class="step-body">
-            <h4>Discover</h4>
+            <h3>Discover</h3>
             <p>We talk through your business, your users, and what's broken. No templates — every build starts with understanding the real problem.</p>
           </div>
         </div>
         <div class="process-step">
           <div class="step-n">02</div>
           <div class="step-body">
-            <h4>Design</h4>
+            <h3>Design</h3>
             <p>Dark, premium UI — gold accents, tight typography, mobile-first. You see mockups and flows before a single line of code is written.</p>
           </div>
         </div>
         <div class="process-step">
           <div class="step-n">03</div>
           <div class="step-body">
-            <h4>Build</h4>
+            <h3>Build</h3>
             <p>Next.js + Supabase for complex apps, single-file HTML for fast turnarounds. Clean code, zero bloat, production-ready from day one.</p>
           </div>
         </div>
         <div class="process-step">
           <div class="step-n">04</div>
           <div class="step-body">
-            <h4>Ship</h4>
+            <h3>Ship</h3>
             <p>Deployed to Vercel or your hosting of choice. Handoff includes source files, brief walkthrough, and optional retainer for updates.</p>
           </div>
         </div>
@@ -1071,25 +1075,25 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
   <div class="svc-grid">
     <div class="svc r">
       <div class="svc-n">01 ── PRODUCT</div>
-      <h4>SMB SaaS DASHBOARD</h4>
+      <h3>SMB SaaS DASHBOARD</h3>
       <p>End-to-end design + build — schema to UI to deploy. 2–4 week scope.</p>
       <div class="svc-pills"><span>Next.js</span><span>Supabase</span><span>Tailwind</span><span>TypeScript</span></div>
     </div>
     <div class="svc r r1">
       <div class="svc-n">02 ── CUSTOM</div>
-      <h4>CLIENT BUSINESS HUB</h4>
+      <h3>CLIENT BUSINESS HUB</h3>
       <p>Single-file HTML hub for freelancers, coaches, agencies. White-label, fast handoff.</p>
       <div class="svc-pills"><span>HTML PWA</span><span>localStorage</span><span>Custom design</span></div>
     </div>
     <div class="svc r r2">
       <div class="svc-n">03 ── AI</div>
-      <h4>AI-POWERED TOOLS</h4>
+      <h3>AI-POWERED TOOLS</h3>
       <p>AI-powered features — assistants, content tools, automation. Any stack.</p>
       <div class="svc-pills"><span>AI SDK</span><span>Vercel AI</span><span>Resend</span></div>
     </div>
     <div class="svc r r3">
       <div class="svc-n">04 ── RESELL</div>
-      <h4>WHITE-LABEL TEMPLATES</h4>
+      <h3>WHITE-LABEL TEMPLATES</h3>
       <p>License the 15-app pack. Brand as yours. Add retainer for custom builds.</p>
       <div class="svc-pills"><span>15 templates</span><span>$79 one-time</span><span>Lifetime updates</span></div>
     </div>
@@ -1163,6 +1167,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="footer-links">
