@@ -721,8 +721,8 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
           <div class="live-slide"><img loading="lazy" src="assets/courtside/section-3.png" alt="Courtside features" /></div>
           <div class="live-slide"><img loading="lazy" src="assets/courtside/full.png" alt="Courtside full" /></div>
         </div>
-        <button class="live-btn lp" data-live-prev="courtsideTrack">&#8592;</button>
-        <button class="live-btn ln" data-live-next="courtsideTrack">&#8594;</button>
+        <button class="live-btn lp" aria-label="Previous screenshot" data-live-prev="courtsideTrack">&#8592;</button>
+        <button class="live-btn ln" aria-label="Next screenshot" data-live-next="courtsideTrack">&#8594;</button>
         <div class="live-dots" id="courtsideDots"></div>
       </div>
       <div class="live-body">
@@ -746,8 +746,8 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
           <div class="live-slide"><img loading="lazy" src="assets/grayscale-coffee-club/section-3.png" alt="Grayscale loyalty" /></div>
           <div class="live-slide"><img loading="lazy" src="assets/grayscale-coffee-club/full.png" alt="Grayscale full" /></div>
         </div>
-        <button class="live-btn lp" data-live-prev="grayscaleTrack">&#8592;</button>
-        <button class="live-btn ln" data-live-next="grayscaleTrack">&#8594;</button>
+        <button class="live-btn lp" aria-label="Previous screenshot" data-live-prev="grayscaleTrack">&#8592;</button>
+        <button class="live-btn ln" aria-label="Next screenshot" data-live-next="grayscaleTrack">&#8594;</button>
         <div class="live-dots" id="grayscaleDots"></div>
       </div>
       <div class="live-body">
@@ -771,8 +771,8 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
           <div class="live-slide"><img loading="lazy" src="assets/gold-palace-streetwear/section-3.png" alt="Gold Palace dashboard" /></div>
           <div class="live-slide"><img loading="lazy" src="assets/gold-palace-streetwear/full.png" alt="Gold Palace full" /></div>
         </div>
-        <button class="live-btn lp" data-live-prev="goldpalaceTrack">&#8592;</button>
-        <button class="live-btn ln" data-live-next="goldpalaceTrack">&#8594;</button>
+        <button class="live-btn lp" aria-label="Previous screenshot" data-live-prev="goldpalaceTrack">&#8592;</button>
+        <button class="live-btn ln" aria-label="Next screenshot" data-live-next="goldpalaceTrack">&#8594;</button>
         <div class="live-dots" id="goldpalaceDots"></div>
       </div>
       <div class="live-body">
@@ -1365,7 +1365,7 @@ if(contactForm){
   const labelData=JSON.parse(carousel.dataset.labels||'[]')
   let cur=0,timer
 
-  for(let i=0;i<total;i++){ const d=document.createElement('button'); d.className='cdot'+(i===0?' active':''); d.addEventListener('click',()=>goTo(i)); dotsWrap.appendChild(d) }
+  for(let i=0;i<total;i++){ const d=document.createElement('button'); d.className='cdot'+(i===0?' active':''); d.setAttribute('aria-label','Go to slide '+(i+1)); d.addEventListener('click',()=>goTo(i)); dotsWrap.appendChild(d) }
   const dots=[...dotsWrap.children]
 
   function goTo(n){ cur=(n+total)%total; track.style.transform=`translateX(-${cur*100}%)`; dots.forEach((d,i)=>d.classList.toggle('active',i===cur)); if(label&&labelData[cur])label.textContent=labelData[cur]; if(count)count.textContent=`${cur+1} / ${total}`; resetTimer() }
@@ -1386,7 +1386,7 @@ function initLiveCarousel(trackId,dotsId){
   const track=document.getElementById(trackId), dotsWrap=document.getElementById(dotsId)
   if(!track||!dotsWrap)return
   const total=track.children.length; let cur=0
-  for(let i=0;i<total;i++){ const d=document.createElement('button'); d.className='ldot2'+(i===0?' active':''); d.addEventListener('click',e=>{e.stopPropagation();goTo(i)}); dotsWrap.appendChild(d) }
+  for(let i=0;i<total;i++){ const d=document.createElement('button'); d.className='ldot2'+(i===0?' active':''); d.setAttribute('aria-label','Go to screenshot '+(i+1)); d.addEventListener('click',e=>{e.stopPropagation();goTo(i)}); dotsWrap.appendChild(d) }
   const dots=[...dotsWrap.children]
   function goTo(n){ cur=(n+total)%total; track.style.transform=`translateX(-${cur*100}%)`; dots.forEach((d,i)=>d.classList.toggle('active',i===cur)) }
   const card=track.closest('.live-card')
