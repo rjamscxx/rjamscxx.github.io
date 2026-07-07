@@ -21,10 +21,10 @@
 /* ── RESET & ROOT ── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --bg:#0C0C0A;--bg2:#111110;--bg3:#1A1A17;--bg4:#222220;
-  --gold:#C9922A;--gold2:#E8B84B;--gold3:#FFD584;--gdim:rgba(201,146,42,0.12);--gbdr:rgba(201,146,42,0.26);
-  --cr:#F5F1E8;--c70:rgba(245,241,232,0.7);--c50:rgba(245,241,232,0.5);
-  --c20:rgba(245,241,232,0.34);--c08:rgba(245,241,232,0.08);--c04:rgba(245,241,232,0.04);
+  --bg:#0b0b0c;--bg2:#101012;--bg3:#151517;--bg4:#1c1c1f;
+  --gold:#C9922A;--gold2:#D0A03A;--gold3:#D9A441;--gdim:rgba(201,146,42,0.10);--gbdr:rgba(201,146,42,0.22);
+  --cr:#ececee;--c70:rgba(236,236,238,0.72);--c50:rgba(236,236,238,0.55);
+  --c20:rgba(236,236,238,0.36);--c08:rgba(236,236,238,0.09);--c04:rgba(236,236,238,0.05);
   --serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',sans-serif;
   --radius:14px;--gap:12px;
 }
@@ -45,8 +45,8 @@
 .spot{position:relative}
 .spot::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;transition:opacity .45s cubic-bezier(.16,1,.3,1);background:radial-gradient(440px circle at var(--mx,50%) var(--my,50%),rgba(232,184,75,.12),transparent 44%)}
 .spot:hover::after{opacity:1}
-@media(prefers-reduced-motion:reduce){.aurora::before,.aurora::after{animation:none}.shimmer{animation:none;background-position:0 center}.beam::after{animation:none;background:linear-gradient(135deg,rgba(232,184,75,.28),transparent)}}
-@media print{.aurora,.beam::after{display:none!important}.shimmer{-webkit-text-fill-color:currentColor!important;color:var(--gold,#C9922A)!important;background:none!important;animation:none!important}.spot::after{display:none!important}}
+@media(prefers-reduced-motion:reduce){.aurora::before,.aurora::after{animation:none}.shimmer{animation:none;background-position:0 center}.beam::after{animation:none;background:linear-gradient(135deg,rgba(232,184,75,.28),transparent)}.logo-dot.blink{animation:none}}
+@media print{.aurora,.beam::after{display:none!important}.logo-dot.blink{animation:none!important}.shimmer{-webkit-text-fill-color:currentColor!important;color:var(--gold,#C9922A)!important;background:none!important;animation:none!important}.spot::after{display:none!important}}
 
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{font-family:var(--sans);background:var(--bg);color:var(--cr);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
@@ -59,7 +59,7 @@ h1,.ptitle,.ctitle{text-wrap:balance;}
 
 /* ── AMBIENT ── */
 .glow{position:fixed;top:-240px;left:50%;transform:translateX(-50%);width:900px;height:600px;
-  background:radial-gradient(ellipse,rgba(201,146,42,0.055) 0%,transparent 68%);
+  background:none;
   pointer-events:none;z-index:0;}
 .particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
 .particle{position:absolute;border-radius:50%;background:var(--gold);opacity:0;
@@ -107,15 +107,17 @@ h1,.ptitle,.ctitle{text-wrap:balance;}
 nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:68px;}
 .logo{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:.3px;line-height:1;}
 .logo-dot{color:var(--gold);}
+.logo-dot.blink{animation:dotblink 2.6s steps(1) infinite;}
+@keyframes dotblink{0%,55%{opacity:1}60%,92%{opacity:.2}100%{opacity:1}}
 .pill{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:600;letter-spacing:1.2px;
   text-transform:uppercase;color:var(--gold);border:1px solid var(--gbdr);background:var(--gdim);
   padding:7px 15px;border-radius:100px;white-space:nowrap;line-height:1;}
 .pdot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulse 2s infinite;}
-.pf-btn{display:inline-flex;align-items:center;gap:9px;margin-top:24px;
-  padding:14px 28px;border-radius:100px;background:var(--gold);color:var(--bg);
-  font-size:13px;font-weight:700;letter-spacing:.4px;line-height:1;
-  transition:background .25s,transform .25s,box-shadow .25s;}
-.pf-btn:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,146,42,.28);}
+.pf-btn{display:inline-flex;align-items:center;gap:9px;margin-top:28px;
+  padding:13px 24px;border-radius:8px;background:transparent;color:var(--cr);border:1px solid var(--c20);
+  font-size:13px;font-weight:600;letter-spacing:.4px;line-height:1;
+  transition:border-color .3s,color .3s,background .3s,transform .3s;}
+.pf-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gdim);transform:translateY(-1px);}
 .pf-btn:active{transform:translateY(0) scale(.98);}
 .pf-btn .arr{display:inline-block;transition:transform .25s;}
 .pf-btn:hover .arr{transform:translateX(4px);}
@@ -131,7 +133,7 @@ nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:
 .mi{color:var(--gold);margin-right:7px;}
 
 /* ── HERO ── */
-.hero{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;margin-bottom:56px;position:relative;}
+.hero{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:start;margin-bottom:80px;position:relative;}
 .eyebrow{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;line-height:1;}
 h1{font-family:var(--serif);font-size:clamp(36px,5.2vw,54px);font-weight:700;line-height:1.04;letter-spacing:-.3px;margin-bottom:8px;}
 .meta{font-size:12px;color:var(--c20);letter-spacing:.5px;margin-bottom:22px;line-height:1;}
@@ -146,10 +148,8 @@ h1{font-family:var(--serif);font-size:clamp(36px,5.2vw,54px);font-weight:700;lin
 
 /* ── PHOTO ── */
 .photo-col{display:flex;align-items:center;flex-shrink:0;}
-.frame{width:152px;height:162px;border-radius:16px;background:var(--bg3);
-  position:relative;overflow:hidden;flex-shrink:0;
-  box-shadow:0 0 0 0 rgba(201,146,42,0);
-  animation:gFrame 4s ease-in-out infinite;}
+.frame{width:152px;height:162px;border-radius:10px;background:var(--bg3);
+  position:relative;overflow:hidden;flex-shrink:0;border:1px solid var(--c08);}
 @keyframes gFrame{0%,100%{box-shadow:0 0 0 0 rgba(201,146,42,0)}50%{box-shadow:0 0 18px 2px rgba(201,146,42,0.1)}}
 .frame img{width:100%;height:100%;object-fit:cover;object-position:center 8%;
   transition:transform .6s cubic-bezier(.22,1,.36,1);}
@@ -609,10 +609,9 @@ footer span{color:var(--gold);}
 
 <!-- HERO -->
 <section class="hero">
-  <div class="aurora" aria-hidden="true"></div>
   <div>
     <p class="eyebrow a1">Full-Stack Developer &middot; Philippines</p>
-    <h1 class="a2">Robert James<br><span class="shimmer">Cabansay</span><span class="logo-dot">.</span></h1>
+    <h1 class="a2">Robert James<br>Cabansay<span class="logo-dot blink">.</span></h1>
     <p class="meta a2">RJ &nbsp;&middot;&nbsp; Full-Stack Developer &nbsp;&middot;&nbsp; Philippines &nbsp;&middot;&nbsp; Open to Work</p>
     <p class="bio a3">I'm a self-taught full-stack developer building production web apps with <strong>Next.js, React, Supabase, and Tailwind CSS.</strong> I specialize in SaaS dashboards, POS systems, booking apps, and custom business tools &mdash; shipped as polished PWAs or full Next.js + Supabase products deployed on Vercel.</p>
     <p class="bio a3">I started with <span class="hl">Checkout Hub</span> &mdash; a tool I built for my own business &mdash; and have since shipped <strong>16+ production apps</strong> across restaurants, sports courts, retail, and hospitality. Every project is end-to-end: design, frontend, backend, auth, database, deploy. I help clients and employers get <strong>reliable, scalable software that actually ships.</strong></p>
@@ -624,7 +623,7 @@ footer span{color:var(--gold);}
       <span class="htag">TypeScript</span>
       <span class="htag">Full-Stack SaaS</span>
     </div>
-    <a class="pf-btn a4 beam" href="index.html">View Full Portfolio <span class="arr">&#8594;</span></a>
+    <a class="pf-btn a4" href="index.html">View Full Portfolio <span class="arr">&#8594;</span></a>
   </div>
   <div class="photo-col a5">
     <div class="frame">

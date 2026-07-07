@@ -24,14 +24,14 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0a0a0a;--bg2:#0f0f0f;--bg3:#111;
-  --s1:#161616;--s2:#1a1a1a;--s3:#1f1f1f;
-  --b1:#222;--b2:#2c2c2c;--b3:#383838;
-  --gold:#C9922A;--gold2:#E8B84B;--gold3:#FFD584;
-  --glow:rgba(232,184,75,.22);--gdim:rgba(201,146,42,.10);--gbdr:rgba(232,184,75,.28);
-  --ink:#F5F1E8;--c90:rgba(245,241,232,.9);--c80:rgba(245,241,232,.8);
-  --c70:rgba(245,241,232,.7);--c50:rgba(245,241,232,.5);--c30:rgba(245,241,232,.3);
-  --c15:rgba(245,241,232,.15);--c08:rgba(245,241,232,.08);--c04:rgba(245,241,232,.04);
+  --bg:#0b0b0c;--bg2:#101012;--bg3:#151517;
+  --s1:#161618;--s2:#1a1a1d;--s3:#1f1f22;
+  --b1:#212124;--b2:#2b2b2f;--b3:#37373c;
+  --gold:#C9922A;--gold2:#D0A03A;--gold3:#D9A441;
+  --glow:rgba(201,146,42,.14);--gdim:rgba(201,146,42,.10);--gbdr:rgba(201,146,42,.24);
+  --ink:#ececee;--c90:rgba(236,236,238,.9);--c80:rgba(236,236,238,.8);
+  --c70:rgba(236,236,238,.7);--c50:rgba(236,236,238,.5);--c30:rgba(236,236,238,.32);
+  --c15:rgba(236,236,238,.15);--c08:rgba(236,236,238,.08);--c04:rgba(236,236,238,.04);
   --green:#10b981;--blue:#3b82f6;--orange:#f97316;--teal:#14b8a6;
   --D:'Outfit',system-ui,sans-serif;
   --S:'Instrument Serif',Georgia,serif;
@@ -123,8 +123,7 @@ button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
 .pill-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;animation:pulse 1.8s ease-in-out infinite;flex-shrink:0}
 .pill-text{transition:opacity .3s}
 h1.hero-h{font-family:var(--D);font-size:clamp(54px,10vw,148px);line-height:.9;letter-spacing:-.02em;font-weight:900;text-wrap:balance;animation:fadeUp .9s .1s var(--ease-out) both}
-h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spacing:-.02em;
-  -webkit-background-clip:text;background-clip:text;color:transparent}
+h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spacing:-.02em;color:var(--gold)}
 .hero-sub{max-width:600px;margin:28px auto 0;font-size:clamp(15px,1.6vw,17.5px);color:var(--c70);line-height:1.72;text-wrap:balance;animation:fadeUp 1s .22s var(--ease-out) both}
 .hero-sub strong{color:var(--ink);font-weight:600}
 .hero-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:40px;animation:fadeUp 1s .38s var(--ease-out) both}
@@ -602,12 +601,11 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <main>
 <!-- HERO -->
 <section id="top" class="wrap hero">
-  <div class="aurora" aria-hidden="true"></div>
   <div class="pill"><span class="pill-dot"></span><span class="pill-text" id="pillText">Open to Work · Freelance &amp; Full-Time</span></div>
-  <h1 class="hero-h">I build <span class="it shimmer">premium</span><br>SaaS that ships.</h1>
+  <h1 class="hero-h">I build <span class="it">premium</span><br>SaaS that ships.</h1>
   <p class="hero-sub">Robert James Cabansay — full-stack developer specializing in <strong>Next.js, React, and Supabase.</strong> I ship SaaS dashboards, POS systems, and booking apps for restaurants, sports venues, retail, and hospitality. Available for freelance projects or full-time roles.</p>
   <div class="hero-btns">
-    <a class="btn btn-gold beam" href="#tenda">See Tenda Pro →</a>
+    <a class="btn btn-gold" href="#tenda">See Tenda Pro →</a>
     <a class="btn btn-outline" href="#contact">Hire me &#8599;</a>
   </div>
 
@@ -702,7 +700,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
       <a class="btn btn-gold" href="#contact">Talk to RJ about Tenda Pro →</a>
     </div>
     <div class="tenda-carousel-wrap r r1">
-      <div class="beam" style="border-radius:10px 10px 8px 8px">
+      <div style="border-radius:10px 10px 8px 8px">
       <div class="carousel" id="tendaCarousel" data-labels='["Dashboard · Overview","Dashboard · COGS","Sales · Today","Sales · Unpaid","POS · All Items","POS · Drinks","QR Menu","Reports","Menu · Ingredients","POS · Bold Theme","Dashboard · SF Pro","Landing Page"]'>
         <div class="carousel-track" id="tendaTrack">
           <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">tenda.ph/dashboard</div></div><img class="browser-img" fetchpriority="high" src="assets/tenda-pro/demo-1-dashboard.png" alt="Dashboard Overview" /></div></div>
