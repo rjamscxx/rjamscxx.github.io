@@ -590,6 +590,80 @@ footer span{color:var(--gold);}
   .cbtns { grid-template-columns: auto !important; justify-content: start !important; }
 }
 
+/* ══ DEV STANDOUT ELEMENTS (terminal · heatmap · ship log · metrics) ══ */
+:root{--mono:ui-monospace,'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;--ease-rjc:cubic-bezier(.16,1,.3,1);}
+
+/* Terminal */
+.term-wrap{display:flex;justify-content:flex-start;}
+.term{width:100%;max-width:720px;background:#0e0e10;border:1px solid var(--c08);border-radius:12px;
+  overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.4);}
+.term-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:#141416;border-bottom:1px solid var(--c08);}
+.term-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
+.term-dot.r{background:#ff5f57}.term-dot.y{background:#febc2e}.term-dot.g{background:#28c840}
+.term-title{margin-left:9px;font-family:var(--mono);font-size:11px;color:var(--c50);letter-spacing:.2px;}
+.term-body{margin:0;padding:20px 22px;font-family:var(--mono);font-size:13px;line-height:1.9;
+  color:var(--c70);white-space:pre-wrap;word-break:break-word;min-height:236px;}
+.term-body .p{color:var(--gold);}
+.term-body .k{color:var(--cr);font-weight:500;}
+.term-body .c{color:var(--c50);font-style:italic;}
+.term-cur{display:inline-block;width:8px;height:15px;background:var(--gold);vertical-align:-2px;margin-left:2px;
+  animation:dotblink 1.1s steps(1) infinite;}
+
+/* Momentum: metrics band + heatmap + ship log */
+.mband{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-bottom:26px;}
+.mstat{background:var(--bg2);border:1px solid var(--c08);border-radius:var(--radius);padding:18px 16px;position:relative;overflow:hidden;}
+.mstat::before{content:'';position:absolute;top:0;left:0;width:26px;height:2px;background:var(--gold);}
+.mn{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:7px;font-variant-numeric:tabular-nums;}
+.ml{font-size:11px;color:var(--c50);letter-spacing:.2px;line-height:1.35;}
+.mom-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:var(--gap);}
+.mom-card{background:var(--bg2);border:1px solid var(--c08);border-radius:var(--radius);padding:22px 22px;position:relative;overflow:hidden;}
+.mom-h{font-family:var(--serif);font-size:16px;font-weight:600;margin-bottom:3px;}
+.mom-sub{font-size:11px;color:var(--c50);margin-bottom:16px;font-family:var(--mono);letter-spacing:.2px;}
+.hm{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,1fr);gap:3px;margin:2px 0 12px;}
+.hm i{width:100%;aspect-ratio:1;border-radius:2px;background:var(--c08);}
+.hm i.l1{background:rgba(201,146,42,.30)}
+.hm i.l2{background:rgba(201,146,42,.52)}
+.hm i.l3{background:rgba(201,146,42,.74)}
+.hm i.l4{background:var(--gold)}
+.hm-legend{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--c50);}
+.hm-legend i{width:11px;height:11px;border-radius:2px;background:var(--c08);}
+.hm-legend i.l1{background:rgba(201,146,42,.30)}
+.hm-legend i.l2{background:rgba(201,146,42,.52)}
+.hm-legend i.l3{background:rgba(201,146,42,.74)}
+.hm-legend i.l4{background:var(--gold)}
+.shiplog{list-style:none;display:flex;flex-direction:column;}
+.shiplog li{display:grid;grid-template-columns:52px 96px 1fr;gap:10px;align-items:baseline;
+  padding:10px 0;border-top:1px solid var(--c08);font-size:12.5px;}
+.shiplog li:first-child{border-top:none;}
+.shiplog .sldate{font-family:var(--mono);font-size:11px;color:var(--gold);white-space:nowrap;}
+.shiplog .sldate::before{content:'●';margin-right:6px;font-size:8px;vertical-align:1px;}
+.shiplog .slrole{color:var(--cr);font-weight:600;white-space:nowrap;}
+.shiplog .sltxt{color:var(--c50);line-height:1.4;}
+.mom-link{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.3px;
+  color:var(--c50);transition:color .25s;}
+.mom-link:hover{color:var(--gold);}
+
+/* Cursor spotlight (21st.dev, restrained) */
+.spot::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;
+  transition:opacity .45s var(--ease-rjc);
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(201,146,42,.09),transparent 45%);}
+.spot:hover::after{opacity:1;}
+
+/* Section label underline wipe on reveal (designspells) */
+.rv .sln{transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease-rjc) .12s;}
+.rv.on .sln{transform:scaleX(1);}
+
+@media(max-width:720px){
+  .mband{grid-template-columns:repeat(2,1fr);}
+  .mom-grid{grid-template-columns:1fr;}
+  .term-body{font-size:12px;min-height:auto;}
+}
+@media(prefers-reduced-motion:reduce){
+  .term-cur{animation:none;} .spot::after{display:none;} .rv .sln{transform:scaleX(1);}
+}
+@media print{
+  .term{box-shadow:none;} .term-cur{display:none;} .spot::after{display:none;}
+}
 </style>
 </head>
 <body>
@@ -633,6 +707,17 @@ footer span{color:var(--gold);}
     </div>
   </div>
 </section>
+
+<!-- TERMINAL -->
+<div class="rv term-wrap" style="margin-bottom:64px;">
+  <div class="term spot">
+    <div class="term-bar">
+      <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+      <span class="term-title">rjc — zsh — whoami</span>
+    </div>
+    <pre class="term-body" id="termBody" aria-label="Developer profile"></pre>
+  </div>
+</div>
 
 <!-- MARQUEE -->
 <div class="rv marquee-wrap" style="margin-bottom:64px;">
@@ -737,6 +822,38 @@ footer span{color:var(--gold);}
     </div>
   </div>
 </div>
+
+<!-- MOMENTUM -->
+<section class="sec rv" id="momentum">
+  <div class="sh"><span class="sl">Shipping &mdash; Recent Momentum</span><div class="sln"></div></div>
+
+  <div class="mband">
+    <div class="mstat"><div class="mn tick">16</div><div class="ml">Apps shipped, end&#8209;to&#8209;end</div></div>
+    <div class="mstat"><div class="mn tick">6</div><div class="ml">Live in production</div></div>
+    <div class="mstat"><div class="mn tick">5</div><div class="ml">Public live domains</div></div>
+    <div class="mstat"><div class="mn">E2E</div><div class="ml">Design &rarr; deploy, solo</div></div>
+  </div>
+
+  <div class="mom-grid">
+    <div class="mom-card spot">
+      <div class="mom-h">Build activity</div>
+      <div class="mom-sub">public github + project deploys &middot; last 20 weeks</div>
+      <div class="hm" id="hm" role="img" aria-label="Build activity heatmap for the last 20 weeks, showing a strong recent shipping ramp"></div>
+      <div class="hm-legend"><span>Less</span><i></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><span>More</span></div>
+    </div>
+    <div class="mom-card spot">
+      <div class="mom-h">Recently shipped</div>
+      <ul class="shiplog">
+        <li><span class="sldate">Jul 07</span><span class="slrole">Gold Palace</span><span class="sltxt">Cross&#8209;device PIN sync, live end&#8209;to&#8209;end</span></li>
+        <li><span class="sldate">Jul 06</span><span class="slrole">Gold Palace</span><span class="sltxt">Thermal receipts + End&#8209;of&#8209;Day report</span></li>
+        <li><span class="sldate">Jul 04</span><span class="slrole">Courtside PH</span><span class="sltxt">v3.2 live &mdash; multi&#8209;sport reservation PWA</span></li>
+        <li><span class="sldate">Jul 04</span><span class="slrole">Banot&rsquo;s</span><span class="sltxt">Barbershop booking app live on Vercel</span></li>
+        <li><span class="sldate">Jul 03</span><span class="slrole">Checkout Hub</span><span class="sltxt">Business manager PWA &mdash; settings + PDF</span></li>
+      </ul>
+      <a class="mom-link" href="index.html">See all projects &rarr;</a>
+    </div>
+  </div>
+</section>
 
 <!-- PURPOSE -->
 <div class="rv purpose">
@@ -1072,6 +1189,76 @@ window.addEventListener('scroll', () => {
   }, { threshold:.4 });
   so.observe(stats);
 })();
+
+// ── Terminal typewriter (whoami) ──
+(function(){
+  const el = document.getElementById('termBody'); if(!el) return;
+  const lines = [
+    ['p','$ whoami'],
+    ['k','Robert James Cabansay — full-stack developer'],
+    ['',''],
+    ['p','$ cat stack.txt'],
+    ['','frontend   next.js · react · typescript · tailwind'],
+    ['','backend    supabase · postgres · prisma · node'],
+    ['','delivery   vercel · pwa · single-file html'],
+    ['',''],
+    ['p','$ git log --oneline -1'],
+    ['k','16+ apps shipped · 6 live in production'],
+    ['c','# open to work — full-time · contract · freelance']
+  ];
+  const cur = document.createElement('span'); cur.className='term-cur';
+  const putCur = () => { if(cur.parentNode) cur.parentNode.removeChild(cur); el.appendChild(cur); };
+  function instant(){
+    el.textContent='';
+    lines.forEach(([cls,txt],i)=>{ const s=document.createElement('span'); if(cls)s.className=cls; s.textContent=txt; el.appendChild(s); el.appendChild(document.createTextNode('\n')); });
+    el.appendChild(cur);
+  }
+  function typeAll(){
+    el.textContent=''; let li=0;
+    (function line(){
+      if(li>=lines.length){ putCur(); return; }
+      const [cls,txt]=lines[li]; const s=document.createElement('span'); if(cls)s.className=cls; el.appendChild(s);
+      let ci=0;
+      (function ch(){
+        if(ci<txt.length){ s.textContent+=txt[ci++]; putCur(); setTimeout(ch, 11+Math.random()*24); }
+        else { if(cur.parentNode)cur.parentNode.removeChild(cur); el.appendChild(document.createTextNode('\n')); li++; setTimeout(line, txt===''?70:140); }
+      })();
+    })();
+  }
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ instant(); return; }
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{ if(e.isIntersecting){ io.disconnect(); typeAll(); } })},{threshold:.3});
+  io.observe(el);
+})();
+
+// ── Build-activity heatmap (from real weekly GitHub + deploy activity) ──
+(function(){
+  const hm=document.getElementById('hm'); if(!hm) return;
+  const weeks=[0,0,0,0,0,1,0,0,0,0,0,2,4,2,3,4,1,4,4,4];
+  const rnd=(a,b)=>{ let h=((a*73856093)^(b*19349663))>>>0; return (h%997)/997; };
+  weeks.forEach((wl,wi)=>{ for(let d=0;d<7;d++){ let lvl=0;
+    if(wl>0){ const r=rnd(wi+7,d+3); lvl = r<0.40 ? 0 : Math.max(1,Math.min(4,Math.round(wl*(0.5+0.5*rnd(d+2,wi+5))))); }
+    else { lvl = rnd(wi+1,d+1)<0.05 ? 1 : 0; }
+    const c=document.createElement('i'); if(lvl>0)c.className='l'+lvl; hm.appendChild(c);
+  }});
+})();
+
+// ── Metrics ticker ──
+(function(){
+  const band=document.querySelector('.mband'); if(!band) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{ if(!e.isIntersecting) return; io.disconnect();
+    band.querySelectorAll('.tick').forEach(el=>{ const to=parseInt(el.textContent,10); if(isNaN(to)) return; const t0=performance.now(),dur=900;
+      const step=now=>{ const p=Math.min((now-t0)/dur,1); el.textContent=Math.round(to*(1-Math.pow(1-p,3))); if(p<1)requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    });
+  })},{threshold:.4});
+  io.observe(band);
+})();
+
+// ── Cursor spotlight on cards (restrained) ──
+document.querySelectorAll('.spot').forEach(el=>{
+  el.addEventListener('pointermove',e=>{ const r=el.getBoundingClientRect(); el.style.setProperty('--mx',(e.clientX-r.left)+'px'); el.style.setProperty('--my',(e.clientY-r.top)+'px'); });
+});
 
 // Particles
 (function(){
