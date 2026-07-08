@@ -152,6 +152,7 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
   font-family:var(--M);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--gold2);opacity:0;transition:opacity .3s;text-align:center}
 .peek-card:hover .peek-lbl{opacity:1}
+@media(max-width:560px){.peek-strip{gap:10px;margin-top:44px}.peek-card{width:clamp(84px,25vw,120px)}}
 @keyframes skelShimmer{from{background-position:200% 0}to{background-position:-200% 0}}
 
 /* STATS */
@@ -337,6 +338,15 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
 .app-name2{font-family:var(--D);font-size:26px;font-weight:900;line-height:1;color:var(--ink);letter-spacing:-.01em}
 .app-vert{font-family:var(--M);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-top:-4px}
 .app-desc2{font-size:13px;color:var(--c70);line-height:1.6}
+.app-cta{text-decoration:none;justify-content:center;background:linear-gradient(160deg,var(--s1),var(--bg2));border-style:dashed;border-color:var(--b2)}
+.app-cta:hover{border-style:solid;border-color:var(--gbdr);transform:translateY(-5px);box-shadow:0 28px 80px rgba(0,0,0,.6)}
+.app-cta-inner{padding:32px 26px;display:flex;flex-direction:column;gap:12px;height:100%;min-height:230px;justify-content:center}
+.app-cta-eye{font-family:var(--M);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2)}
+.app-cta-title{font-family:var(--D);font-size:clamp(26px,2.6vw,34px);font-weight:900;line-height:1.02;letter-spacing:-.02em;color:var(--ink)}
+.app-cta-title .it{font-family:var(--S);font-style:italic;font-weight:400;color:var(--gold2)}
+.app-cta-sub{font-size:13.5px;color:var(--c70);line-height:1.6}
+.app-cta-link{margin-top:6px;font-family:var(--M);font-size:12px;letter-spacing:.05em;color:var(--gold2);display:inline-flex;align-items:center;gap:6px;transition:gap .3s}
+.app-cta:hover .app-cta-link{gap:11px}
 .app-pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;padding-top:4px}
 .app-pills span{font-family:var(--M);font-size:9px;padding:3px 8px;border:1px solid var(--c08);color:var(--c50);border-radius:999px}
 .case-study-btn{display:inline-flex;align-items:center;gap:5px;
@@ -939,6 +949,16 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
         <button class="case-study-btn" data-case="checkouthub">Case Study ↗</button>
       </div>
     </div>
+
+    <!-- CTA TILE — balances the 3-col grid (5 apps + this = 6) -->
+    <a href="#contact" class="app-card2 app-cta spot r r5">
+      <div class="app-cta-inner">
+        <div class="app-cta-eye">◆ Your business, next</div>
+        <div class="app-cta-title">Want yours <span class="it">built</span>?</div>
+        <p class="app-cta-sub">Pick a vertical or bring your own workflow — I design, build, and ship it end-to-end, solo.</p>
+        <span class="app-cta-link">Start a project →</span>
+      </div>
+    </a>
 
   </div>
 </section>
