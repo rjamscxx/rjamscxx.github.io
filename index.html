@@ -338,7 +338,7 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
 .app-name2{font-family:var(--D);font-size:26px;font-weight:900;line-height:1;color:var(--ink);letter-spacing:-.01em}
 .app-vert{font-family:var(--M);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-top:-4px}
 .app-desc2{font-size:13px;color:var(--c70);line-height:1.6}
-.app-cta{text-decoration:none;justify-content:center;background:linear-gradient(160deg,var(--s1),var(--bg2));border-style:dashed;border-color:var(--b2)}
+.app-cta{text-decoration:none;justify-content:center;background:linear-gradient(160deg,var(--s1),var(--bg2));border-style:dashed;border-color:var(--b2);grid-column:span 2}
 .app-cta:hover{border-style:solid;border-color:var(--gbdr);transform:translateY(-5px);box-shadow:0 28px 80px rgba(0,0,0,.6)}
 .app-cta-inner{padding:32px 26px;display:flex;flex-direction:column;gap:12px;height:100%;min-height:230px;justify-content:center}
 .app-cta-eye{font-family:var(--M);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2)}
@@ -836,29 +836,6 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
   </div>
   <div class="app-showcase">
 
-    <!-- BUDTENDER -->
-    <div class="app-card2 spot tilt r">
-      <div class="app-card2-carousel" id="budtCard">
-        <div class="app-card2-track" id="budtTrack">
-          <div class="app-card2-slide"><img loading="lazy" src="assets/budtenderph/hero.png" alt="BudtenderPH hero" /></div>
-          <div class="app-card2-slide"><img loading="lazy" src="assets/budtenderph/section-2.png" alt="BudtenderPH" /></div>
-          <div class="app-card2-slide"><img loading="lazy" src="assets/budtenderph/section-3.png" alt="BudtenderPH POS" /></div>
-          <div class="app-card2-slide"><img loading="lazy" src="assets/budtenderph/section-4.png" alt="BudtenderPH inv" /></div>
-          <div class="app-card2-slide"><img loading="lazy" src="assets/budtenderph/full.png" alt="BudtenderPH full" /></div>
-        </div>
-        <button class="app-card2-prev" data-c2prev="budtTrack">&#8592;</button>
-        <button class="app-card2-next" data-c2next="budtTrack">&#8594;</button>
-        <div class="app-card2-dots2" id="budtDots"></div>
-      </div>
-      <div class="app-body">
-        <div class="app-badge"><span class="tag tag-v1">v1.0</span><span class="app-ver">retail POS</span></div>
-        <div><div class="app-name2">BUDTENDER</div><div class="app-vert">Shop POS + cash-out</div></div>
-        <p class="app-desc2">Shop POS system with cash-out flow. Inventory management and end-of-day reconciliation — built for small Philippine retail.</p>
-        <div class="app-pills"><span>HTML</span><span>POS</span><span>Retail</span><span>Cash-out</span></div>
-        <button class="case-study-btn" data-case="budtender">Case Study ↗</button>
-      </div>
-    </div>
-
     <!-- JAZEL HUB -->
     <div class="app-card2 spot tilt r r1">
       <div class="app-card2-carousel" id="jazelCard">
@@ -1252,13 +1229,6 @@ const CASES = {
     problem:'Manila streetwear brands had to choose between a basic Shopify store (expensive, no personality) or building from scratch — neither option gave them full creative control with owner-side operations.',
     solution:'Two-layer system: public storefront PWA (gold-palace-streetwear.vercel.app) with cart and quick-view, plus an owner dashboard with POS, orders, inventory, sales analytics, expenses, and reports on Supabase. Hardened after a full security audit: XSS escaping, strict CSP with SRI on every CDN asset, PIN throttling, checkout spam guards, and a Supabase RLS lockdown verified against live exploit attempts.',
     stack:['HTML PWA','Supabase','RLS','CSP','POS','Inventory','Vercel']
-  },
-  budtender: {
-    tag:'Retail POS · HTML',
-    title:'Budtender PH',
-    problem:'Small Philippine retail shops needed a simple, no-subscription POS with cash-out tracking and end-of-day reconciliation — without paying monthly fees.',
-    solution:'Single-file HTML POS with product catalog, invoice modal, cash-out flow, inventory tracking, backup/restore, and an expense module. Runs entirely in the browser, no server needed.',
-    stack:['HTML','localStorage','POS','Cash-out','Inventory','Receipt printing']
   },
   jazelhub: {
     tag:'Client Project · 2026',
