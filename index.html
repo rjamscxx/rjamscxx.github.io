@@ -158,7 +158,7 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
 /* STATS */
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
   background:var(--c08);border:1px solid var(--c08);border-radius:16px;overflow:hidden;margin-top:72px}
-@media(min-width:640px){.stats{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:640px){.stats{grid-template-columns:repeat(3,1fr)}}
 .stat{background:var(--bg2);padding:24px 16px;text-align:center;transition:background .3s}
 .stat:hover{background:var(--s2)}
 .stat-n{font-family:var(--D);font-size:clamp(36px,5vw,56px);font-weight:900;color:var(--gold2);line-height:1;margin-bottom:6px}
@@ -615,32 +615,31 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
   <h1 class="hero-h">I build <span class="it">premium</span><br>SaaS that ships.</h1>
   <p class="hero-sub">Robert James Cabansay — full-stack developer specializing in <strong>Next.js, React, and Supabase.</strong> I ship SaaS dashboards, POS systems, and booking apps for restaurants, sports venues, retail, and hospitality. Available for freelance projects or full-time roles.</p>
   <div class="hero-btns">
-    <a class="btn btn-gold" href="#tenda">See Tenda Pro →</a>
+    <a class="btn btn-gold" href="#courtside">See Courtside PH →</a>
     <a class="btn btn-outline" href="#contact">Hire me &#8599;</a>
   </div>
 
   <!-- PEEK STRIP -->
   <div class="peek-strip">
-    <a href="#tenda" class="peek-card" style="--i:0">
-      <img src="assets/tenda-pro/demo-1-dashboard.png" alt="Tenda Pro" />
-      <div class="peek-lbl">Tenda Pro</div>
-    </a>
-    <a href="#live" class="peek-card" style="--i:1">
-      <img src="assets/courtside/hero.png" alt="Courtside" />
+    <a href="#courtside" class="peek-card" style="--i:0">
+      <img src="assets/courtside/feat-landing.png" alt="Courtside PH" />
       <div class="peek-lbl">Courtside PH</div>
     </a>
+    <a href="#live" class="peek-card" style="--i:1">
+      <img src="assets/gold-palace-streetwear/hero.png" alt="Gold Palace" />
+      <div class="peek-lbl">Gold Palace</div>
+    </a>
     <a href="#live" class="peek-card" style="--i:2">
-      <img src="assets/grayscale-coffee-club/hero.png" alt="Grayscale" />
-      <div class="peek-lbl">Grayscale</div>
+      <img src="assets/banots/hero.png" alt="Banot's" />
+      <div class="peek-lbl">Banot's</div>
     </a>
   </div>
 
   <!-- STATS -->
   <div class="stats r">
-    <div class="stat"><div class="stat-n" data-count="16" data-suffix="+">0</div><div class="stat-l">Apps Built</div></div>
-    <div class="stat"><div class="stat-n" data-count="3" data-suffix="+">0</div><div class="stat-l">Yrs Building</div></div>
-    <div class="stat"><div class="stat-n" data-count="6" data-suffix="+">0</div><div class="stat-l">Next.js Apps</div></div>
-    <div class="stat"><div class="stat-n" data-count="15">0</div><div class="stat-l">Starter Templates</div></div>
+    <div class="stat"><div class="stat-n" data-count="8">0</div><div class="stat-l">Apps Built</div></div>
+    <div class="stat"><div class="stat-n" data-count="1" data-suffix="+">0</div><div class="stat-l">Yrs Building</div></div>
+    <div class="stat"><div class="stat-n" data-count="6" data-suffix="+">0</div><div class="stat-l">Live in Prod</div></div>
   </div>
 </section>
 
@@ -680,10 +679,62 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
   </div>
 </div>
 
+<!-- ═══ COURTSIDE PH ═══ -->
+<section id="courtside" class="wrap tenda-section">
+  <div class="sh r">
+    <div class="sh-eye">◆ Flagship PWA · Live in Production · Sports Booking</div>
+    <h2 class="sh-title">The <span class="it">court</span> operating system.</h2>
+    <p class="sh-sub">Courtside PH powers multi-sport court reservations across the Philippines — 6 sports, QR check-in, team management, and real-time Supabase cloud sync.</p>
+  </div>
+  <div class="tenda-grid">
+    <div class="tenda-sticky r">
+      <div class="tenda-live"><span class="ldot"></span>Live · courtside-ph.vercel.app</div>
+      <div class="tenda-name">COURT<br><span class="it">SIDE PH</span></div>
+      <p class="tenda-tag">Multi-sport court reservation PWA — 6 sports, QR check-in, team management, Supabase cloud sync. Now on v19.</p>
+      <div class="feat-stack">
+        <span>HTML PWA</span><span>Supabase</span><span>Vanilla JS</span>
+        <span>Web Push</span><span>localStorage</span><span>Vercel</span><span>v19</span>
+      </div>
+      <ul class="feat-list">
+        <li>6 sports — basketball, tennis, badminton, volleyball, futsal, pickleball</li>
+        <li>QR check-in — scan to confirm reservations on arrival</li>
+        <li>Team management — create and manage sports teams</li>
+        <li>Supabase cloud sync — real-time data across all devices</li>
+        <li>Web push notifications — booking reminders and alerts</li>
+        <li>Guided demo tour — smooth onboarding for new users</li>
+        <li>Offline-first — works without an internet connection</li>
+      </ul>
+      <a class="btn btn-gold" href="https://courtside-ph.vercel.app" target="_blank" rel="noopener">Open live app ↗</a>
+    </div>
+    <div class="tenda-carousel-wrap r r1">
+      <div style="border-radius:10px 10px 8px 8px">
+      <div class="carousel" id="csMainCarousel" data-labels='["Landing · Hero","Booking Flow","Court Selection","Full View","App Entry","Booking Entry","Hero Scroll"]'>
+        <div class="carousel-track" id="csMainTrack">
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">courtside-ph.vercel.app</div></div><img class="browser-img" fetchpriority="high" src="assets/courtside/hero.png" alt="Courtside Landing" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">courtside-ph.vercel.app — booking</div></div><img class="browser-img" loading="lazy" src="assets/courtside/section-2.png" alt="Booking Flow" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">courtside-ph.vercel.app — courts</div></div><img class="browser-img" loading="lazy" src="assets/courtside/section-3.png" alt="Court Selection" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">courtside-ph.vercel.app — full view</div></div><img class="browser-img" loading="lazy" src="assets/courtside/full.png" alt="Full View" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">courtside-ph.vercel.app — landing</div></div><img class="browser-img" loading="lazy" src="assets/courtside/feat-landing.png" alt="App Entry" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">courtside-ph.vercel.app — book</div></div><img class="browser-img" loading="lazy" src="assets/courtside/feat-booking-entry.png" alt="Booking Entry" /></div></div>
+          <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">courtside-ph.vercel.app — scroll</div></div><img class="browser-img" loading="lazy" src="assets/courtside/feat-hero-scroll.png" alt="Hero Scroll" /></div></div>
+        </div>
+        <button class="carousel-btn prev" data-carousel-prev="csMainCarousel">&#8592;</button>
+        <button class="carousel-btn next" data-carousel-next="csMainCarousel">&#8594;</button>
+        <div class="carousel-label" id="csMainLabel">Landing · Hero</div>
+        <div class="carousel-count" id="csMainCount">1 / 7</div>
+      </div>
+      </div>
+      <div class="carousel-dots" id="csMainDots"></div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
 <!-- ═══ TENDA PRO ═══ -->
 <section id="tenda" class="wrap tenda-section">
   <div class="sh r">
-    <div class="sh-eye">◆ Flagship · Production Next.js · Restaurant SaaS</div>
+    <div class="sh-eye">◆ Production Next.js · Restaurant SaaS</div>
     <h2 class="sh-title">The <span class="it">restaurant</span> brain.</h2>
     <p class="sh-sub">Tenda Pro powers café and restaurant operations across the Philippines — POS, sales, QR menus, inventory, reports, and an AI assistant, all in one dashboard.</p>
   </div>
@@ -742,36 +793,11 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <!-- ═══ LIVE APPS ═══ -->
 <section id="live" class="wrap sec">
   <div class="sh r">
-    <div class="sh-eye">◆ Live PWAs · Active</div>
-    <h2 class="sh-title">Sports, <span class="it">coffee</span>, streetwear.</h2>
-    <p class="sh-sub">Three live HTML PWAs serving real users — court booking, coffee loyalty, and a Manila streetwear store.</p>
+    <div class="sh-eye">◆ Live in Production · Three Apps</div>
+    <h2 class="sh-title"><span class="it">Coffee</span>, streetwear, barbershop.</h2>
+    <p class="sh-sub">Three live apps serving real users across the Philippines — coffee loyalty, streetwear retail, and barbershop booking.</p>
   </div>
   <div class="live-grid">
-
-    <!-- COURTSIDE -->
-    <div class="live-card spot r" data-case="courtside">
-      <div class="live-card-top">
-        <div class="live-carousel" id="courtsideTrack">
-          <div class="live-slide"><img loading="lazy" src="assets/courtside/hero.png" alt="Courtside hero" /></div>
-          <div class="live-slide"><img loading="lazy" src="assets/courtside/section-2.png" alt="Courtside booking" /></div>
-          <div class="live-slide"><img loading="lazy" src="assets/courtside/section-3.png" alt="Courtside features" /></div>
-          <div class="live-slide"><img loading="lazy" src="assets/courtside/full.png" alt="Courtside full" /></div>
-        </div>
-        <button class="live-btn lp" aria-label="Previous screenshot" data-live-prev="courtsideTrack">&#8592;</button>
-        <button class="live-btn ln" aria-label="Next screenshot" data-live-next="courtsideTrack">&#8594;</button>
-        <div class="live-dots" id="courtsideDots"></div>
-      </div>
-      <div class="live-body">
-        <div class="live-meta">
-          <span class="live-tag-blue"><span class="live-tag-dot" style="background:var(--blue);box-shadow:0 0 7px var(--blue)"></span>Live · courtside-ph.vercel.app</span>
-          <span style="font-family:var(--M);font-size:10px;color:var(--c30)">v19</span>
-        </div>
-        <div class="live-name">COURT<span class="it">SIDE</span></div>
-        <p class="live-desc">Premium multi-sport court reservation PWA. Basketball, tennis, badminton, volleyball, futsal, pickleball — QR check-in, team management, Supabase cloud sync.</p>
-        <div class="live-stack"><span>HTML PWA</span><span>Supabase</span><span>QR check-in</span><span>6 sports</span></div>
-        <button class="case-study-btn" data-case="courtside">Case Study ↗</button>
-      </div>
-    </div>
 
     <!-- GRAYSCALE -->
     <div class="live-card spot r r1" data-case="grayscale">
@@ -822,6 +848,29 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
       </div>
     </div>
 
+    <!-- BANOT'S BARBERSHOP -->
+    <div class="live-card spot r r2" data-case="banots">
+      <div class="live-card-top">
+        <div class="live-carousel" id="banotsLiveTrack">
+          <div class="live-slide"><img loading="lazy" src="assets/banots/hero.png" alt="Banot's landing" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/banots/section-2.png" alt="Banot's booking wizard" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/banots/section-3.png" alt="Banot's services" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/banots/full.png" alt="Banot's full view" /></div>
+        </div>
+        <button class="live-btn lp" aria-label="Previous screenshot" data-live-prev="banotsLiveTrack">&#8592;</button>
+        <button class="live-btn ln" aria-label="Next screenshot" data-live-next="banotsLiveTrack">&#8594;</button>
+        <div class="live-dots" id="banotsLiveDots"></div>
+      </div>
+      <div class="live-body">
+        <div class="live-meta">
+          <span class="live-tag-mono"><span class="live-tag-dot" style="background:var(--ink);box-shadow:0 0 7px rgba(236,236,238,.3)"></span>Live · banots-barbershop.vercel.app</span>
+        </div>
+        <div class="live-name">BANOT'S <span class="it">BARBERSHOP</span></div>
+        <p class="live-desc">Full-stack booking app for a solo barber. 5-step booking wizard, QR payment via GCash/Maya/BDO/BPI, calendar dashboard, client history, and a separate scroll-animated landing site.</p>
+        <div class="live-stack"><span>Next.js 16</span><span>Prisma 7</span><span>Neon Postgres</span><span>QR Pay</span></div>
+        <button class="case-study-btn" data-case="banots">Case Study ↗</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -882,29 +931,6 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
       </div>
     </div>
 
-    <!-- BANOT'S BARBERSHOP -->
-    <div class="app-card2 spot tilt r r3">
-      <div class="app-card2-carousel" id="banotsCard">
-        <div class="app-card2-track" id="banotsTrack">
-          <div class="app-card2-slide"><img loading="lazy" src="assets/banots/hero.png" alt="Banot's Barbershop landing" /></div>
-          <div class="app-card2-slide"><img loading="lazy" src="assets/banots/section-2.png" alt="Banot's booking wizard — pick a service" /></div>
-          <div class="app-card2-slide"><img loading="lazy" src="assets/banots/section-3.png" alt="Banot's booking wizard — services" /></div>
-          <div class="app-card2-slide"><img loading="lazy" src="assets/banots/section-4.png" alt="Banot's scroll landing site" /></div>
-          <div class="app-card2-slide"><img loading="lazy" src="assets/banots/full.png" alt="Banot's scroll landing — services" /></div>
-        </div>
-        <button class="app-card2-prev" data-c2prev="banotsTrack">&#8592;</button>
-        <button class="app-card2-next" data-c2next="banotsTrack">&#8594;</button>
-        <div class="app-card2-dots2" id="banotsDots"></div>
-      </div>
-      <div class="app-body">
-        <div class="app-badge"><span class="tag tag-live">Live · Latest Build</span><span class="app-ver">2026</span></div>
-        <div><div class="app-name2">BANOT'S BARBERSHOP</div><div class="app-vert">Solo-barber booking SaaS</div></div>
-        <p class="app-desc2">Full-stack booking app for a solo barber-owner, live in production. 5-step public wizard: pick service + time slot, pay via GCash/Maya/BDO/BPI QR, upload proof. Dashboard: calendar, approve/reject, client visit history, walk-ins — plus a separate scroll-animated landing site.</p>
-        <div class="app-pills"><span>Next.js 16</span><span>Prisma 7</span><span>Neon Postgres</span><span>Tailwind</span><span>QR Pay</span></div>
-        <button class="case-study-btn" data-case="banots">Case Study ↗</button>
-      </div>
-    </div>
-
     <!-- CHECKOUT HUB -->
     <div class="app-card2 spot tilt r r4">
       <div class="app-card2-carousel" id="chubCard">
@@ -927,30 +953,8 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
       </div>
     </div>
 
-    <!-- GRAYSCALE COFFEE CLUB -->
-    <div class="app-card2 spot tilt r r5">
-      <div class="app-card2-carousel" id="grayscaleCard2">
-        <div class="app-card2-track" id="grayscaleTrack2">
-          <div class="app-card2-slide"><img loading="lazy" src="assets/grayscale-coffee-club/hero.png" alt="Grayscale Coffee Club hero" /></div>
-          <div class="app-card2-slide"><img loading="lazy" src="assets/grayscale-coffee-club/section-2.png" alt="Grayscale membership tiers" /></div>
-          <div class="app-card2-slide"><img loading="lazy" src="assets/grayscale-coffee-club/section-3.png" alt="Grayscale loyalty dashboard" /></div>
-          <div class="app-card2-slide"><img loading="lazy" src="assets/grayscale-coffee-club/full.png" alt="Grayscale full view" /></div>
-        </div>
-        <button class="app-card2-prev" data-c2prev="grayscaleTrack2">&#8592;</button>
-        <button class="app-card2-next" data-c2next="grayscaleTrack2">&#8594;</button>
-        <div class="app-card2-dots2" id="grayscaleDots2"></div>
-      </div>
-      <div class="app-body">
-        <div class="app-badge"><span class="tag tag-v1">v17</span><span class="app-ver">coffee PWA</span></div>
-        <div><div class="app-name2">GRAYSCALE COFFEE CLUB</div><div class="app-vert">Coffee loyalty PWA</div></div>
-        <p class="app-desc2">Premium subscription + loyalty app for independent coffee shops. Member portal, QR loyalty card, subscription tiers, and a daily café dashboard — fully offline-first.</p>
-        <div class="app-pills"><span>Membership Tiers</span><span>QR Loyalty</span><span>Subscription</span><span>Café Dashboard</span></div>
-        <button class="case-study-btn" data-case="grayscale">Case Study ↗</button>
-      </div>
-    </div>
-
     <!-- CTA TILE -->
-    <a href="#contact" class="app-card2 app-cta spot r r5">
+    <a href="#contact" class="app-card2 app-cta spot r r5" style="grid-column:1/-1">
       <div class="app-cta-inner">
         <div class="app-cta-eye">◆ Your business, next</div>
         <div class="app-cta-title">Want yours <span class="it">built</span>?</div>
@@ -959,38 +963,6 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
       </div>
     </a>
 
-  </div>
-</section>
-
-<div class="div"></div>
-
-<!-- ═══ TEMPLATES ═══ -->
-<section id="templates" class="wrap sec">
-  <div class="sh r">
-    <div class="sh-eye">◆ Sellable · Gumroad-ready</div>
-    <h2 class="sh-title"><span class="it">15</span> starters.<br>One pack.</h2>
-    <p class="sh-sub">Single-file SaaS dashboards — dark theme, gold accents. White-label, customize, ship.</p>
-  </div>
-  <div class="tpl-band r" id="tplBand">
-    <div class="tpl-grid">
-      <div>
-        <h3 class="tpl-h">RJ's <span class="it">SaaS Starter</span><br>Pack — 15 apps.</h3>
-        <p class="tpl-p">Appointment schedulers, CRMs, trackers, billing dashboards, inventory, loyalty programs, tutoring platforms — already styled to match your premium brand. Open the .html file, customize, deliver.</p>
-        <div class="tpl-pills">
-          <span>CALENDR</span><span>CLIENTLY</span><span>DELIVR</span><span>TEAMPULSE</span>
-          <span>TICKETIQ</span><span>EXPENSO</span><span>VOICEBOX</span><span>FITGRID</span>
-          <span>STOCKWISE</span><span>BILLFLOW</span><span>LOYALPH</span><span>TUTORHQ</span>
-          <span>ESTATEHQ</span><span>SUBSTACK</span><span>TASKFORGE</span>
-        </div>
-        <div class="tpl-price"><span class="tpl-big">$79</span><span class="tpl-sm">/ ₱4,500 — one-time, lifetime updates</span></div>
-        <a class="btn btn-gold" href="mailto:rjamscxx@gmail.com?subject=SaaS%20Starter%20Pack">Buy the pack →</a>
-      </div>
-      <div class="tpl-mosaic">
-        <div class="tpl-thumb">CALENDR</div><div class="tpl-thumb">DELIVR</div><div class="tpl-thumb">EXPENSO</div>
-        <div class="tpl-thumb">STOCKWISE</div><div class="tpl-thumb">BILLFLOW</div><div class="tpl-thumb">LOYALPH</div>
-        <div class="tpl-thumb">TUTORHQ</div><div class="tpl-thumb">ESTATEHQ</div><div class="tpl-thumb">TASKFORGE</div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1394,6 +1366,34 @@ if(contactForm){
   })
 }
 
+
+/* ─── MAIN CAROUSEL (Courtside PH) ─── */
+;(function(){
+  const track=document.getElementById('csMainTrack')
+  const carousel=document.getElementById('csMainCarousel')
+  const dotsWrap=document.getElementById('csMainDots')
+  const label=document.getElementById('csMainLabel')
+  const count=document.getElementById('csMainCount')
+  if(!track)return
+  const slides=track.children, total=slides.length
+  const labelData=JSON.parse(carousel.dataset.labels||'[]')
+  let cur=0,timer
+
+  for(let i=0;i<total;i++){ const d=document.createElement('button'); d.className='cdot'+(i===0?' active':''); d.setAttribute('aria-label','Go to slide '+(i+1)); d.addEventListener('click',()=>goTo(i)); dotsWrap.appendChild(d) }
+  const dots=[...dotsWrap.children]
+
+  function goTo(n){ cur=(n+total)%total; track.style.transform=`translateX(-${cur*100}%)`; dots.forEach((d,i)=>d.classList.toggle('active',i===cur)); if(label&&labelData[cur])label.textContent=labelData[cur]; if(count)count.textContent=`${cur+1} / ${total}`; resetTimer() }
+  function resetTimer(){ clearInterval(timer); timer=setInterval(()=>goTo(cur+1),4200) }
+
+  document.querySelector('[data-carousel-prev="csMainCarousel"]')?.addEventListener('click',()=>goTo(cur-1))
+  document.querySelector('[data-carousel-next="csMainCarousel"]')?.addEventListener('click',()=>goTo(cur+1))
+  carousel.addEventListener('mouseenter',()=>clearInterval(timer))
+  carousel.addEventListener('mouseleave',resetTimer)
+  document.addEventListener('keydown',e=>{ const r=carousel.getBoundingClientRect(); if(r.top<innerHeight&&r.bottom>0){ if(e.key==='ArrowLeft')goTo(cur-1); if(e.key==='ArrowRight')goTo(cur+1) } })
+  let t0=0; carousel.addEventListener('touchstart',e=>{t0=e.touches[0].clientX},{passive:true})
+  carousel.addEventListener('touchend',e=>{ const d=e.changedTouches[0].clientX-t0; if(Math.abs(d)>40)goTo(d<0?cur+1:cur-1) })
+  goTo(0)
+})()
 /* ─── MAIN CAROUSEL (Tenda Pro) ─── */
 ;(function(){
   const track=document.getElementById('tendaTrack')
@@ -1442,6 +1442,7 @@ function initLiveCarousel(trackId,dotsId){
 initLiveCarousel('courtsideTrack','courtsideDots')
 initLiveCarousel('grayscaleTrack','grayscaleDots')
 initLiveCarousel('goldpalaceTrack','goldpalaceDots')
+initLiveCarousel('banotsLiveTrack','banotsLiveDots')
 
 /* ─── SMALL CAROUSELS ─── */
 function initSmallCarousel(trackId,dotsId){
@@ -1460,12 +1461,9 @@ function initSmallCarousel(trackId,dotsId){
   let t0=0; track.addEventListener('touchstart',e=>{t0=e.touches[0].clientX},{passive:true})
   track.addEventListener('touchend',e=>{ const d=e.changedTouches[0].clientX-t0; if(Math.abs(d)>40)goTo(d<0?cur+1:cur-1) })
 }
-initSmallCarousel('budtTrack','budtDots')
 initSmallCarousel('jazelTrack','jazelDots')
 initSmallCarousel('ymTrack','ymDots')
-initSmallCarousel('banotsTrack','banotsDots')
 initSmallCarousel('chubTrack','chubDots')
-initSmallCarousel('grayscaleTrack2','grayscaleDots2')
 
 /* ─── SIGNATURE FX: SPOTLIGHT + 3D TILT ─── */
 document.querySelectorAll('.spot').forEach(el=>{el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px');});});
