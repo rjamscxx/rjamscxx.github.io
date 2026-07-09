@@ -213,8 +213,8 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
 /* CAROUSEL */
 .carousel{position:relative;overflow:hidden;aspect-ratio:16/9;border-radius:10px 10px 8px 8px;
   box-shadow:0 24px 80px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.04)}
-.carousel-track{display:flex;height:100%;transition:transform .55s cubic-bezier(.22,1,.36,1);will-change:transform}
-.carousel-slide{flex:0 0 100%;min-width:0;position:relative;height:100%}
+.carousel-track{position:relative;height:100%;width:100%}
+.carousel-slide{position:absolute;inset:0;opacity:0;transform:scale(.97) translateY(8px);transition:opacity .45s cubic-bezier(.4,0,.2,1),transform .45s cubic-bezier(.4,0,.2,1);pointer-events:none;will-change:opacity,transform}.carousel-slide.cx-on{opacity:1;transform:scale(1) translateY(0);pointer-events:auto}
 .carousel-slide .browser{border-radius:0;box-shadow:none}
 .carousel-slide .browser-bar{border-radius:0}
 .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:10;
@@ -225,8 +225,8 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
   transition:background .2s,opacity .2s;opacity:.7;font-size:16px}
 .carousel-btn:hover{background:rgba(10,10,10,.95);opacity:1}
 .carousel-btn.prev{left:12px}.carousel-btn.next{right:12px}
-.carousel-dots{display:flex;justify-content:center;gap:0;margin-top:5px}
-.cdot{width:24px;height:24px;background:transparent;border:0;cursor:pointer;position:relative;padding:0}
+.carousel-dots{height:2px;background:rgba(255,255,255,.1);border-radius:1px;margin-top:8px;overflow:hidden;position:relative}
+.cx-prog{position:absolute;left:0;top:0;height:100%;border-radius:1px;background:var(--gold2);transition:width .42s cubic-bezier(.4,0,.2,1)}.cdot{display:none}
 .cdot::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:6px;height:6px;border-radius:50%;background:var(--b3);transition:background .25s,transform .25s}
 .cdot.active::before{background:var(--gold2);transform:translate(-50%,-50%) scale(1.4)}
 .carousel-label{position:absolute;left:14px;bottom:14px;z-index:5;
@@ -269,18 +269,18 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
   transition:transform .55s var(--ease-out),box-shadow .55s,border-color .4s}
 .live-card:hover{transform:translateY(-5px);box-shadow:0 28px 80px rgba(0,0,0,.6);border-color:var(--gbdr)}
 .live-card-top{position:relative;overflow:hidden;aspect-ratio:16/10}
-.live-carousel{display:flex;height:100%;transition:transform .5s var(--ease-out)}
-.live-slide{flex:0 0 100%;min-width:0;height:100%}
+.live-carousel{position:relative;height:100%;width:100%}
+.live-slide{position:absolute;inset:0;opacity:0;transform:scale(.97) translateY(8px);transition:opacity .4s cubic-bezier(.4,0,.2,1),transform .4s cubic-bezier(.4,0,.2,1);pointer-events:none}.live-slide img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}.live-slide.cx-on{opacity:1;transform:scale(1) translateY(0);pointer-events:auto}
 .live-slide img{width:100%;height:100%;display:block;object-fit:cover;object-position:center}
 .live-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;
   width:30px;height:30px;border-radius:50%;
   background:rgba(10,10,10,.7);backdrop-filter:blur(8px);border:1px solid var(--b2);
   color:var(--gold2);display:flex;align-items:center;justify-content:center;
-  opacity:.75;transition:opacity .25s;font-size:12px}
+  opacity:.7;transition:opacity .25s,background .2s;font-size:12px}
 .live-card:hover .live-btn{opacity:1}
 .live-btn.lp{left:8px}.live-btn.ln{right:8px}
-.live-dots{display:flex;justify-content:center;gap:0;position:absolute;bottom:0;left:0;right:0}
-.ldot2{width:24px;height:24px;background:transparent;border:0;cursor:pointer;position:relative;padding:0}
+.live-dots{height:2px;background:rgba(255,255,255,.1);border-radius:1px;position:absolute;bottom:0;left:0;right:0;overflow:hidden}
+.ldot2{width:24px;height:24px;background:transparent;border:0;cursor:pointer;position:relative;padding:0;display:none}
 .ldot2::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .2s}
 .ldot2.active::before{background:var(--gold2)}
 .live-body{padding:20px 22px;display:grid;gap:10px}
@@ -313,18 +313,14 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
   transition:transform .55s var(--ease-out),box-shadow .55s,border-color .4s}
 .app-card2:hover{transform:translateY(-5px);box-shadow:0 28px 80px rgba(0,0,0,.6);border-color:var(--gbdr)}
 .app-card2-carousel{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--bg2)}
-.app-card2-track{display:flex;height:100%;transition:transform .5s var(--ease-out)}
-.app-card2-slide{flex:0 0 100%;min-width:0;height:100%}
+.app-card2-track{position:relative;height:100%;width:100%}
+.app-card2-slide{position:absolute;inset:0;opacity:0;transform:scale(.97) translateY(8px);transition:opacity .4s cubic-bezier(.4,0,.2,1),transform .4s cubic-bezier(.4,0,.2,1);pointer-events:none}.app-card2-slide img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}.app-card2-slide.cx-on{opacity:1;transform:scale(1) translateY(0);pointer-events:auto}
 .app-card2-slide img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-.app-card2-prev,.app-card2-next{position:absolute;top:50%;transform:translateY(-50%);z-index:5;
-  width:30px;height:30px;border-radius:50%;
-  background:rgba(10,10,10,.7);backdrop-filter:blur(8px);border:1px solid var(--b2);
-  color:var(--gold2);display:flex;align-items:center;justify-content:center;
-  opacity:0;transition:opacity .25s;font-size:12px}
+.app-card2-prev,.app-card2-next{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:30px;height:30px;border-radius:50%;background:rgba(10,10,10,.7);backdrop-filter:blur(8px);border:1px solid var(--b2);color:var(--gold2);display:flex;align-items:center;justify-content:center;opacity:.55;transition:opacity .25s;font-size:12px}
 .app-card2:hover .app-card2-prev,.app-card2:hover .app-card2-next{opacity:1}
 .app-card2-prev{left:8px}.app-card2-next{right:8px}
-.app-card2-dots2{display:flex;justify-content:center;gap:0;position:absolute;bottom:0;left:0;right:0}
-.cdot2{width:24px;height:24px;background:transparent;border:0;cursor:pointer;position:relative;padding:0}
+.app-card2-dots2{height:2px;background:rgba(255,255,255,.1);border-radius:1px;position:absolute;bottom:0;left:0;right:0;overflow:hidden}
+.cdot2{width:24px;height:24px;background:transparent;border:0;cursor:pointer;position:relative;padding:0;display:none}
 .cdot2::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .2s}
 .cdot2.active::before{background:var(--gold2)}
 .app-body{padding:18px 20px;flex:1;display:flex;flex-direction:column;gap:8px}
@@ -1544,14 +1540,23 @@ if(contactForm){
   const label=document.getElementById('csMainLabel')
   const count=document.getElementById('csMainCount')
   if(!track)return
-  const slides=track.children, total=slides.length
+  const slides=Array.from(track.children), total=slides.length
   const labelData=JSON.parse(carousel.dataset.labels||'[]')
   let cur=0,timer
 
-  for(let i=0;i<total;i++){ const d=document.createElement('button'); d.className='cdot'+(i===0?' active':''); d.setAttribute('aria-label','Go to slide '+(i+1)); d.addEventListener('click',()=>goTo(i)); dotsWrap.appendChild(d) }
-  const dots=[...dotsWrap.children]
+  // Progress bar
+  const prog=document.createElement('div'); prog.className='cx-prog'
+  dotsWrap.innerHTML=''; dotsWrap.appendChild(prog)
 
-  function goTo(n){ cur=(n+total)%total; track.style.transform=`translateX(-${cur*100}%)`; dots.forEach((d,i)=>d.classList.toggle('active',i===cur)); if(label&&labelData[cur])label.textContent=labelData[cur]; if(count)count.textContent=`${cur+1} / ${total}`; resetTimer() }
+  function goTo(n){
+    slides[cur]?.classList.remove('cx-on')
+    cur=(n+total)%total
+    slides[cur].classList.add('cx-on')
+    prog.style.width=((cur+1)/total*100)+'%'
+    if(label&&labelData[cur])label.textContent=labelData[cur]
+    if(count)count.textContent=`${cur+1} / ${total}`
+    resetTimer()
+  }
   function resetTimer(){ clearInterval(timer); timer=setInterval(()=>goTo(cur+1),4200) }
 
   document.querySelector('[data-carousel-prev="csMainCarousel"]')?.addEventListener('click',()=>goTo(cur-1))
@@ -1563,6 +1568,7 @@ if(contactForm){
   carousel.addEventListener('touchend',e=>{ const d=e.changedTouches[0].clientX-t0; if(Math.abs(d)>40)goTo(d<0?cur+1:cur-1) })
   goTo(0)
 })()
+
 /* ─── MAIN CAROUSEL (Tenda Pro) ─── */
 ;(function(){
   const track=document.getElementById('tendaTrack')
@@ -1571,14 +1577,22 @@ if(contactForm){
   const label=document.getElementById('tendaLabel')
   const count=document.getElementById('tendaCount')
   if(!track)return
-  const slides=track.children, total=slides.length
+  const slides=Array.from(track.children), total=slides.length
   const labelData=JSON.parse(carousel.dataset.labels||'[]')
   let cur=0,timer
 
-  for(let i=0;i<total;i++){ const d=document.createElement('button'); d.className='cdot'+(i===0?' active':''); d.setAttribute('aria-label','Go to slide '+(i+1)); d.addEventListener('click',()=>goTo(i)); dotsWrap.appendChild(d) }
-  const dots=[...dotsWrap.children]
+  const prog=document.createElement('div'); prog.className='cx-prog'
+  dotsWrap.innerHTML=''; dotsWrap.appendChild(prog)
 
-  function goTo(n){ cur=(n+total)%total; track.style.transform=`translateX(-${cur*100}%)`; dots.forEach((d,i)=>d.classList.toggle('active',i===cur)); if(label&&labelData[cur])label.textContent=labelData[cur]; if(count)count.textContent=`${cur+1} / ${total}`; resetTimer() }
+  function goTo(n){
+    slides[cur]?.classList.remove('cx-on')
+    cur=(n+total)%total
+    slides[cur].classList.add('cx-on')
+    prog.style.width=((cur+1)/total*100)+'%'
+    if(label&&labelData[cur])label.textContent=labelData[cur]
+    if(count)count.textContent=`${cur+1} / ${total}`
+    resetTimer()
+  }
   function resetTimer(){ clearInterval(timer); timer=setInterval(()=>goTo(cur+1),4200) }
 
   document.querySelector('[data-carousel-prev="tendaCarousel"]')?.addEventListener('click',()=>goTo(cur-1))
@@ -1594,11 +1608,22 @@ if(contactForm){
 /* ─── LIVE CARD CAROUSELS ─── */
 function initLiveCarousel(trackId,dotsId){
   const track=document.getElementById(trackId), dotsWrap=document.getElementById(dotsId)
-  if(!track||!dotsWrap)return
-  const total=track.children.length; let cur=0
-  for(let i=0;i<total;i++){ const d=document.createElement('button'); d.className='ldot2'+(i===0?' active':''); d.setAttribute('aria-label','Go to screenshot '+(i+1)); d.addEventListener('click',e=>{e.stopPropagation();goTo(i)}); dotsWrap.appendChild(d) }
-  const dots=[...dotsWrap.children]
-  function goTo(n){ cur=(n+total)%total; track.style.transform=`translateX(-${cur*100}%)`; dots.forEach((d,i)=>d.classList.toggle('active',i===cur)) }
+  if(!track)return
+  const slides=Array.from(track.children), total=slides.length
+  let cur=0
+
+  if(dotsWrap){
+    const prog=document.createElement('div'); prog.className='cx-prog'
+    dotsWrap.innerHTML=''; dotsWrap.appendChild(prog)
+    var updateProg=()=>{ prog.style.width=((cur+1)/total*100)+'%' }
+  } else { var updateProg=()=>{} }
+
+  function goTo(n){
+    slides[cur]?.classList.remove('cx-on')
+    cur=(n+total)%total
+    slides[cur].classList.add('cx-on')
+    updateProg()
+  }
   const card=track.closest('.live-card')
   card?.querySelector('[data-live-prev="'+trackId+'"]')?.addEventListener('click',e=>{e.stopPropagation();goTo(cur-1)})
   card?.querySelector('[data-live-next="'+trackId+'"]')?.addEventListener('click',e=>{e.stopPropagation();goTo(cur+1)})
@@ -1607,6 +1632,7 @@ function initLiveCarousel(trackId,dotsId){
   card?.addEventListener('mouseleave',()=>{ t=setInterval(()=>goTo(cur+1),4800) })
   let t0=0; track.addEventListener('touchstart',e=>{t0=e.touches[0].clientX},{passive:true})
   track.addEventListener('touchend',e=>{ const d=e.changedTouches[0].clientX-t0; if(Math.abs(d)>40)goTo(d<0?cur+1:cur-1) })
+  goTo(0)
 }
 initLiveCarousel('courtsideTrack','courtsideDots')
 initLiveCarousel('grayscaleTrack','grayscaleDots')
@@ -1616,11 +1642,22 @@ initLiveCarousel('banotsLiveTrack','banotsLiveDots')
 /* ─── SMALL CAROUSELS ─── */
 function initSmallCarousel(trackId,dotsId){
   const track=document.getElementById(trackId), dotsWrap=document.getElementById(dotsId)
-  if(!track||!dotsWrap)return
-  const total=track.children.length; let cur=0
-  for(let i=0;i<total;i++){ const d=document.createElement('button'); d.className='cdot2'+(i===0?' active':''); d.setAttribute('aria-label','Go to slide '+(i+1)); d.addEventListener('click',()=>goTo(i)); dotsWrap.appendChild(d) }
-  const dots=[...dotsWrap.children]
-  function goTo(n){ cur=(n+total)%total; track.style.transform=`translateX(-${cur*100}%)`; dots.forEach((d,i)=>d.classList.toggle('active',i===cur)) }
+  if(!track)return
+  const slides=Array.from(track.children), total=slides.length
+  let cur=0
+
+  if(dotsWrap){
+    const prog=document.createElement('div'); prog.className='cx-prog'
+    dotsWrap.innerHTML=''; dotsWrap.appendChild(prog)
+    var updateProg=()=>{ prog.style.width=((cur+1)/total*100)+'%' }
+  } else { var updateProg=()=>{} }
+
+  function goTo(n){
+    slides[cur]?.classList.remove('cx-on')
+    cur=(n+total)%total
+    slides[cur].classList.add('cx-on')
+    updateProg()
+  }
   const card=track.closest('.app-card2')
   card?.querySelector('[data-c2prev="'+trackId+'"]')?.addEventListener('click',()=>goTo(cur-1))
   card?.querySelector('[data-c2next="'+trackId+'"]')?.addEventListener('click',()=>goTo(cur+1))
@@ -1629,11 +1666,11 @@ function initSmallCarousel(trackId,dotsId){
   card?.addEventListener('mouseleave',()=>{ t=setInterval(()=>goTo(cur+1),5200) })
   let t0=0; track.addEventListener('touchstart',e=>{t0=e.touches[0].clientX},{passive:true})
   track.addEventListener('touchend',e=>{ const d=e.changedTouches[0].clientX-t0; if(Math.abs(d)>40)goTo(d<0?cur+1:cur-1) })
+  goTo(0)
 }
 initSmallCarousel('jazelTrack','jazelDots')
 initSmallCarousel('ymTrack','ymDots')
 initSmallCarousel('chubTrack','chubDots')
-
 
 /* ─── MOUSE DRAG + WHEEL for all carousels ─── */
 ;(function(){
