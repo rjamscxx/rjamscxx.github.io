@@ -338,7 +338,7 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
 .app-name2{font-family:var(--D);font-size:26px;font-weight:900;line-height:1;color:var(--ink);letter-spacing:-.01em}
 .app-vert{font-family:var(--M);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-top:-4px}
 .app-desc2{font-size:13px;color:var(--c70);line-height:1.6}
-.app-cta{text-decoration:none;justify-content:center;background:linear-gradient(160deg,var(--s1),var(--bg2));border-style:dashed;border-color:var(--b2);grid-column:span 2}
+.app-cta{text-decoration:none;justify-content:center;background:linear-gradient(160deg,var(--s1),var(--bg2));border-style:dashed;border-color:var(--b2)}
 .app-cta:hover{border-style:solid;border-color:var(--gbdr);transform:translateY(-5px);box-shadow:0 28px 80px rgba(0,0,0,.6)}
 .app-cta-inner{padding:32px 26px;display:flex;flex-direction:column;gap:12px;height:100%;min-height:230px;justify-content:center}
 .app-cta-eye{font-family:var(--M);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2)}
@@ -927,7 +927,29 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
       </div>
     </div>
 
-    <!-- CTA TILE — balances the 3-col grid (5 apps + this = 6) -->
+    <!-- GRAYSCALE COFFEE CLUB -->
+    <div class="app-card2 spot tilt r r5">
+      <div class="app-card2-carousel" id="grayscaleCard2">
+        <div class="app-card2-track" id="grayscaleTrack2">
+          <div class="app-card2-slide"><img loading="lazy" src="assets/grayscale-coffee-club/hero.png" alt="Grayscale Coffee Club hero" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/grayscale-coffee-club/section-2.png" alt="Grayscale membership tiers" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/grayscale-coffee-club/section-3.png" alt="Grayscale loyalty dashboard" /></div>
+          <div class="app-card2-slide"><img loading="lazy" src="assets/grayscale-coffee-club/full.png" alt="Grayscale full view" /></div>
+        </div>
+        <button class="app-card2-prev" data-c2prev="grayscaleTrack2">&#8592;</button>
+        <button class="app-card2-next" data-c2next="grayscaleTrack2">&#8594;</button>
+        <div class="app-card2-dots2" id="grayscaleDots2"></div>
+      </div>
+      <div class="app-body">
+        <div class="app-badge"><span class="tag tag-v1">v17</span><span class="app-ver">coffee PWA</span></div>
+        <div><div class="app-name2">GRAYSCALE COFFEE CLUB</div><div class="app-vert">Coffee loyalty PWA</div></div>
+        <p class="app-desc2">Premium subscription + loyalty app for independent coffee shops. Member portal, QR loyalty card, subscription tiers, and a daily café dashboard — fully offline-first.</p>
+        <div class="app-pills"><span>Membership Tiers</span><span>QR Loyalty</span><span>Subscription</span><span>Café Dashboard</span></div>
+        <button class="case-study-btn" data-case="grayscale">Case Study ↗</button>
+      </div>
+    </div>
+
+    <!-- CTA TILE -->
     <a href="#contact" class="app-card2 app-cta spot r r5">
       <div class="app-cta-inner">
         <div class="app-cta-eye">◆ Your business, next</div>
@@ -1443,6 +1465,7 @@ initSmallCarousel('jazelTrack','jazelDots')
 initSmallCarousel('ymTrack','ymDots')
 initSmallCarousel('banotsTrack','banotsDots')
 initSmallCarousel('chubTrack','chubDots')
+initSmallCarousel('grayscaleTrack2','grayscaleDots2')
 
 /* ─── SIGNATURE FX: SPOTLIGHT + 3D TILT ─── */
 document.querySelectorAll('.spot').forEach(el=>{el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px');});});
