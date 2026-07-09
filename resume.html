@@ -104,7 +104,7 @@ h1,.ptitle,.ctitle{text-wrap:balance;}
 .d4{transition-delay:.26s}.d5{transition-delay:.33s}.d6{transition-delay:.40s}
 
 /* ── NAV ── */
-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:68px;}
+nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:52px;}
 .logo{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:.3px;line-height:1;}
 .logo-dot{color:var(--gold);}
 .logo-dot.blink{animation:dotblink 2.6s steps(1) infinite;}
@@ -123,7 +123,7 @@ nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:
 .pf-btn:hover .arr{transform:translateX(4px);}
 
 /* ── MARQUEE ── */
-.marquee-wrap{overflow:hidden;margin-bottom:64px;
+.marquee-wrap{overflow:hidden;margin-bottom:80px;
   -webkit-mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent);
   mask-image:linear-gradient(to right,transparent,black 8%,black 92%,transparent);}
 .marquee-track{display:flex;width:max-content;animation:marquee 30s linear infinite;}
@@ -133,7 +133,7 @@ nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:
 .mi{color:var(--gold);margin-right:7px;}
 
 /* ── HERO ── */
-.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,360px);gap:clamp(40px,5vw,88px);align-items:start;margin-bottom:96px;position:relative;}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,360px);gap:clamp(40px,5vw,88px);align-items:start;margin-bottom:80px;position:relative;}
 .eyebrow{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;line-height:1;}
 h1{font-family:var(--serif);font-size:clamp(40px,5.4vw,68px);font-weight:700;line-height:1.02;letter-spacing:-.6px;margin-bottom:8px;}
 .meta{font-size:12px;color:var(--c20);letter-spacing:.5px;margin-bottom:22px;line-height:1;}
@@ -163,7 +163,7 @@ h1{font-family:var(--serif);font-size:clamp(40px,5.4vw,68px);font-weight:700;lin
 .cr2.br{bottom:0;right:0;border-width:0 2.5px 2.5px 0;border-radius:0 0 3px 0;}
 
 /* ── STATS ── */
-.stats{display:flex;border:1px solid var(--c08);border-radius:var(--radius);overflow:hidden;margin-bottom:68px;}
+.stats{display:flex;border:1px solid var(--c08);border-radius:var(--radius);overflow:hidden;margin-bottom:80px;}
 .stat{flex:1;padding:20px 10px;text-align:center;border-right:1px solid var(--c08);transition:background .25s;}
 .stat:last-child{border-right:none;}
 .stat:hover{background:var(--bg3);}
@@ -171,14 +171,14 @@ h1{font-family:var(--serif);font-size:clamp(40px,5.4vw,68px);font-weight:700;lin
 .stl{font-size:10px;font-weight:500;color:var(--c20);letter-spacing:.3px;line-height:1;}
 
 /* ── SECTION HEADER ── */
-.sec{margin-bottom:92px;}
+.sec{margin-bottom:80px;}
 .sh{display:flex;align-items:center;gap:14px;margin-bottom:26px;}
 .sl{font-size:10px;font-weight:600;letter-spacing:2.2px;text-transform:uppercase;color:var(--c20);white-space:nowrap;line-height:1;}
 .sln{flex:1;height:1px;background:linear-gradient(to right,var(--c08),transparent);}
 
 /* ── PURPOSE BANNER ── */
 .purpose{background:var(--bg2);border:1px solid var(--gbdr);border-radius:var(--radius);
-  padding:28px 32px;display:flex;align-items:flex-start;gap:18px;margin-bottom:68px;
+  padding:28px 32px;display:flex;align-items:flex-start;gap:18px;margin-bottom:80px;
   position:relative;overflow:hidden;}
 .purpose::before{content:'';position:absolute;inset:0;
   background:linear-gradient(135deg,rgba(201,146,42,0.05) 0%,transparent 60%);pointer-events:none;}
@@ -454,12 +454,12 @@ h1{font-family:var(--serif);font-size:clamp(40px,5.4vw,68px);font-weight:700;lin
 .top-btn:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(201,146,42,.25);}
 
 /* ── FOOTER ── */
-footer{margin-top:68px;text-align:center;font-size:11px;color:var(--c20);letter-spacing:.4px;line-height:1.9;}
+footer{margin-top:80px;text-align:center;font-size:11px;color:var(--c20);letter-spacing:.4px;line-height:1.9;}
 footer span{color:var(--gold);}
 
 
 /* ── LIVE APPS SHOWCASE ── */
-.showcase{margin-bottom:68px;}
+.showcase{margin-bottom:80px;}
 .sc-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
 .sc-tab{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.6px;
   padding:8px 18px;border-radius:100px;border:1px solid var(--c08);
@@ -490,7 +490,7 @@ footer span{color:var(--gold);}
 
 /* ══ RESPONSIVE ══ */
 @media(max-width:860px){
-  .hero{grid-template-columns:1fr;gap:34px;margin-bottom:64px;}
+  .hero{grid-template-columns:1fr;gap:34px;margin-bottom:56px;}
   .photo-col{order:-1;justify-content:flex-start;}
   .frame{max-width:200px;}
 }
@@ -728,7 +728,7 @@ footer span{color:var(--gold);}
 </section>
 
 <!-- TERMINAL -->
-<div class="rv term-wrap" style="margin-bottom:64px;">
+<div class="rv term-wrap" style="margin-bottom:80px;">
   <div class="term spot">
     <div class="term-bar">
       <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
@@ -739,7 +739,7 @@ footer span{color:var(--gold);}
 </div>
 
 <!-- MARQUEE -->
-<div class="rv marquee-wrap" style="margin-bottom:64px;">
+<div class="rv marquee-wrap" style="margin-bottom:80px;">
   <div class="marquee-track">
     <span class="mtag"><span class="mi">&#9889;</span>Next.js 14+</span>
     <span class="mtag"><span class="mi">&#9881;</span>React 19</span>
@@ -771,7 +771,7 @@ footer span{color:var(--gold);}
 </div>
 
 <!-- STATS -->
-<div class="rv" style="margin-bottom:68px;">
+<div class="rv" style="margin-bottom:80px;">
   <div class="stats">
     <div class="stat"><div class="stn">8</div><div class="stl">Apps Built</div></div>
     <div class="stat"><div class="stn">6+</div><div class="stl">Next.js Apps</div></div>
