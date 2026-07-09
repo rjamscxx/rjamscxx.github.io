@@ -199,7 +199,7 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
 .step-body p{font-size:12.5px;color:var(--c70);line-height:1.6}
 
 /* BROWSER FRAME */
-.browser{border-radius:10px 10px 8px 8px;overflow:hidden;
+.browser{border-radius:10px 10px 8px 8px;overflow:hidden;display:flex;flex-direction:column;height:100%;
   box-shadow:0 24px 80px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.04);background:var(--s1)}
 .browser-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;
   background:#1c1c1e;border-bottom:1px solid rgba(255,255,255,.05)}
@@ -208,13 +208,13 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
 .bdot.r{background:#ff5f57}.bdot.y{background:#febc2e}.bdot.g{background:#28c840}
 .browser-addr{flex:1;margin:0 10px;background:rgba(255,255,255,.06);border-radius:5px;
   padding:4px 12px;font-family:var(--M);font-size:10px;color:var(--c70);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.browser-img{display:block;width:100%;height:auto}
+.browser-img{display:block;width:100%;flex:1;min-height:0;object-fit:cover;object-position:top}
 
 /* CAROUSEL */
-.carousel{position:relative;overflow:hidden;border-radius:10px 10px 8px 8px;
+.carousel{position:relative;overflow:hidden;aspect-ratio:16/9;border-radius:10px 10px 8px 8px;
   box-shadow:0 24px 80px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.04)}
-.carousel-track{display:flex;transition:transform .55s cubic-bezier(.22,1,.36,1);will-change:transform}
-.carousel-slide{flex:0 0 100%;min-width:0;position:relative}
+.carousel-track{display:flex;height:100%;transition:transform .55s cubic-bezier(.22,1,.36,1);will-change:transform}
+.carousel-slide{flex:0 0 100%;min-width:0;position:relative;height:100%}
 .carousel-slide .browser{border-radius:0;box-shadow:none}
 .carousel-slide .browser-bar{border-radius:0}
 .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:10;
@@ -268,15 +268,15 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
 .live-card{border:1px solid var(--b1);border-radius:14px;overflow:hidden;background:var(--s1);
   transition:transform .55s var(--ease-out),box-shadow .55s,border-color .4s}
 .live-card:hover{transform:translateY(-5px);box-shadow:0 28px 80px rgba(0,0,0,.6);border-color:var(--gbdr)}
-.live-card-top{position:relative;overflow:hidden}
-.live-carousel{display:flex;transition:transform .5s var(--ease-out)}
-.live-slide{flex:0 0 100%;min-width:0}
-.live-slide img{width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.live-card-top{position:relative;overflow:hidden;aspect-ratio:16/10}
+.live-carousel{display:flex;height:100%;transition:transform .5s var(--ease-out)}
+.live-slide{flex:0 0 100%;min-width:0;height:100%}
+.live-slide img{width:100%;height:100%;display:block;object-fit:cover;object-position:top}
 .live-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;
   width:30px;height:30px;border-radius:50%;
   background:rgba(10,10,10,.7);backdrop-filter:blur(8px);border:1px solid var(--b2);
   color:var(--gold2);display:flex;align-items:center;justify-content:center;
-  opacity:0;transition:opacity .25s;font-size:12px}
+  opacity:.75;transition:opacity .25s;font-size:12px}
 .live-card:hover .live-btn{opacity:1}
 .live-btn.lp{left:8px}.live-btn.ln{right:8px}
 .live-dots{display:flex;justify-content:center;gap:0;position:absolute;bottom:0;left:0;right:0}
@@ -313,8 +313,8 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
   transition:transform .55s var(--ease-out),box-shadow .55s,border-color .4s}
 .app-card2:hover{transform:translateY(-5px);box-shadow:0 28px 80px rgba(0,0,0,.6);border-color:var(--gbdr)}
 .app-card2-carousel{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--bg2)}
-.app-card2-track{display:flex;transition:transform .5s var(--ease-out)}
-.app-card2-slide{flex:0 0 100%;min-width:0}
+.app-card2-track{display:flex;height:100%;transition:transform .5s var(--ease-out)}
+.app-card2-slide{flex:0 0 100%;min-width:0;height:100%}
 .app-card2-slide img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .app-card2-prev,.app-card2-next{position:absolute;top:50%;transform:translateY(-50%);z-index:5;
   width:30px;height:30px;border-radius:50%;
@@ -1464,6 +1464,40 @@ function initSmallCarousel(trackId,dotsId){
 initSmallCarousel('jazelTrack','jazelDots')
 initSmallCarousel('ymTrack','ymDots')
 initSmallCarousel('chubTrack','chubDots')
+
+
+/* ─── MOUSE DRAG + WHEEL for all carousels ─── */
+;(function(){
+  let down=false,sx=0,dragged=false
+  document.addEventListener('mousedown',e=>{
+    if(!e.target.closest('.carousel,.live-card-top,.app-card2-carousel'))return
+    down=true;sx=e.clientX;dragged=false;e.preventDefault()
+  },{passive:false})
+  document.addEventListener('mousemove',e=>{ if(down&&Math.abs(e.clientX-sx)>4)dragged=true },{passive:true})
+  document.addEventListener('mouseup',e=>{
+    if(!down)return
+    const dx=e.clientX-sx; down=false
+    if(!dragged||Math.abs(dx)<40)return
+    const wrap=e.target.closest('.carousel,[data-carousel-prev],[data-carousel-next],.live-card,.app-card2')
+          ||document.elementFromPoint(sx,e.clientY)?.closest('.carousel,.live-card,.app-card2')
+    if(!wrap)return
+    const sel=dx<0
+      ?'[data-carousel-next],[data-live-next],[data-c2next]'
+      :'[data-carousel-prev],[data-live-prev],[data-c2prev]'
+    wrap.querySelector(sel)?.click()
+  })
+  // Mouse wheel: scroll carousels left/right
+  document.querySelectorAll('.carousel,.live-card-top,.app-card2-carousel').forEach(el=>{
+    el.addEventListener('wheel',e=>{
+      e.preventDefault()
+      const wrap=el.closest('.carousel,.live-card,.app-card2')||el.parentElement?.closest('.live-card,.app-card2')||el
+      const sel=e.deltaX>30||e.deltaY>30
+        ?'[data-carousel-next],[data-live-next],[data-c2next]'
+        :'[data-carousel-prev],[data-live-prev],[data-c2prev]'
+      wrap.querySelector(sel)?.click()
+    },{passive:false})
+  })
+})()
 
 /* ─── SIGNATURE FX: SPOTLIGHT + 3D TILT ─── */
 document.querySelectorAll('.spot').forEach(el=>{el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px');});});
