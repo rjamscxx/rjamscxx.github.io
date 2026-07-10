@@ -243,6 +243,7 @@ h1{font-family:var(--serif);font-size:clamp(40px,5.4vw,68px);font-weight:700;lin
 .uc-list li{font-size:12px;color:var(--c50);padding-left:14px;position:relative;
   opacity:0;transform:translateX(-10px);transition:opacity .35s ease,transform .35s cubic-bezier(.22,1,.36,1),color .2s;}
 .uc:hover .uc-list li{opacity:1;transform:translateX(0);}
+@media(hover:none){.uc-list li{opacity:1;transform:none;}}
 .uc:hover .uc-list li:nth-child(1){transition-delay:.04s;}
 .uc:hover .uc-list li:nth-child(2){transition-delay:.10s;}
 .uc:hover .uc-list li:nth-child(3){transition-delay:.16s;}
@@ -970,7 +971,7 @@ footer span{color:var(--gold);}
     </div>
 
     <div class="rv d6 proj" onclick="this.classList.toggle('open')">
-      <div class="ptop"><div class="pico">&#128085;</div><div class="pinf"><div class="pnm">Gold Palace Streetwear <span class="badge">Live</span></div><div class="ptg">Manila streetwear brand, PWA storefront + owner dashboard &nbsp;&middot;&nbsp; <a href="https://github.com/rjamscxx/gold-palace-streetwear" target="_blank" rel="noopener" style="color:var(--gold2);font-size:11px;" onclick="event.stopPropagation()">GitHub (Private) &#8599;</a></div></div><span class="parr">+</span></div>
+      <div class="ptop"><div class="pico">&#128085;</div><div class="pinf"><div class="pnm">Gold Palace Streetwear <span class="badge">Live</span></div><div class="ptg">Manila streetwear brand, PWA storefront + owner dashboard &nbsp;&middot;&nbsp; <span style="color:var(--c30);font-size:11px;">Private repo</span></div></div><span class="parr">+</span></div>
       <div class="pbody">
         <p class="pstory">End-to-end retail platform for a live Manila streetwear brand: public storefront PWA + full back-office suite (POS, orders, inventory, sales analytics, expenses, thermal receipts, and EOD Z-reports). <strong>Security hardened:</strong> CSP headers, XSS protection, SRI on all CDN assets, PIN-auth Edge Functions, and cross-device real-time sync via Supabase RLS. Playwright-verified checkout flows and anti-spam guards on all public forms.</p>
         <div class="chips"><span class="chip g">Storefront PWA</span><span class="chip g">Shopping Cart</span><span class="chip g">Owner Dashboard</span><span class="chip">POS System</span><span class="chip">Inventory</span><span class="chip">Sales Analytics</span><span class="chip">Order Tracking</span><span class="chip">Supabase RLS</span></div>
