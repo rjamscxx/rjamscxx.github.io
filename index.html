@@ -265,6 +265,8 @@ h1.hero-h .it{font-family:var(--S);font-style:italic;font-weight:400;letter-spac
 .live-grid{display:grid;grid-template-columns:1fr;gap:24px}
 @media(min-width:640px){.live-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.live-grid{grid-template-columns:repeat(3,1fr)}}
+.tmpl-grid{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:900px){.tmpl-grid{grid-template-columns:repeat(2,1fr)}}
 .live-card{border:1px solid var(--b1);border-radius:14px;overflow:hidden;background:var(--s1);
   transition:transform .55s var(--ease-out),box-shadow .55s,border-color .4s}
 .live-card:hover{transform:translateY(-5px);box-shadow:0 28px 80px rgba(0,0,0,.6);border-color:var(--gbdr)}
@@ -1001,6 +1003,68 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 
 <div class="div"></div>
 
+<!-- ═══ PROPERTY TEMPLATES ═══ -->
+<section id="templates" class="wrap sec">
+  <div class="sh r">
+    <div class="sh-eye">◆ Property &amp; Real Estate · Live Templates</div>
+    <h2 class="sh-title">Premium <span class="it">property</span> templates.</h2>
+    <p class="sh-sub">Conversion-focused landing pages backed by PIN-gated owner dashboards, for Philippine resorts, residences, and developments. Single-file, self-hosted, deploy-ready.</p>
+  </div>
+  <div class="tmpl-grid">
+
+    <!-- HIRAYA PINES -->
+    <div class="live-card spot r r1">
+      <div class="live-card-top">
+        <div class="live-carousel" id="hirayaTrack">
+          <div class="live-slide"><img src="assets/hiraya-pines/1.png" alt="Hiraya Pines resort landing hero" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/hiraya-pines/2.png" alt="Hiraya Pines stays and suites section" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/hiraya-pines/3.png" alt="Hiraya Pines rates and packages" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/hiraya-pines/5.png" alt="Hiraya Pines admin dashboard overview" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/hiraya-pines/6.png" alt="Hiraya Pines admin booking calendar" /></div>
+        </div>
+        <button class="live-btn lp" aria-label="Previous screenshot" data-live-prev="hirayaTrack">&#8592;</button>
+        <button class="live-btn ln" aria-label="Next screenshot" data-live-next="hirayaTrack">&#8594;</button>
+        <div class="live-dots" id="hirayaDots"></div>
+      </div>
+      <div class="live-body">
+        <div class="live-meta">
+          <span class="live-tag-mono"><span class="live-tag-dot" style="background:var(--c70);box-shadow:0 0 7px rgba(245,241,232,.4)"></span>Live · hiraya-pines.vercel.app</span>
+        </div>
+        <div class="live-name">HIRAYA <span class="it">PINES</span></div>
+        <p class="live-desc">Baguio hilltop resort template. Self-hosted video hero, a live suite-availability check wired to the dashboard, and a PIN-gated admin with bookings, calendar, inquiries, guests, and revenue reporting.</p>
+        <div class="live-stack"><span>HTML</span><span>localStorage</span><span>Resort</span><span>Owner admin</span></div>
+        <a class="case-study-btn" style="text-decoration:none" href="https://hiraya-pines.vercel.app" target="_blank" rel="noopener">View Live ↗</a>
+      </div>
+    </div>
+
+    <!-- ALTA PINOS -->
+    <div class="live-card spot r r2">
+      <div class="live-card-top">
+        <div class="live-carousel" id="altaTrack">
+          <div class="live-slide"><img src="assets/alta-pinos/1.png" alt="Alta Pinos residences landing hero" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/alta-pinos/2.png" alt="Alta Pinos residence listing, Casa Quinze" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/alta-pinos/3.png" alt="Alta Pinos residence listing, The Fog House" /></div>
+        </div>
+        <button class="live-btn lp" aria-label="Previous screenshot" data-live-prev="altaTrack">&#8592;</button>
+        <button class="live-btn ln" aria-label="Next screenshot" data-live-next="altaTrack">&#8594;</button>
+        <div class="live-dots" id="altaDots"></div>
+      </div>
+      <div class="live-body">
+        <div class="live-meta">
+          <span class="live-tag-mono"><span class="live-tag-dot" style="background:var(--c70);box-shadow:0 0 7px rgba(245,241,232,.4)"></span>Live · alta-pinos.vercel.app</span>
+        </div>
+        <div class="live-name">ALTA <span class="it">PINOS</span></div>
+        <p class="live-desc">Baguio three-residence listing template. Per-home galleries with specs and pricing, a sticky mobile CTA, a spam-guarded inquiry form, and a PIN-gated owner dashboard with an inquiry inbox.</p>
+        <div class="live-stack"><span>HTML</span><span>localStorage</span><span>Real estate</span><span>Owner admin</span></div>
+        <a class="case-study-btn" style="text-decoration:none" href="https://alta-pinos.vercel.app" target="_blank" rel="noopener">View Live ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="div"></div>
+
 <!-- ═══ MORE WORK ═══ -->
 <section id="more" class="wrap sec">
   <div class="sh r">
@@ -1644,6 +1708,8 @@ initLiveCarousel('courtsideTrack','courtsideDots')
 initLiveCarousel('grayscaleTrack','grayscaleDots')
 initLiveCarousel('goldpalaceTrack','goldpalaceDots')
 initLiveCarousel('banotsLiveTrack','banotsLiveDots')
+initLiveCarousel('hirayaTrack','hirayaDots')
+initLiveCarousel('altaTrack','altaDots')
 
 /* ─── SMALL CAROUSELS ─── */
 function initSmallCarousel(trackId,dotsId){
