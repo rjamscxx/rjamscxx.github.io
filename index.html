@@ -13,7 +13,7 @@
 <meta property="og:image" content="https://rjamscxx.github.io/assets/tenda-pro/demo-1-dashboard.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="RJ Cabansay | Full Stack Developer | AI Automation & Technical Solutions" />
-<meta name="twitter:description" content="Production SaaS for Philippine SMBs. Next.js + Supabase." />
+<meta name="twitter:description" content="Web applications, business operations tools, and AI-assisted development." />
 <title>RJ Cabansay | Full Stack Developer | AI Automation & Technical Solutions · Portfolio</title>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -548,6 +548,46 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
   .mtrack{animation:none}}
+
+/* Baseline UI pass. Reuse the existing theme and static HTML layout. */
+html{scroll-behavior:auto}
+h1,h2,h3,h4{text-wrap:balance;letter-spacing:normal!important}
+p,li{text-wrap:pretty}
+*,*::before,*::after{animation:none!important;transition:none!important;letter-spacing:normal!important;will-change:auto!important}
+.bg-mesh,.bg-grain,.cursor-glow,.load-bar,.progress-rail{display:none}
+.r{opacity:1;transform:none}
+.spot::before,.spot::after{display:none}
+.nav{background:var(--bg);backdrop-filter:none;z-index:30;flex-wrap:wrap;padding-top:max(14px,env(safe-area-inset-top))}
+.nav-links{display:flex;flex-wrap:wrap}
+.nav-a{font-size:14px}
+.nav-mobile-btn,.mobile-menu{display:none}
+.nav-cta,.mobile-cta,.btn-gold,.form-submit{background:var(--gold2);box-shadow:none}
+.brand-pulse,.pill-dot{background:var(--gold2);box-shadow:none}
+.hero{padding-top:64px}
+h1.hero-h{font-size:clamp(36px,6vw,76px);line-height:1.08}
+.sh-title{font-size:clamp(28px,4vw,48px);line-height:1.15}
+.hero-sub,.about-bio,.sh-sub{line-height:1.65;color:var(--c90);text-wrap:pretty}
+.peek-card,.peek-card:hover,.tilt,.process-step:hover,.btn:hover,.nav-cta:hover{transform:none!important;box-shadow:none}
+.peek-lbl{opacity:1;background:var(--bg2);position:static;padding:10px;font-size:13px}
+.marquee-wrap{mask:none;-webkit-mask:none;margin:40px 0}
+.mtrack{width:auto;flex-wrap:wrap;gap:12px}
+.mtag{font:13px var(--B);text-transform:none}
+.mtrack .mtag:nth-child(n+16){display:none}
+.sh-eye,.pill,.live-tag,.app-tag{font-size:12px;text-transform:none}
+#selected-projects .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+#selected-projects article{min-width:0}
+#selected-projects article p{font-size:15px;line-height:1.65}
+.project-details{margin-top:20px;padding-top:16px;border-top:1px solid var(--b2);text-align:left}
+.project-details h4{font-size:16px;margin-bottom:8px}
+.project-details p{font-size:15px;line-height:1.65;color:var(--c90);margin:8px 0}
+.project-tools{color:var(--c70)!important}
+button,a,input,select,textarea{touch-action:manipulation}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold2);outline-offset:4px}
+.carousel-btn,.live-nav-btn,.app-card2-prev,.app-card2-next{min-width:44px;min-height:44px}
+.cx-count,.stat-n{font-variant-numeric:tabular-nums}
+.fab{bottom:calc(20px + env(safe-area-inset-bottom));z-index:20}
+@media(max-width:640px){#selected-projects .bento{grid-template-columns:1fr}.nav{gap:12px}.nav-links{order:3;width:100%;gap:2px}.nav-a{padding:8px}.hero{padding-top:40px}.contact-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -559,21 +599,6 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <button class="fab" id="fab" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <!-- CASE STUDY MODAL -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal" id="modal">
-    <button class="modal-close" id="modalClose">×</button>
-    <div class="modal-tag" id="modalTag"></div>
-    <div class="modal-title" id="modalTitle"></div>
-    <div class="modal-section-label">Problem</div>
-    <div class="modal-text" id="modalProblem"></div>
-    <div class="modal-section-label">Solution</div>
-    <div class="modal-text" id="modalSolution"></div>
-    <div class="modal-section-label">Stack</div>
-    <div class="modal-stack" id="modalStack"></div>
-    <div class="modal-links" id="modalLinks"></div>
-  </div>
-</div>
-
 <!-- NAV -->
 <nav class="nav">
   <a href="#top" class="nav-brand"><span class="brand-pulse"></span>RJ CABANSAY</a>
@@ -588,29 +613,15 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
   </div>
   <div style="display:flex;align-items:center;gap:12px">
     <a class="nav-cta" href="#contact">Hire me</a>
-    <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    
   </div>
 </nav>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a class="mobile-a" href="#tenda" data-mobile-close>Tenda Pro</a>
-  <a class="mobile-a" href="#live" data-mobile-close>Live Apps</a>
-  <a class="mobile-a" href="#more" data-mobile-close>More Work</a>
-  <a class="mobile-a" href="#templates" data-mobile-close>Templates</a>
-  <a class="mobile-a" href="#about" data-mobile-close>About</a>
-  <a class="mobile-a" href="#stack" data-mobile-close>Stack</a>
-  <a class="mobile-a" href="#contact" data-mobile-close>Contact</a>
-  <a class="mobile-cta" href="mailto:rjamscxx@gmail.com">rjamscxx@gmail.com ↗</a>
-</div>
 
 <main>
 <!-- HERO -->
 <section id="top" class="wrap hero">
-  <div class="pill"><span class="pill-dot"></span><span class="pill-text" id="pillText">Open to Work · Full-Time Engineering Roles</span></div>
-  <h1 class="hero-h">Web applications.<br><span class="it">Business workflows.</span></h1>
+  <div class="pill"><span class="pill-dot"></span><span class="pill-text" id="pillText">Open to full-time, contract, and freelance work</span></div>
+  <h1 class="hero-h">Full stack development<br><span class="it">for business operations.</span></h1>
   <p class="hero-sub">Full stack developer building web applications and business tools through Strukkd Labs. Work spans inventory and purchasing, restaurant operations, retail storefronts, and project delivery workflows. Uses AI development tools alongside code review and testing to turn business requirements into working software.</p>
   <div class="hero-btns">
     <a class="btn btn-gold" href="#selected-projects">View selected projects →</a>
@@ -639,44 +650,44 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="mtrack">
-    <span class="mtag">Next.js 15 <span class="dot">◆</span></span>
-    <span class="mtag">React 19 <span class="dot">◆</span></span>
-    <span class="mtag">TypeScript <span class="dot">◆</span></span>
-    <span class="mtag">Tailwind v4 <span class="dot">◆</span></span>
-    <span class="mtag">shadcn/ui <span class="dot">◆</span></span>
-    <span class="mtag">Supabase <span class="dot">◆</span></span>
-    <span class="mtag">Drizzle ORM <span class="dot">◆</span></span>
-    <span class="mtag">Neon Postgres <span class="dot">◆</span></span>
-    <span class="mtag">Playwright <span class="dot">◆</span></span>
-    <span class="mtag">AI SDK <span class="dot">◆</span></span>
-    <span class="mtag">Vercel <span class="dot">◆</span></span>
-    <span class="mtag">HTML PWA <span class="dot">◆</span></span>
-    <span class="mtag">Philippines SMB <span class="dot">◆</span></span>
-    <span class="mtag">Prisma <span class="dot">◆</span></span>
-    <span class="mtag">Resend <span class="dot">◆</span></span>
-    <span class="mtag">Next.js 15 <span class="dot">◆</span></span>
-    <span class="mtag">React 19 <span class="dot">◆</span></span>
-    <span class="mtag">TypeScript <span class="dot">◆</span></span>
-    <span class="mtag">Tailwind v4 <span class="dot">◆</span></span>
-    <span class="mtag">shadcn/ui <span class="dot">◆</span></span>
-    <span class="mtag">Supabase <span class="dot">◆</span></span>
-    <span class="mtag">Drizzle ORM <span class="dot">◆</span></span>
-    <span class="mtag">Neon Postgres <span class="dot">◆</span></span>
-    <span class="mtag">Playwright <span class="dot">◆</span></span>
-    <span class="mtag">AI SDK <span class="dot">◆</span></span>
-    <span class="mtag">Vercel <span class="dot">◆</span></span>
-    <span class="mtag">HTML PWA <span class="dot">◆</span></span>
-    <span class="mtag">Philippines SMB <span class="dot">◆</span></span>
-    <span class="mtag">Prisma <span class="dot">◆</span></span>
-    <span class="mtag">Resend <span class="dot">◆</span></span>
+    <span class="mtag">Next.js 15 <span class="dot"></span></span>
+    <span class="mtag">React 19 <span class="dot"></span></span>
+    <span class="mtag">TypeScript <span class="dot"></span></span>
+    <span class="mtag">Tailwind v4 <span class="dot"></span></span>
+    <span class="mtag">shadcn/ui <span class="dot"></span></span>
+    <span class="mtag">Supabase <span class="dot"></span></span>
+    <span class="mtag">Drizzle ORM <span class="dot"></span></span>
+    <span class="mtag">Neon Postgres <span class="dot"></span></span>
+    <span class="mtag">Playwright <span class="dot"></span></span>
+    <span class="mtag">AI SDK <span class="dot"></span></span>
+    <span class="mtag">Vercel <span class="dot"></span></span>
+    <span class="mtag">HTML PWA <span class="dot"></span></span>
+    <span class="mtag">Philippines SMB <span class="dot"></span></span>
+    <span class="mtag">Prisma <span class="dot"></span></span>
+    <span class="mtag">Resend <span class="dot"></span></span>
+    <span class="mtag">Next.js 15 <span class="dot"></span></span>
+    <span class="mtag">React 19 <span class="dot"></span></span>
+    <span class="mtag">TypeScript <span class="dot"></span></span>
+    <span class="mtag">Tailwind v4 <span class="dot"></span></span>
+    <span class="mtag">shadcn/ui <span class="dot"></span></span>
+    <span class="mtag">Supabase <span class="dot"></span></span>
+    <span class="mtag">Drizzle ORM <span class="dot"></span></span>
+    <span class="mtag">Neon Postgres <span class="dot"></span></span>
+    <span class="mtag">Playwright <span class="dot"></span></span>
+    <span class="mtag">AI SDK <span class="dot"></span></span>
+    <span class="mtag">Vercel <span class="dot"></span></span>
+    <span class="mtag">HTML PWA <span class="dot"></span></span>
+    <span class="mtag">Philippines SMB <span class="dot"></span></span>
+    <span class="mtag">Prisma <span class="dot"></span></span>
+    <span class="mtag">Resend <span class="dot"></span></span>
   </div>
 </div>
 
-<section id="selected-projects" class="wrap sec"><div class="sh"><div class="sh-eye">Strukkd Labs · Selected development projects</div><h2 class="sh-title">Systems for <span class="it">business operations.</span></h2><p class="sh-sub">The same project focus as my resume: inventory, restaurant operations, retail, and workflows with human review.</p></div><div class="bento"><article class="process-step spot" style="display:block;padding:28px"><h3>Singel IPMS</h3><p style="margin:12px 0">Next.js 15 · React 19 · TypeScript · Supabase · Tailwind CSS</p><p>Developed project inventory and purchasing workflows covering purchase orders, receiving, stock movements, and materials issued to jobs. Implemented traceable movement records, permission checks, and database row-level security; added delivery and client acceptance workflows.</p><a class="btn btn-outline" href="https://singel-ipms.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Tenda Pro</h3><p style="margin:12px 0">Next.js 16 · React 19 · TypeScript · Supabase · Drizzle ORM</p><p>Built restaurant operations features for POS, kitchen orders, recipes, ingredient stock, sales reports, payroll, and end-of-day reconciliation. Connected Supabase authentication and PostgreSQL data access; maintained Vitest and Playwright test tooling.</p><a class="btn btn-outline" href="https://tenda.ph/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Strukkd Labs Virtual Office</h3><p style="margin:12px 0">JavaScript · Three.js · Node.js · Supabase · Zod</p><p>Built an interactive 3D operations pilot with client intake, project workspaces, task allocation, evidence links, and artifact review. Implemented scoped draft runners and human approval gates; separated simulated activity, manual AI app handoffs, and connected execution.</p><a class="btn btn-outline" href="https://strukkd-labs-virtual-office.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Grimez Collection and Gold Palace Streetwear</h3><p style="margin:12px 0">HTML · CSS · JavaScript · Supabase · Vercel</p><p>Built retail storefront and owner operations tools covering product catalogs, POS, orders, inventory, finance, and reports. Kept each brand's repository, deployment, database project, and local data separate; added storefront product and photo management.</p><a class="btn btn-outline" href="https://www.grimezph.com/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article></div></section>
+<section id="selected-projects" class="wrap sec"><div class="sh"><div class="sh-eye">Strukkd Labs · Selected development projects</div><h2 class="sh-title">Selected projects</h2><p class="sh-sub">Inventory, restaurant operations, retail, and project workflows. Each entry lists the work I built and the tools I used.</p></div><div class="bento"><article class="process-step spot" style="display:block;padding:28px"><h3>Singel IPMS</h3><p style="margin:12px 0">Next.js 15 · React 19 · TypeScript · Supabase · Tailwind CSS</p><p>Developed project inventory and purchasing workflows covering purchase orders, receiving, stock movements, and materials issued to jobs. Implemented traceable movement records, permission checks, and database row-level security; added delivery and client acceptance workflows.</p><a class="btn btn-outline" href="https://singel-ipms.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Tenda Pro</h3><p style="margin:12px 0">Next.js 16 · React 19 · TypeScript · Supabase · Drizzle ORM</p><p>Built restaurant operations features for POS, kitchen orders, recipes, ingredient stock, sales reports, payroll, and end-of-day reconciliation. Connected Supabase authentication and PostgreSQL data access; maintained Vitest and Playwright test tooling.</p><a class="btn btn-outline" href="https://tenda.ph/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Strukkd Labs Virtual Office</h3><p style="margin:12px 0">JavaScript · Three.js · Node.js · Supabase · Zod</p><p>Built an interactive 3D operations pilot with client intake, project workspaces, task allocation, evidence links, and artifact review. Implemented scoped draft runners and human approval gates; separated simulated activity, manual AI app handoffs, and connected execution.</p><a class="btn btn-outline" href="https://strukkd-labs-virtual-office.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Grimez Collection and Gold Palace Streetwear</h3><p style="margin:12px 0">HTML · CSS · JavaScript · Supabase · Vercel</p><p>Built retail storefront and owner operations tools covering product catalogs, POS, orders, inventory, finance, and reports. Kept each brand's repository, deployment, database project, and local data separate; added storefront product and photo management.</p><a class="btn btn-outline" href="https://www.grimezph.com/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article></div></section>
 <!-- ═══ COURTSIDE PH ═══ -->
 <section id="courtside" class="wrap tenda-section">
   <div class="sh r">
-    <div class="sh-eye">◆ Flagship PWA · Live in Production · Sports Booking</div>
+    <div class="sh-eye">Flagship PWA · Live in Production · Sports Booking</div>
     <h2 class="sh-title">The <span class="it">court</span> operating system.</h2>
     <p class="sh-sub">Courtside PH powers multi-sport court reservations across the Philippines: 6 sports, QR check-in, team management, and real-time Supabase cloud sync.</p>
   </div>
@@ -752,8 +763,8 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
           <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">Live</div></div><img class="browser-img" loading="lazy" src="assets/courtside/46.png" alt="courtside screenshot 46" /></div></div>
           <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">Live</div></div><img class="browser-img" loading="lazy" src="assets/courtside/47.png" alt="courtside screenshot 47" /></div></div>
         </div>
-        <button class="carousel-btn prev" data-carousel-prev="csMainCarousel">&#8592;</button>
-        <button class="carousel-btn next" data-carousel-next="csMainCarousel">&#8594;</button>
+        <button class="carousel-btn prev" data-carousel-prev="csMainCarousel" aria-label="Previous screenshot">&#8592;</button>
+        <button class="carousel-btn next" data-carousel-next="csMainCarousel" aria-label="Next screenshot">&#8594;</button>
         <div class="carousel-label" id="csMainLabel">Landing · Hero</div>
         <div class="carousel-count" id="csMainCount">1 / 47</div>
       </div>
@@ -768,9 +779,9 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <!-- ═══ TENDA PRO ═══ -->
 <section id="tenda" class="wrap tenda-section">
   <div class="sh r">
-    <div class="sh-eye">◆ Production Next.js · Restaurant SaaS</div>
+    <div class="sh-eye">Production Next.js · Restaurant SaaS</div>
     <h2 class="sh-title">The <span class="it">restaurant</span> brain.</h2>
-    <p class="sh-sub">Tenda Pro powers café and restaurant operations across the Philippines: POS, sales, QR menus, inventory, reports, and an AI assistant, all in one dashboard.</p>
+    <p class="sh-sub">Tenda Pro brings restaurant POS, kitchen orders, recipes, ingredient inventory, reports, payroll, and daily reconciliation into one application.</p>
   </div>
   <div class="tenda-grid">
     <div class="tenda-sticky r">
@@ -788,9 +799,9 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
         <li>QR menus auto-generated from product catalog</li>
         <li>COGS + ingredient mapping per dish</li>
         <li>Multi-page reports: daily, weekly, monthly</li>
-        <li>AI assistant using natural language for owners</li>
+        <li>Supabase authentication and PostgreSQL data access</li>
         <li>Payroll, shifts, employees, expenses, waste logs</li>
-        <li>Smoke-tested with full Café Lina demo dataset</li>
+        <li>Vitest and Playwright test tooling</li>
       </ul>
       <a class="btn btn-gold" href="#contact">Talk to RJ about Tenda Pro →</a>
     </div>
@@ -851,8 +862,8 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
           <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">Live</div></div><img class="browser-img" loading="lazy" src="assets/tenda-pro/34.png" alt="tenda-pro screenshot 51" /></div></div>
           <div class="carousel-slide"><div class="browser"><div class="browser-bar"><div class="browser-dots"><span class="bdot r"></span><span class="bdot y"></span><span class="bdot g"></span></div><div class="browser-addr">Live</div></div><img class="browser-img" loading="lazy" src="assets/tenda-pro/35.png" alt="tenda-pro screenshot 52" /></div></div>
         </div>
-        <button class="carousel-btn prev" data-carousel-prev="tendaCarousel">&#8592;</button>
-        <button class="carousel-btn next" data-carousel-next="tendaCarousel">&#8594;</button>
+        <button class="carousel-btn prev" data-carousel-prev="tendaCarousel" aria-label="Previous screenshot">&#8592;</button>
+        <button class="carousel-btn next" data-carousel-next="tendaCarousel" aria-label="Next screenshot">&#8594;</button>
         <div class="carousel-label" id="tendaLabel">Landing</div>
         <div class="carousel-count" id="tendaCount">1 / 52</div>
       </div>
@@ -867,7 +878,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <!-- ═══ LIVE APPS ═══ -->
 <section id="live" class="wrap sec">
   <div class="sh r">
-    <div class="sh-eye">◆ Live in Production · Three Apps</div>
+    <div class="sh-eye">Live in Production · Three Apps</div>
     <h2 class="sh-title"><span class="it">Coffee</span>, streetwear, barbershop.</h2>
     <p class="sh-sub">Three live apps serving real users across the Philippines: coffee loyalty, streetwear retail, and barbershop booking.</p>
   </div>
@@ -911,7 +922,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
         <div class="live-name">GRAY<span class="it">SCALE</span></div>
         <p class="live-desc">Premium Coffee Operating System. Monochrome aesthetic, member portal, QR loyalty card, subscription tiers, and daily café operations dashboard.</p>
         <div class="live-stack"><span>HTML PWA</span><span>Monochrome</span><span>localStorage</span><span>QR loyalty</span></div>
-        <button class="case-study-btn" data-case="grayscale">Case Study ↗</button>
+        <div class="project-details"><h4>Grayscale Coffee Club details</h4><p>A coffee membership application with QR loyalty cards, membership tiers, and a daily operations dashboard. It stores local data in the browser.</p><p class="project-tools">HTML, CSS, JavaScript, localStorage</p></div>
       </div>
     </div>
 
@@ -960,7 +971,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
         <div class="live-name">GOLD <span class="it">PALACE</span></div>
         <p class="live-desc">Manila streetwear brand with a storefront PWA, cart, quick view, and owner dashboard with POS, orders, inventory, sales, expenses, and reports.</p>
         <div class="live-stack"><span>HTML PWA</span><span>Next.js</span><span>Supabase</span><span>Streetwear</span></div>
-        <button class="case-study-btn" data-case="goldpalace">Case Study ↗</button>
+        <div class="project-details"><h4>Gold Palace Streetwear details</h4><p>A retail storefront with a cart and product quick view. The owner tools cover point of sale, orders, inventory, sales, expenses, and reports.</p><p class="project-tools">HTML, CSS, JavaScript, Supabase, Vercel</p></div>
       </div>
     </div>
 
@@ -991,7 +1002,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
         <div class="live-name">BANOT'S <span class="it">BARBERSHOP</span></div>
         <p class="live-desc">Full-stack booking app for a solo barber. 5-step booking wizard, QR payment via GCash/Maya/BDO/BPI, calendar dashboard, client history, and a separate scroll-animated landing site.</p>
         <div class="live-stack"><span>Next.js 16</span><span>Prisma 7</span><span>Neon Postgres</span><span>QR Pay</span></div>
-        <button class="case-study-btn" data-case="banots">Case Study ↗</button>
+        <div class="project-details"><h4>Banot's Barbershop details</h4><p>Customers choose a service and time, upload QR payment proof, and submit a booking. The owner reviews bookings and payment proof in a calendar dashboard.</p><p class="project-tools">Next.js 16, Prisma 7, Neon PostgreSQL</p></div>
       </div>
     </div>
   </div>
@@ -1002,7 +1013,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <!-- ═══ PROPERTY TEMPLATES ═══ -->
 <section id="templates" class="wrap sec">
   <div class="sh r">
-    <div class="sh-eye">◆ Property &amp; Real Estate · Live Templates</div>
+    <div class="sh-eye">Property &amp; Real Estate · Live Templates</div>
     <h2 class="sh-title">Premium <span class="it">property</span> templates.</h2>
     <p class="sh-sub">Conversion-focused landing pages backed by PIN-gated owner dashboards, for Philippine resorts, residences, and developments. Single-file, self-hosted, deploy-ready.</p>
   </div>
@@ -1064,7 +1075,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <!-- ═══ MORE WORK ═══ -->
 <section id="more" class="wrap sec">
   <div class="sh r">
-    <div class="sh-eye">◆ More Work · HTML PWAs &amp; Next.js</div>
+    <div class="sh-eye">More Work · HTML PWAs &amp; Next.js</div>
     <h2 class="sh-title">Every <span class="it">vertical</span>, built.</h2>
     <p class="sh-sub">Philippine SMB apps: POS, booking, dashboards, and client hubs. Built in Next.js + Supabase or single-file HTML PWAs.</p>
   </div>
@@ -1094,8 +1105,8 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
           <div class="app-card2-slide"><img loading="lazy" src="assets/jazel-hub/18.png" alt="jazel-hub screenshot 18" /></div>
           <div class="app-card2-slide"><img loading="lazy" src="assets/jazel-hub/19.png" alt="jazel-hub screenshot 19" /></div>
         </div>
-        <button class="app-card2-prev" data-c2prev="jazelTrack">&#8592;</button>
-        <button class="app-card2-next" data-c2next="jazelTrack">&#8594;</button>
+        <button class="app-card2-prev" data-c2prev="jazelTrack" aria-label="Previous screenshot">&#8592;</button>
+        <button class="app-card2-next" data-c2next="jazelTrack" aria-label="Next screenshot">&#8594;</button>
         <div class="app-card2-dots2" id="jazelDots"></div>
       </div>
       <div class="app-body">
@@ -1103,7 +1114,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
         <div><div class="app-name2">JAZEL HUB</div><div class="app-vert">Personal business hub</div></div>
         <p class="app-desc2">Custom client project, a personal business hub for Jazel Bernardo. Bookings, schedule, services listing, and contact management.</p>
         <div class="app-pills"><span>HTML</span><span>Client</span><span>Bookings</span><span>Custom</span></div>
-        <button class="case-study-btn" data-case="jazelhub">Case Study ↗</button>
+        <div class="project-details"><h4>Jazel Hub details</h4><p>A business website with services, a booking calendar, schedule management, and contact tools.</p><p class="project-tools">HTML, CSS, JavaScript</p></div>
       </div>
     </div>
 
@@ -1119,8 +1130,8 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
           <div class="app-card2-slide"><img loading="lazy" src="assets/youngminds/12.png" alt="youngminds screenshot 6" /></div>
           <div class="app-card2-slide"><img loading="lazy" src="assets/youngminds/17.png" alt="youngminds screenshot 7" /></div>
         </div>
-        <button class="app-card2-prev" data-c2prev="ymTrack">&#8592;</button>
-        <button class="app-card2-next" data-c2next="ymTrack">&#8594;</button>
+        <button class="app-card2-prev" data-c2prev="ymTrack" aria-label="Previous screenshot">&#8592;</button>
+        <button class="app-card2-next" data-c2next="ymTrack" aria-label="Next screenshot">&#8594;</button>
         <div class="app-card2-dots2" id="ymDots"></div>
       </div>
       <div class="app-body">
@@ -1128,7 +1139,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
         <div><div class="app-name2">YOUNG MINDS</div><div class="app-vert">Education / youth tracker</div></div>
         <p class="app-desc2">Education and youth development tracker. Progress monitoring, engagement metrics, orange accent, built for Philippine learning orgs.</p>
         <div class="app-pills"><span>HTML</span><span>Education</span><span>Orange</span><span>Tracker</span></div>
-        <button class="case-study-btn" data-case="youngminds">Case Study ↗</button>
+        <div class="project-details"><h4>Young Minds details</h4><p>A tracker interface with progress, attendance, and reporting screens. It stores local data in the browser.</p><p class="project-tools">HTML, CSS, JavaScript, localStorage</p></div>
       </div>
     </div>
 
@@ -1165,8 +1176,8 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
           <div class="app-card2-slide"><img loading="lazy" src="assets/checkout-hub/receipt-order-print.png" alt="checkout-hub screenshot 27" /></div>
           <div class="app-card2-slide"><img loading="lazy" src="assets/checkout-hub/receipt-print-view.png" alt="checkout-hub screenshot 28" /></div>
         </div>
-        <button class="app-card2-prev" data-c2prev="chubTrack">&#8592;</button>
-        <button class="app-card2-next" data-c2next="chubTrack">&#8594;</button>
+        <button class="app-card2-prev" data-c2prev="chubTrack" aria-label="Previous screenshot">&#8592;</button>
+        <button class="app-card2-next" data-c2next="chubTrack" aria-label="Next screenshot">&#8594;</button>
         <div class="app-card2-dots2" id="chubDots"></div>
       </div>
       <div class="app-body">
@@ -1174,14 +1185,14 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
         <div><div class="app-name2">CHECKOUT HUB</div><div class="app-vert">Reseller business manager</div></div>
         <p class="app-desc2">All-in-one business manager PWA for a frozen-goods reseller: shop, orders, invoicing, profits, products, and inventory with low-stock and expiry alerts that auto-deduct on invoice save. Installable, with print/PDF reports.</p>
         <div class="app-pills"><span>HTML PWA</span><span>8 modules</span><span>Inventory</span><span>Print/PDF</span></div>
-        <button class="case-study-btn" data-case="checkouthub">Case Study ↗</button>
+        <div class="project-details"><h4>Checkout Hub PH details</h4><p>A business management application with product records, inventory, orders, invoices, and profit tracking. Inventory updates when an invoice is saved. It includes low-stock and expiry alerts and printable reports.</p><p class="project-tools">HTML, CSS, JavaScript, localStorage</p></div>
       </div>
     </div>
 
     <!-- CTA TILE -->
     <a href="#contact" class="app-card2 app-cta spot r r5" style="grid-column:1/-1">
       <div class="app-cta-inner">
-        <div class="app-cta-eye">◆ Your business, next</div>
+        <div class="app-cta-eye">Your business, next</div>
         <div class="app-cta-title">Want yours <span class="it">built</span>?</div>
         <p class="app-cta-sub">Pick a vertical or bring your own workflow. I design, build, and ship it end-to-end, solo.</p>
         <span class="app-cta-link">Start a project →</span>
@@ -1196,8 +1207,8 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <!-- ═══ ABOUT ═══ -->
 <section id="about" class="wrap sec">
   <div class="sh r">
-    <div class="sh-eye">◆ Full Stack Developer | AI Automation & Technical Solutions · Philippines</div>
-    <h2 class="sh-title">Who's <span class="it">behind</span> the work.</h2>
+    <div class="sh-eye">Full Stack Developer | AI Automation & Technical Solutions · Philippines</div>
+    <h2 class="sh-title">About me</h2>
   </div>
   <div class="r">
     <div class="about-bio" style="max-width:760px">
@@ -1211,21 +1222,21 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
       <div class="step-n">01</div>
       <div class="step-body">
         <h3>Discover</h3>
-        <p>We talk through your business, your users, and what's broken. No templates. Every build starts with understanding the real problem.</p>
+        <p>We identify who will use the application, the tasks they need to complete, and the data they need.</p>
       </div>
     </div>
     <div class="process-step spot">
       <div class="step-n">02</div>
       <div class="step-body">
         <h3>Design</h3>
-        <p>Dark, premium UI with gold accents, tight typography, and mobile-first layouts. You see mockups and flows before a single line of code is written.</p>
+        <p>I plan the page layouts and user flows so we can review them before implementation.</p>
       </div>
     </div>
     <div class="process-step spot">
       <div class="step-n">03</div>
       <div class="step-body">
         <h3>Build</h3>
-        <p>Next.js + Supabase for complex apps, single-file HTML for fast turnarounds. Clean code, zero bloat, production-ready from day one.</p>
+        <p>I choose the tools for the project, build the workflows, and check the result with code review and relevant tests.</p>
       </div>
     </div>
     <div class="process-step spot">
@@ -1243,7 +1254,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <!-- ═══ TECH STACK ═══ -->
 <section id="stack" class="wrap sec">
   <div class="sh r">
-    <div class="sh-eye">◆ Toolbox · In Production</div>
+    <div class="sh-eye">Toolbox · In Production</div>
     <h2 class="sh-title">The <span class="it">stack</span> behind it.</h2>
     <p class="sh-sub">Not a logo wall. Every tool here is running in at least one shipped app above.</p>
   </div>
@@ -1314,7 +1325,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <!-- ═══ SERVICES ═══ -->
 <section class="wrap sec">
   <div class="sh r">
-    <div class="sh-eye">◆ What I Build · Next.js · Supabase</div>
+    <div class="sh-eye">What I Build · Next.js · Supabase</div>
     <h2 class="sh-title">Services <span class="it">that ship.</span></h2>
     <p class="sh-sub">Hire me for clean, production-ready SaaS: single-file HTML PWA or full Next.js + Supabase. Fast turnarounds, real deliverables.</p>
   </div>
@@ -1351,7 +1362,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <!-- ═══ TESTIMONIALS ═══ -->
 <section class="wrap sec">
   <div class="sh r" style="text-align:center">
-    <div class="sh-eye">◆ From Clients</div>
+    <div class="sh-eye">From Clients</div>
     <h2 class="sh-title">They <span class="it">shipped.</span></h2>
   </div>
   <div class="testi-card r">
@@ -1373,7 +1384,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 <section id="contact" class="wrap sec">
   <div class="contact-grid">
     <div class="r">
-      <div class="sh-eye">◆ Let's work together.</div>
+      <div class="sh-eye">Let's work together.</div>
       <h2 class="contact-h">Hire me or<br>let's <span class="it">build together.</span></h2>
       <p class="contact-p">Open to freelance projects (SMB dashboards, client hubs, custom SaaS) and full-time or contract roles. Next.js · React · Supabase stack. Email me what you're building.</p>
       <a class="email-pill" href="mailto:rjamscxx@gmail.com">
@@ -1407,7 +1418,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
           <textarea class="form-textarea" id="fmsg" name="message" placeholder="Tell me about your project and budget range..." required></textarea>
         </div>
         <button type="submit" class="form-submit">Send Message →</button>
-        <div class="form-success" id="formSuccess">Message sent. I'll reply within 24 hours.</div>
+        <div class="form-success" id="formSuccess">Message sent. Thank you for getting in touch.</div>
         <div class="form-error" id="formError">Message didn't send. Email <a href="mailto:rjamscxx@gmail.com" style="text-decoration:underline">rjamscxx@gmail.com</a> directly.</div>
       </form>
     </div>
@@ -1425,112 +1436,7 @@ footer{padding:40px var(--px) 56px;text-align:center;margin-top:80px;
 </footer>
 
 <script>
-/* ─── CASE STUDY DATA ─── */
-const CASES = {
-  tenda: {
-    tag:'Restaurant SaaS · Next.js',
-    title:'Tenda Pro',
-    problem:'Philippine café and restaurant owners were juggling separate tools for POS, sales tracking, QR menus, and reporting. No single Filipino-built solution existed for the full stack.',
-    solution:'Built an all-in-one restaurant OS with Next.js 16 + Supabase SSR. Real-time POS with 4 themes, auto-generated QR menus, COGS tracking per ingredient, multi-period reports, payroll, AI assistant for natural language queries, and full Playwright smoke-test suite on a demo "Café Lina" dataset.',
-    stack:['Next.js 16','React 19','TypeScript','Tailwind v4','Supabase SSR','Drizzle ORM','AI SDK','Resend','Playwright','Vercel']
-  },
-  courtside: {
-    tag:'Sports PWA · Live',
-    title:'Courtside PH',
-    problem:'Multi-sport court facilities in the Philippines had no unified booking system. Operators relied on Messenger DMs and manual logs, and players couldn\'t check availability or manage teams online.',
-    solution:'Single-file HTML PWA handling 6 sports (basketball, tennis, badminton, volleyball, futsal, pickleball). QR check-in, team management, Supabase cloud sync for real-time availability, and unified auth (one signup triggers trial + cloud sync).',
-    stack:['HTML PWA','Supabase','QR check-in','6 sports','LocalStorage fallback','Vercel']
-  },
-  grayscale: {
-    tag:'Coffee Loyalty · PWA',
-    title:'Grayscale Coffee Club',
-    problem:'Independent coffee shops wanted a premium loyalty and subscription system but couldn\'t afford enterprise platforms, and nothing matched the aesthetic their brand demanded.',
-    solution:'Premium monochrome PWA with membership tiers, QR loyalty card, subscription management, and a daily café operations dashboard. Offline-first with localStorage, zero dependencies beyond native browser APIs.',
-    stack:['HTML PWA','Monochrome design','localStorage','QR loyalty card','Subscription tiers']
-  },
-  goldpalace: {
-    tag:'Streetwear · PWA + Supabase',
-    title:'Gold Palace Streetwear',
-    problem:'Manila streetwear brands had to choose between a basic Shopify store (expensive, no personality) or building from scratch. Neither option gave them full creative control with owner-side operations.',
-    solution:'Two-layer system: public storefront PWA (gold-palace-streetwear.vercel.app) with cart and quick-view, plus an owner dashboard with POS, orders, inventory, sales analytics, expenses, and reports on Supabase. Hardened after a full security audit: XSS escaping, strict CSP with SRI on every CDN asset, PIN throttling, checkout spam guards, and a Supabase RLS lockdown verified against live exploit attempts.',
-    stack:['HTML PWA','Supabase','RLS','CSP','POS','Inventory','Vercel']
-  },
-  jazelhub: {
-    tag:'Client Project · 2026',
-    title:'Jazel Hub',
-    problem:'A freelance professional needed a personal business hub to manage bookings, showcase services, and handle client inquiries, all in one branded app delivered fast.',
-    solution:'Custom single-file HTML business hub with a public services page, booking calendar, schedule management, and contact system. White-labeled and delivered within one week.',
-    stack:['HTML','Custom design','Booking system','Schedule','Contact management']
-  },
-  youngminds: {
-    tag:'Education · Tracker',
-    title:'Young Minds',
-    problem:'Youth development organizations in the Philippines needed a way to track student progress, attendance, and engagement metrics without expensive LMS software.',
-    solution:'Education tracker PWA with progress dashboards, engagement metrics, attendance logging, and report exports. Orange accent brand, mobile-optimized, localStorage-first.',
-    stack:['HTML PWA','localStorage','Progress tracking','Engagement metrics','Report export']
-  },
-  banots: {
-    tag:'Barbershop SaaS · Live · 2026',
-    title:"Banot's Barbershop",
-    problem:"A solo barber-owner needed a booking system that fits how a one-person shop actually works. No staff complexity, no payment processor custody, just a clean public page and a simple dashboard.",
-    solution:'Built with Next.js 16 + Prisma 7 on Neon serverless Postgres, live in production. Clients book via a 5-step public wizard: pick service, pick time slot, pay via QR (GCash/Maya/BDO/BPI), upload proof. Barber reviews proof in a calendar-style dashboard, confirms or rejects, marks completed/no-show. Walk-in support, visit-history-based rebooking reminders, and a separate scroll-animated marketing site round it out.',
-    stack:['Next.js 16','Prisma 7','Neon Postgres','Tailwind CSS','QR Payment','Booking system','Vercel']
-  },
-  checkouthub: {
-    tag:'Business Manager · Live PWA',
-    title:'Checkout Hub PH',
-    problem:'A frozen-goods reseller ran the whole business from notebooks and chat threads, with no visibility on stock levels, expiry dates, profit per product, or which orders were already invoiced.',
-    solution:'Single-file business manager PWA with eight modules: shop, orders, invoicing, profits, products, inventory, and more. Inventory auto-deducts on invoice save, with low-stock and expiry alerts per product. Installable, works offline, and ships print/PDF reports for end-of-day paperwork.',
-    stack:['HTML PWA','localStorage','Inventory','Invoicing','Profit tracking','Print/PDF','Vercel']
-  }
-}
-
-/* ─── MODAL ─── */
-const overlay = document.getElementById('modalOverlay')
-const modalClose = document.getElementById('modalClose')
-
-const CASE_LINKS = {
-  tenda:       { live:'https://tenda.ph',                          repo:'https://github.com/rjamscxx/tenda-pro' },
-  courtside:   { live:'https://courtside-ph.vercel.app',           repo:'https://github.com/rjamscxx/courtside-ph' },
-  goldpalace:  { live:'https://gold-palace-streetwear.vercel.app' },
-  banots:      { live:'https://banots-barbershop.vercel.app',      repo:'https://github.com/rjamscxx/banots-barbershop' },
-  checkouthub: { live:'https://checkout-hub-ph.vercel.app',        repo:'https://github.com/rjamscxx/checkout-hub-ph' }
-}
-function openCase(key) {
-  const d = CASES[key]
-  if (!d) return
-  document.getElementById('modalTag').textContent = d.tag
-  document.getElementById('modalTitle').textContent = d.title
-  document.getElementById('modalProblem').textContent = d.problem
-  document.getElementById('modalSolution').textContent = d.solution
-  const stackEl = document.getElementById('modalStack')
-  stackEl.innerHTML = d.stack.map(s=>`<span>${s}</span>`).join('')
-  const linksEl = document.getElementById('modalLinks')
-  const L = CASE_LINKS[key] || {}
-  const parts = []
-  if (L.live) parts.push(`<a href="${L.live}" target="_blank" rel="noopener">Live site ↗</a>`)
-  if (L.repo) parts.push(`<a href="${L.repo}" target="_blank" rel="noopener">GitHub ↗</a>`)
-  linksEl.innerHTML = parts.join('')
-  linksEl.style.display = parts.length ? 'flex' : 'none'
-  overlay.classList.add('open')
-  document.body.style.overflow = 'hidden'
-}
-
-document.querySelectorAll('[data-case]').forEach(btn => {
-  btn.addEventListener('click', e => { e.stopPropagation(); openCase(btn.dataset.case) })
-})
-modalClose.addEventListener('click', closeModal)
-overlay.addEventListener('click', e => { if(e.target===overlay) closeModal() })
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal() })
-function closeModal(){ overlay.classList.remove('open'); document.body.style.overflow='' }
-
-/* ─── CURSOR GLOW ─── */
-const glow = document.getElementById('glow')
-let gx=0,gy=0,tx=0,ty=0
-function glowLoop(){ tx+=(gx-tx)*.09; ty+=(gy-ty)*.09; if(glow)glow.style.transform=`translate3d(${tx}px,${ty}px,0) translate(-50%,-50%)`; requestAnimationFrame(glowLoop) }
-if(matchMedia('(hover:hover)').matches){ addEventListener('mousemove',e=>{gx=e.clientX;gy=e.clientY},{passive:true}); glowLoop() }
-
-/* ─── SCROLL PROGRESS ─── */
+/* Scroll progress */
 const bar = document.getElementById('progress')
 addEventListener('scroll',()=>{ const h=document.documentElement; if(bar)bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%' },{passive:true})
 
@@ -1538,39 +1444,13 @@ addEventListener('scroll',()=>{ const h=document.documentElement; if(bar)bar.sty
 const fab = document.getElementById('fab')
 addEventListener('scroll',()=>{ fab.classList.toggle('show', scrollY>440) },{passive:true})
 
-/* ─── PILL CYCLING ─── */
-const pillPhrases = ['Available for Projects · Philippines','Open to New Clients · 2026','Building Premium SaaS · PH']
-let pillIdx = 0
-const pillText = document.getElementById('pillText')
-if(pillText) setInterval(()=>{ pillIdx=(pillIdx+1)%pillPhrases.length; pillText.style.opacity='0'; setTimeout(()=>{ pillText.textContent=pillPhrases[pillIdx]; pillText.style.opacity='1' },300) }, 3800)
-
-/* ─── TEMPLATES BAND MOUSE ─── */
-const tb = document.getElementById('tplBand')
-if(tb) tb.addEventListener('mousemove',e=>{ const r=tb.getBoundingClientRect(); tb.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%'); tb.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%') })
-
-/* ─── REVEAL ─── */
-const io = new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target) } }) },{rootMargin:'0px 0px -8% 0px',threshold:.04})
-document.querySelectorAll('.r').forEach(el=>io.observe(el))
-
-/* ─── COUNT-UP ─── */
-const counted = new Set()
-const countIO = new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting && !counted.has(e.target)){ counted.add(e.target); countUp(e.target) } }) },{threshold:.5})
-document.querySelectorAll('[data-count]').forEach(el=>countIO.observe(el))
-function countUp(el){ const target=+el.dataset.count; const suffix=el.dataset.suffix||''; const dur=1200; const step=dur/target; let n=0; const t=setInterval(()=>{ n++; el.textContent=n+suffix; if(n>=target)clearInterval(t) },step) }
-
-/* ─── SCROLL-SPY NAV ─── */
+/* Active navigation */
 const sections = document.querySelectorAll('section[id]')
 const navLinks = document.querySelectorAll('.nav-a[href^="#"]')
 const spyIO = new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ navLinks.forEach(a=>{ a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id) }) } }) },{rootMargin:'-30% 0px -65% 0px'})
 sections.forEach(s=>spyIO.observe(s))
 
-/* ─── MOBILE NAV ─── */
-const mobileBtn = document.getElementById('mobileBtn')
-const mobileMenu = document.getElementById('mobileMenu')
-mobileBtn?.addEventListener('click',()=>{ mobileBtn.classList.toggle('open'); mobileMenu.classList.toggle('open') })
-document.querySelectorAll('[data-mobile-close]').forEach(a=>{ a.addEventListener('click',()=>{ mobileBtn.classList.remove('open'); mobileMenu.classList.remove('open') }) })
-
-/* ─── FOOTER YEAR ─── */
+/* Footer year */
 const fy = document.getElementById('footerYear')
 if(fy) fy.textContent = new Date().getFullYear()
 
@@ -1623,7 +1503,7 @@ if(contactForm){
     if(count)count.textContent=`${cur+1} / ${total}`
     resetTimer()
   }
-  function resetTimer(){ clearInterval(timer); timer=setInterval(()=>goTo(cur+1),4200) }
+  function resetTimer(){}
 
   document.querySelector('[data-carousel-prev="csMainCarousel"]')?.addEventListener('click',()=>goTo(cur-1))
   document.querySelector('[data-carousel-next="csMainCarousel"]')?.addEventListener('click',()=>goTo(cur+1))
@@ -1659,7 +1539,7 @@ if(contactForm){
     if(count)count.textContent=`${cur+1} / ${total}`
     resetTimer()
   }
-  function resetTimer(){ clearInterval(timer); timer=setInterval(()=>goTo(cur+1),4200) }
+  function resetTimer(){}
 
   document.querySelector('[data-carousel-prev="tendaCarousel"]')?.addEventListener('click',()=>goTo(cur-1))
   document.querySelector('[data-carousel-next="tendaCarousel"]')?.addEventListener('click',()=>goTo(cur+1))
@@ -1693,9 +1573,7 @@ function initLiveCarousel(trackId,dotsId){
   const card=track.closest('.live-card')
   card?.querySelector('[data-live-prev="'+trackId+'"]')?.addEventListener('click',e=>{e.stopPropagation();goTo(cur-1)})
   card?.querySelector('[data-live-next="'+trackId+'"]')?.addEventListener('click',e=>{e.stopPropagation();goTo(cur+1)})
-  let t=setInterval(()=>goTo(cur+1),4800)
-  card?.addEventListener('mouseenter',()=>clearInterval(t))
-  card?.addEventListener('mouseleave',()=>{ t=setInterval(()=>goTo(cur+1),4800) })
+  
   let t0=0; track.addEventListener('touchstart',e=>{t0=e.touches[0].clientX},{passive:true})
   track.addEventListener('touchend',e=>{ const d=e.changedTouches[0].clientX-t0; if(Math.abs(d)>40)goTo(d<0?cur+1:cur-1) })
   goTo(0)
@@ -1729,9 +1607,7 @@ function initSmallCarousel(trackId,dotsId){
   const card=track.closest('.app-card2')
   card?.querySelector('[data-c2prev="'+trackId+'"]')?.addEventListener('click',()=>goTo(cur-1))
   card?.querySelector('[data-c2next="'+trackId+'"]')?.addEventListener('click',()=>goTo(cur+1))
-  let t=setInterval(()=>goTo(cur+1),5200)
-  card?.addEventListener('mouseenter',()=>clearInterval(t))
-  card?.addEventListener('mouseleave',()=>{ t=setInterval(()=>goTo(cur+1),5200) })
+  
   let t0=0; track.addEventListener('touchstart',e=>{t0=e.touches[0].clientX},{passive:true})
   track.addEventListener('touchend',e=>{ const d=e.changedTouches[0].clientX-t0; if(Math.abs(d)>40)goTo(d<0?cur+1:cur-1) })
   goTo(0)
@@ -1740,44 +1616,6 @@ initSmallCarousel('jazelTrack','jazelDots')
 initSmallCarousel('ymTrack','ymDots')
 initSmallCarousel('chubTrack','chubDots')
 
-/* ─── MOUSE DRAG + WHEEL for all carousels ─── */
-;(function(){
-  let down=false,sx=0,dragged=false
-  document.addEventListener('mousedown',e=>{
-    if(!e.target.closest('.carousel,.live-card-top,.app-card2-carousel'))return
-    down=true;sx=e.clientX;dragged=false;e.preventDefault()
-  },{passive:false})
-  document.addEventListener('mousemove',e=>{ if(down&&Math.abs(e.clientX-sx)>4)dragged=true },{passive:true})
-  document.addEventListener('mouseup',e=>{
-    if(!down)return
-    const dx=e.clientX-sx; down=false
-    if(!dragged||Math.abs(dx)<40)return
-    const wrap=e.target.closest('.carousel,[data-carousel-prev],[data-carousel-next],.live-card,.app-card2')
-          ||document.elementFromPoint(sx,e.clientY)?.closest('.carousel,.live-card,.app-card2')
-    if(!wrap)return
-    const sel=dx<0
-      ?'[data-carousel-next],[data-live-next],[data-c2next]'
-      :'[data-carousel-prev],[data-live-prev],[data-c2prev]'
-    wrap.querySelector(sel)?.click()
-  })
-  // Mouse wheel: scroll carousels left/right
-  document.querySelectorAll('.carousel,.live-card-top,.app-card2-carousel').forEach(el=>{
-    el.addEventListener('wheel',e=>{
-      e.preventDefault()
-      const wrap=el.closest('.carousel,.live-card,.app-card2')||el.parentElement?.closest('.live-card,.app-card2')||el
-      const sel=e.deltaX>30||e.deltaY>30
-        ?'[data-carousel-next],[data-live-next],[data-c2next]'
-        :'[data-carousel-prev],[data-live-prev],[data-c2prev]'
-      wrap.querySelector(sel)?.click()
-    },{passive:false})
-  })
-})()
-
-/* ─── SIGNATURE FX: SPOTLIGHT + 3D TILT ─── */
-document.querySelectorAll('.spot').forEach(el=>{el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px');});});
-if(!matchMedia('(prefers-reduced-motion:reduce)').matches){document.querySelectorAll('.tilt').forEach(el=>{el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;el.style.transform=`perspective(800px) rotateY(${(px*5).toFixed(2)}deg) rotateX(${(-py*5).toFixed(2)}deg)`;});el.addEventListener('pointerleave',()=>{el.style.transform='';});});}
-
-console.log('%cRJ Cabansay · Full Stack Developer | AI Automation & Technical Solutions · Philippines\n%crjamscxx@gmail.com','font:700 20px sans-serif;color:#E8B84B;letter-spacing:2px','font:12px monospace;color:#888')
 </script>
 </body>
 </html>
