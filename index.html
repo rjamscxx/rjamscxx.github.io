@@ -25,10 +25,11 @@
   --serif:'Newsreader',Georgia,serif;
   --mono:'Geist Mono','SF Mono',Consolas,monospace;
   --max:1040px; --gutter:24px;
+  --z-header:10;
   --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
+html{scroll-padding-top:72px}
 body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
@@ -38,7 +39,7 @@ p,li,dd{text-wrap:pretty}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
 
 /* Header */
-.top{position:sticky;top:0;z-index:10;background:rgba(251,251,250,.94);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:var(--z-header);padding-top:env(safe-area-inset-top);background:rgba(251,251,250,.94);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);height:60px}
 .brand{font-weight:600;color:var(--ink)}
 .nav{display:flex;align-items:center;gap:var(--s3);font-size:14.5px;color:var(--muted)}
@@ -131,12 +132,6 @@ section{padding:var(--s5) 0;border-top:1px solid var(--line)}
 .skill h3{font-size:15px;margin-bottom:6px}
 .skill p{font-size:15px}
 
-/* Quote */
-.quote{display:grid;grid-template-columns:1fr auto;gap:var(--s3);align-items:end;padding:var(--s4)}
-.quote blockquote{font-family:var(--serif);font-size:22px;line-height:1.4;color:var(--ink)}
-.quote cite{font-style:normal;font-size:14px;color:var(--muted);white-space:nowrap}
-.quote cite b{display:block;color:var(--ink);font-weight:500}
-
 /* Contact */
 .contact{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);padding:var(--s4)}
 .contact h2{font-family:var(--serif);font-weight:500;font-size:32px;line-height:1.15;margin-bottom:12px}
@@ -146,7 +141,7 @@ section{padding:var(--s5) 0;border-top:1px solid var(--line)}
 form{display:grid;gap:12px}
 label{font-size:13.5px;font-weight:500;color:var(--ink);display:grid;gap:6px}
 input,textarea{font:inherit;font-size:15px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px;width:100%}
-input:focus,textarea:focus{outline:none;border-color:var(--ink);background:var(--surface)}
+input:focus,textarea:focus{outline:2px solid var(--ink);outline-offset:0;border-color:var(--ink);background:var(--surface)}
 textarea{min-height:110px;resize:vertical}
 .form-msg{font-size:14px;min-height:1.6em}
 .form-msg.ok{color:var(--green)}
@@ -176,13 +171,12 @@ footer a:hover{color:var(--ink)}
   .grid2,.skills{grid-template-columns:1fr}
   .xp{grid-template-columns:1fr;gap:4px}
   .sec-head{flex-direction:column;gap:4px}
-  .quote{grid-template-columns:1fr;padding:var(--s3)}
   .contact,.feature .card-body,.flow{padding:var(--s3)}
   .flow ol{grid-template-columns:1fr 1fr;grid-template-rows:none}
   .flow li{font-size:13.5px;padding:8px 10px}
   .portrait{width:88px}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:active{transform:none}}
+@media (prefers-reduced-motion:reduce){.btn:active{transform:none}}
 </style>
 </head>
 <body>
@@ -207,8 +201,8 @@ footer a:hover{color:var(--ink)}
     <div class="hero-grid">
       <div>
         <span class="status"><i></i>Open to full-time, contract and freelance work</span>
-        <h1>Full-stack developer building software that businesses run on.</h1>
-        <p class="lede">I'm Robert James Cabansay, a self-taught developer in the Philippines. I build inventory, procurement, point of sale and booking systems, from requirements and UI design to database security, testing and deployment.</p>
+        <h1>Full-stack developer who builds business systems.</h1>
+        <p class="lede">I'm Robert James Cabansay, a self-taught developer in the Philippines. I build inventory, procurement, point of sale and booking systems, and I handle the requirements, UI design, database security, testing and deployment myself.</p>
         <div class="actions">
           <a class="btn btn-dark" href="mailto:rjamscxx@gmail.com">Email me</a>
           <a class="btn" href="assets/Robert-James-Cabansay-Resume.pdf" download>Download resume (PDF)</a>
@@ -243,7 +237,7 @@ footer a:hover{color:var(--ink)}
         <p class="kind">Inventory and procurement system · Singel Group of Companies, founded 1987</p>
         <p class="desc">Tracks what each project needs, what was bought, what arrived, where it sits and where it went. Every step is its own numbered record, so any figure on any screen traces back to the documents behind it.</p>
         <ul>
-          <li>Stock figures are calculated from movement records, never stored, so they can't drift.</li>
+          <li>The system calculates stock from movement records instead of storing totals, so figures can't drift.</li>
           <li>Corrections void and reverse the original record, and the database blocks edits and deletes.</li>
           <li>Whoever raises a document can't approve or receive it. The server and row-level security both check this.</li>
         </ul>
@@ -273,7 +267,7 @@ footer a:hover{color:var(--ink)}
         <div class="card-body">
           <h3>Tenda Pro</h3>
           <p class="kind">Restaurant and café operations</p>
-          <p class="desc">POS, kitchen display, QR menu, payroll and end-of-day reconciliation in one app. Recipes are linked to stock, so every sale deducts ingredients and tracks cost of goods sold.</p>
+          <p class="desc">One app for POS, kitchen display, QR menu, payroll and end-of-day reconciliation. Each sale deducts its recipe&#39;s ingredients from stock and records the cost of goods sold.</p>
           <div class="card-foot">
             <div class="tags"><span class="tag">Next.js 16</span><span class="tag">Drizzle</span><span class="tag">Supabase</span><span class="tag">Playwright</span></div>
             <a class="more-link" href="https://tenda.ph/" target="_blank" rel="noopener">tenda.ph ↗</a>
@@ -286,7 +280,7 @@ footer a:hover{color:var(--ink)}
         <div class="card-body">
           <h3>Singel Group website</h3>
           <p class="kind">Corporate site for five operating companies</p>
-          <p class="desc">One page per division, a WebGL hero and scroll-driven motion that turns off for reduced-motion users. Seven browser checks measure motion, contrast, performance and layout overlap at six screen widths.</p>
+          <p class="desc">The site has one page per division, a WebGL hero and scroll-driven motion that turns off for reduced-motion users. Seven browser checks measure motion, contrast, performance and layout overlap at six screen widths.</p>
           <div class="card-foot">
             <div class="tags"><span class="tag">Next.js</span><span class="tag">React Three Fiber</span><span class="tag">GSAP</span></div>
             <a class="more-link" href="https://singelgroup.vercel.app/" target="_blank" rel="noopener">Visit site ↗</a>
@@ -299,7 +293,7 @@ footer a:hover{color:var(--ink)}
         <div class="card-body">
           <h3>Courtside PH</h3>
           <p class="kind">Court reservations for sports venues</p>
-          <p class="desc">Bookings across six sports with QR check-in, double-booking protection, offline support and an owner earnings view. Data access is locked down with row-level security and edge functions.</p>
+          <p class="desc">Venues take bookings for six sports, with QR check-in, double-booking protection, offline support and an owner earnings view. Row-level security and edge functions control who can read and change data.</p>
           <div class="card-foot">
             <div class="tags"><span class="tag">PWA</span><span class="tag">Supabase</span><span class="tag">Edge Functions</span></div>
             <a class="more-link" href="https://courtside-ph.vercel.app/" target="_blank" rel="noopener">Visit app ↗</a>
@@ -312,7 +306,7 @@ footer a:hover{color:var(--ink)}
         <div class="card-body">
           <h3>Gold Palace and Grimez</h3>
           <p class="kind">Retail systems for two streetwear brands</p>
-          <p class="desc">Storefronts and owner tools for drops, POS, orders, inventory, finance and reports, covered by 64 test files. Each brand has its own repository, deployment and database so their sales never mix.</p>
+          <p class="desc">Each brand has a storefront and owner tools for drops, POS, orders, inventory, finance and reports, with 64 test files. The brands use separate repositories, deployments and databases, so their sales never mix.</p>
           <div class="card-foot">
             <div class="tags"><span class="tag">JavaScript</span><span class="tag">Supabase</span><span class="tag">Vercel</span></div>
             <a class="more-link" href="https://gold-palace-streetwear.vercel.app/" target="_blank" rel="noopener">Visit store ↗</a>
@@ -331,7 +325,7 @@ footer a:hover{color:var(--ink)}
     <div class="list">
       <div class="row">
         <h3>The Drop <small>Retail business suite</small></h3>
-        <div><p>Offline-first back office for a streetwear retailer: POS, inventory, delivery, payroll, P&amp;L and receipt printing. Sales save locally and sync through an outbox, and staff PINs are checked on the server.</p><div class="tags"><span class="tag">PWA</span><span class="tag">Supabase Edge Functions</span></div></div>
+        <div><p>Offline-first back office for a streetwear retailer: POS, inventory, delivery, payroll, P&amp;L and receipt printing. The app saves sales on the device first and syncs them through an outbox, and the server checks staff PINs.</p><div class="tags"><span class="tag">PWA</span><span class="tag">Supabase Edge Functions</span></div></div>
         <span class="private">Private</span>
       </div>
       <div class="row">
@@ -341,12 +335,12 @@ footer a:hover{color:var(--ink)}
       </div>
       <div class="row">
         <h3>Leisure Travel &amp; Tours <small>Bookings and admin</small></h3>
-        <div><p>Baguio staycation and tours site with an admin CMS and two-way calendar (iCal) sync to prevent double bookings.</p><div class="tags"><span class="tag">JavaScript</span><span class="tag">Supabase</span></div></div>
+        <div><p>A Baguio staycation and tours site with an admin CMS and two-way calendar (iCal) sync to prevent double bookings.</p><div class="tags"><span class="tag">JavaScript</span><span class="tag">Supabase</span></div></div>
         <a class="more-link" href="https://leisure-travel-tours.vercel.app/" target="_blank" rel="noopener">Visit ↗</a>
       </div>
       <div class="row">
         <h3>Checkout Hub PH <small>Offline business manager</small></h3>
-        <div><p>The first app I built, for my own frozen-goods business. Eight modules in one offline-first file, with stock deducted on each invoice and low-stock and expiry alerts.</p><div class="tags"><span class="tag">PWA</span><span class="tag">Dexie</span></div></div>
+        <div><p>The first app I built, for my own frozen-goods business. It has eight modules in one offline-first file. Each invoice deducts stock, and the app warns about low stock and expiring items.</p><div class="tags"><span class="tag">PWA</span><span class="tag">Dexie</span></div></div>
         <a class="more-link" href="https://checkout-hub-ph.vercel.app/" target="_blank" rel="noopener">Visit ↗</a>
       </div>
       <div class="row">
@@ -356,17 +350,17 @@ footer a:hover{color:var(--ink)}
       </div>
       <div class="row">
         <h3>Grayscale Coffee Club <small>Membership app</small></h3>
-        <div><p>Member portal with QR loyalty cards, subscription tiers and a daily operations dashboard.</p></div>
+        <div><p>A member portal with QR loyalty cards, subscription tiers and a daily operations dashboard.</p></div>
         <span class="private">Private</span>
       </div>
       <div class="row">
         <h3>Jazel Hub <small>Client business hub</small></h3>
-        <div><p>Bookings, schedule, services and contact management for an independent business owner.</p></div>
+        <div><p>A business hub with bookings, schedule, services and contact management for an independent business owner.</p></div>
         <span class="private">Private</span>
       </div>
       <div class="row">
         <h3>Young Minds <small>Youth progress tracker</small></h3>
-        <div><p>Progress, attendance and reporting screens for a youth education program.</p></div>
+        <div><p>A tracker with progress, attendance and reporting screens for a youth education program.</p></div>
         <span class="private">Private</span>
       </div>
       <div class="row">
@@ -402,7 +396,7 @@ footer a:hover{color:var(--ink)}
         <h3>Freelance Full-Stack Developer</h3>
         <div class="org">Direct clients and small brands</div>
         <ul>
-          <li>Delivered apps for restaurants, retail brands, resorts and a travel agency, from requirements to handover.</li>
+          <li>Delivered apps for restaurants, retail brands, resorts and a travel agency, and handled every stage through handover.</li>
           <li>Hand over every project in the client's own repository, hosting and database accounts.</li>
         </ul>
       </div>
@@ -410,9 +404,9 @@ footer a:hover{color:var(--ink)}
     <div class="xp">
       <div class="when">5+ years</div>
       <div>
-        <h3>Sales, Finance and Client-Facing Roles</h3>
+        <h3>Sales, finance and client-facing roles</h3>
         <div class="org">Real estate sales, financial advisory, HR sourcing, customer service</div>
-        <ul><li>Managed client relationships and reviewed financial statements and sales data. This is why I build for how owners actually work.</li></ul>
+        <ul><li>Managed client relationships and reviewed financial statements and sales data.</li></ul>
       </div>
     </div>
     <div class="xp">
@@ -439,14 +433,6 @@ footer a:hover{color:var(--ink)}
   </div>
 </section>
 
-<section aria-label="Client feedback">
-  <div class="wrap">
-    <figure class="card quote">
-      <blockquote>"RJ built my business hub faster than I expected and it looked way more premium than anything I&#39;d seen. The booking system, schedule, and contact page, all exactly what I needed. I&#39;ve been using it every day since."</blockquote>
-      <cite><b>Jazel Bernardo</b>Founder, Jazel Hub</cite>
-    </figure>
-  </div>
-</section>
 
 <section id="contact">
   <div class="wrap">
@@ -454,7 +440,7 @@ footer a:hover{color:var(--ink)}
       <div>
         <div class="eyebrow">Contact</div>
         <h2>Let's talk about your role or project.</h2>
-        <p>I'm open to full-time, contract and freelance work. Email me directly or send a message with the form.</p>
+        <p>I'm open to full-time, contract and freelance work. Email me or send a message with the form.</p>
         <dl>
           <dt>Email</dt><dd><a href="mailto:rjamscxx@gmail.com">rjamscxx@gmail.com</a></dd>
           <dt>Location</dt><dd>San Pedro, Laguna, Philippines</dd>
