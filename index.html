@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover" />
 <meta name="theme-color" content="#0a0a0a" />
 <meta name="color-scheme" content="dark" />
-<meta name="description" content="I build web applications and business tools with Next.js, React, TypeScript, and Supabase. My work includes inventory and delivery workflows, retail storefronts, booking systems, and project operations tools. I use AI coding tools to support development and focus on translating business requirements into working software." />
-<meta property="og:title" content="RJ Cabansay | Full Stack Developer | AI Automation & Technical Solutions · Portfolio" />
-<meta property="og:description" content="I build web applications and business tools with Next.js, React, TypeScript, and Supabase. My work includes inventory and delivery workflows, retail storefronts, booking systems, and project operations tools. I use AI coding tools to support development and focus on translating business requirements into working software." />
+<meta name="description" content="Robert James Cabansay is a full-stack developer in the Philippines who has shipped 16+ production apps: inventory and procurement, restaurant POS, retail and booking systems. Next.js, TypeScript, PostgreSQL and Supabase." />
+<meta property="og:title" content="RJ Cabansay | Full-Stack Developer · Next.js, TypeScript, PostgreSQL / Supabase" />
+<meta property="og:description" content="16+ production apps shipped: inventory, restaurant POS, retail and booking systems." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://rjamscxx.github.io/" />
 <meta property="og:image" content="https://rjamscxx.github.io/assets/tenda-pro/demo-1-dashboard.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="RJ Cabansay | Full Stack Developer | AI Automation & Technical Solutions" />
-<meta name="twitter:description" content="Web applications, business operations tools, and AI-assisted development." />
-<title>RJ Cabansay | Full Stack Developer | AI Automation & Technical Solutions · Portfolio</title>
+<meta name="twitter:title" content="RJ Cabansay | Full-Stack Developer · Next.js, TypeScript, PostgreSQL / Supabase" />
+<meta name="twitter:description" content="16+ production apps shipped: inventory, restaurant POS, retail and booking systems." />
+<title>RJ Cabansay | Full-Stack Developer · Portfolio</title>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='900' font-size='15' fill='url(%23g)'>RJ</text><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23E8B84B'/><stop offset='1' stop-color='%23C9922A'/></linearGradient></defs></svg>" />
@@ -588,6 +588,22 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .sh-eye,.pill,.stat-l,.mtag,.peek-lbl{text-transform:none}
 
 .wrap.sec{padding-left:var(--px);padding-right:var(--px);scroll-margin-top:90px}.fab,.fab:hover{background:var(--gold2);color:var(--bg);box-shadow:none;transform:none!important}.live-card,.app-card2{box-shadow:none}
+/* stats, timeline, project stack */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));max-width:820px;margin:40px auto 0;border:1px solid var(--b3);border-radius:14px;overflow:hidden}
+.stats>div{padding:18px 12px;text-align:center;display:flex;flex-direction:column-reverse;gap:4px}
+.stats>div+div{border-left:1px solid var(--b3)}
+.stats dd{margin:0;font-family:var(--D);font-size:clamp(24px,3vw,32px);font-weight:800;color:var(--gold2);font-variant-numeric:tabular-nums;line-height:1.1}
+.stats dt{font-size:12.5px;color:var(--c70);text-wrap:balance}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats>div:nth-child(3){border-left:0}.stats>div:nth-child(n+3){border-top:1px solid var(--b3)}}
+.proj-stack{margin:12px 0;font-size:13px;color:var(--c70)}
+.timeline{list-style:none;margin:0 0 32px;padding:0;max-width:860px}
+.timeline>li{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--b3)}
+.timeline>li:last-child{border-bottom:1px solid var(--b3)}
+.tl-when{font-family:var(--M);font-size:12px;color:var(--gold2);padding-top:3px;font-variant-numeric:tabular-nums}
+.timeline h3{font-size:17px;color:var(--ink);text-wrap:balance}
+.timeline ul{margin:10px 0 0;padding-left:18px;color:var(--c80);line-height:1.65}
+.timeline ul li{margin:4px 0;text-wrap:pretty}
+@media(max-width:640px){.timeline>li{grid-template-columns:1fr;gap:6px}}
 </style>
 </head>
 <body>
@@ -607,7 +623,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     <a class="nav-a" href="#live">Live Apps</a>
     <a class="nav-a" href="#more">More</a>
     <a class="nav-a" href="#templates">Templates</a>
+    <a class="nav-a" href="#selected-projects">Projects</a>
     <a class="nav-a" href="#about">About</a>
+    <a class="nav-a" href="#experience">Experience</a>
     <a class="nav-a" href="#stack">Stack</a>
     <a class="nav-a" href="#contact">Contact</a>
   </div>
@@ -621,13 +639,21 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <!-- HERO -->
 <section id="top" class="wrap hero">
   <div class="pill"><span class="pill-dot"></span><span class="pill-text" id="pillText">Open to full-time, contract, and freelance work</span></div>
-  <h1 class="hero-h">Full stack development<br><span class="it">for business operations.</span></h1>
-  <p class="hero-sub">I'm Robert James Cabansay. I build web applications through Strukkd Labs, including inventory tools, restaurant applications, retail storefronts, and project workflows. I use AI development tools with code review and testing.</p>
+  <h1 class="hero-h">Software that real<br><span class="it">businesses run on.</span></h1>
+  <p class="hero-sub">I'm Robert James Cabansay, a self-taught full-stack developer in the Philippines. I build point of sale, inventory, procurement and booking systems, from requirements and UI design to database security, testing and deployment.</p>
   <div class="hero-btns">
     <a class="btn btn-gold" href="#selected-projects">View selected projects →</a>
     <a class="btn btn-outline" href="resume.html">Read my resume</a>
+    <a class="btn btn-outline" href="assets/Robert-James-Cabansay-Resume.pdf" download>Download PDF</a>
     <a class="btn btn-outline" href="#contact">Hire me &#8599;</a>
   </div>
+
+  <dl class="stats" aria-label="Work at a glance">
+    <div><dt>Production apps shipped</dt><dd>16+</dd></div>
+    <div><dt>Commits across 9 client repos</dt><dd>1,300+</dd></div>
+    <div><dt>Automated test files written</dt><dd>140+</dd></div>
+    <div><dt>Migrations in one system</dt><dd>95</dd></div>
+  </dl>
 
   <!-- PEEK STRIP -->
   <div class="peek-strip">
@@ -683,7 +709,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   </div>
 </div>
 
-<section id="selected-projects" class="wrap sec"><div class="sh"><div class="sh-eye">Strukkd Labs · Selected development projects</div><h2 class="sh-title">Selected projects</h2><p class="sh-sub">Inventory, restaurant operations, retail, and project workflows. Each entry lists the work I built and the tools I used.</p></div><div class="bento"><article class="process-step spot" style="display:block;padding:28px"><h3>Singel IPMS</h3><p style="margin:12px 0">Next.js 15 · React 19 · TypeScript · Supabase · Tailwind CSS</p><p>Developed project inventory and purchasing workflows covering purchase orders, receiving, stock movements, and materials issued to jobs. Implemented traceable movement records, permission checks, and database row-level security; added delivery and client acceptance workflows.</p><a class="btn btn-outline" href="https://singel-ipms.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Tenda Pro</h3><p style="margin:12px 0">Next.js 16 · React 19 · TypeScript · Supabase · Drizzle ORM</p><p>Built restaurant operations features for POS, kitchen orders, recipes, ingredient stock, sales reports, payroll, and end-of-day reconciliation. Connected Supabase authentication and PostgreSQL data access; maintained Vitest and Playwright test tooling.</p><a class="btn btn-outline" href="https://tenda.ph/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Strukkd Labs Virtual Office</h3><p style="margin:12px 0">JavaScript · Three.js · Node.js · Supabase · Zod</p><p>Built an interactive 3D operations pilot with client intake, project workspaces, task allocation, evidence links, and artifact review. Implemented scoped draft runners and human approval gates; separated simulated activity, manual AI app handoffs, and connected execution.</p><a class="btn btn-outline" href="https://strukkd-labs-virtual-office.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Grimez Collection and Gold Palace Streetwear</h3><p style="margin:12px 0">HTML · CSS · JavaScript · Supabase · Vercel</p><p>Built retail storefront and owner operations tools covering product catalogs, POS, orders, inventory, finance, and reports. Kept each brand's repository, deployment, database project, and local data separate; added storefront product and photo management.</p><a class="btn btn-outline" href="https://www.grimezph.com/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article></div></section>
+<section id="selected-projects" class="wrap sec"><div class="sh"><div class="sh-eye">Strukkd Labs · Selected projects</div><h2 class="sh-title">Selected projects</h2><p class="sh-sub">Inventory, restaurant, retail and booking systems in daily use. Courtside PH, Banot's Barbershop and Checkout Hub PH have their own sections below.</p></div><div class="bento"><article class="process-step spot" style="display:block;padding:28px"><h3>Singel IPMS · Inventory &amp; procurement</h3><p class="proj-stack">Next.js 15 · React 19 · TypeScript · Supabase · Tailwind CSS</p><p>Purchase orders, receiving, stock movements and material allocation to jobs for a five-division group founded in 1987. Role permissions are enforced in the database with row-level security. 557 commits, 95 migrations and 49 test files.</p><a class="btn btn-outline" href="https://singel-ipms.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Tenda Pro · Restaurant &amp; café operations</h3><p class="proj-stack">Next.js 16 · React 19 · TypeScript · Supabase · Drizzle · Vitest · Playwright</p><p>One back office instead of paper and group chats: POS, kitchen display, QR menu, payroll and end-of-day reconciliation. Recipes are linked to stock, so every sale deducts ingredients and tracks cost of goods sold.</p><a class="btn btn-outline" href="https://tenda.ph/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Singel Group · Corporate website</h3><p class="proj-stack">Next.js · TypeScript · Tailwind CSS v4 · React Three Fiber · GSAP</p><p>Five-division corporate site with a WebGL hero, scroll-driven motion and full reduced-motion support. Seven browser checks measure motion, scrolling, contrast, performance and layout overlap at six screen widths.</p><a class="btn btn-outline" href="https://singelgroup.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Gold Palace &amp; Grimez · Retail systems</h3><p class="proj-stack">HTML · CSS · JavaScript · Supabase · Vercel</p><p>Storefronts and owner tools for product drops, POS, orders, inventory, finance and reports, covered by 64 automated test files. Each brand keeps its own repository, deployment and database.</p><a class="btn btn-outline" href="https://www.grimezph.com/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Leisure Travel &amp; Tours · Bookings</h3><p class="proj-stack">JavaScript · Supabase · Vercel</p><p>Baguio staycation and tours website with an admin CMS and two-way calendar (iCal) sync to prevent double bookings.</p><a class="btn btn-outline" href="https://leisure-travel-tours.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Strukkd Labs Virtual Office · 3D workspace</h3><p class="proj-stack">JavaScript · Three.js · Node.js · Supabase · Zod</p><p>A 3D workspace for client intake, task allocation and artifact review, where AI-drafted work needs human approval before it moves forward.</p><a class="btn btn-outline" href="https://strukkd-labs-virtual-office.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article></div></section>
 <!-- ═══ COURTSIDE PH ═══ -->
 <section id="courtside" class="wrap tenda-section">
   <div class="sh r">
@@ -1207,14 +1233,14 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <!-- ═══ ABOUT ═══ -->
 <section id="about" class="wrap sec">
   <div class="sh r">
-    <div class="sh-eye">Full Stack Developer | AI Automation & Technical Solutions · Philippines</div>
+    <div class="sh-eye">Full-Stack Developer · San Pedro, Laguna, Philippines</div>
     <h2 class="sh-title">About me</h2>
   </div>
   <div class="r">
     <div class="about-bio" style="max-width:760px">
-      <p>I'm <strong>Robert James Cabansay,</strong> a full stack developer in San Pedro, Laguna. I build user interfaces, databases, authentication, and business workflows.</p>
-      <p>I work with <strong>Next.js, React, TypeScript, and Supabase.</strong> I also build HTML and JavaScript applications that store data in the browser. I use GitHub for version control and Vercel for deployment. Some projects include Playwright and Vitest tests.</p>
-      <p>Strukkd Labs is my software brand. I'm available for freelance projects (dashboards, client hubs, and custom SaaS) and open to full-time or contract developer roles.</p>
+      <p>I'm <strong>Robert James Cabansay.</strong> I started coding to manage my own small business, because the notebook wasn't cutting it. That sales tracker became <strong>Checkout Hub PH</strong>, and I haven't stopped building since.</p>
+      <p>I've shipped <strong>16+ production apps</strong> for a manufacturing group, restaurants, retail brands, resorts and service shops. I work mostly in <strong>Next.js, React, TypeScript, PostgreSQL and Supabase,</strong> and build offline-first PWAs when that fits the owner's day better. Projects are tested with Playwright and Vitest and handed over in the client's own accounts.</p>
+      <p>Before development I spent five years in real estate sales, financial advisory, HR sourcing and customer service, so I build for how owners actually work. Strukkd Labs is my software studio. I'm open to <strong>full-time, contract and freelance</strong> roles.</p>
     </div>
   </div>
   <div class="bento proc-bento r r1" style="margin-top:clamp(32px,5vw,56px)">
@@ -1246,6 +1272,48 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
         <p>Deployed to Vercel or your hosting of choice. Handoff includes source files, brief walkthrough, and optional retainer for updates.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section id="experience" class="wrap sec">
+  <div class="sh r">
+    <div class="sh-eye">Experience · Education</div>
+    <h2 class="sh-title">Where I've <span class="it">worked.</span></h2>
+  </div>
+  <ol class="timeline r">
+    <li>
+      <div class="tl-when">2025 – Present</div>
+      <div><h3>Founder &amp; Full-Stack Developer, Strukkd Labs</h3>
+      <ul>
+        <li>Lead developer on Singel Group's inventory and procurement system: 557 commits, 95 database migrations and 49 test files.</li>
+        <li>Built a release gate that blocks any deploy failing checks for console errors, forms, accessibility, SEO or security.</li>
+        <li>Built the studio's operations system for client intake, quotes, contracts, invoices and release tracking.</li>
+      </ul></div>
+    </li>
+    <li>
+      <div class="tl-when">2023 – Present</div>
+      <div><h3>Freelance Full-Stack Developer</h3>
+      <ul>
+        <li>Delivered apps for restaurants, retail brands, resorts, a travel agency and a barbershop, from requirements to handover.</li>
+        <li>Hand over every project in the client's own repository, hosting and database accounts.</li>
+      </ul></div>
+    </li>
+    <li>
+      <div class="tl-when">5+ years</div>
+      <div><h3>Sales, Finance &amp; Client-Facing Roles</h3>
+      <ul><li>Real estate sales, financial advisory, HR sourcing and customer service. Managed client relationships and reviewed financial statements and sales data.</li></ul></div>
+    </li>
+    <li>
+      <div class="tl-when">2019</div>
+      <div><h3>BS Information Technology, AMA Computer College, Biñan</h3></div>
+    </li>
+  </ol>
+  <div class="hero-btns" style="justify-content:flex-start;animation:none">
+    <a class="btn btn-outline" href="resume.html">Read the full resume</a>
+    <a class="btn btn-outline" href="assets/Robert-James-Cabansay-Resume.pdf" download>Download PDF</a>
   </div>
 </section>
 
@@ -1307,9 +1375,15 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     </div>
   </div>
   <div class="stack-default r" style="margin-top:14px">
+    <span class="stack-default-label">3D &amp; motion</span>
+    <div class="stack-default-items">
+      <span>Three.js</span><span>React Three Fiber</span><span>GSAP ScrollTrigger</span><span>Lenis</span>
+    </div>
+  </div>
+  <div class="stack-default r" style="margin-top:14px">
     <span class="stack-default-label">AI stack</span>
     <div class="stack-default-items">
-      <span>Claude Code</span><span>ChatGPT</span><span>Qwen AI</span><span>Lovable</span>
+      <span>Claude Code</span><span>ChatGPT</span><span>Multi-agent workflows</span><span>Human approval gates</span><span>AI code review</span>
     </div>
   </div>
   <div class="stack-default r" style="margin-top:14px">
@@ -1386,7 +1460,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="r">
       <div class="sh-eye">Let's work together.</div>
       <h2 class="contact-h">Contact me</h2>
-      <p class="contact-p">I'm open to full-time, contract, and freelance work. Email me about your role or describe the application you need.</p>
+      <p class="contact-p">I'm open to full-time, contract and freelance work. Email me about your role or the system you need built.</p>
       <a class="email-pill" href="mailto:rjamscxx@gmail.com">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         rjamscxx@gmail.com
@@ -1430,9 +1504,11 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   <div class="footer-links">
     <a href="mailto:rjamscxx@gmail.com">Email</a>
     <a href="https://github.com/rjamscxx" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/robert-james-cabansay-197a80160" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="resume.html">Resume</a>
     <a href="#top">Back to top ↑</a>
   </div>
-  <div>ROBERT JAMES CABANSAY · FULL STACK DEVELOPER | AI AUTOMATION &amp; TECHNICAL SOLUTIONS · PHILIPPINES · <span id="footerYear"></span></div>
+  <div>ROBERT JAMES CABANSAY · FULL-STACK DEVELOPER · PHILIPPINES · <span id="footerYear"></span></div>
 </footer>
 
 <script>
