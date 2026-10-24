@@ -39,7 +39,7 @@ p,li,dd{text-wrap:pretty}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
 
 /* Header */
-.top{position:sticky;top:0;z-index:var(--z-header);padding-top:env(safe-area-inset-top);background:rgba(251,251,250,.94);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:var(--z-header);padding-top:env(safe-area-inset-top);background:var(--bg);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);height:60px}
 .brand{font-weight:600;color:var(--ink)}
 .nav{display:flex;align-items:center;gap:var(--s3);font-size:14.5px;color:var(--muted)}
@@ -151,6 +151,30 @@ footer{border-top:1px solid var(--line);padding:var(--s3) 0;font-size:13.5px;col
 footer .wrap{display:flex;justify-content:space-between;gap:var(--s2);flex-wrap:wrap}
 footer a:hover{color:var(--ink)}
 
+/* About statement (React Bits ScrollReveal) */
+.statement{padding:var(--s6) 0}
+.reveal{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.3;color:var(--ink);max-width:880px;margin-top:var(--s2);transform-origin:0% 50%}
+.reveal .w{display:inline-block}
+
+/* Showcase (21st.dev Container Scroll Animation) */
+.showcase{padding:var(--s5) 0 var(--s6)}
+.showcase-head{max-width:640px;margin-bottom:var(--s4)}
+.showcase-head h2{font-family:var(--serif);font-weight:500;font-size:32px;line-height:1.15}
+.cs-stage{perspective:1000px}
+.cs-card{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden;transform-origin:50% 0%}
+.cs-bar{display:flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-bottom:1px solid var(--line);background:var(--surface)}
+.cs-bar i{width:10px;height:10px;border-radius:50%;background:var(--line-strong)}
+.cs-bar span{margin-left:10px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.cs-card img{width:100%;height:auto}
+
+/* Headline (React Bits SplitText) */
+[data-split] .w{display:inline-block}
+
+/* Stats (React Bits CountUp, rolling digits) */
+.roll{display:inline-block;height:1.2em;line-height:1.2em;overflow:hidden;vertical-align:top}
+.roll-strip{display:block;transition:transform 1.4s ease-out}
+.roll-strip span{display:block;height:1.2em}
+
 @media (max-width:860px){
   .feature,.contact{grid-template-columns:1fr}
   .flow{border-left:0;border-top:1px solid var(--line)}
@@ -201,7 +225,7 @@ footer a:hover{color:var(--ink)}
     <div class="hero-grid">
       <div>
         <span class="status"><i></i>Open to full-time, contract and freelance work</span>
-        <h1>Full-stack developer who builds business systems.</h1>
+        <h1 data-split>Full-stack developer who builds business systems.</h1>
         <p class="lede">I'm Robert James Cabansay, a self-taught developer in the Philippines. I build inventory, procurement, point of sale and booking systems, and I handle the requirements, UI design, database security, testing and deployment myself.</p>
         <div class="actions">
           <a class="btn btn-dark" href="mailto:rjamscxx@gmail.com">Email me</a>
@@ -215,12 +239,34 @@ footer a:hover{color:var(--ink)}
       </div>
       <img class="portrait" src="assets/rj-photo.jpg" alt="Robert James Cabansay" width="220" height="220" />
     </div>
-    <dl class="stats" aria-label="Work at a glance">
+    <dl class="stats" aria-label="Work at a glance" data-countup>
       <div><dt>Production apps shipped</dt><dd>16+</dd></div>
       <div><dt>Commits across 9 client repos</dt><dd>1,300+</dd></div>
       <div><dt>Automated test files written</dt><dd>140+</dd></div>
       <div><dt>Migrations in one system</dt><dd>95</dd></div>
     </dl>
+  </div>
+</section>
+
+<section id="about" class="statement" aria-label="About">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <p class="reveal" data-reveal>I started coding to run my own small business, because a notebook couldn't keep up with the orders. Today I build inventory, procurement, point of sale and booking systems for other owners, and every client gets their own code, hosting and database.</p>
+  </div>
+</section>
+
+<section class="showcase" aria-label="Tenda Pro dashboard">
+  <div class="wrap">
+    <div class="showcase-head" data-cs-head>
+      <div class="eyebrow">Tenda Pro · live at tenda.ph</div>
+      <h2>A restaurant's sales, food cost and stock on one screen.</h2>
+    </div>
+    <div class="cs-stage" data-cs>
+      <div class="cs-card" data-cs-card>
+        <div class="cs-bar" aria-hidden="true"><i></i><i></i><i></i><span>tenda.ph/dashboard</span></div>
+        <img src="assets/covers/tenda.webp" alt="Tenda Pro dashboard showing revenue, food cost percentage, gross margin and stock alerts" loading="lazy" width="1200" height="750" />
+      </div>
+    </div>
   </div>
 </section>
 
@@ -263,14 +309,14 @@ footer a:hover{color:var(--ink)}
 
     <div class="grid2">
       <article class="card">
-        <div class="shot"><img src="assets/covers/tenda.webp" alt="Tenda Pro dashboard with revenue, food cost and stock alerts" loading="lazy" /></div>
+        <div class="shot"><img src="assets/covers/checkout-hub.webp" alt="Checkout Hub PH home screen with sales and stock summary" loading="lazy" /></div>
         <div class="card-body">
-          <h3>Tenda Pro</h3>
-          <p class="kind">Restaurant and café operations</p>
-          <p class="desc">One app for POS, kitchen display, QR menu, payroll and end-of-day reconciliation. Each sale deducts its recipe&#39;s ingredients from stock and records the cost of goods sold.</p>
+          <h3>Checkout Hub PH</h3>
+          <p class="kind">Offline business manager · the first app I built</p>
+          <p class="desc">I built it for my own frozen-goods business. It has eight modules in one offline-first file. Each invoice deducts stock, and the app warns about low stock and expiring items.</p>
           <div class="card-foot">
-            <div class="tags"><span class="tag">Next.js 16</span><span class="tag">Drizzle</span><span class="tag">Supabase</span><span class="tag">Playwright</span></div>
-            <a class="more-link" href="https://tenda.ph/" target="_blank" rel="noopener">tenda.ph ↗</a>
+            <div class="tags"><span class="tag">PWA</span><span class="tag">Dexie</span><span class="tag">Offline-first</span></div>
+            <a class="more-link" href="https://checkout-hub-ph.vercel.app/" target="_blank" rel="noopener">Visit app ↗</a>
           </div>
         </div>
       </article>
@@ -337,11 +383,6 @@ footer a:hover{color:var(--ink)}
         <h3>Leisure Travel &amp; Tours <small>Bookings and admin</small></h3>
         <div><p>A Baguio staycation and tours site with an admin CMS and two-way calendar (iCal) sync to prevent double bookings.</p><div class="tags"><span class="tag">JavaScript</span><span class="tag">Supabase</span></div></div>
         <a class="more-link" href="https://leisure-travel-tours.vercel.app/" target="_blank" rel="noopener">Visit ↗</a>
-      </div>
-      <div class="row">
-        <h3>Checkout Hub PH <small>Offline business manager</small></h3>
-        <div><p>The first app I built, for my own frozen-goods business. It has eight modules in one offline-first file. Each invoice deducts stock, and the app warns about low stock and expiring items.</p><div class="tags"><span class="tag">PWA</span><span class="tag">Dexie</span></div></div>
-        <a class="more-link" href="https://checkout-hub-ph.vercel.app/" target="_blank" rel="noopener">Visit ↗</a>
       </div>
       <div class="row">
         <h3>Strukkd Labs Virtual Office <small>3D operations workspace</small></h3>
@@ -467,7 +508,68 @@ footer a:hover{color:var(--ink)}
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
+/* Motion adapted from React Bits (SplitText, ScrollReveal, CountUp) and the
+   21st.dev Container Scroll Animation, rewritten for this static page. */
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
+  const splitWords = el => {
+    const words = el.textContent.trim().split(/\s+/)
+    el.setAttribute('aria-label', el.textContent.trim())
+    el.innerHTML = words.map(w => '<span class="w" aria-hidden="true">' + w + '</span>').join(' ')
+    return el.querySelectorAll('.w')
+  }
+
+  // CountUp: each digit rolls to its value when the stats come into view
+  const stats = document.querySelector('[data-countup]')
+  if (stats) {
+    const strips = []
+    stats.querySelectorAll('dd').forEach(dd => {
+      const text = dd.textContent.trim()
+      dd.setAttribute('aria-label', text)
+      dd.innerHTML = [...text].map(ch => {
+        if (!/\d/.test(ch)) return '<span aria-hidden="true">' + ch + '</span>'
+        return '<span class="roll" aria-hidden="true"><span class="roll-strip" data-to="' + ch + '">' +
+          [0,1,2,3,4,5,6,7,8,9].map(n => '<span>' + n + '</span>').join('') + '</span></span>'
+      }).join('')
+      dd.querySelectorAll('.roll-strip').forEach(el => strips.push(el))
+    })
+    const run = () => strips.forEach((el, i) => {
+      el.style.transitionDelay = (reduce ? 0 : i * 70) + 'ms'
+      el.style.transform = 'translateY(' + (-1.2 * Number(el.dataset.to)) + 'em)'
+    })
+    if (reduce || !('IntersectionObserver' in window)) { strips.forEach(el => el.style.transition = 'none'); run() }
+    else new IntersectionObserver((entries, io) => {
+      if (entries.some(e => e.isIntersecting)) { run(); io.disconnect() }
+    }, { threshold: 0.4 }).observe(stats)
+  }
+
+  if (reduce || !window.gsap || !window.ScrollTrigger) return
+  gsap.registerPlugin(ScrollTrigger)
+
+  // SplitText: headline words rise in on load
+  const h1 = document.querySelector('[data-split]')
+  if (h1) gsap.from(splitWords(h1), { opacity: 0, y: 24, duration: 0.8, ease: 'power3.out', stagger: 0.06, delay: 0.1 })
+
+  // ScrollReveal: words go from faint to solid as the paragraph scrolls through
+  const rev = document.querySelector('[data-reveal]')
+  if (rev) {
+    const words = splitWords(rev)
+    gsap.fromTo(words, { opacity: 0.15 }, { opacity: 1, ease: 'none', stagger: 0.05, scrollTrigger: { trigger: rev, start: 'top 85%', end: 'bottom 45%', scrub: true } })
+  }
+
+  // Container Scroll Animation: the screenshot tilts flat and settles as it scrolls in
+  const stage = document.querySelector('[data-cs]')
+  if (stage) {
+    const small = matchMedia('(max-width: 720px)').matches
+    const st = { trigger: stage, start: 'top bottom', end: 'top 20%', scrub: true }
+    gsap.fromTo('[data-cs-card]', { rotateX: 20, scale: small ? 0.94 : 1.05 }, { rotateX: 0, scale: 1, ease: 'none', scrollTrigger: st })
+    gsap.fromTo('[data-cs-head]', { y: 0 }, { y: -24, ease: 'none', scrollTrigger: { ...st } })
+  }
+})()
+
 const form = document.getElementById('contactForm')
 const msg = document.getElementById('formMsg')
 form.addEventListener('submit', async e => {
