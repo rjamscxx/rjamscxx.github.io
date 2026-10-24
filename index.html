@@ -71,7 +71,7 @@ button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
   background:var(--bg2);
   background-size:200%;animation:shimmer 1.2s ease 1 both}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-.progress-rail{position:fixed;top:0;left:0;height:2px;background:var(--bg2);z-index:99;width:0;transition:width .08s linear}
+.progress-rail{position:fixed;top:0;left:0;height:2px;background:var(--bg2);z-index:99;width:100%;transform:scaleX(0);transform-origin:left}
 
 /* NAV */
 .nav{position:sticky;top:0;z-index:60;
@@ -604,6 +604,26 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .timeline ul{margin:10px 0 0;padding-left:18px;color:var(--c80);line-height:1.65}
 .timeline ul li{margin:4px 0;text-wrap:pretty}
 @media(max-width:640px){.timeline>li{grid-template-columns:1fr;gap:6px}}
+.proj-note{margin-top:18px;font-size:13px;color:var(--c70)}
+.new-tag{display:inline-block;vertical-align:middle;margin-left:6px;padding:2px 8px;border:1px solid var(--gbdr);border-radius:999px;font-family:var(--M);font-size:10px;color:var(--gold2)}
+@media(min-width:860px){.singel-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ipms-flow{background:var(--bg2);display:flex;align-items:center;justify-content:center;padding:20px}
+.ipms-flow ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;width:100%;max-width:420px}
+.ipms-flow li{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--b3);border-radius:8px;font-size:13px;color:var(--c80)}
+.ipms-flow li span{font-family:var(--M);font-size:11px;color:var(--gold2);font-variant-numeric:tabular-nums}
+.singel-points{margin:14px 0 0;padding-left:18px;color:var(--c80);font-size:14px;line-height:1.6}
+.singel-points li{margin:4px 0;text-wrap:pretty}
+/* baseline-ui: no glow, no endless decorative loops, 200ms interaction feedback, no custom easing */
+:root{--ease-spring:ease-out;--ease-out:ease-out}
+.bg-mesh,.aurora::before,.aurora::after,.brand-pulse,.pill-dot,.tenda-live .ldot,.live-tag-dot{animation:none}
+.brand-pulse,.pill-dot,.tenda-live .ldot,.feat-list li::before,.tpl-thumb::before,.email-pill:hover{box-shadow:none}
+.cx-prog{transition:none}
+.wrap.tenda-section{padding-left:var(--px);padding-right:var(--px);scroll-margin-top:90px}
+a,button,.btn,.nav-a,.nav-cta,.live-card,.app-card2,.process-step,.svc,.peek-card,.stack-item,.email-pill,.form-input,.form-select,.form-textarea,.form-submit{transition-duration:.2s!important;transition-timing-function:ease-out!important}
+h1,h2,h3,h4{text-wrap:balance}
+p,li,dd{text-wrap:pretty}
+.live-stack span,.stats dd,.step-n,.tl-when{font-variant-numeric:tabular-nums}
+@media(prefers-reduced-motion:reduce){.mtrack{animation:none}}
 </style>
 </head>
 <body>
@@ -619,6 +639,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <nav class="nav">
   <a href="#top" class="nav-brand"><span class="brand-pulse"></span>RJ CABANSAY</a>
   <div class="nav-links">
+    <a class="nav-a" href="#singel">Singel</a>
     <a class="nav-a" href="#tenda">Tenda Pro</a>
     <a class="nav-a" href="#live">Live Apps</a>
     <a class="nav-a" href="#more">More</a>
@@ -665,10 +686,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       <img src="assets/gold-palace-streetwear/1.png" alt="Gold Palace" />
       <div class="peek-lbl">Gold Palace</div>
     </a>
-    <a href="#live" class="peek-card" style="--i:2">
-      <img src="assets/banots/1.png" alt="Banot's" />
-      <div class="peek-lbl">Banot's</div>
-    </a>
   </div>
 
 </section>
@@ -685,7 +702,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     <span class="mtag">Drizzle ORM <span class="dot"></span></span>
     <span class="mtag">Neon Postgres <span class="dot"></span></span>
     <span class="mtag">Playwright <span class="dot"></span></span>
-    <span class="mtag">AI SDK <span class="dot"></span></span>
     <span class="mtag">Vercel <span class="dot"></span></span>
     <span class="mtag">HTML PWA <span class="dot"></span></span>
     <span class="mtag">Philippines SMB <span class="dot"></span></span>
@@ -700,7 +716,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     <span class="mtag">Drizzle ORM <span class="dot"></span></span>
     <span class="mtag">Neon Postgres <span class="dot"></span></span>
     <span class="mtag">Playwright <span class="dot"></span></span>
-    <span class="mtag">AI SDK <span class="dot"></span></span>
     <span class="mtag">Vercel <span class="dot"></span></span>
     <span class="mtag">HTML PWA <span class="dot"></span></span>
     <span class="mtag">Philippines SMB <span class="dot"></span></span>
@@ -709,13 +724,75 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   </div>
 </div>
 
-<section id="selected-projects" class="wrap sec"><div class="sh"><div class="sh-eye">Strukkd Labs · Selected projects</div><h2 class="sh-title">Selected projects</h2><p class="sh-sub">Inventory, restaurant, retail and booking systems in daily use. Courtside PH, Banot's Barbershop and Checkout Hub PH have their own sections below.</p></div><div class="bento"><article class="process-step spot" style="display:block;padding:28px"><h3>Singel IPMS · Inventory &amp; procurement</h3><p class="proj-stack">Next.js 15 · React 19 · TypeScript · Supabase · Tailwind CSS</p><p>Purchase orders, receiving, stock movements and material allocation to jobs for a five-division group founded in 1987. Role permissions are enforced in the database with row-level security. 557 commits, 95 migrations and 49 test files.</p><a class="btn btn-outline" href="https://singel-ipms.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Tenda Pro · Restaurant &amp; café operations</h3><p class="proj-stack">Next.js 16 · React 19 · TypeScript · Supabase · Drizzle · Vitest · Playwright</p><p>One back office instead of paper and group chats: POS, kitchen display, QR menu, payroll and end-of-day reconciliation. Recipes are linked to stock, so every sale deducts ingredients and tracks cost of goods sold.</p><a class="btn btn-outline" href="https://tenda.ph/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Singel Group · Corporate website</h3><p class="proj-stack">Next.js · TypeScript · Tailwind CSS v4 · React Three Fiber · GSAP</p><p>Five-division corporate site with a WebGL hero, scroll-driven motion and full reduced-motion support. Seven browser checks measure motion, scrolling, contrast, performance and layout overlap at six screen widths.</p><a class="btn btn-outline" href="https://singelgroup.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Gold Palace &amp; Grimez · Retail systems</h3><p class="proj-stack">HTML · CSS · JavaScript · Supabase · Vercel</p><p>Storefronts and owner tools for product drops, POS, orders, inventory, finance and reports, covered by 64 automated test files. Each brand keeps its own repository, deployment and database.</p><a class="btn btn-outline" href="https://www.grimezph.com/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Leisure Travel &amp; Tours · Bookings</h3><p class="proj-stack">JavaScript · Supabase · Vercel</p><p>Baguio staycation and tours website with an admin CMS and two-way calendar (iCal) sync to prevent double bookings.</p><a class="btn btn-outline" href="https://leisure-travel-tours.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Strukkd Labs Virtual Office · 3D workspace</h3><p class="proj-stack">JavaScript · Three.js · Node.js · Supabase · Zod</p><p>A 3D workspace for client intake, task allocation and artifact review, where AI-drafted work needs human approval before it moves forward.</p><a class="btn btn-outline" href="https://strukkd-labs-virtual-office.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article></div></section>
+<section id="selected-projects" class="wrap sec"><div class="sh"><div class="sh-eye">Strukkd Labs · Selected projects</div><h2 class="sh-title">Selected projects</h2><p class="sh-sub">Inventory, retail, restaurant and booking systems I'm building now. Singel Group, Tenda Pro, Courtside PH and Checkout Hub PH have their own sections.</p></div><div class="bento"><article class="process-step spot" style="display:block;padding:28px"><h3>The Drop · Retail business suite <span class="new-tag">New</span></h3><p class="proj-stack">JavaScript · PWA · Supabase Edge Functions · Node.js tests</p><p>Offline-first back office for a streetwear retailer: POS with cashier selection, orders, inventory with photos, delivery, payroll, expenses, money allocation, P&amp;L and TikTok sales imports, with 58 and 80 mm receipt printing. Sales save locally first and sync to the cloud through an outbox, and staff PINs are checked on the server.</p><p class="proj-note">Private client system · details on request</p></article><article class="process-step spot" style="display:block;padding:28px"><h3>Tenda Pro · Restaurant &amp; café operations</h3><p class="proj-stack">Next.js 16 · React 19 · TypeScript · Supabase · Drizzle · Vitest · Playwright</p><p>One back office instead of paper and group chats: POS, kitchen display, QR menu, payroll and end-of-day reconciliation. Recipes are linked to stock, so every sale deducts ingredients and tracks cost of goods sold.</p><a class="btn btn-outline" href="https://tenda.ph/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Strukkd Labs OS · Studio operations <span class="new-tag">New</span></h3><p class="proj-stack">Next.js · TypeScript · Supabase · Playwright</p><p>The system I run my studio on: client intake, sales pipeline, quotes, contracts, invoices and release tracking, plus a prospect list of small businesses in Manila, Cebu and Davao with contact and reply tracking.</p><p class="proj-note">Private client system · details on request</p></article><article class="process-step spot" style="display:block;padding:28px"><h3>Gold Palace &amp; Grimez · Retail systems</h3><p class="proj-stack">HTML · CSS · JavaScript · Supabase · Vercel</p><p>Storefronts and owner tools for two streetwear brands owned by one client, covered by 64 automated test files. Each brand has its own repository, deployment and database so their sales never mix. Owners arrange products and photos themselves and get an email for every website order.</p><a class="btn btn-outline" href="https://www.grimezph.com/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Leisure Travel &amp; Tours · Bookings</h3><p class="proj-stack">JavaScript · Supabase · Vercel</p><p>Baguio staycation and tours website with an admin CMS and two-way calendar (iCal) sync that keeps website bookings and external calendars in step. Admin access uses PIN limits enforced on the server.</p><a class="btn btn-outline" href="https://leisure-travel-tours.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article><article class="process-step spot" style="display:block;padding:28px"><h3>Strukkd Labs Virtual Office · 3D workspace</h3><p class="proj-stack">JavaScript · Three.js · Node.js · Supabase · Zod</p><p>A 3D workspace for client intake, task allocation and artifact review, where AI-drafted work needs human approval before it moves forward.</p><a class="btn btn-outline" href="https://strukkd-labs-virtual-office.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open project ↗</a></article></div></section>
 <!-- ═══ COURTSIDE PH ═══ -->
+<section id="singel" class="wrap sec">
+  <div class="sh r">
+    <div class="sh-eye">Client · Singel Group of Companies · Since 1987</div>
+    <h2 class="sh-title">Two builds for <span class="it">one group.</span></h2>
+    <p class="sh-sub">Singel runs five companies in aviation parts, fuel, construction and transport. I built their inventory and procurement system and rebuilt their corporate website.</p>
+  </div>
+  <div class="live-grid singel-grid">
+
+    <!-- SINGEL IPMS -->
+    <div class="live-card spot r">
+      <div class="live-card-top ipms-flow" aria-label="How a purchase moves through IPMS">
+        <ol><li><span>01</span>Project needs</li><li><span>02</span>Request for quotation</li><li><span>03</span>Purchase order</li><li><span>04</span>Approval</li><li><span>05</span>Receiving</li><li><span>06</span>Picking and issuing</li><li><span>07</span>Delivery</li><li><span>08</span>Billing</li></ol>
+      </div>
+      <div class="live-body">
+        <div class="live-meta">
+          <span class="live-tag-gold"><span class="live-tag-dot" style="background:var(--gold2)"></span>In use · private client system</span>
+        </div>
+        <div class="live-name">SINGEL <span class="it">IPMS</span></div>
+        <p class="live-desc">Tracks what each project needs, what was bought, what arrived, where it sits and where it went. Every step is its own numbered record, so any figure on any screen traces back to the documents behind it.</p>
+        <ul class="singel-points">
+          <li>Stock figures are calculated from movement records, never stored, so they can't drift.</li>
+          <li>Nothing is edited or deleted. Corrections are voided and reversed, and the database enforces it.</li>
+          <li>Whoever raises a document can't approve or receive it, checked by the server and by row-level security.</li>
+          <li>Printable POs, RFQs, receipts and delivery orders, plus spreadsheet imports and exports.</li>
+        </ul>
+        <div class="live-stack"><span>Next.js 15</span><span>TypeScript</span><span>Supabase</span><span>557 commits</span><span>95 migrations</span><span>49 test files</span></div>
+      </div>
+    </div>
+
+    <!-- SINGEL WEBSITE -->
+    <div class="live-card spot r r1">
+      <div class="live-card-top">
+        <div class="live-carousel" id="singelTrack">
+          <div class="live-slide"><img src="assets/singel-website/1.webp" alt="Singel Group homepage: Aviation, construction, fuel and transport" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/singel-website/2.webp" alt="Singel Aerospace division page" /></div>
+          <div class="live-slide"><img loading="lazy" src="assets/singel-website/3.webp" alt="Singel Builders division page" /></div>
+        </div>
+        <button class="live-btn lp" aria-label="Previous screenshot" data-live-prev="singelTrack">&#8592;</button>
+        <button class="live-btn ln" aria-label="Next screenshot" data-live-next="singelTrack">&#8594;</button>
+        <div class="live-dots" id="singelDots"></div>
+      </div>
+      <div class="live-body">
+        <div class="live-meta">
+          <span class="live-tag-gold"><span class="live-tag-dot" style="background:var(--gold2)"></span>Live · singelgroup.vercel.app</span>
+        </div>
+        <div class="live-name">SINGEL <span class="it">WEBSITE</span></div>
+        <p class="live-desc">A rebuild of singelgroup.com with one page per division, a WebGL hero and scroll-driven motion that switches off for visitors who prefer reduced motion.</p>
+        <ul class="singel-points">
+          <li>Every claim on the site comes from the client's own material, since procurement officers and auditors read it.</li>
+          <li>Seven browser checks measure motion, scrolling, contrast, performance and layout overlap at six screen widths.</li>
+          <li>Each division's colour is taken from its own brand stylesheet, with readable tones worked out at build time.</li>
+        </ul>
+        <div class="live-stack"><span>Next.js</span><span>React Three Fiber</span><span>GSAP</span><span>Lenis</span><span>GitHub Actions</span></div>
+        <a class="btn btn-outline" href="https://singelgroup.vercel.app/" target="_blank" rel="noopener" style="margin-top:18px">Open website ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="div"></div>
+
 <section id="courtside" class="wrap tenda-section">
   <div class="sh r">
     <div class="sh-eye">Flagship PWA · Live in Production · Sports Booking</div>
-    <h2 class="sh-title">The <span class="it">court</span> operating system.</h2>
-    <p class="sh-sub">Courtside PH powers multi-sport court reservations across the Philippines: 6 sports, QR check-in, team management, and real-time Supabase cloud sync.</p>
+    <h2 class="sh-title">Court <span class="it">reservations.</span></h2>
+    <p class="sh-sub">Courtside PH handles court reservations across the Philippines: 6 sports, QR check-in, team management, and real-time Supabase cloud sync.</p>
   </div>
   <div class="tenda-grid">
     <div class="tenda-sticky r">
@@ -806,7 +883,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <section id="tenda" class="wrap tenda-section">
   <div class="sh r">
     <div class="sh-eye">Production Next.js · Restaurant SaaS</div>
-    <h2 class="sh-title">The <span class="it">restaurant</span> brain.</h2>
+    <h2 class="sh-title">Restaurant <span class="it">operations.</span></h2>
     <p class="sh-sub">Tenda Pro brings restaurant POS, kitchen orders, recipes, ingredient inventory, reports, payroll, and daily reconciliation into one application.</p>
   </div>
   <div class="tenda-grid">
@@ -817,7 +894,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       <div class="feat-stack">
         <span>Next.js 16</span><span>React 19</span><span>TypeScript</span>
         <span>Tailwind v4</span><span>Supabase SSR</span><span>Drizzle ORM</span>
-        <span>AI SDK</span><span>Resend</span><span>Playwright</span><span>Vercel</span>
+        <span>Nodemailer</span><span>Playwright</span><span>Vercel</span>
       </div>
       <ul class="feat-list">
         <li>Real-time POS with Ember, Ocean, Rose, and Sage themes</li>
@@ -904,9 +981,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <!-- ═══ LIVE APPS ═══ -->
 <section id="live" class="wrap sec">
   <div class="sh r">
-    <div class="sh-eye">Live in Production · Three Apps</div>
-    <h2 class="sh-title"><span class="it">Coffee</span>, streetwear, barbershop.</h2>
-    <p class="sh-sub">Applications for coffee membership, streetwear retail, and barbershop bookings.</p>
+    <div class="sh-eye">Live in Production</div>
+    <h2 class="sh-title"><span class="it">Coffee</span> and streetwear.</h2>
+    <p class="sh-sub">Applications for coffee membership and streetwear retail.</p>
   </div>
   <div class="live-grid">
 
@@ -942,7 +1019,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       </div>
       <div class="live-body">
         <div class="live-meta">
-          <span class="live-tag-mono"><span class="live-tag-dot" style="background:var(--c70);box-shadow:0 0 7px rgba(245,241,232,.4)"></span>Active · v17</span>
+          <span class="live-tag-mono"><span class="live-tag-dot" style="background:var(--c70)"></span>Active · v17</span>
           <span style="font-family:var(--M);font-size:10px;color:var(--c30)">coffee</span>
         </div>
         <div class="live-name">GRAY<span class="it">SCALE</span></div>
@@ -992,43 +1069,12 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       </div>
       <div class="live-body">
         <div class="live-meta">
-          <span class="live-tag-gold"><span class="live-tag-dot" style="background:var(--gold2);box-shadow:0 0 7px var(--glow)"></span>Live · gold-palace-streetwear.vercel.app</span>
+          <span class="live-tag-gold"><span class="live-tag-dot" style="background:var(--gold2)"></span>Live · gold-palace-streetwear.vercel.app</span>
         </div>
         <div class="live-name">GOLD <span class="it">PALACE</span></div>
-        <p class="live-desc">Manila streetwear brand with a storefront PWA, cart, quick view, and owner dashboard with POS, orders, inventory, sales, expenses, and reports.</p>
-        <div class="live-stack"><span>HTML PWA</span><span>Next.js</span><span>Supabase</span><span>Streetwear</span></div>
+        <p class="live-desc">Manila streetwear brand with a storefront PWA, cart and quick view, plus an owner dashboard for POS, orders with GCash and cash payment filters, inventory, sales, expenses and reports.</p>
+        <div class="live-stack"><span>HTML PWA</span><span>JavaScript</span><span>Supabase</span><span>64 test files</span></div>
         <div class="project-details"><h4>Gold Palace Streetwear details</h4><p>A retail storefront with a cart and product quick view. The owner tools cover point of sale, orders, inventory, sales, expenses, and reports.</p><p class="project-tools">HTML, CSS, JavaScript, Supabase, Vercel</p></div>
-      </div>
-    </div>
-
-    <!-- BANOT'S BARBERSHOP -->
-    <div class="live-card spot r r2" >
-      <div class="live-card-top">
-        <div class="live-carousel" id="banotsLiveTrack">
-          <div class="live-slide"><img src="assets/banots/1.png" alt="banots screenshot 1" /></div>
-          <div class="live-slide"><img loading="lazy" src="assets/banots/2.png" alt="banots screenshot 2" /></div>
-          <div class="live-slide"><img loading="lazy" src="assets/banots/3.png" alt="banots screenshot 3" /></div>
-          <div class="live-slide"><img loading="lazy" src="assets/banots/4.png" alt="banots screenshot 4" /></div>
-          <div class="live-slide"><img loading="lazy" src="assets/banots/5.png" alt="banots screenshot 5" /></div>
-          <div class="live-slide"><img loading="lazy" src="assets/banots/6.png" alt="banots screenshot 6" /></div>
-          <div class="live-slide"><img loading="lazy" src="assets/banots/7.png" alt="banots screenshot 7" /></div>
-          <div class="live-slide"><img loading="lazy" src="assets/banots/8.png" alt="banots screenshot 8" /></div>
-          <div class="live-slide"><img loading="lazy" src="assets/banots/9.png" alt="banots screenshot 9" /></div>
-          <div class="live-slide"><img loading="lazy" src="assets/banots/10.png" alt="banots screenshot 10" /></div>
-          <div class="live-slide"><img loading="lazy" src="assets/banots/11.png" alt="banots screenshot 11" /></div>
-        </div>
-        <button class="live-btn lp" aria-label="Previous screenshot" data-live-prev="banotsLiveTrack">&#8592;</button>
-        <button class="live-btn ln" aria-label="Next screenshot" data-live-next="banotsLiveTrack">&#8594;</button>
-        <div class="live-dots" id="banotsLiveDots"></div>
-      </div>
-      <div class="live-body">
-        <div class="live-meta">
-          <span class="live-tag-mono"><span class="live-tag-dot" style="background:var(--ink);box-shadow:0 0 7px rgba(236,236,238,.3)"></span>Live · banots-barbershop.vercel.app</span>
-        </div>
-        <div class="live-name">BANOT'S <span class="it">BARBERSHOP</span></div>
-        <p class="live-desc">Full-stack booking app for a solo barber. 5-step booking wizard, QR payment via GCash/Maya/BDO/BPI, calendar dashboard, client history, and a separate scroll-animated landing site.</p>
-        <div class="live-stack"><span>Next.js 16</span><span>Prisma 7</span><span>Neon Postgres</span><span>QR Pay</span></div>
-        <div class="project-details"><h4>Banot's Barbershop details</h4><p>Customers choose a service and time, upload QR payment proof, and submit a booking. The owner reviews bookings and payment proof in a calendar dashboard.</p><p class="project-tools">Next.js 16, Prisma 7, Neon PostgreSQL</p></div>
       </div>
     </div>
   </div>
@@ -1040,7 +1086,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <section id="templates" class="wrap sec">
   <div class="sh r">
     <div class="sh-eye">Property &amp; Real Estate · Live Templates</div>
-    <h2 class="sh-title">Premium <span class="it">property</span> templates.</h2>
+    <h2 class="sh-title">Property <span class="it">templates.</span></h2>
     <p class="sh-sub">Website templates for resorts and residences, with listing pages, inquiry forms, and owner dashboards.</p>
   </div>
   <div class="tmpl-grid">
@@ -1061,10 +1107,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       </div>
       <div class="live-body">
         <div class="live-meta">
-          <span class="live-tag-mono"><span class="live-tag-dot" style="background:var(--c70);box-shadow:0 0 7px rgba(245,241,232,.4)"></span>Live · hiraya-pines.vercel.app</span>
+          <span class="live-tag-mono"><span class="live-tag-dot" style="background:var(--c70)"></span>Live · hiraya-pines.vercel.app</span>
         </div>
         <div class="live-name">HIRAYA <span class="it">PINES</span></div>
-        <p class="live-desc">Baguio hilltop resort template. Self-hosted video hero, a live suite-availability check wired to the dashboard, and a PIN-gated admin with bookings, calendar, inquiries, guests, and revenue reporting.</p>
+        <p class="live-desc">Baguio hilltop resort template. Self-hosted video hero, a live suite-availability check connected to the dashboard, and a PIN-gated admin with bookings, calendar, inquiries, guests, and revenue reporting.</p>
         <div class="live-stack"><span>HTML</span><span>localStorage</span><span>Resort</span><span>Owner admin</span></div>
         <a class="case-study-btn" style="text-decoration:none" href="https://hiraya-pines.vercel.app" target="_blank" rel="noopener">View Live ↗</a>
       </div>
@@ -1084,7 +1130,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       </div>
       <div class="live-body">
         <div class="live-meta">
-          <span class="live-tag-mono"><span class="live-tag-dot" style="background:var(--c70);box-shadow:0 0 7px rgba(245,241,232,.4)"></span>Live · alta-pinos.vercel.app</span>
+          <span class="live-tag-mono"><span class="live-tag-dot" style="background:var(--c70)"></span>Live · alta-pinos.vercel.app</span>
         </div>
         <div class="live-name">ALTA <span class="it">PINOS</span></div>
         <p class="live-desc">Baguio three-residence listing template. Per-home galleries with specs and pricing, a sticky mobile CTA, a spam-guarded inquiry form, and a PIN-gated owner dashboard with an inquiry inbox.</p>
@@ -1102,7 +1148,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <section id="more" class="wrap sec">
   <div class="sh r">
     <div class="sh-eye">More Work · HTML PWAs &amp; Next.js</div>
-    <h2 class="sh-title">Every <span class="it">vertical</span>, built.</h2>
+    <h2 class="sh-title">More <span class="it">client</span> apps.</h2>
     <p class="sh-sub">Philippine SMB apps: POS, booking, dashboards, and client hubs. Built in Next.js + Supabase or single-file HTML PWAs.</p>
   </div>
   <div class="app-showcase">
@@ -1285,16 +1331,16 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   </div>
   <ol class="timeline r">
     <li>
-      <div class="tl-when">2025 – Present</div>
+      <div class="tl-when">2025 to present</div>
       <div><h3>Founder &amp; Full-Stack Developer, Strukkd Labs</h3>
       <ul>
-        <li>Lead developer on Singel Group's inventory and procurement system: 557 commits, 95 database migrations and 49 test files.</li>
+        <li>Lead developer on Singel Group's inventory and procurement system, with 557 commits, 95 database migrations and 49 test files.</li>
         <li>Built a release gate that blocks any deploy failing checks for console errors, forms, accessibility, SEO or security.</li>
         <li>Built the studio's operations system for client intake, quotes, contracts, invoices and release tracking.</li>
       </ul></div>
     </li>
     <li>
-      <div class="tl-when">2023 – Present</div>
+      <div class="tl-when">2023 to present</div>
       <div><h3>Freelance Full-Stack Developer</h3>
       <ul>
         <li>Delivered apps for restaurants, retail brands, resorts, a travel agency and a barbershop, from requirements to handover.</li>
@@ -1323,27 +1369,26 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <section id="stack" class="wrap sec">
   <div class="sh r">
     <div class="sh-eye">Toolbox · In Production</div>
-    <h2 class="sh-title">The <span class="it">stack</span> behind it.</h2>
-    <p class="sh-sub">Tools used across my application projects.</p>
+    <h2 class="sh-title">Tools I <span class="it">use.</span></h2>
+    <p class="sh-sub">The tools behind the projects on this page.</p>
   </div>
   <div class="stack-grid">
     <div class="stack-col r">
       <div class="stack-col-label">Frontend</div>
       <div class="stack-items">
-        <div class="stack-item"><div class="stack-item-name">Next.js 15 / 16</div><div class="stack-item-note">App Router, server actions | Tenda Pro · Banot's</div></div>
+        <div class="stack-item"><div class="stack-item-name">Next.js 15 / 16</div><div class="stack-item-note">App Router, server actions | Tenda Pro · Singel IPMS</div></div>
         <div class="stack-item"><div class="stack-item-name">React 19</div><div class="stack-item-note">Production UI across every Next.js build</div></div>
         <div class="stack-item"><div class="stack-item-name">TypeScript</div><div class="stack-item-note">End-to-end types on all production apps</div></div>
         <div class="stack-item"><div class="stack-item-name">Tailwind CSS v4</div><div class="stack-item-note">Token-driven styling, dark-first themes</div></div>
         <div class="stack-item"><div class="stack-item-name">shadcn/ui</div><div class="stack-item-note">Accessible component base for dashboards</div></div>
-        <div class="stack-item"><div class="stack-item-name">Vite</div><div class="stack-item-note">Fast SPA landings | Banot's scroll site</div></div>
       </div>
     </div>
     <div class="stack-col r r1">
       <div class="stack-col-label">Backend &amp; Data</div>
       <div class="stack-items">
         <div class="stack-item"><div class="stack-item-name">Supabase</div><div class="stack-item-note">Postgres, Auth, RLS, SSR | Tenda Pro · Courtside · Gold Palace</div></div>
-        <div class="stack-item"><div class="stack-item-name">Prisma 7</div><div class="stack-item-note">Typed ORM | Banot's Barbershop</div></div>
-        <div class="stack-item"><div class="stack-item-name">Neon Postgres</div><div class="stack-item-note">Serverless Postgres | Banot's Barbershop</div></div>
+        <div class="stack-item"><div class="stack-item-name">Prisma 7</div><div class="stack-item-note">Typed ORM and migrations</div></div>
+        <div class="stack-item"><div class="stack-item-name">Neon Postgres</div><div class="stack-item-note">Serverless Postgres</div></div>
         <div class="stack-item"><div class="stack-item-name">Drizzle ORM</div><div class="stack-item-note">SQL-first data layer | Tenda Pro</div></div>
         <div class="stack-item"><div class="stack-item-name">Row-Level Security</div><div class="stack-item-note">Policy-locked multi-tenant data</div></div>
       </div>
@@ -1362,9 +1407,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
       <div class="stack-items">
         <div class="stack-item"><div class="stack-item-name">Vercel</div><div class="stack-item-note">Every production deploy runs here</div></div>
         <div class="stack-item"><div class="stack-item-name">PWA</div><div class="stack-item-note">Service workers, offline-first, web push | Courtside</div></div>
-        <div class="stack-item"><div class="stack-item-name">Resend</div><div class="stack-item-note">Transactional email | Tenda Pro</div></div>
-        <div class="stack-item"><div class="stack-item-name">AI SDK</div><div class="stack-item-note">Natural-language assistant | Tenda Pro</div></div>
-        <div class="stack-item"><div class="stack-item-name">QR Payments</div><div class="stack-item-note">GCash · Maya · BDO · BPI flows | Banot's</div></div>
+        <div class="stack-item"><div class="stack-item-name">Resend</div><div class="stack-item-note">Transactional email | Singel IPMS</div></div>
+        <div class="stack-item"><div class="stack-item-name">QR Payments</div><div class="stack-item-note">GCash · Maya · BDO · BPI payment-proof flows</div></div>
       </div>
     </div>
   </div>
@@ -1387,9 +1431,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     </div>
   </div>
   <div class="stack-default r" style="margin-top:14px">
-    <span class="stack-default-label">Workflow &amp; Agile</span>
+    <span class="stack-default-label">Workflow</span>
     <div class="stack-default-items">
-      <span>GitHub Actions</span><span>Jira</span><span>Linear</span><span>Figma</span><span>Feature Branches</span><span>PR Reviews</span><span>Scrum / Kanban</span>
+      <span>Git &amp; GitHub</span><span>GitHub Actions CI</span><span>Vercel previews</span>
     </div>
   </div>
 </section>
@@ -1400,31 +1444,31 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <section class="wrap sec">
   <div class="sh r">
     <div class="sh-eye">What I Build · Next.js · Supabase</div>
-    <h2 class="sh-title">Services <span class="it">that ship.</span></h2>
+    <h2 class="sh-title">What I <span class="it">build.</span></h2>
     <p class="sh-sub">I build web applications, business dashboards, and client portals. The tools and scope depend on the work you need.</p>
   </div>
   <div class="svc-grid">
     <div class="svc r">
-      <div class="svc-n">01 ── PRODUCT</div>
-      <h3>SMB SaaS DASHBOARD</h3>
+      <div class="svc-n">01 · Product</div>
+      <h3>Business dashboards</h3>
       <p>Application planning, database design, user interfaces, and deployment. We agree on the scope and schedule before work starts.</p>
       <div class="svc-pills"><span>Next.js</span><span>Supabase</span><span>Tailwind</span><span>TypeScript</span></div>
     </div>
     <div class="svc r r1">
-      <div class="svc-n">02 ── CUSTOM</div>
-      <h3>CLIENT BUSINESS HUB</h3>
+      <div class="svc-n">02 · Custom</div>
+      <h3>Client business hubs</h3>
       <p>An HTML business website for services, schedules, bookings, and contact information.</p>
       <div class="svc-pills"><span>HTML PWA</span><span>localStorage</span><span>Custom design</span></div>
     </div>
     <div class="svc r r2">
-      <div class="svc-n">03 ── AI</div>
-      <h3>AI-POWERED TOOLS</h3>
+      <div class="svc-n">03 · AI</div>
+      <h3>AI tools with review steps</h3>
       <p>AI tool integrations and automation workflows with review and approval steps where needed.</p>
-      <div class="svc-pills"><span>AI SDK</span><span>Vercel AI</span><span>Resend</span></div>
+      <div class="svc-pills"><span>Claude Code</span><span>Approval gates</span><span>Resend</span></div>
     </div>
     <div class="svc r r3">
-      <div class="svc-n">04 ── RESELL</div>
-      <h3>WHITE-LABEL TEMPLATES</h3>
+      <div class="svc-n">04 · Resell</div>
+      <h3>White-label templates</h3>
       <p>Website and application templates adapted to your brand and workflow. Contact me for availability and scope.</p>
       <div class="svc-pills"><span>15 templates</span><span>$79 one-time</span><span>Lifetime updates</span></div>
     </div>
@@ -1437,7 +1481,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <section class="wrap sec">
   <div class="sh r" style="text-align:center">
     <div class="sh-eye">From Clients</div>
-    <h2 class="sh-title">They <span class="it">shipped.</span></h2>
+    <h2 class="sh-title">Client <span class="it">feedback.</span></h2>
   </div>
   <div class="testi-card r">
     <div class="testi-big-quote">"</div>
@@ -1514,7 +1558,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <script>
 /* Scroll progress */
 const bar = document.getElementById('progress')
-addEventListener('scroll',()=>{ const h=document.documentElement; if(bar)bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%' },{passive:true})
+/* Pause the tech marquee while it is off-screen */
+const mq=document.querySelector('.mtrack')
+if(mq&&'IntersectionObserver' in window){new IntersectionObserver(([e])=>{mq.style.animationPlayState=e.isIntersecting?'running':'paused'}).observe(mq)}
+addEventListener('scroll',()=>{ const h=document.documentElement; if(bar)bar.style.transform='scaleX('+(h.scrollTop/(h.scrollHeight-h.clientHeight))+')' },{passive:true})
 
 /* ─── FAB ─── */
 const fab = document.getElementById('fab')
@@ -1657,7 +1704,7 @@ function initLiveCarousel(trackId,dotsId){
 initLiveCarousel('courtsideTrack','courtsideDots')
 initLiveCarousel('grayscaleTrack','grayscaleDots')
 initLiveCarousel('goldpalaceTrack','goldpalaceDots')
-initLiveCarousel('banotsLiveTrack','banotsLiveDots')
+initLiveCarousel('singelTrack','singelDots')
 initLiveCarousel('hirayaTrack','hirayaDots')
 initLiveCarousel('altaTrack','altaDots')
 
