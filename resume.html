@@ -3,233 +3,249 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Resume of Robert James Cabansay, full-stack developer in the Philippines. 16+ production apps: inventory, procurement, restaurant POS, retail and booking systems.">
-<title>Robert James Cabansay | Resume</title>
+<title>Robert James Cabansay - Full-Stack Developer - Resume</title>
+<meta name="author" content="Robert James Cabansay">
+<meta name="description" content="Full-Stack Developer: Next.js, React, TypeScript, PostgreSQL, Supabase. Inventory, procurement, POS and booking systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
 <style>
-  @page { size: A4; margin: 14mm 15mm 13mm; }
-  /* Tailwind default tokens: slate-900, slate-600, slate-400, slate-300, blue-700 */
-  :root { --ink: #0f172a; --muted: #475569; --faint: #94a3b8; --line: #cbd5e1; --accent: #1d4ed8; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: "Segoe UI", Calibri, Arial, sans-serif; font-size: 9.6pt; line-height: 1.42; color: var(--ink); }
-  h1, h2, h3 { text-wrap: balance; }
-  p, li, dd { text-wrap: pretty; }
-  a { color: inherit; text-decoration: none; }
-  .accent { color: var(--accent); }
+/* Same design tokens as the live portfolio (rjamscxx.github.io), so both look like one brand */
+:root{
+  --bg:#FBFBFA; --surface:#FFFFFF; --line:#EAEAEA; --line-strong:#D9D8D4;
+  --ink:#111111; --body:#2F3437; --muted:#787774;
+  --green-bg:#EDF3EC; --green:#346538;
+  --sans:'Geist','Helvetica Neue',Arial,sans-serif;
+  --serif:'Newsreader',Georgia,serif;
+  --mono:'Geist Mono','SF Mono',Consolas,monospace;
+}
+@page{size:A4;margin:11mm 14mm}
+*{box-sizing:border-box;margin:0;padding:0}
+/* Ligatures off: some applicant tracking systems read "fi" or "fl" glyphs as junk characters */
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:9.4pt;line-height:1.45;
+  font-variant-ligatures:none;-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{color:var(--ink);font-weight:600}
+.page{max-width:210mm;margin:24px auto;padding:14mm 15mm;background:var(--surface);border:1px solid var(--line);border-radius:12px}
 
-  header { display: flex; gap: 18px; align-items: center; padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
-  header img { width: 78px; height: 78px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; border: 1px solid var(--line); }
-  h1 { font-size: 22pt; line-height: 1.1; }
-  .role { font-size: 11pt; font-weight: 600; color: var(--accent); margin-top: 2px; }
-  .contact { font-size: 8.8pt; color: var(--muted); margin-top: 4px; }
-  .contact span + span::before { content: " · "; color: var(--faint); }
+/* Header: name, title, contact line, portrait */
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:8.5pt;font-weight:500;padding:2px 10px;border-radius:9999px;background:var(--green-bg);color:var(--green)}
+.status i{width:5px;height:5px;border-radius:50%;background:currentColor}
+h1{font-family:var(--serif);font-weight:500;font-size:26pt;line-height:1.1;margin:6px 0 2px}
+.title{font-size:11pt;font-weight:500;color:var(--ink)}
+.contact{margin-top:8px;font-size:9pt;color:var(--muted);line-height:1.65}
+.contact a{color:var(--body);text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:2px}
+.portrait{width:84px;height:84px;flex:none;object-fit:cover;object-position:50% 30%;border-radius:10px;border:1px solid var(--line)}
 
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); margin: 12px 0 4px; border: 1px solid var(--line); border-radius: 6px; }
-  .stat { padding: 7px 10px; text-align: center; }
-  .stat + .stat { border-left: 1px solid var(--line); }
-  .stat b { display: block; font-variant-numeric: tabular-nums; font-size: 15pt; line-height: 1.1; color: var(--accent); }
-  .stat small { font-size: 8pt; color: var(--muted); }
+/* Highlight strip: each cell is ONE line of text so parsers read number and label together */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:10px 0 2px;border:1px solid var(--line);border-radius:10px}
+.stats p{padding:7px 12px;font-size:8.5pt;color:var(--muted)}
+.stats p+p{border-left:1px solid var(--line)}
+.stats b{font-family:var(--serif);font-weight:500;font-size:14pt;color:var(--ink);margin-right:4px;font-variant-numeric:tabular-nums}
 
-  h2 { font-size: 10pt; text-transform: uppercase; color: var(--ink); margin: 13px 0 6px; padding-bottom: 3px; border-bottom: 1px solid var(--line); }
-  p.summary { margin-top: 2px; }
+/* Sections */
+section{padding-top:10px}
+h2{font-family:var(--serif);font-weight:500;font-size:15pt;line-height:1.2;padding-bottom:5px;margin-bottom:5px;border-bottom:1px solid var(--line)}
+.summary{font-size:9.4pt}
+.skills p{margin:3px 0}
+.skills strong{font-family:var(--mono);font-size:8.5pt;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.02em}
 
-  .skills { display: grid; grid-template-columns: 118px 1fr; row-gap: 2px; }
-  .skills dt { font-weight: 600; }
+/* Experience and project entries */
+.entry{padding:5px 0;break-inside:avoid}
+.entry+.entry{border-top:1px dashed var(--line)}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+h3{font-size:10pt}
+.when,.url{font-family:var(--mono);font-size:8.5pt;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.url{text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:2px}
+.org{font-size:9pt;color:var(--muted)}
+/* Arial for words with accents: Geist's "ñ" extracts as garbage in some ATS parsers */
+.safe{font-family:Arial,sans-serif}
+.stack{font-family:var(--mono);font-size:8pt;color:var(--muted);margin-top:1px}
+ul{margin-top:2px;padding-left:15px}
+li{margin:1px 0}
+li::marker{color:var(--line-strong)}
 
-  .item { margin-bottom: 8px; break-inside: avoid; }
-  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-  .row h3 { font-size: 10pt; }
-  .row .when { font-size: 8.8pt; color: var(--muted); white-space: nowrap; }
-  .sub { font-size: 8.8pt; color: var(--muted); margin-bottom: 2px; }
-  ul { padding-left: 14px; }
-  li { margin: 1px 0; }
-  li::marker { color: var(--accent); }
-
-  .projects .item { margin-bottom: 7px; }
-  .stack { font-size: 8.5pt; color: var(--muted); }
-  .link { font-size: 8.5pt; font-weight: 400; color: var(--accent); }
-  .page2 { break-before: page; }
-
-  @media screen {
-    html { background: #f1f5f9; }
-    body { font-size: 15px; line-height: 1.55; }
-    main { max-width: 860px; margin: 0 auto 40px; padding: 48px 56px; background: #fff; border: 1px solid var(--line); border-radius: 8px; }
-    .page2 { margin-top: 8px; }
-    .stat small { font-size: 12px; }
-    .row .when, .sub, .stack, .contact, .link { font-size: 13px; }
-  }
-  .actions { max-width: 860px; margin: 20px auto 12px; padding: 0 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; }
-  .actions a { color: var(--accent); }
-  .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink) !important; font: inherit; cursor: pointer; }
-  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  @media screen and (max-width: 640px) {
-    main { margin: 0; padding: 24px 16px; border: 0; border-radius: 0; }
-    header { flex-direction: column; align-items: flex-start; }
-    .stats { grid-template-columns: repeat(2, 1fr); }
-    .stat:nth-child(3) { border-left: 0; }
-    .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
-    .skills { grid-template-columns: 1fr; }
-    .skills dd { margin-bottom: 6px; }
-    .row { flex-direction: column; gap: 0; }
-    .contact span + span::before { content: ""; }
-    .contact span { display: block; }
-    .contact br { display: none; }
-  }
-  @media print { .actions { display: none; } main { padding: 0; } }
+/* Web-only toolbar (back to portfolio, download PDF), hidden when printed */
+.bar{max-width:210mm;margin:24px auto -8px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;color:var(--muted)}
+.bar a:hover{color:var(--ink)}
+.bar .btn{display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border-radius:6px;font-weight:500;border:1px solid var(--line-strong);background:var(--ink);color:#fff}
+.bar .btn:hover{background:#333;color:#fff}
+@media print{
+  .bar{display:none}
+  body{background:#fff}
+  .page{margin:0;padding:0;border:0;border-radius:0;max-width:none}
+  h2{break-after:avoid}
+  /* Fit 2 pages honestly: if anything is wider than the page, Edge silently shrinks ALL the text */
+  body{font-size:9.2pt}
+  .summary{font-size:9.2pt}
+  .stats{grid-template-columns:repeat(4,auto)}
+  .stats p{white-space:nowrap;padding:6px 9px;font-size:7.8pt}
+  .stats b{font-size:12.5pt}
+}
+@media (max-width:640px){
+  .page{margin:0;border:0;border-radius:0;padding:20px 16px}
+  .bar{margin:0;padding:12px 16px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stats p:nth-child(3){border-left:0}
+  .stats p:nth-child(n+3){border-top:1px solid var(--line)}
+  .row{flex-direction:column;gap:0}
+  .portrait{width:64px;height:64px}
+}
 </style>
 </head>
 <body>
-<nav class="actions"><a href="./">← Portfolio</a><span><a class="btn" href="assets/Robert-James-Cabansay-Resume.pdf" download>Download PDF</a> <button class="btn" type="button" onclick="window.print()">Print</button></span></nav>
-<main>
+<nav class="bar"><a href="./">&larr; Portfolio</a><a class="btn" href="assets/Robert-James-Cabansay-Resume.pdf" download>Download PDF</a></nav>
+<main class="page">
 
 <header>
-  <img src="assets/rj-photo.jpg" alt="Robert James Cabansay">
   <div>
+    <span class="status"><i></i>Open to full-time, contract and freelance work</span>
     <h1>Robert James Cabansay</h1>
-    <div class="role">Full-Stack Developer · Next.js, TypeScript, PostgreSQL / Supabase</div>
-    <div class="contact">
-      <span>San Pedro, Laguna, Philippines</span><span>+63 976 450 6395</span><span><a class="accent" href="mailto:rjamscxx@gmail.com">rjamscxx@gmail.com</a></span><br>
-      <span><a class="accent" href="https://rjamscxx.github.io">rjamscxx.github.io</a></span><span><a class="accent" href="https://github.com/rjamscxx">github.com/rjamscxx</a></span><span><a class="accent" href="https://www.linkedin.com/in/robert-james-cabansay-197a80160">linkedin.com/in/robert-james-cabansay</a></span>
-    </div>
+    <p class="title">Full-Stack Developer | Next.js, React, TypeScript, PostgreSQL, Supabase</p>
+    <p class="contact">
+      San Pedro, Laguna, Philippines | +63 976 450 6395 | <a href="mailto:rjamscxx@gmail.com">rjamscxx@gmail.com</a><br>
+      Portfolio: <a href="https://rjamscxx.github.io">rjamscxx.github.io</a> | GitHub: <a href="https://github.com/rjamscxx">github.com/rjamscxx</a> | LinkedIn: <a href="https://www.linkedin.com/in/robert-james-cabansay-197a80160">linkedin.com/in/robert-james-cabansay-197a80160</a>
+    </p>
   </div>
+  <img class="portrait" src="assets/rj-photo.jpg" alt="Robert James Cabansay">
 </header>
 
 <div class="stats">
-  <div class="stat"><b>16+</b><small>production apps shipped</small></div>
-  <div class="stat"><b>1,300+</b><small>commits across 9 client repos</small></div>
-  <div class="stat"><b>140+</b><small>automated test files written</small></div>
-  <div class="stat"><b>95</b><small>database migrations in one ERP</small></div>
+  <p><b>16+</b> production apps shipped</p>
+  <p><b>1,300+</b> commits, 9 client repos</p>
+  <p><b>140+</b> automated test files</p>
+  <p><b>95</b> migrations in one system</p>
 </div>
 
-<h2>Profile</h2>
-<p class="summary">
-  Self-taught full-stack developer who builds the software real businesses run on: point of sale, inventory, procurement and booking systems.
-  I started coding to manage my own small business, and that tool became a product. Since then I have delivered 16+ production apps
-  end to end, from requirements and UI design to database security, testing and deployment, for a manufacturing group founded in 1987,
-  restaurants, retail brands and service shops. Five years in sales, finance and customer service taught me to build for how owners actually work.
-</p>
+<section>
+  <h2>Summary</h2>
+  <p class="summary">Full-stack developer who builds the software small and mid-sized businesses run on: inventory, procurement, point of sale and booking systems. Shipped 16+ production web apps end to end, owning requirements, UI design, PostgreSQL schema design, row-level security, automated testing and deployment. Clients include a five-division manufacturing and services group founded in 1987, restaurants, retail brands and service businesses. Five years in sales, finance and customer service before development, so I build around how owners actually work.</p>
+</section>
 
-<h2>Skills</h2>
-<dl class="skills">
-  <dt>Frontend</dt><dd>React 19, Next.js 15/16 (App Router), TypeScript, JavaScript, Tailwind CSS v4, shadcn/ui, responsive and accessible UI</dd>
-  <dt>Backend &amp; data</dt><dd>Node.js, PostgreSQL, Supabase (Auth, row-level security, Edge Functions, Storage), Prisma, Drizzle, Zod, REST APIs</dd>
-  <dt>Quality &amp; delivery</dt><dd>Playwright, Vitest, GitHub Actions CI, Vercel, Lighthouse, security headers, offline-first PWAs</dd>
-  <dt>3D &amp; motion</dt><dd>Three.js, React Three Fiber, GSAP ScrollTrigger, Lenis</dd>
-  <dt>AI-assisted dev</dt><dd>Claude Code, ChatGPT, multi-agent workflows with human approval gates and code review</dd>
-</dl>
+<section class="skills">
+  <h2>Skills</h2>
+  <p><strong>Frontend:</strong> React 19, Next.js 15/16 (App Router), TypeScript, JavaScript (ES2023), HTML5, CSS3, Tailwind CSS v4, shadcn/ui, responsive design, web accessibility (WCAG)</p>
+  <p><strong>Backend and data:</strong> Node.js, PostgreSQL, SQL, Supabase (Auth, Row-Level Security, Edge Functions, Storage), Prisma, Drizzle ORM, Zod, REST APIs, authentication and authorization</p>
+  <p><strong>Testing and DevOps:</strong> Playwright, Vitest, end-to-end testing, Git, GitHub Actions, CI/CD, Vercel, Lighthouse, security headers (CSP, HSTS), offline-first PWAs</p>
+  <p><strong>3D and motion:</strong> Three.js, React Three Fiber, GSAP ScrollTrigger, Lenis</p>
+  <p><strong>AI-assisted development:</strong> Claude Code, ChatGPT, multi-agent workflows with human approval gates and code review</p>
+</section>
 
-<h2>Experience</h2>
+<section>
+  <h2>Experience</h2>
 
-<div class="item">
-  <div class="row"><h3>Founder &amp; Full-Stack Developer, STRUKKD LABS</h3><span class="when">2025 to present</span></div>
-  <div class="sub">Software studio for small and mid-sized businesses</div>
-  <ul>
-    <li>Lead developer on the inventory and procurement system for Singel Group of Companies. It covers purchasing through client sign-off, with 557 commits, 95 database migrations and 49 test files.</li>
-    <li>Built a release gate that blocks any deploy failing checks for console errors, forms, accessibility, SEO or security.</li>
-    <li>Built the studio's own operations system for client intake, quotes, contracts, invoices and release tracking, plus a prospecting pipeline for small businesses in Manila, Cebu and Davao.</li>
-    <li>Set technical direction and pricing for every engagement.</li>
-  </ul>
-</div>
-
-<div class="item">
-  <div class="row"><h3>Freelance Full-Stack Developer</h3><span class="when">2023 to present</span></div>
-  <div class="sub">Direct clients and small brands</div>
-  <ul>
-    <li>Delivered apps for restaurants, retail brands, resorts, a travel agency and a barbershop, owning each from requirements to handover.</li>
-    <li>Hand over every project in the client's own repository, hosting and database accounts, so the client owns their software.</li>
-  </ul>
-</div>
-
-<div class="item">
-  <div class="row"><h3>Sales, Finance &amp; Client-Facing Roles</h3><span class="when">5+ years, before development</span></div>
-  <div class="sub">Real estate sales, financial advisory, HR sourcing, customer service</div>
-  <ul>
-    <li>Managed client relationships and reviewed financial statements and sales data; handled high-volume sourcing and customer communication.</li>
-  </ul>
-</div>
-
-<h2>Education</h2>
-<div class="row"><h3>BS Information Technology, AMA Computer College, Biñan</h3><span class="when">2019</span></div>
-
-<div class="page2"></div>
-<h2 style="margin-top:0">Selected Projects</h2>
-<div class="projects">
-
-  <div class="item">
-    <div class="row"><h3>Singel IPMS · Inventory &amp; procurement system <span class="link">singel-ipms.vercel.app</span></h3></div>
-    <div class="stack">Next.js 15 · React 19 · TypeScript · Supabase · Tailwind CSS</div>
+  <div class="entry">
+    <div class="row"><h3>Founder and Full-Stack Developer, STRUKKD LABS</h3><span class="when">2025 - Present</span></div>
+    <p class="org">Software studio for small and mid-sized businesses | Philippines</p>
     <ul>
-      <li>Purchase orders, receiving, stock movements and material allocation to jobs for a five-division manufacturing and services group.</li>
-      <li>Traceable stock records, role permissions enforced in the database with row-level security, delivery tracking and client acceptance.</li>
+      <li>Lead developer on the inventory and procurement system for Singel Group of Companies (Next.js 15, TypeScript, Supabase): 557 commits, 95 database migrations and 49 test files covering the full flow from request for quotation to purchase order, approval, receiving, delivery and billing.</li>
+      <li>Designed stock to be calculated from movement records instead of stored totals, with void-and-reverse corrections and database rules that block edits and deletes, so every figure traces back to its source documents.</li>
+      <li>Enforced separation of duties (whoever raises a document cannot approve or receive it) in both server logic and PostgreSQL row-level security.</li>
+      <li>Migrated the studio's operations system (client intake, quotes, contracts, invoices, release tracking) to Supabase: 814 records moved, server-side password authentication, and row-level security on 11 tables.</li>
+      <li>Built a release gate that blocks any deploy failing checks for console errors, forms, accessibility, SEO or security.</li>
+      <li>Set technical direction, scope and pricing for every client engagement.</li>
     </ul>
   </div>
 
-  <div class="item">
-    <div class="row"><h3>Tenda Pro · Restaurant &amp; café operations <span class="link">tenda.ph</span></h3></div>
-    <div class="stack">Next.js 16 · React 19 · TypeScript · Supabase · Drizzle · Vitest · Playwright</div>
+  <div class="entry">
+    <div class="row"><h3>Freelance Full-Stack Developer</h3><span class="when">2023 - Present</span></div>
+    <p class="org">Direct clients and small brands | Remote</p>
+    <ul>
+      <li>Delivered web apps for restaurants, retail brands, resorts, a travel agency and a barbershop, owning each project from requirements through deployment and handover.</li>
+      <li>Hardened live client apps: added Content Security Policy and HSTS headers, secured file-upload signing behind authentication, and closed open sign-ups on production databases.</li>
+      <li>Hand over every project in the client's own repository, hosting and database accounts, so the client owns their software.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="row"><h3>Sales, Finance and Client-Facing Roles</h3><span class="when">5+ years, before development</span></div>
+    <p class="org">Real estate sales, financial advisory, HR sourcing, customer service</p>
+    <ul>
+      <li>Managed client relationships and reviewed financial statements and sales data.</li>
+      <li>Handled high-volume candidate sourcing and customer communication.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Projects</h2>
+
+  <div class="entry">
+    <div class="row"><h3>Tenda Pro: Restaurant and cafe operations</h3><a class="url" href="https://tenda.ph">tenda.ph</a></div>
+    <p class="stack">Next.js 16 | React 19 | TypeScript | Supabase | Drizzle | Vitest | Playwright</p>
     <ul>
       <li>One back office replacing paper and group chats: POS, kitchen display, QR menu, payroll and end-of-day reconciliation.</li>
       <li>Recipes are linked to stock, so every sale deducts ingredients and tracks cost of goods sold automatically.</li>
     </ul>
   </div>
 
-  <div class="item">
-    <div class="row"><h3>Singel Group of Companies · Corporate website <span class="link">singelgroup.vercel.app</span></h3></div>
-    <div class="stack">Next.js · TypeScript · Tailwind CSS v4 · React Three Fiber · GSAP · GitHub Actions</div>
+  <div class="entry">
+    <div class="row"><h3>Singel Group of Companies: Corporate website</h3><a class="url" href="https://singelgroup.vercel.app">singelgroup.vercel.app</a></div>
+    <p class="stack">Next.js | TypeScript | Tailwind CSS v4 | React Three Fiber | GSAP | GitHub Actions</p>
     <ul>
       <li>Rebuilt a five-division corporate site with a WebGL hero and scroll-driven motion, with full reduced-motion support.</li>
-      <li>Wrote seven browser checks that measure motion, scrolling, contrast, performance and layout overlap at six screen widths.</li>
+      <li>Wrote seven automated browser checks measuring motion, scrolling, contrast, performance and layout overlap at six screen widths.</li>
     </ul>
   </div>
 
-  <div class="item">
-    <div class="row"><h3>Gold Palace Streetwear &amp; Grimez Collection · Retail systems <span class="link">gold-palace-streetwear.vercel.app</span></h3></div>
-    <div class="stack">HTML · CSS · JavaScript · Supabase · Vercel</div>
+  <div class="entry">
+    <div class="row"><h3>Gold Palace Streetwear and Grimez Collection: Retail systems</h3><a class="url" href="https://gold-palace-streetwear.vercel.app">gold-palace-streetwear.vercel.app</a></div>
+    <p class="stack">JavaScript | Supabase | Cloudflare R2 | Vercel</p>
     <ul>
-      <li>Storefronts and owner tools for product drops, POS, orders, inventory, finance and reports; 64 automated test files.</li>
+      <li>Storefronts and owner tools for product drops, POS, orders, inventory, finance and reports, backed by 64 automated test files.</li>
+      <li>Separate repositories, deployments and databases per brand, so the two businesses' sales never mix.</li>
     </ul>
   </div>
 
-  <div class="item">
-    <div class="row"><h3>Leisure Travel &amp; Tours · Booking website and admin <span class="link">leisure-travel-tours.vercel.app</span></h3></div>
-    <div class="stack">JavaScript · Supabase · Vercel</div>
-    <ul>
-      <li>Baguio staycation and tours site with an admin CMS and two-way calendar (iCal) sync to prevent double bookings.</li>
-    </ul>
-  </div>
-
-  <div class="item">
-    <div class="row"><h3>The Drop · Retail business suite</h3></div>
-    <div class="stack">JavaScript · PWA · Supabase Edge Functions</div>
-    <ul>
-      <li>Offline-first back office for a streetwear retailer: POS, inventory, delivery, payroll, P&amp;L and receipt printing. Sales save locally and sync to the cloud through an outbox, with staff PINs checked on the server.</li>
-    </ul>
-  </div>
-
-  <div class="item">
-    <div class="row"><h3>Courtside PH · Court reservations PWA</h3></div>
-    <div class="stack">JavaScript · PWA · Supabase row-level security and Edge Functions</div>
+  <div class="entry">
+    <div class="row"><h3>Courtside PH: Court reservations PWA</h3><a class="url" href="https://courtside-ph.vercel.app">courtside-ph.vercel.app</a></div>
+    <p class="stack">JavaScript | PWA | Supabase Row-Level Security | Edge Functions</p>
     <ul>
       <li>Reservations across six sports with QR check-in, double-booking protection, offline support and an owner earnings view.</li>
     </ul>
   </div>
 
-  <div class="item">
-    <div class="row"><h3>Checkout Hub PH · Offline business manager <span class="link">checkout-hub-ph.vercel.app</span></h3></div>
-    <div class="stack">JavaScript · PWA · Dexie</div>
+  <div class="entry">
+    <div class="row"><h3>The Drop: Retail business suite</h3><span class="when">Private</span></div>
+    <p class="stack">JavaScript | PWA | Supabase Edge Functions</p>
     <ul>
-      <li>The tool I first built for my own business: eight modules in one offline-first file, with stock auto-deducted on each invoice and low-stock and expiry alerts.</li>
+      <li>Offline-first back office for a streetwear retailer: POS, inventory, delivery, payroll, P&amp;L and receipt printing. Sales save on the device and sync through an outbox, with staff PINs checked on the server.</li>
     </ul>
   </div>
 
-  <div class="item">
-    <div class="row"><h3>STRUKKD LABS Virtual Office · 3D operations workspace <span class="link">strukkd-labs-virtual-office.vercel.app</span></h3></div>
-    <div class="stack">JavaScript · Three.js · Node.js · Supabase · Zod</div>
+  <div class="entry">
+    <div class="row"><h3>Leisure Travel and Tours: Booking website and admin</h3><a class="url" href="https://leisure-travel-tours.vercel.app">leisure-travel-tours.vercel.app</a></div>
+    <p class="stack">JavaScript | Supabase | Vercel</p>
+    <ul>
+      <li>Baguio staycation and tours site with an admin CMS and two-way calendar (iCal) sync to prevent double bookings.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="row"><h3>Checkout Hub PH: Offline business manager</h3><a class="url" href="https://checkout-hub-ph.vercel.app">checkout-hub-ph.vercel.app</a></div>
+    <p class="stack">JavaScript | PWA | Dexie (IndexedDB)</p>
+    <ul>
+      <li>The tool I first built for my own business: eight modules in one offline-first app, with stock auto-deducted on each invoice plus low-stock and expiry alerts.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="row"><h3>STRUKKD LABS Virtual Office: 3D operations workspace</h3><a class="url" href="https://strukkd-labs-virtual-office.vercel.app">strukkd-labs-virtual-office.vercel.app</a></div>
+    <p class="stack">JavaScript | Three.js | Node.js | Supabase | Zod</p>
     <ul>
       <li>A 3D workspace for client intake, task allocation and artifact review, where AI-drafted work needs human approval before it moves forward.</li>
     </ul>
   </div>
+</section>
 
-</div>
+<section>
+  <h2>Education</h2>
+  <div class="entry">
+    <div class="row"><h3>BS Information Technology, AMA Computer College, <span class="safe">Biñan</span></h3><span class="when">2019</span></div>
+  </div>
+</section>
+
 </main>
 </body>
 </html>
