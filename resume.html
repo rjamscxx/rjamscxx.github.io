@@ -6,6 +6,8 @@
 <title>Robert James Cabansay - Full-Stack Developer - Resume</title>
 <meta name="author" content="Robert James Cabansay">
 <meta name="description" content="Full-Stack Developer: Next.js, React, TypeScript, PostgreSQL, Supabase. Inventory, procurement, POS and booking systems.">
+<!-- Fonts load from the local fonts/ folder so the PDF export never prints before they arrive.
+     The live web copy (rjamscxx.github.io/resume.html) loads the same fonts from Google Fonts instead. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
@@ -25,7 +27,9 @@
 body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:9.4pt;line-height:1.45;
   font-variant-ligatures:none;-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 a{color:inherit;text-decoration:none}
-h1,h2,h3{color:var(--ink);font-weight:600}
+h1,h2,h3{color:var(--ink);font-weight:600;text-wrap:balance}
+p,li{text-wrap:pretty}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
 .page{max-width:210mm;margin:24px auto;padding:14mm 15mm;background:var(--surface);border:1px solid var(--line);border-radius:12px}
 
 /* Header: name, title, contact line, portrait */
@@ -36,24 +40,27 @@ h1{font-family:var(--serif);font-weight:500;font-size:26pt;line-height:1.1;margi
 .title{font-size:11pt;font-weight:500;color:var(--ink)}
 .contact{margin-top:8px;font-size:9pt;color:var(--muted);line-height:1.65}
 .contact a{color:var(--body);text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:2px}
-.portrait{width:84px;height:84px;flex:none;object-fit:cover;object-position:50% 30%;border-radius:10px;border:1px solid var(--line)}
+.contact .ci{white-space:nowrap}
+.sep{color:var(--line-strong)}
+.portrait{width:84px;aspect-ratio:1;flex:none;object-fit:cover;object-position:50% 30%;border-radius:10px;border:1px solid var(--line)}
 
-/* Highlight strip: each cell is ONE line of text so parsers read number and label together */
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:10px 0 2px;border:1px solid var(--line);border-radius:10px}
-.stats p{padding:7px 12px;font-size:8.5pt;color:var(--muted)}
+/* Highlight strip. On screen: number on top, label below (same as the portfolio's stats).
+   In the PDF (see @media print): one line per cell so parsers read number and label together. */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:12px 0 2px;border:1px solid var(--line);border-radius:10px}
+.stats p{padding:10px 14px;font-size:8.5pt;color:var(--muted);line-height:1.35}
 .stats p+p{border-left:1px solid var(--line)}
-.stats b{font-family:var(--serif);font-weight:500;font-size:14pt;color:var(--ink);margin-right:4px;font-variant-numeric:tabular-nums}
+.stats b{display:block;font-family:var(--serif);font-weight:500;font-size:18pt;line-height:1.2;color:var(--ink);font-variant-numeric:tabular-nums}
 
 /* Sections */
 section{padding-top:10px}
 h2{font-family:var(--serif);font-weight:500;font-size:15pt;line-height:1.2;padding-bottom:5px;margin-bottom:5px;border-bottom:1px solid var(--line)}
 .summary{font-size:9.4pt}
 .skills p{margin:3px 0}
-.skills strong{font-family:var(--mono);font-size:8.5pt;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.02em}
+.skills strong{font-family:var(--mono);font-size:8.5pt;font-weight:500;color:var(--muted)}
 
 /* Experience and project entries */
 .entry{padding:5px 0;break-inside:avoid}
-.entry+.entry{border-top:1px dashed var(--line)}
+.entry+.entry{border-top:1px solid var(--line)}
 .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 h3{font-size:10pt}
 .when,.url{font-family:var(--mono);font-size:8.5pt;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
@@ -66,11 +73,11 @@ ul{margin-top:2px;padding-left:15px}
 li{margin:1px 0}
 li::marker{color:var(--line-strong)}
 
-/* Web-only toolbar (back to portfolio, download PDF), hidden when printed */
+/* Web-only top bar, hidden when printed */
 .bar{max-width:210mm;margin:24px auto -8px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;color:var(--muted)}
 .bar a:hover{color:var(--ink)}
-.bar .btn{display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border-radius:6px;font-weight:500;border:1px solid var(--line-strong);background:var(--ink);color:#fff}
-.bar .btn:hover{background:#333;color:#fff}
+.bar .btn{display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border-radius:6px;font-weight:500;border:1px solid var(--ink);background:var(--ink);color:#fff}
+.bar .btn:hover{background:#333;border-color:#333}
 @media print{
   .bar{display:none}
   body{background:#fff}
@@ -80,8 +87,8 @@ li::marker{color:var(--line-strong)}
   body{font-size:9.2pt}
   .summary{font-size:9.2pt}
   .stats{grid-template-columns:repeat(4,auto)}
-  .stats p{white-space:nowrap;padding:6px 9px;font-size:7.8pt}
-  .stats b{font-size:12.5pt}
+  .stats p{white-space:nowrap;padding:6px 9px;font-size:7.8pt;line-height:1.45}
+  .stats b{display:inline;font-size:12.5pt;margin-right:4px}
 }
 @media (max-width:640px){
   .page{margin:0;border:0;border-radius:0;padding:20px 16px}
@@ -90,22 +97,24 @@ li::marker{color:var(--line-strong)}
   .stats p:nth-child(3){border-left:0}
   .stats p:nth-child(n+3){border-top:1px solid var(--line)}
   .row{flex-direction:column;gap:0}
-  .portrait{width:64px;height:64px}
+  .portrait{width:64px}
+  .contact .ci{white-space:normal;overflow-wrap:anywhere}
 }
 </style>
 </head>
 <body>
-<nav class="bar"><a href="./">&larr; Portfolio</a><a class="btn" href="assets/Robert-James-Cabansay-Resume.pdf" download>Download PDF</a></nav>
+<nav class="bar" aria-label="Resume"><a href="./">&larr; Portfolio</a><a class="btn" href="assets/Robert-James-Cabansay-Resume.pdf" download>Download PDF</a></nav>
 <main class="page">
 
 <header>
   <div>
     <span class="status"><i></i>Open to full-time, contract and freelance work</span>
     <h1>Robert James Cabansay</h1>
-    <p class="title">Full-Stack Developer | Next.js, React, TypeScript, PostgreSQL, Supabase</p>
+    <p class="title">Full-Stack Developer <span class="sep">|</span> Next.js, React, TypeScript, PostgreSQL, Supabase</p>
     <p class="contact">
-      San Pedro, Laguna, Philippines | +63 976 450 6395 | <a href="mailto:rjamscxx@gmail.com">rjamscxx@gmail.com</a><br>
-      Portfolio: <a href="https://rjamscxx.github.io">rjamscxx.github.io</a> | GitHub: <a href="https://github.com/rjamscxx">github.com/rjamscxx</a> | LinkedIn: <a href="https://www.linkedin.com/in/robert-james-cabansay-197a80160">linkedin.com/in/robert-james-cabansay-197a80160</a>
+      <span class="ci">San Pedro, Laguna, Philippines</span> <span class="sep">|</span> <span class="ci">+63 976 450 6395</span> <span class="sep">|</span> <span class="ci"><a href="mailto:rjamscxx@gmail.com">rjamscxx@gmail.com</a></span><br>
+      <span class="ci">Portfolio: <a href="https://rjamscxx.github.io">rjamscxx.github.io</a></span> <span class="sep">|</span> <span class="ci">GitHub: <a href="https://github.com/rjamscxx">github.com/rjamscxx</a></span><br>
+      <span class="ci">LinkedIn: <a href="https://www.linkedin.com/in/robert-james-cabansay-197a80160">linkedin.com/in/robert-james-cabansay-197a80160</a></span>
     </p>
   </div>
   <img class="portrait" src="assets/rj-photo.jpg" alt="Robert James Cabansay">
@@ -137,7 +146,7 @@ li::marker{color:var(--line-strong)}
 
   <div class="entry">
     <div class="row"><h3>Founder and Full-Stack Developer, STRUKKD LABS</h3><span class="when">2025 - Present</span></div>
-    <p class="org">Software studio for small and mid-sized businesses | Philippines</p>
+    <p class="org">Software studio for small and mid-sized businesses <span class="sep">|</span> Philippines</p>
     <ul>
       <li>Lead developer on the inventory and procurement system for Singel Group of Companies (Next.js 15, TypeScript, Supabase): 557 commits, 95 database migrations and 49 test files covering the full flow from request for quotation to purchase order, approval, receiving, delivery and billing.</li>
       <li>Designed stock to be calculated from movement records instead of stored totals, with void-and-reverse corrections and database rules that block edits and deletes, so every figure traces back to its source documents.</li>
@@ -150,7 +159,7 @@ li::marker{color:var(--line-strong)}
 
   <div class="entry">
     <div class="row"><h3>Freelance Full-Stack Developer</h3><span class="when">2023 - Present</span></div>
-    <p class="org">Direct clients and small brands | Remote</p>
+    <p class="org">Direct clients and small brands <span class="sep">|</span> Remote</p>
     <ul>
       <li>Delivered web apps for restaurants, retail brands, resorts, a travel agency and a barbershop, owning each project from requirements through deployment and handover.</li>
       <li>Hardened live client apps: added Content Security Policy and HSTS headers, secured file-upload signing behind authentication, and closed open sign-ups on production databases.</li>
@@ -173,7 +182,7 @@ li::marker{color:var(--line-strong)}
 
   <div class="entry">
     <div class="row"><h3>Tenda Pro: Restaurant and cafe operations</h3><a class="url" href="https://tenda.ph">tenda.ph</a></div>
-    <p class="stack">Next.js 16 | React 19 | TypeScript | Supabase | Drizzle | Vitest | Playwright</p>
+    <p class="stack">Next.js 16 <span class="sep">|</span> React 19 <span class="sep">|</span> TypeScript <span class="sep">|</span> Supabase <span class="sep">|</span> Drizzle <span class="sep">|</span> Vitest <span class="sep">|</span> Playwright</p>
     <ul>
       <li>One back office replacing paper and group chats: POS, kitchen display, QR menu, payroll and end-of-day reconciliation.</li>
       <li>Recipes are linked to stock, so every sale deducts ingredients and tracks cost of goods sold automatically.</li>
@@ -182,7 +191,7 @@ li::marker{color:var(--line-strong)}
 
   <div class="entry">
     <div class="row"><h3>Singel Group of Companies: Corporate website</h3><a class="url" href="https://singelgroup.vercel.app">singelgroup.vercel.app</a></div>
-    <p class="stack">Next.js | TypeScript | Tailwind CSS v4 | React Three Fiber | GSAP | GitHub Actions</p>
+    <p class="stack">Next.js <span class="sep">|</span> TypeScript <span class="sep">|</span> Tailwind CSS v4 <span class="sep">|</span> React Three Fiber <span class="sep">|</span> GSAP <span class="sep">|</span> GitHub Actions</p>
     <ul>
       <li>Rebuilt a five-division corporate site with a WebGL hero and scroll-driven motion, with full reduced-motion support.</li>
       <li>Wrote seven automated browser checks measuring motion, scrolling, contrast, performance and layout overlap at six screen widths.</li>
@@ -191,7 +200,7 @@ li::marker{color:var(--line-strong)}
 
   <div class="entry">
     <div class="row"><h3>Gold Palace Streetwear and Grimez Collection: Retail systems</h3><a class="url" href="https://gold-palace-streetwear.vercel.app">gold-palace-streetwear.vercel.app</a></div>
-    <p class="stack">JavaScript | Supabase | Cloudflare R2 | Vercel</p>
+    <p class="stack">JavaScript <span class="sep">|</span> Supabase <span class="sep">|</span> Cloudflare R2 <span class="sep">|</span> Vercel</p>
     <ul>
       <li>Storefronts and owner tools for product drops, POS, orders, inventory, finance and reports, backed by 64 automated test files.</li>
       <li>Separate repositories, deployments and databases per brand, so the two businesses' sales never mix.</li>
@@ -200,7 +209,7 @@ li::marker{color:var(--line-strong)}
 
   <div class="entry">
     <div class="row"><h3>Courtside PH: Court reservations PWA</h3><a class="url" href="https://courtside-ph.vercel.app">courtside-ph.vercel.app</a></div>
-    <p class="stack">JavaScript | PWA | Supabase Row-Level Security | Edge Functions</p>
+    <p class="stack">JavaScript <span class="sep">|</span> PWA <span class="sep">|</span> Supabase Row-Level Security <span class="sep">|</span> Edge Functions</p>
     <ul>
       <li>Reservations across six sports with QR check-in, double-booking protection, offline support and an owner earnings view.</li>
     </ul>
@@ -208,7 +217,7 @@ li::marker{color:var(--line-strong)}
 
   <div class="entry">
     <div class="row"><h3>The Drop: Retail business suite</h3><span class="when">Private</span></div>
-    <p class="stack">JavaScript | PWA | Supabase Edge Functions</p>
+    <p class="stack">JavaScript <span class="sep">|</span> PWA <span class="sep">|</span> Supabase Edge Functions</p>
     <ul>
       <li>Offline-first back office for a streetwear retailer: POS, inventory, delivery, payroll, P&amp;L and receipt printing. Sales save on the device and sync through an outbox, with staff PINs checked on the server.</li>
     </ul>
@@ -216,7 +225,7 @@ li::marker{color:var(--line-strong)}
 
   <div class="entry">
     <div class="row"><h3>Leisure Travel and Tours: Booking website and admin</h3><a class="url" href="https://leisure-travel-tours.vercel.app">leisure-travel-tours.vercel.app</a></div>
-    <p class="stack">JavaScript | Supabase | Vercel</p>
+    <p class="stack">JavaScript <span class="sep">|</span> Supabase <span class="sep">|</span> Vercel</p>
     <ul>
       <li>Baguio staycation and tours site with an admin CMS and two-way calendar (iCal) sync to prevent double bookings.</li>
     </ul>
@@ -224,7 +233,7 @@ li::marker{color:var(--line-strong)}
 
   <div class="entry">
     <div class="row"><h3>Checkout Hub PH: Offline business manager</h3><a class="url" href="https://checkout-hub-ph.vercel.app">checkout-hub-ph.vercel.app</a></div>
-    <p class="stack">JavaScript | PWA | Dexie (IndexedDB)</p>
+    <p class="stack">JavaScript <span class="sep">|</span> PWA <span class="sep">|</span> Dexie (IndexedDB)</p>
     <ul>
       <li>The tool I first built for my own business: eight modules in one offline-first app, with stock auto-deducted on each invoice plus low-stock and expiry alerts.</li>
     </ul>
@@ -232,7 +241,7 @@ li::marker{color:var(--line-strong)}
 
   <div class="entry">
     <div class="row"><h3>STRUKKD LABS Virtual Office: 3D operations workspace</h3><a class="url" href="https://strukkd-labs-virtual-office.vercel.app">strukkd-labs-virtual-office.vercel.app</a></div>
-    <p class="stack">JavaScript | Three.js | Node.js | Supabase | Zod</p>
+    <p class="stack">JavaScript <span class="sep">|</span> Three.js <span class="sep">|</span> Node.js <span class="sep">|</span> Supabase <span class="sep">|</span> Zod</p>
     <ul>
       <li>A 3D workspace for client intake, task allocation and artifact review, where AI-drafted work needs human approval before it moves forward.</li>
     </ul>
