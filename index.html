@@ -91,7 +91,7 @@ section{padding:var(--s5) 0;border-top:1px solid var(--line)}
 .feature{flex-direction:row}
 .feature .card-foot{margin-top:0}
 .card-foot{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);flex-wrap:wrap}
-.more-link{font-size:14px;font-weight:500;color:var(--ink);white-space:nowrap}
+.row-links{display:block;margin-top:8px;font-size:14px;font-weight:400}.more-link{font-size:14px;font-weight:500;color:var(--ink);white-space:nowrap}
 .more-link:hover{text-decoration:underline;text-underline-offset:3px}
 .private{font-size:13.5px;color:var(--muted)}
 
@@ -209,7 +209,7 @@ footer a:hover{color:var(--ink)}
   <div class="wrap">
     <a class="brand" href="#top">RJ Cabansay</a>
     <nav class="nav" aria-label="Main">
-      <a href="#work">Work</a>
+      <a href="work.html">Work</a>
       <a class="hide-sm" href="#experience">Experience</a>
       <a class="hide-sm" href="#skills">Skills</a>
       <a href="#contact">Contact</a>
@@ -225,11 +225,11 @@ footer a:hover{color:var(--ink)}
     <div class="hero-grid">
       <div>
         <span class="status"><i></i>Open to full-time, contract and freelance work</span>
-        <h1 data-split>Full-stack developer who builds business systems.</h1>
+        <h1 data-split>Full-Stack Developer Who Builds Business Systems.</h1>
         <p class="lede">I'm Robert James Cabansay, a self-taught developer in the Philippines. I build inventory, procurement, point of sale and booking systems, and I handle the requirements, UI design, database security, testing and deployment myself.</p>
         <div class="actions">
-          <a class="btn btn-dark" href="mailto:rjamscxx@gmail.com">Email me</a>
-          <a class="btn" href="assets/Robert-James-Cabansay-Resume.pdf" download>Download resume (PDF)</a>
+          <a class="btn btn-dark" href="mailto:rjamscxx@gmail.com">Email Me</a>
+          <a class="btn" href="assets/Robert-James-Cabansay-Resume.pdf" download>Download Resume (PDF)</a>
         </div>
         <div class="links">
           <a href="https://github.com/rjamscxx" target="_blank" rel="noopener">GitHub</a>
@@ -258,8 +258,8 @@ footer a:hover{color:var(--ink)}
 <section class="showcase" aria-label="Tenda Pro dashboard">
   <div class="wrap">
     <div class="showcase-head" data-cs-head>
-      <div class="eyebrow">Tenda Pro · live at tenda.ph</div>
-      <h2>A restaurant's sales, food cost and stock on one screen.</h2>
+      <div class="eyebrow">Tenda Pro · Restaurant Operations</div>
+      <h2>A Restaurant's Sales, Food Cost and Stock on One Screen.</h2><p><a class="more-link" href="projects/tenda-pro.html">Tenda Pro Screenshots &amp; Case Study →</a></p>
     </div>
     <div class="cs-stage" data-cs>
       <div class="cs-card" data-cs-card>
@@ -273,14 +273,14 @@ footer a:hover{color:var(--ink)}
 <section id="work">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="eyebrow">Selected work</div><h2>Systems in daily use</h2></div>
+      <div><div class="eyebrow">Selected Work</div><h2>Websites and Business Systems</h2></div>
       <p>Built and maintained under my studio, Strukkd Labs.</p>
     </div>
 
     <article class="card feature">
       <div class="card-body">
-        <h3>Singel IPMS</h3>
-        <p class="kind">Inventory and procurement system · Singel Group of Companies, founded 1987</p>
+        <h3>Singel IPMS</h3><p><a class="more-link" href="projects/singel-ipms.html">Screenshots &amp; Case Study →</a></p>
+        <p class="kind">Inventory and Procurement System · Singel Group of Companies, Founded 1987</p>
         <p class="desc">Tracks what each project needs, what was bought, what arrived, where it sits and where it went. Every step is its own numbered record, so any figure on any screen traces back to the documents behind it.</p>
         <ul>
           <li>The system calculates stock from movement records instead of storing totals, so figures can't drift.</li>
@@ -293,7 +293,7 @@ footer a:hover{color:var(--ink)}
         <p class="private" style="margin-top:12px">Private client system. Walkthrough available on request.</p>
       </div>
       <div class="flow" aria-label="How a purchase moves through IPMS">
-        <div class="eyebrow">How a purchase moves through it</div>
+        <div class="eyebrow">How a Purchase Moves Through It</div>
         <ol>
           <li><span>01</span>Project needs</li>
           <li><span>02</span>Request for quotation</li>
@@ -311,12 +311,12 @@ footer a:hover{color:var(--ink)}
       <article class="card">
         <div class="shot"><img src="assets/covers/checkout-hub.webp" alt="Checkout Hub PH home screen with sales and stock summary" loading="lazy" /></div>
         <div class="card-body">
-          <h3>Checkout Hub PH</h3>
-          <p class="kind">Offline business manager · the first app I built</p>
+          <h3>Checkout Hub PH</h3><p><a class="more-link" href="projects/checkout-hub.html">Screenshots &amp; Case Study →</a></p>
+          <p class="kind">Offline Business Manager · The First App I Built</p>
           <p class="desc">I built it for my own frozen-goods business. It has eight modules in one offline-first file. Each invoice deducts stock, and the app warns about low stock and expiring items.</p>
           <div class="card-foot">
             <div class="tags"><span class="tag">PWA</span><span class="tag">Dexie</span><span class="tag">Offline-first</span></div>
-            <a class="more-link" href="https://checkout-hub-ph.vercel.app/" target="_blank" rel="noopener">Visit app ↗</a>
+            <a class="more-link" href="https://checkout-hub-ph.vercel.app/" target="_blank" rel="noopener">Visit App ↗</a>
           </div>
         </div>
       </article>
@@ -324,12 +324,12 @@ footer a:hover{color:var(--ink)}
       <article class="card">
         <div class="shot"><img src="assets/covers/singel-website.webp" alt="Singel Group homepage" loading="lazy" /></div>
         <div class="card-body">
-          <h3>Singel Group website</h3>
-          <p class="kind">Corporate site for five operating companies</p>
+          <h3>Singel Group Website</h3><p><a class="more-link" href="projects/singel-website.html">Screenshots &amp; Case Study →</a></p>
+          <p class="kind">Corporate Site for Five Operating Companies</p>
           <p class="desc">The site has one page per division, a WebGL hero and scroll-driven motion that turns off for reduced-motion users. Seven browser checks measure motion, contrast, performance and layout overlap at six screen widths.</p>
           <div class="card-foot">
             <div class="tags"><span class="tag">Next.js</span><span class="tag">React Three Fiber</span><span class="tag">GSAP</span></div>
-            <a class="more-link" href="https://singelgroup.vercel.app/" target="_blank" rel="noopener">Visit site ↗</a>
+            <a class="more-link" href="https://singelgroup.vercel.app/" target="_blank" rel="noopener">Visit Site ↗</a>
           </div>
         </div>
       </article>
@@ -337,12 +337,12 @@ footer a:hover{color:var(--ink)}
       <article class="card">
         <div class="shot"><img src="assets/covers/courtside.webp" alt="Courtside PH booking page" loading="lazy" /></div>
         <div class="card-body">
-          <h3>Courtside PH</h3>
-          <p class="kind">Court reservations for sports venues</p>
+          <h3>Courtside PH</h3><p><a class="more-link" href="projects/courtside.html">Screenshots &amp; Case Study →</a></p>
+          <p class="kind">Court Reservations for Sports Venues</p>
           <p class="desc">Venues take bookings for six sports, with QR check-in, double-booking protection, offline support and an owner earnings view. Row-level security and edge functions control who can read and change data.</p>
           <div class="card-foot">
             <div class="tags"><span class="tag">PWA</span><span class="tag">Supabase</span><span class="tag">Edge Functions</span></div>
-            <a class="more-link" href="https://courtside-ph.vercel.app/" target="_blank" rel="noopener">Visit app ↗</a>
+            <a class="more-link" href="https://courtside-ph.vercel.app/" target="_blank" rel="noopener">Visit App ↗</a>
           </div>
         </div>
       </article>
@@ -350,12 +350,12 @@ footer a:hover{color:var(--ink)}
       <article class="card">
         <div class="shot"><img src="assets/covers/gold-palace.webp" alt="Gold Palace Streetwear storefront" loading="lazy" /></div>
         <div class="card-body">
-          <h3>Gold Palace and Grimez</h3>
-          <p class="kind">Retail systems for two streetwear brands</p>
+          <h3>Gold Palace and Grimez</h3><p><a class="more-link" href="projects/gold-palace-streetwear.html">Gold Palace Screens →</a> · <a class="more-link" href="projects/grimez.html">Grimez Screens →</a></p>
+          <p class="kind">Retail Systems for Two Streetwear Brands</p>
           <p class="desc">Each brand has a storefront and owner tools for drops, POS, orders, inventory, finance and reports, with 64 test files. The brands use separate repositories, deployments and databases, so their sales never mix.</p>
           <div class="card-foot">
             <div class="tags"><span class="tag">JavaScript</span><span class="tag">Supabase</span><span class="tag">Vercel</span></div>
-            <a class="more-link" href="https://gold-palace-streetwear.vercel.app/" target="_blank" rel="noopener">Visit store ↗</a>
+            <a class="more-link" href="https://gold-palace-streetwear.vercel.app/" target="_blank" rel="noopener">Visit Store ↗</a>
           </div>
         </div>
       </article>
@@ -366,46 +366,46 @@ footer a:hover{color:var(--ink)}
 <section id="more">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="eyebrow">More projects</div><h2>Other client and studio work</h2></div>
+      <div><div class="eyebrow">More Projects</div><h2>Other Client and Studio Work</h2></div>
     </div>
     <div class="list">
       <div class="row">
-        <h3>The Drop <small>Retail business suite</small></h3>
+        <h3>The Drop <small>Retail Business Suite</small><span class="row-links"><a class="more-link" href="projects/the-drop.html">Screenshots →</a></span></h3>
         <div><p>Offline-first back office for a streetwear retailer: POS, inventory, delivery, payroll, P&amp;L and receipt printing. The app saves sales on the device first and syncs them through an outbox, and the server checks staff PINs.</p><div class="tags"><span class="tag">PWA</span><span class="tag">Supabase Edge Functions</span></div></div>
         <span class="private">Private</span>
       </div>
       <div class="row">
-        <h3>Strukkd Labs OS <small>Studio operations</small></h3>
+        <h3>Strukkd Labs OS <small>Studio Operations</small><span class="row-links"><a class="more-link" href="projects/strukkd-os.html">Screenshots →</a></span></h3>
         <div><p>The system I run my studio on: client intake, sales pipeline, quotes, contracts, invoices, release tracking and a prospect list for Manila, Cebu and Davao.</p><div class="tags"><span class="tag">Next.js</span><span class="tag">Supabase</span></div></div>
         <span class="private">Private</span>
       </div>
       <div class="row">
-        <h3>Leisure Travel &amp; Tours <small>Bookings and admin</small></h3>
+        <h3>Leisure Travel &amp; Tours <small>Bookings and Admin</small><span class="row-links"><a class="more-link" href="projects/leisure.html">Screenshots →</a></span></h3>
         <div><p>A Baguio staycation and tours site with an admin CMS and two-way calendar (iCal) sync to prevent double bookings.</p><div class="tags"><span class="tag">JavaScript</span><span class="tag">Supabase</span></div></div>
         <a class="more-link" href="https://leisure-travel-tours.vercel.app/" target="_blank" rel="noopener">Visit ↗</a>
       </div>
       <div class="row">
-        <h3>Strukkd Labs Virtual Office <small>3D operations workspace</small></h3>
+        <h3>Strukkd Labs Virtual Office <small>3D Operations Workspace</small><span class="row-links"><a class="more-link" href="projects/virtual-office.html">Screenshots →</a></span></h3>
         <div><p>A 3D workspace for client intake, task allocation and artifact review, where AI-drafted work needs human approval before it moves forward.</p><div class="tags"><span class="tag">Three.js</span><span class="tag">Supabase</span><span class="tag">Zod</span></div></div>
         <a class="more-link" href="https://strukkd-labs-virtual-office.vercel.app/" target="_blank" rel="noopener">Visit ↗</a>
       </div>
       <div class="row">
-        <h3>Grayscale Coffee Club <small>Membership app</small></h3>
-        <div><p>A member portal with QR loyalty cards, subscription tiers and a daily operations dashboard.</p></div>
+        <h3>Grayscale Coffee Club <small>Cafe POS &amp; Operations</small><span class="row-links"><a class="more-link" href="projects/grayscale-coffee-club.html">Screenshots →</a></span></h3>
+        <div><p>A cafe operations application with POS, kitchen workflows, menu management, inventory and reporting.</p></div>
         <span class="private">Private</span>
       </div>
       <div class="row">
-        <h3>Jazel Hub <small>Client business hub</small></h3>
-        <div><p>A business hub with bookings, schedule, services and contact management for an independent business owner.</p></div>
+        <h3>Jazel Hub <small>Multi-Business Operations Hub</small><span class="row-links"><a class="more-link" href="projects/jazel-hub.html">Screenshots →</a></span></h3>
+        <div><p>A multi-business hub for transport rentals, bookings, maintenance, food inventory and print jobs.</p></div>
         <span class="private">Private</span>
       </div>
       <div class="row">
-        <h3>Young Minds <small>Youth progress tracker</small></h3>
-        <div><p>A tracker with progress, attendance and reporting screens for a youth education program.</p></div>
+        <h3>Young Minds <small>Sales &amp; Expense Tracker</small><span class="row-links"><a class="more-link" href="projects/youngminds.html">Screenshots →</a></span></h3>
+        <div><p>A sales and expense tracker with product, transaction and reporting screens.</p></div>
         <span class="private">Private</span>
       </div>
       <div class="row">
-        <h3>Hiraya Pines and Alta Pinos <small>Property site templates</small></h3>
+        <h3>Hiraya Pines and Alta Pinos <small>Property Site Templates</small><span class="row-links"><a class="more-link" href="projects/hiraya-pines.html">Hiraya Pines Screens →</a> · <a class="more-link" href="projects/alta-pinos.html">Alta Pinos Screens →</a></span></h3>
         <div><p>Resort and residence websites with galleries, availability checks, inquiry forms and PIN-protected owner dashboards.</p></div>
         <a class="more-link" href="https://hiraya-pines.vercel.app/" target="_blank" rel="noopener">Visit ↗</a>
       </div>
@@ -413,11 +413,12 @@ footer a:hover{color:var(--ink)}
   </div>
 </section>
 
+<section id="project-archive"><div class="wrap"><div class="eyebrow">Project Walkthroughs</div><h2>See the Screens Behind the Work.</h2><p>Explore the project archive for my role, features, workflows and screenshot galleries across websites, business applications and internal tools.</p><a class="btn btn-dark" href="work.html">Browse All Projects →</a></div></section>
 <section id="experience">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="eyebrow">Experience</div><h2>Where I've worked</h2></div>
-      <a class="more-link" href="resume.html">Full resume →</a>
+      <div><div class="eyebrow">Experience</div><h2>Where I've Worked</h2></div>
+      <a class="more-link" href="resume.html">Full Resume →</a>
     </div>
     <div class="xp">
       <div class="when">June 2026 to present</div>
@@ -445,16 +446,16 @@ footer a:hover{color:var(--ink)}
     <div class="xp">
       <div class="when">5+ years</div>
       <div>
-        <h3>Sales, finance and client-facing roles</h3>
+        <h3>Sales, Finance and Client-Facing Roles</h3>
         <div class="org">Real estate sales, financial advisory, HR sourcing, customer service</div>
         <ul><li>Managed client relationships and reviewed financial statements and sales data.</li></ul>
       </div>
     </div>
     <div class="xp">
-      <div class="when">2019</div>
+      <div class="when">2016 to 2019</div>
       <div>
-        <h3>BS Information Technology</h3>
-        <div class="org">AMA Computer College, Biñan</div>
+        <h3>BS Information Technology Coursework</h3>
+        <div class="org">AMA Computer College, Biñan · Undergraduate studies; degree not completed</div>
       </div>
     </div>
   </div>
@@ -463,13 +464,13 @@ footer a:hover{color:var(--ink)}
 <section id="skills">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="eyebrow">Skills</div><h2>What I work with</h2></div>
+      <div><div class="eyebrow">Skills</div><h2>What I Work With</h2></div>
     </div>
-    <div class="skills">
+    <div class="skills"><div class="card skill"><h3>Website Maintenance &amp; Accessibility</h3><p>Content updates, troubleshooting, inquiry and booking forms, API integrations, keyboard navigation, form labels, contrast, alternative text and accessibility checks in collaboration with clients.</p></div><div class="card skill"><h3>Website Maintenance &amp; Accessibility</h3><p>Content updates, troubleshooting, inquiry and booking forms, API integrations, keyboard navigation, form labels, contrast, alternative text and accessibility checks in collaboration with clients.</p></div><div class="card skill"><h3>Website Maintenance &amp; Accessibility</h3><p>Content updates, troubleshooting, inquiry and booking forms, API integrations, keyboard navigation, form labels, contrast, alternative text and accessibility checks in collaboration with clients.</p></div><div class="card skill"><h3>Website Maintenance &amp; Accessibility</h3><p>Content updates, troubleshooting, inquiry and booking forms, API integrations, keyboard navigation, form labels, contrast, alternative text and accessibility checks in collaboration with clients.</p></div>
       <div class="card skill"><h3>Frontend</h3><p>React 19, Next.js 15 and 16 (App Router), TypeScript, JavaScript, Tailwind CSS v4, shadcn/ui, responsive and accessible UI</p></div>
-      <div class="card skill"><h3>Backend and data</h3><p>Node.js, PostgreSQL, Supabase (Auth, row-level security, Edge Functions, Storage), Prisma, Drizzle, Zod, REST APIs</p></div>
-      <div class="card skill"><h3>Testing and delivery</h3><p>Playwright, Vitest, GitHub Actions, Vercel, offline-first PWAs, security headers</p></div>
-      <div class="card skill"><h3>3D, motion and AI-assisted work</h3><p>Three.js, React Three Fiber, GSAP, Lenis. Claude Code and ChatGPT with human approval gates and code review.</p></div>
+      <div class="card skill"><h3>Backend and Data</h3><p>Node.js, PostgreSQL, Supabase (Auth, row-level security, Edge Functions, Storage), Prisma, Drizzle, Zod, REST APIs</p></div>
+      <div class="card skill"><h3>Testing and Delivery</h3><p>Playwright, Vitest, GitHub Actions, Vercel, offline-first PWAs, security headers</p></div>
+      <div class="card skill"><h3>3D, Motion and AI-Assisted Work</h3><p>Three.js, React Three Fiber, GSAP, Lenis. Claude Code and ChatGPT with human approval gates and code review.</p></div>
     </div>
   </div>
 </section>
@@ -480,7 +481,7 @@ footer a:hover{color:var(--ink)}
     <div class="card contact">
       <div>
         <div class="eyebrow">Contact</div>
-        <h2>Let's talk about your role or project.</h2>
+        <h2>Let's Talk About Your Role or Project.</h2>
         <p>I'm open to full-time, contract and freelance work. Email me or send a message with the form.</p>
         <dl>
           <dt>Email</dt><dd><a href="mailto:rjamscxx@gmail.com">rjamscxx@gmail.com</a></dd>
